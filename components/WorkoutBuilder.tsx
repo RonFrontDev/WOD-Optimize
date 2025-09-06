@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { generateWorkoutStrategy } from '../services/geminiService';
-import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon } from './Icons';
+import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon, ChevronDownIcon } from './Icons';
 import LoadingSpinner from './LoadingSpinner';
 import type { WorkoutStrategy } from '../types';
 import { BENCHMARK_WORKOUTS } from '../constants';
@@ -26,12 +26,31 @@ const predefinedLimiters = [
     'Mobility / Technique',
 ];
 
-const StrategySection = ({ title, content }: { title: string, content: string }) => {
+const StrategySection = ({ title, content, defaultOpen = false }: { title: string, content: string, defaultOpen?: boolean }) => {
+    const [isOpen, setIsOpen] = useState(defaultOpen);
     if (!content) return null;
+
     return (
-        <div className="mb-6 last:mb-0">
-            <h4 className="text-lg font-semibold text-brand-secondary mb-2">{title}</h4>
-            <p className="whitespace-pre-wrap font-sans text-text-muted dark:text-dark-text-muted text-base leading-relaxed">{content}</p>
+        <div className="border-b border-border-color dark:border-dark-border-color last:border-b-0">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex justify-between items-center py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
+                aria-expanded={isOpen}
+                aria-controls={`strategy-section-${title.replace(/\s+/g, '-')}`}
+            >
+                <h4 className="text-lg font-semibold text-text-primary dark:text-dark-text-primary">{title}</h4>
+                <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} />
+            </button>
+            <div
+              id={`strategy-section-${title.replace(/\s+/g, '-')}`}
+              className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+            >
+                <div className="overflow-hidden">
+                    <div className="pt-2 pb-6">
+                        <p className="whitespace-pre-wrap font-sans text-base leading-relaxed">{content}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
@@ -167,7 +186,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
             <Modal isOpen={!!strategy} onClose={handleReset} title="Your Workout Strategy">
                 {strategy && (
                     <div className="max-h-[80vh] overflow-y-auto pr-2">
-                         <p className="text-text-muted dark:text-dark-text-muted mb-6 px-1">Select your level to see a custom tactical guide.</p>
+                         <p className="text-text-primary dark:text-dark-text-primary mb-6 px-1">Select your level to see a custom tactical guide.</p>
                         <div className="border-b border-border-color dark:border-dark-border-color flex overflow-x-auto mb-6 sticky top-0 bg-surface dark:bg-dark-surface py-2">
                             {levelKeys.map(level => (
                                 <button
@@ -189,14 +208,14 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                 <div className="px-1">
                                     <div className="grid md:grid-cols-2 gap-6 mb-8 p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
                                         <div className="flex items-start gap-4">
-                                            <ClockIcon className="w-8 h-8 text-brand-primary flex-shrink-0 mt-1" />
+                                            <ClockIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
                                             <div>
                                                 <h3 className="text-md font-semibold text-text-muted dark:text-dark-text-muted">Target Time</h3>
                                                 <p className="text-xl font-bold text-text-primary dark:text-dark-text-primary">{currentStrategy.timeEstimate}</p>
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-4 md:border-l md:border-border-color md:dark:border-dark-border-color md:pl-6">
-                                            <ClipboardListIcon className="w-8 h-8 text-brand-secondary flex-shrink-0 mt-1" />
+                                            <ClipboardListIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
                                             <div>
                                                 <h3 className="text-md font-semibold text-text-muted dark:text-dark-text-muted">Your Workout</h3>
                                                 <p className="text-sm text-text-primary dark:text-dark-text-primary whitespace-pre-wrap">{analyzedWorkout}</p>
@@ -204,13 +223,42 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                         </div>
                                     </div>
     
-                                    <StrategySection title="Overall Strategy & Goal" content={currentStrategy.goal} />
-                                    <StrategySection title="Pacing & Rep Scheme Breakdown" content={currentStrategy.pacing} />
-                                    <StrategySection title="Movement Efficiency Under Fatigue" content={currentStrategy.efficiency} />
-                                    <StrategySection title="Transition Plan" content={currentStrategy.transitions} />
-                                    <StrategySection title="Where to Push vs. Where to Conserve Energy" content={currentStrategy.pushVsConserve} />
-                                    <StrategySection title="Breathing Strategy" content={currentStrategy.breathing} />
-                                    <StrategySection title="How to Improve Your Limiters" content={currentStrategy.improvementFocus} />
+                                 <StrategySection
+  title="Overall Strategy & Goal"
+  content={<div className="text-black">{currentStrategy.goal}</div>}
+  defaultOpen={true}
+/>
+
+<StrategySection
+  title="Pacing & Rep Scheme Breakdown"
+  content={<div className="text-black">{currentStrategy.pacing}</div>}
+/>
+
+<StrategySection
+  title="Movement Efficiency Under Fatigue"
+  content={<div className="text-black">{currentStrategy.efficiency}</div>}
+/>
+
+<StrategySection
+  title="Transition Plan"
+  content={<div className="text-black">{currentStrategy.transitions}</div>}
+/>
+
+<StrategySection
+  title="Where to Push vs. Where to Conserve Energy"
+  content={<div className="text-black">{currentStrategy.pushVsConserve}</div>}
+/>
+
+<StrategySection
+  title="Breathing Strategy"
+  content={<div className="text-black">{currentStrategy.breathing}</div>}
+/>
+
+<StrategySection
+  title="How to Improve Your Limiters"
+  content={<div className="text-black">{currentStrategy.improvementFocus}</div>}
+/>
+
                                 </div>
                             );
                         })()}

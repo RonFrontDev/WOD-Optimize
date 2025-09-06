@@ -384,7 +384,7 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
         onClose={() => setSelectedFault(null)}
         title={selectedFault?.fault || ''}
       >
-        <p className="text-text-muted dark:text-dark-text-muted mt-1 text-lg leading-relaxed">{selectedFault?.fix}</p>
+        <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{selectedFault?.fix}</p>
       </Modal>
 
     </div>
