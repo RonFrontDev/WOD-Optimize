@@ -4,9 +4,28 @@ interface IconProps {
     className?: string;
 }
 
+export const LogoIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    role="img"
+    aria-labelledby="wod-optimize-logo-title"
+  >
+    <title id="wod-optimize-logo-title">WOD Optimize Logo</title>
+    <desc>An icon showing an upward bar chart inside a circle, representing performance optimization within fitness.</desc>
+    <path 
+      fillRule="evenodd" 
+      clipRule="evenodd" 
+      d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM7 16V12H9V16H7ZM11 16V9H13V16H11ZM15 16V6H17V16H15Z" 
+    />
+  </svg>
+);
+
 export const BarbellIcon = ({ className = 'w-6 h-6' }: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17 6V4a2 2 0 00-2-2h- cambiamento su 2a2 2 0 00-2 2v2m4 0h-4m4 12v2a2 2 0 01-2 2h- cambiamento su 2a2 2 0 01-2-2v-2m4 0h-4M5 6h14M5 18h14" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 6V4a2 2 0 00-2-2h-2a2 2 0 00-2 2v2m4 0h-4m4 12v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2m4 0h-4M5 6h14M5 18h14" />
     </svg>
 );
 
