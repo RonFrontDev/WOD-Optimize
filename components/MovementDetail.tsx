@@ -17,6 +17,12 @@ type ViewMode = 'details' | 'analyze' | 'drills' | 'mobility' | 'grip' | 'transi
 
 const HISTORY_STORAGE_KEY = 'wodOptimizeHistory';
 
+const noGripMovementIds = [
+  'push-up', 'handstand-push-up', 'burpee', 'box-jump', 'pistol-squat',
+  'burpee-box-jump', 'bar-facing-burpee', 'box-jump-over', 'ghd-sit-up',
+  'running', 'l-sit', 'handstand-walk', 'wall-walk', 'lunge'
+];
+
 export default function MovementDetail({ movement, onBack }: MovementDetailProps): React.JSX.Element {
   const [view, setView] = useState<ViewMode>('details');
   const [selectedFault, setSelectedFault] = useState<{ fault: string; fix: string } | null>(null);
@@ -33,6 +39,8 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
   const [isLoadingTransitions, setIsLoadingTransitions] = useState(false);
   const [isLoadingEnergy, setIsLoadingEnergy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const showGripGuide = !noGripMovementIds.includes(movement.id);
 
   const saveAnalysisToHistory = useCallback((movementId: string, session: AnalysisSession) => {
     try {
@@ -127,6 +135,14 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       setIsLoadingEnergy(false);
     }
   }, [movement.name]);
+
+  // If the user switches to a movement without a grip guide while on that tab,
+  // switch back to the details view.
+  useEffect(() => {
+    if (!showGripGuide && view === 'grip') {
+      setView('details');
+    }
+  }, [showGripGuide, view]);
 
   useEffect(() => {
     const getHistoryForMovement = (movementId: string): AnalysisSession[] => {
@@ -352,7 +368,7 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
              <TabButton mode="analyze" label="Form Analysis" icon={<SparklesIcon className="w-5 h-5"/>}/>
              <TabButton mode="drills" label="Drills" icon={<LightningIcon className="w-5 h-5"/>}/>
              <TabButton mode="mobility" label="Mobility" icon={<HeartIcon className="w-5 h-5"/>}/>
-             <TabButton mode="grip" label="Grip Guide" icon={<GripIcon className="w-5 h-5"/>}/>
+             {showGripGuide && <TabButton mode="grip" label="Grip Guide" icon={<GripIcon className="w-5 h-5"/>}/>}
              <TabButton mode="transitions" label="Transitions" icon={<ForwardIcon className="w-5 h-5"/>}/>
              <TabButton mode="energy" label="Energy" icon={<EnergyIcon className="w-5 h-5"/>}/>
              <TabButton mode="history" label="History" icon={<ArchiveBoxIcon className="w-5 h-5"/>}/>

@@ -39,6 +39,7 @@ export const MOVEMENTS: Movement[] = [
     category: 'Weightlifting',
     commonFaults: [
       { fault: 'Rounding the Lower Back', fix: 'This is the most critical fault. Keep a neutral spine by engaging your lats ("pulling slack out") and bracing your core. If you can\'t maintain a flat back, the weight is too heavy.' },
+      { fault: 'Incorrect Grip Width', fix: 'Your hands should be placed just outside your shins, so your arms are vertical when looking from the front. A grip that is too wide puts you at a mechanical disadvantage and increases the range of motion.' },
       { fault: 'Hips Rising Too Fast', fix: 'Your back angle should remain consistent as the bar leaves the floor. Push the floor away with your legs; think of it as a leg press first. Your hips and shoulders should rise together.' },
       { fault: 'Bar Drifting Away From Body', fix: 'The bar must stay in contact with or very close to your shins and thighs. Engage your lats to "sweep" the bar back. Any space is a leverage disadvantage and risks your lower back.' },
       { fault: 'Jerking the Bar Off the Floor', fix: 'Create full-body tension before initiating the lift. Pull your chest up and lats down until the bar "clicks". Squeeze the bar off the floor, don\'t yank it.' },
@@ -73,6 +74,7 @@ export const MOVEMENTS: Movement[] = [
     category: 'Weightlifting',
     commonFaults: [
       { fault: 'Early Arm Pull in Clean', fix: 'Your arms are ropes, not engines. Be patient and let your powerful leg and hip extension elevate the bar. The arms only pull you *under* the bar.' },
+      { fault: 'Incorrect Grip Width (Clean)', fix: 'Your clean grip should be just outside your shoulders, typically with your thumbs ending up just outside your thighs. This position allows for a powerful pull and a solid front rack receiving position.' },
       { fault: 'Not Reaching Full Hip Extension', fix: 'You must be violent and aggressive at the top of the pull. Focus on jumping vertically and shrugging hard to create maximum bar height before pulling under.' },
       { fault: 'Pressing Out the Jerk', fix: 'A press-out means the leg drive was insufficient. The jerk is a powerful leg drive followed by a quick drop *under* the bar into a locked-out position, not a push press.' },
       { fault: 'Crashing the Bar on the Shoulders', fix: 'Don\'t let the bar crash on you. Actively meet the bar by pulling yourself under it and whipping your elbows around into a solid front rack position.' },
@@ -90,6 +92,7 @@ export const MOVEMENTS: Movement[] = [
     category: 'Weightlifting',
     commonFaults: [
         { fault: 'Looping the Bar Away From Body', fix: 'Keep the bar extremely close to your body throughout the entire pull. Imagine you are trying to drag it up your shirt. Use your lats to "sweep" it in.' },
+        { fault: 'Incorrect Grip Width', fix: 'Your grip should be wide enough that the bar rests in your hip crease when you stand up straight. A grip that is too narrow will limit power, while a grip that is too wide will be unstable and stressful on the shoulders.' },
         { fault: 'Jumping Forward or Backward', fix: 'This indicates a balance issue and an inefficient bar path. Focus on a vertical drive with even foot pressure. Your feet should land in your overhead squat stance.' },
         { fault: 'Soft Elbows in Catch Position', fix: 'The catch must be aggressive and decisive. Aggressively punch the bar up to a locked-out overhead position as you pull yourself under it. There is no time to press it out.' },
         { fault: 'Humping the Bar (Excessive Hip Thrust)', fix: 'The hips should drive vertically, not forward. Hitting the bar with your hips sends it on a looping path. Focus on extending up, not out.' },
@@ -124,6 +127,7 @@ export const MOVEMENTS: Movement[] = [
     category: 'Gymnastics',
     commonFaults: [
       { fault: 'Not Reaching Full Extension at Bottom', fix: 'Each rep must start from a dead hang with locked-out elbows. This ensures full range of motion and develops strength through the entire movement.' },
+      { fault: 'Grip Too Wide or Too Narrow', fix: 'A grip slightly wider than shoulder-width is ideal for engaging the lats. A very wide grip limits range of motion and can stress the shoulders, while a very narrow grip turns the movement into more of a chin-up, emphasizing the biceps.' },
       { fault: 'Chin Not Clearing the Bar', fix: 'The rep standard is chin over the bar. Focus on pulling your chest *to* the bar, which will naturally get your chin high enough. Pulling higher builds more strength.' },
       { fault: 'Using a Kip Before Developing Strict Strength', fix: 'Kipping is a skill, not a substitute for strength. Build a base with strict pull-ups, negatives (slow lowering), and ring rows before attempting kipping pull-ups.' },
       { fault: 'Shoulders Shrugging to Ears', fix: 'Initiate the pull by depressing your scapula (pulling shoulder blades down and back). This engages your lats properly instead of relying on biceps and traps.' },
@@ -685,6 +689,7 @@ export const MOVEMENTS: Movement[] = [
     category: 'Gymnastics',
     commonFaults: [
       { fault: 'Arching the back ("banana back")', fix: 'Engage your core and glutes to maintain a hollow body position. Look between your hands, not far in front. This keeps your body stacked.' },
+      { fault: 'Incorrect Hand and Finger Position', fix: 'Spread your fingers wide and grip the floor to create a stable base. Point your index fingers forward or slightly outward. This active grip helps with balance and control.' },
       { fault: 'Walking with hands too wide', fix: 'Your hands should be about shoulder-width apart, just as when you walk on your feet. A wide base is less efficient for shifting weight.' },
       { fault: 'Shoulders not "open"', fix: 'Actively push the ground away, fully extending through your shoulders. A "closed" or shrugged shoulder is unstable.' },
       { fault: 'Taking large, uncontrolled "steps"', fix: 'Think small, quick steps. The movement is a controlled fall, shifting your weight from one hand to the other. Don\'t try to leap forward.' },

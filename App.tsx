@@ -57,7 +57,7 @@ export default function App(): React.JSX.Element {
 
   return (
     <div className="min-h-screen bg-base dark:bg-dark-base font-sans">
-      <Header />
+      <Header onGoHome={handleBack} />
       <main className="container mx-auto p-4 md:p-8">
         {selectedMovement ? (
           <MovementDetail movement={selectedMovement} onBack={handleBack} />
