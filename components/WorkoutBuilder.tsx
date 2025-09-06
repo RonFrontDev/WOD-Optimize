@@ -95,7 +95,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         return (
             <div className="text-center animate-fade-in">
                 <h2 className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Analyzing Your Workout...</h2>
-                <p className="text-text-muted dark:text-dark-text-muted mb-8">Our AI coach is crafting the perfect strategy for you.</p>
+                <p className="text-text-muted dark:text-dark-text-muted mb-8">We are crafting the perfect strategy for you.</p>
                 <LoadingSpinner />
             </div>
         )
@@ -110,7 +110,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                 </button>
                 <div className="text-center mb-8">
                     <h2 className="text-4xl font-bold text-text-primary dark:text-dark-text-primary mb-2">Workout Analyzer</h2>
-                    <p className="text-lg text-text-muted dark:text-dark-text-muted">Enter any workout to get a custom, AI-powered strategy.</p>
+                    <p className="text-lg text-text-muted dark:text-dark-text-muted">Enter any workout to get a custom, advanced strategy.</p>
                 </div>
 
                 <div className="bg-surface dark:bg-dark-surface rounded-lg p-6 shadow-lg border border-border-color dark:border-dark-border-color">
@@ -122,13 +122,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                         rows={8}
                         value={workoutDescription}
                         onChange={(e) => setWorkoutDescription(e.target.value)}
-                        placeholder="e.g., DT
-                        
-... or enter a custom workout:
-For Time:
-21-15-9
-Deadlifts (225 / 155 lbs)
-Burpees Over Bar"
+                        placeholder='Enter a benchmark WOD (e.g., "Fran", "DT") or describe your custom workout.'
                         className="w-full bg-base dark:bg-dark-base text-text-primary dark:text-dark-text-primary p-3 rounded-md border border-border-color dark:border-dark-border-color focus:ring-2 focus:ring-brand-primary focus:border-brand-primary dark:focus:border-brand-primary transition duration-200"
                     />
 

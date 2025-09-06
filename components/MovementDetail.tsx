@@ -5,14 +5,15 @@ import FileUpload from './FileUpload';
 import LoadingSpinner from './LoadingSpinner';
 import SkeletonLoader from './SkeletonLoader';
 import Modal from './Modal';
-import { ArrowLeftIcon, HeartIcon, LightningIcon, SparklesIcon, XCircleIcon, ForwardIcon, EnergyIcon, ArchiveBoxIcon } from './Icons';
+import { ArrowLeftIcon, HeartIcon, LightningIcon, SparklesIcon, XCircleIcon, ForwardIcon, EnergyIcon, ArchiveBoxIcon, GripIcon } from './Icons';
+import GripGuide from './GripGuide';
 
 interface MovementDetailProps {
   movement: Movement;
   onBack: () => void;
 }
 
-type ViewMode = 'details' | 'analyze' | 'drills' | 'mobility' | 'transitions' | 'energy' | 'history';
+type ViewMode = 'details' | 'analyze' | 'drills' | 'mobility' | 'grip' | 'transitions' | 'energy' | 'history';
 
 const HISTORY_STORAGE_KEY = 'wodOptimizeHistory';
 
@@ -179,8 +180,8 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       case 'analyze':
         return (
           <div>
-            <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">AI Form Analysis</h3>
-            <p className="text-text-muted dark:text-dark-text-muted mb-6">Upload a clear photo of yourself performing the movement. Our AI coach will provide personalized feedback.</p>
+            <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Form Analysis</h3>
+            <p className="text-text-muted dark:text-dark-text-muted mb-6">Upload a clear photo of yourself performing the movement. Our analysis tool will provide personalized feedback.</p>
             <FileUpload onFileSelect={setImageFile} />
             <button
               onClick={handleAnalyze}
@@ -238,6 +239,8 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 )}
             </div>
         );
+      case 'grip':
+        return <GripGuide category={movement.category} />;
       case 'transitions':
         return (
             <div>
@@ -346,9 +349,10 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
         <div className="md:w-2/3">
           <div className="border-b border-border-color dark:border-dark-border-color flex overflow-x-auto">
              <TabButton mode="details" label="Faults & Fixes" icon={<XCircleIcon className="w-5 h-5"/>}/>
-             <TabButton mode="analyze" label="AI Analysis" icon={<SparklesIcon className="w-5 h-5"/>}/>
+             <TabButton mode="analyze" label="Form Analysis" icon={<SparklesIcon className="w-5 h-5"/>}/>
              <TabButton mode="drills" label="Drills" icon={<LightningIcon className="w-5 h-5"/>}/>
              <TabButton mode="mobility" label="Mobility" icon={<HeartIcon className="w-5 h-5"/>}/>
+             <TabButton mode="grip" label="Grip Guide" icon={<GripIcon className="w-5 h-5"/>}/>
              <TabButton mode="transitions" label="Transitions" icon={<ForwardIcon className="w-5 h-5"/>}/>
              <TabButton mode="energy" label="Energy" icon={<EnergyIcon className="w-5 h-5"/>}/>
              <TabButton mode="history" label="History" icon={<ArchiveBoxIcon className="w-5 h-5"/>}/>

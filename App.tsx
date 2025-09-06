@@ -70,7 +70,7 @@ export default function App(): React.JSX.Element {
                 Optimize Your Performance
               </h1>
               <p className="text-lg md:text-xl text-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
-                Select a movement for analysis, or build a custom workout plan for an AI-generated strategy.
+                Select a movement for analysis, or build a custom workout plan for a custom strategy.
               </p>
               <div className="mt-8">
                 <button
