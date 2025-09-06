@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from './components/Header';
 import MovementCard from './components/MovementCard';
@@ -57,7 +56,7 @@ export default function App(): React.JSX.Element {
 
 
   return (
-    <div className="min-h-screen bg-base-dark font-sans">
+    <div className="min-h-screen bg-base dark:bg-dark-base font-sans">
       <Header />
       <main className="container mx-auto p-4 md:p-8">
         {selectedMovement ? (
@@ -67,10 +66,10 @@ export default function App(): React.JSX.Element {
         ) : (
           <div>
             <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+              <h1 className="text-4xl md:text-5xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
                 Optimize Your Performance
               </h1>
-              <p className="text-lg md:text-xl text-muted-dark max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
                 Select a movement for analysis, or build a custom workout plan for an AI-generated strategy.
               </p>
               <div className="mt-8">
@@ -87,14 +86,14 @@ export default function App(): React.JSX.Element {
             <div className="mb-12 max-w-2xl mx-auto">
               <div className="relative">
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <SearchIcon className="w-5 h-5 text-muted-dark" />
+                  <SearchIcon className="w-5 h-5 text-text-muted dark:text-dark-text-muted" />
                 </span>
                 <input
                   type="text"
                   placeholder="Search for a movement..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-surface-dark text-slate-200 placeholder-muted-dark pl-10 pr-4 py-3 rounded-lg border-2 border-slate-700 focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition duration-200"
+                  className="w-full bg-surface dark:bg-dark-surface text-text-primary dark:text-dark-text-primary placeholder-text-muted dark:placeholder-dark-text-muted pl-10 pr-4 py-3 rounded-lg border-2 border-border-color dark:border-dark-border-color focus:ring-2 focus:ring-brand-primary focus:border-brand-primary dark:focus:border-brand-primary transition duration-200"
                   aria-label="Search movements"
                 />
               </div>
@@ -116,14 +115,14 @@ export default function App(): React.JSX.Element {
                       tabIndex={0}
                       onClick={() => toggleCategory(category)}
                       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleCategory(category)}
-                      className="flex justify-between items-center cursor-pointer mb-6 pb-2 border-b-2 border-slate-700 hover:border-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary rounded"
+                      className="flex justify-between items-center cursor-pointer mb-6 pb-2 border-b-2 border-border-color dark:border-dark-border-color hover:border-brand-primary dark:hover:border-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary rounded"
                       aria-expanded={!isCollapsed}
                       aria-controls={`${category}-grid-container`}
                     >
-                      <h2 id={`${category}-heading`} className="text-3xl font-bold text-white">
+                      <h2 id={`${category}-heading`} className="text-3xl font-bold text-text-primary dark:text-dark-text-primary">
                         {category}
                       </h2>
-                      <ChevronDownIcon className={`w-6 h-6 text-slate-400 transition-transform duration-300 ${isCollapsed ? '-rotate-90' : 'rotate-0'}`} />
+                      <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isCollapsed ? '-rotate-90' : 'rotate-0'}`} />
                     </div>
 
                     <div
@@ -147,8 +146,8 @@ export default function App(): React.JSX.Element {
               })}
               {filteredMovements.length === 0 && searchQuery && (
                 <div className="text-center py-12">
-                  <h3 className="text-2xl font-bold text-white">No Movements Found</h3>
-                  <p className="text-muted-dark mt-2">Try adjusting your search query.</p>
+                  <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">No Movements Found</h3>
+                  <p className="text-text-muted dark:text-dark-text-muted mt-2">Try adjusting your search query.</p>
                 </div>
               )}
             </div>

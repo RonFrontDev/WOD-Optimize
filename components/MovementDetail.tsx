@@ -149,15 +149,15 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
 
   const renderContent = () => {
     if(error){
-        return <div className="text-center text-red-400 p-4 bg-red-900/20 rounded-lg">{error}</div>
+        return <div className="text-center text-red-600 dark:text-red-400 p-4 bg-red-100 dark:bg-red-900/20 rounded-lg">{error}</div>
     }
 
     switch (view) {
       case 'details':
         return (
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Common Faults & Fixes</h3>
-            <p className="text-muted-dark mb-6">Click on any fault to read the full description and fix.</p>
+            <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Common Faults & Fixes</h3>
+            <p className="text-text-muted dark:text-dark-text-muted mb-6">Click on any fault to read the full description and fix.</p>
             <ul className="space-y-4">
               {movement.commonFaults.map((item, index) => (
                 <li
@@ -167,10 +167,10 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                   role="button"
                   tabIndex={0}
                   aria-label={`View details for ${item.fault}`}
-                  className="bg-surface-dark p-4 rounded-lg shadow-md hover:bg-slate-700/80 transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                  className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 border border-border-color dark:border-dark-border-color transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary"
                 >
                   <p className="font-semibold text-brand-secondary">{item.fault}</p>
-                  <p className="text-slate-300 mt-1">{item.fix}</p>
+                  <p className="text-text-muted dark:text-dark-text-muted mt-1">{item.fix}</p>
                 </li>
               ))}
             </ul>
@@ -179,20 +179,20 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       case 'analyze':
         return (
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">AI Form Analysis</h3>
-            <p className="text-muted-dark mb-6">Upload a clear photo of yourself performing the movement. Our AI coach will provide personalized feedback.</p>
+            <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">AI Form Analysis</h3>
+            <p className="text-text-muted dark:text-dark-text-muted mb-6">Upload a clear photo of yourself performing the movement. Our AI coach will provide personalized feedback.</p>
             <FileUpload onFileSelect={setImageFile} />
             <button
               onClick={handleAnalyze}
               disabled={!imageFile || isAnalyzing}
-              className="mt-4 w-full flex items-center justify-center gap-2 bg-brand-primary hover:bg-cyan-600 disabled:bg-gray-500 text-white font-bold py-3 px-4 rounded-lg transition duration-300"
+              className="mt-4 w-full flex items-center justify-center gap-2 bg-brand-primary hover:bg-cyan-600 disabled:bg-gray-400 dark:disabled:bg-slate-500 text-white font-bold py-3 px-4 rounded-lg transition duration-300"
             >
               <SparklesIcon className="w-5 h-5"/>
               {isAnalyzing ? 'Analyzing...' : 'Analyze My Form'}
             </button>
             {isAnalyzing && <div className="mt-6 flex justify-center"><LoadingSpinner /></div>}
             {feedback && (
-              <div className="mt-8 p-6 bg-surface-dark rounded-lg whitespace-pre-wrap font-mono text-slate-300">
+              <div className="mt-8 p-6 bg-slate-100 dark:bg-slate-800 rounded-lg whitespace-pre-wrap font-mono text-text-primary dark:text-dark-text-primary text-sm">
                 {feedback}
               </div>
             )}
@@ -201,7 +201,7 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       case 'drills':
         return (
             <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Corrective Drills</h3>
+                <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Corrective Drills</h3>
                 {isLoadingDrills && drills.length === 0 ? (
                   <div className="space-y-4">
                     {Array.from({ length: 5 }).map((_, index) => <SkeletonLoader key={index} />)}
@@ -209,9 +209,9 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {drills.map((drill, i) => (
-                          <li key={i} className="bg-surface-dark p-4 rounded-lg">
+                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
                               <p className="font-semibold text-brand-primary">{drill.name}</p>
-                              <p className="text-slate-300 mt-1">{drill.description}</p>
+                              <p className="text-text-muted dark:text-dark-text-muted mt-1">{drill.description}</p>
                           </li>
                       ))}
                   </ul>
@@ -221,7 +221,7 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       case 'mobility':
         return (
             <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Mobility Routine</h3>
+                <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Mobility Routine</h3>
                 {isLoadingMobility && mobility.length === 0 ? (
                   <div className="space-y-4">
                     {Array.from({ length: 5 }).map((_, index) => <SkeletonLoader key={index} />)}
@@ -229,9 +229,9 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {mobility.map((ex, i) => (
-                          <li key={i} className="bg-surface-dark p-4 rounded-lg">
+                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
                               <p className="font-semibold text-brand-primary">{ex.name}</p>
-                              <p className="text-slate-300 mt-1">{ex.description}</p>
+                              <p className="text-text-muted dark:text-dark-text-muted mt-1">{ex.description}</p>
                           </li>
                       ))}
                   </ul>
@@ -241,7 +241,7 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       case 'transitions':
         return (
             <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Transition Tips</h3>
+                <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Transition Tips</h3>
                 {isLoadingTransitions && transitionTips.length === 0 ? (
                   <div className="space-y-4">
                     {Array.from({ length: 5 }).map((_, index) => <SkeletonLoader key={index} />)}
@@ -249,9 +249,9 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {transitionTips.map((tip, i) => (
-                          <li key={i} className="bg-surface-dark p-4 rounded-lg">
+                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
                               <p className="font-semibold text-brand-primary">{tip.name}</p>
-                              <p className="text-slate-300 mt-1">{tip.description}</p>
+                              <p className="text-text-muted dark:text-dark-text-muted mt-1">{tip.description}</p>
                           </li>
                       ))}
                   </ul>
@@ -261,7 +261,7 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
         case 'energy':
         return (
             <div>
-                <h3 className="text-2xl font-bold text-white mb-4">Energy Saving</h3>
+                <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Energy Saving</h3>
                 {isLoadingEnergy && energySavingTips.length === 0 ? (
                   <div className="space-y-4">
                     {Array.from({ length: 5 }).map((_, index) => <SkeletonLoader key={index} />)}
@@ -269,9 +269,9 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {energySavingTips.map((tip, i) => (
-                          <li key={i} className="bg-surface-dark p-4 rounded-lg">
+                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
                               <p className="font-semibold text-brand-primary">{tip.name}</p>
-                              <p className="text-slate-300 mt-1">{tip.description}</p>
+                              <p className="text-text-muted dark:text-dark-text-muted mt-1">{tip.description}</p>
                           </li>
                       ))}
                   </ul>
@@ -281,11 +281,11 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       case 'history':
         return (
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Analysis History</h3>
+            <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Analysis History</h3>
             {history.length === 0 ? (
-              <div className="text-center p-8 bg-surface-dark rounded-lg">
-                  <ArchiveBoxIcon className="w-16 h-16 mx-auto text-muted-dark/50 mb-4" />
-                  <p className="text-muted-dark font-semibold">No analysis history found for {movement.name}.</p>
+              <div className="text-center p-8 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                  <ArchiveBoxIcon className="w-16 h-16 mx-auto text-slate-400 dark:text-slate-500 mb-4" />
+                  <p className="text-text-muted dark:text-dark-text-muted font-semibold">No analysis history found for {movement.name}.</p>
                   <button onClick={() => setView('analyze')} className="mt-4 text-brand-primary font-bold hover:underline">
                       Analyze your form to start tracking progress!
                   </button>
@@ -293,14 +293,14 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
             ) : (
               <ul className="space-y-6">
                 {history.map(session => (
-                  <li key={session.id} className="bg-surface-dark p-4 rounded-lg shadow-md animate-fade-in">
+                  <li key={session.id} className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md animate-fade-in border border-border-color dark:border-dark-border-color">
                     <div className="flex flex-col sm:flex-row gap-4">
                       <img src={session.imageDataUrl} alt="Analyzed form" className="w-full sm:w-32 h-32 object-cover rounded-md flex-shrink-0" />
                       <div className="flex-grow">
-                        <p className="text-sm text-muted-dark font-semibold">
+                        <p className="text-sm text-text-muted dark:text-dark-text-muted font-semibold">
                           {new Date(session.date).toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                         </p>
-                        <div className="mt-2 text-slate-300 whitespace-pre-wrap font-mono text-sm border-l-2 border-slate-700 pl-3">
+                        <div className="mt-2 text-text-muted dark:text-dark-text-muted whitespace-pre-wrap font-mono text-sm border-l-2 border-border-color dark:border-dark-border-color pl-3">
                           {session.feedback}
                         </div>
                       </div>
@@ -319,10 +319,10 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
   const TabButton = ({ mode, label, icon }: { mode: ViewMode; label: string, icon: React.ReactNode }) => (
     <button
       onClick={() => setView(mode)}
-      className={`flex-grow flex-shrink-0 flex items-center justify-center gap-2 px-3 py-3 text-sm font-medium rounded-t-lg transition-colors duration-200 focus:outline-none whitespace-nowrap ${
+      className={`flex-grow flex-shrink-0 flex items-center justify-center gap-2 px-3 py-3 text-sm font-medium transition-colors duration-200 focus:outline-none whitespace-nowrap ${
         view === mode
-          ? 'bg-surface-dark text-brand-primary border-b-2 border-brand-primary'
-          : 'text-muted-dark hover:text-white'
+          ? 'text-brand-primary border-b-2 border-brand-primary'
+          : 'text-text-muted dark:text-dark-text-muted hover:text-text-primary dark:hover:text-dark-text-primary'
       }`}
     >
       {icon}
@@ -340,11 +340,11 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-1/3">
           <img src={movement.imageUrl} alt={movement.name} className="w-full h-auto rounded-lg object-cover shadow-lg" />
-          <h2 className="text-4xl font-bold text-white mt-4">{movement.name}</h2>
-          <p className="text-muted-dark mt-2">{movement.description}</p>
+          <h2 className="text-4xl font-bold text-text-primary dark:text-dark-text-primary mt-4">{movement.name}</h2>
+          <p className="text-text-muted dark:text-dark-text-muted mt-2">{movement.description}</p>
         </div>
         <div className="md:w-2/3">
-          <div className="border-b border-slate-700 flex overflow-x-auto">
+          <div className="border-b border-border-color dark:border-dark-border-color flex overflow-x-auto">
              <TabButton mode="details" label="Faults & Fixes" icon={<XCircleIcon className="w-5 h-5"/>}/>
              <TabButton mode="analyze" label="AI Analysis" icon={<SparklesIcon className="w-5 h-5"/>}/>
              <TabButton mode="drills" label="Drills" icon={<LightningIcon className="w-5 h-5"/>}/>
@@ -364,7 +364,7 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
         onClose={() => setSelectedFault(null)}
         title={selectedFault?.fault || ''}
       >
-        <p className="text-slate-300 mt-1 text-lg leading-relaxed">{selectedFault?.fix}</p>
+        <p className="text-text-muted dark:text-dark-text-muted mt-1 text-lg leading-relaxed">{selectedFault?.fix}</p>
       </Modal>
 
     </div>

@@ -33,21 +33,21 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-70 z-50 flex justify-center items-center p-4 animate-fade-in"
+      className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 z-[100] flex justify-center items-center p-4 animate-fade-in"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
     >
       <div
-        className="bg-surface-dark rounded-lg shadow-2xl w-full max-w-2xl transform transition-all animate-slide-up"
+        className="bg-surface dark:bg-dark-surface rounded-lg shadow-2xl w-full max-w-4xl transform transition-all animate-slide-up"
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
       >
-        <div className="flex justify-between items-center p-4 border-b border-slate-700">
+        <div className="flex justify-between items-center p-4 border-b border-border-color dark:border-dark-border-color">
           <h2 id="modal-title" className="text-xl font-bold text-brand-secondary">{title}</h2>
           <button
             onClick={onClose}
-            className="text-muted-dark hover:text-white transition-colors"
+            className="text-text-muted dark:text-dark-text-muted hover:text-text-primary dark:hover:text-dark-text-primary transition-colors"
             aria-label="Close modal"
           >
             <XCircleIcon className="w-8 h-8" />

@@ -7,14 +7,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class', // Enable class-based dark mode
         theme: {
           extend: {
             colors: {
-              'brand-primary': '#0891b2', // A strong cyan
-              'brand-secondary': '#f97316', // A vibrant orange
-              'base-dark': '#0f172a',
-              'surface-dark': '#1e293b',
-              'muted-dark': '#64748b',
+              'brand-primary': '#0891b2',      // A strong cyan
+              'brand-secondary': '#f97316',     // A vibrant orange
+              // Light Theme
+              'base': '#f8fafc',               // Light gray background (slate-50)
+              'surface': '#ffffff',             // White for cards, modals
+              'text-primary': '#1e293b',       // Dark blue-gray for main text (slate-800)
+              'text-muted': '#64748b',         // Medium gray for secondary text (slate-500)
+              'border-color': '#e2e8f0',     // Light gray for borders (slate-200)
+              // Dark Theme
+              'dark-base': '#1e293b',          // Dark blue-gray background (slate-800)
+              'dark-surface': '#334155',        // Lighter gray for cards (slate-700)
+              'dark-text-primary': '#f1f5f9',    // Light gray for main text (slate-100)
+              'dark-text-muted': '#94a3b8',      // Medium gray for secondary text (slate-400)
+              'dark-border-color': '#475569',  // Medium gray for borders (slate-600)
             },
             animation: {
               'fade-in': 'fadeIn 0.4s ease-out',
@@ -34,6 +44,14 @@
         },
       }
     </script>
+    <script>
+      // Prevents FOUC (Flash of Unstyled Content) by setting the theme class before the page renders
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
   <script type="importmap">
 {
   "imports": {
@@ -45,7 +63,7 @@
 }
 </script>
 </head>
-  <body class="bg-base-dark text-slate-200 antialiased">
+  <body class="bg-base text-text-primary dark:bg-dark-base dark:text-dark-text-primary antialiased">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
