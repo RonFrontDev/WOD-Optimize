@@ -198,22 +198,28 @@ const strategySchema = {
     properties: {
         goal: { type: Type.STRING, description: "The overall strategy and intended stimulus of the workout, including realistic goals (time, reps, rounds)." },
         timeEstimate: { type: Type.STRING, description: "An estimated time to complete the workout (e.g., '10-12 minutes') for an athlete at this level following this strategy." },
-        pacing: { type: Type.STRING, description: "Specific pacing advice and how to break up reps for each movement to avoid burnout." },
+        pacing: { type: Type.STRING, description: "Specific pacing advice and how to break up reps for each movement to avoid burnout. For teams, this must include rep splitting strategies (e.g. 'you go, I go', waterfalls)." },
         efficiency: { type: Type.STRING, description: "Key technical cues for staying efficient on each movement when under fatigue." },
-        transitions: { type: Type.STRING, description: "The most efficient way to transition between movements to save time." },
+        transitions: { type: Type.STRING, description: "The most efficient way to transition between movements to save time. For teams, this must include advice on partner changeovers and station management." },
         pushVsConserve: { type: Type.STRING, description: "Identification of where to push the pace and where to conserve energy and breathe." },
         breathing: { type: Type.STRING, description: "An actionable breathing plan for the workout's rhythm." },
-        improvementFocus: { type: Type.STRING, description: "Actionable advice on how to improve the user's specified limiters (e.g., drills for grip strength, conditioning for cardio)." }
+        improvementFocus: { type: Type.STRING, description: "Actionable advice on how to improve the user's specified limiters (e.g., drills for grip strength, conditioning for cardio). For teams, this should address team-wide improvement." }
     },
     required: ["goal", "timeEstimate", "pacing", "efficiency", "transitions", "pushVsConserve", "breathing", "improvementFocus"]
 };
 
-export const generateWorkoutStrategy = async (workoutDescription: string, limiters: string[]): Promise<WorkoutStrategy | null> => {
+export const generateWorkoutStrategy = async (workoutDescription: string, limiters: string[], teamSize: 'individual' | 2 | 4): Promise<WorkoutStrategy | null> => {
     try {
-        let prompt = `You are an elite CrossFit and conditioning coach. A user has provided their workout: "${workoutDescription}".`;
+        let prompt = `You are an elite CrossFit and conditioning coach specializing in competition strategy. A user has provided their workout: "${workoutDescription}".`;
+
+        if (teamSize === 'individual') {
+            prompt += ` This is for an individual athlete.`;
+        } else {
+            prompt += ` This is for a TEAM OF ${teamSize} ATHLETES. Your advice MUST be team-focused.`;
+        }
         
         if (limiters.length > 0) {
-            prompt += ` The user has identified their personal limiters as: ${limiters.join(', ')}. Your strategy MUST take these specific weaknesses into account in all sections.`;
+            prompt += ` The user has identified their personal (or team's) limiters as: ${limiters.join(', ')}. Your strategy MUST take these specific weaknesses into account in all sections.`;
         }
 
         prompt += `
@@ -223,12 +229,12 @@ export const generateWorkoutStrategy = async (workoutDescription: string, limite
         For EACH of these four skill levels, provide a JSON object with the following keys:
         - "goal": The overall strategy and intended stimulus of the workout, including realistic goals (time, reps, rounds).
         - "timeEstimate": An estimated time to complete the workout (e.g., "10-12 minutes") for an athlete at this level following this strategy.
-        - "pacing": Specific pacing advice and how to break up reps for each movement to avoid burnout.
+        - "pacing": Specific pacing advice and how to break up reps for each movement to avoid burnout. For teams, this MUST include rep splitting strategies (e.g., 'you go, I go', waterfalls, short vs. long sets) and how to manage work-to-rest ratios.
         - "efficiency": Key technical cues for staying efficient on each movement when under fatigue.
-        - "transitions": The most efficient way to transition between movements to save time.
-        - "pushVsConserve": Identification of where to push the pace and where to conserve energy and breathe.
+        - "transitions": The most efficient way to transition between movements to save time. For teams, this MUST include advice on partner changeovers and managing the workout station.
+        - "pushVsConserve": Identification of where to push the pace and where to conserve energy and breathe. For teams, this should include how different athletes can play different roles.
         - "breathing": An actionable breathing plan for the workout's rhythm.
-        - "improvementFocus": Actionable advice on how to improve the user's specified limiters (e.g., drills for grip strength, conditioning for cardio). If no limiters are specified, provide general advice.
+        - "improvementFocus": Actionable advice on how to improve the user's specified limiters (e.g., drills for grip strength, conditioning for cardio). If no limiters are specified, provide general advice. For teams, this should address how to improve as a unit.
         
         Your tone should be that of an expert coach: encouraging, clear, and tactical. Ensure the content for each key is a single string.`;
 

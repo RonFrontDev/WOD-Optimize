@@ -5,9 +5,11 @@ import MovementDetail from './components/MovementDetail';
 import WorkoutBuilder from './components/WorkoutBuilder';
 import { MOVEMENTS } from './constants';
 import type { Movement } from './types';
-import { ClipboardListIcon, ChevronDownIcon, SearchIcon, GripIcon, BookmarkSquareIcon } from './components/Icons';
+import { ClipboardListIcon, ChevronDownIcon, SearchIcon, GripIcon, BookmarkSquareIcon, UsersIcon } from './components/Icons';
 import HomePageGripGuide from './components/HomePageGripGuide';
+import TeamWorkoutGuide from './components/TeamWorkoutGuide';
 import SavedWorkouts from './components/SavedWorkouts';
+import MovementLibrary from './components/MovementLibrary';
 
 const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Monostructural'];
 
@@ -17,13 +19,8 @@ export default function App(): React.JSX.Element {
   const [isViewingSavedWorkouts, setIsViewingSavedWorkouts] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isGripGuideOpen, setIsGripGuideOpen] = useState(false);
-  const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>(() =>
-    orderedCategories.reduce((acc, category) => {
-      acc[category] = true;
-      return acc;
-    }, {} as Record<string, boolean>)
-  );
-
+  const [isTeamGuideOpen, setIsTeamGuideOpen] = useState(false);
+  
   const handleSelectMovement = (movement: Movement): void => {
     setSelectedMovement(movement);
   };
@@ -46,15 +43,12 @@ export default function App(): React.JSX.Element {
     setIsViewingSavedWorkouts(true);
   };
 
-  const toggleCategory = (categoryName: Movement['category']) => {
-    setCollapsedCategories(prev => ({
-      ...prev,
-      [categoryName]: !prev[categoryName],
-    }));
-  };
-
   const toggleGripGuide = () => {
     setIsGripGuideOpen(prev => !prev);
+  };
+
+  const toggleTeamGuide = () => {
+    setIsTeamGuideOpen(prev => !prev);
   };
 
   const filteredMovements = MOVEMENTS.filter(movement =>
@@ -160,49 +154,47 @@ export default function App(): React.JSX.Element {
                 </div>
               </section>
 
-              {orderedCategories.map((category) => {
-                const movements = filteredMovementsByCategory[category];
-                if (!movements || movements.length === 0) {
-                  return null;
-                }
-
-                const isCollapsed = searchQuery.trim() !== '' ? false : collapsedCategories[category];
-                return (
-                  <section key={category} aria-labelledby={`${category}-heading`}>
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => toggleCategory(category)}
-                      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleCategory(category)}
-                      className="flex justify-between items-center cursor-pointer mb-6 pb-2 border-b-2 border-border-color dark:border-dark-border-color hover:border-brand-primary dark:hover:border-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary rounded"
-                      aria-expanded={!isCollapsed}
-                      aria-controls={`${category}-grid-container`}
-                    >
-                      <h2 id={`${category}-heading`} className="text-3xl font-bold text-text-primary dark:text-dark-text-primary">
-                        {category}
+              <section key="team-guide" aria-labelledby="team-guide-heading" className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color overflow-hidden transition-all duration-300 ease-in-out hover:shadow-brand-secondary/20 hover:-translate-y-1">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={toggleTeamGuide}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleTeamGuide()}
+                  className="flex justify-between items-center cursor-pointer p-4"
+                  aria-expanded={isTeamGuideOpen}
+                  aria-controls="team-guide-content"
+                >
+                  <div className="flex items-center gap-4">
+                    <UsersIcon className="w-8 h-8 text-brand-primary flex-shrink-0" />
+                    <div>
+                      <h2 id="team-guide-heading" className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">
+                        A Guide to Team Workouts
                       </h2>
-                      <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isCollapsed ? '-rotate-90' : 'rotate-0'}`} />
+                      <p className="text-sm text-text-muted dark:text-dark-text-muted mt-1">Smarter strategy for partner & team WODs. Click to learn more.</p>
                     </div>
+                  </div>
+                  <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isTeamGuideOpen ? 'rotate-180' : 'rotate-0'}`} />
+                </div>
 
-                    <div
-                      id={`${category}-grid-container`}
-                      className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isCollapsed ? 'grid-rows-[0fr]' : 'grid-rows-[1fr]'}`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                          {movements.map((movement) => (
-                            <MovementCard
-                              key={movement.id}
-                              movement={movement}
-                              onSelect={handleSelectMovement}
-                            />
-                          ))}
-                        </div>
+                <div
+                  id="team-guide-content"
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isTeamGuideOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                >
+                  <div className="overflow-hidden">
+                      <div className="p-6 pt-4 border-t border-border-color dark:border-dark-border-color">
+                          <TeamWorkoutGuide />
                       </div>
-                    </div>
-                  </section>
-                );
-              })}
+                  </div>
+                </div>
+              </section>
+
+              <MovementLibrary
+                categories={orderedCategories}
+                movementsByCategory={filteredMovementsByCategory}
+                onSelectMovement={handleSelectMovement}
+                searchQuery={searchQuery}
+              />
+             
               {filteredMovements.length === 0 && searchQuery && (
                 <div className="text-center py-12">
                   <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">No Movements Found</h3>

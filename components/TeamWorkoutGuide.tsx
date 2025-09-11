@@ -1,0 +1,59 @@
+import React from 'react';
+
+const Section: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => (
+    <div className="mb-6 last:mb-0">
+        <h4 className="text-xl font-bold text-brand-secondary mb-3 pb-2 border-b-2 border-border-color dark:border-dark-border-color">{title}</h4>
+        <div className="space-y-3 text-text-muted dark:text-dark-text-muted leading-relaxed">
+            {children}
+        </div>
+    </div>
+);
+
+export default function TeamWorkoutGuide() {
+    return (
+        <div className="text-text-primary dark:text-dark-text-primary">
+            <p className="mb-6 text-lg">
+                Partner and team workouts are a staple of CrossFit. Success isn't just about fitness; it's about strategy, communication, and working as a single unit. Here’s how to dominate your next team WOD.
+            </p>
+
+            <Section title="1. Communication is Key">
+                <p><strong>Before the Clock Starts:</strong> Don't just read the workout; build a game plan. Discuss how you'll split the reps. Who is stronger at which movement? What's a realistic pace? This 5-minute conversation can save you 2 minutes in the workout.</p>
+                <p><strong>During the Workout:</strong> Communicate constantly. Use short, clear cues. "3 reps left!", "Your turn next!", "Keep breathing!". Knowing what your partner is doing and feeling is crucial for smooth transitions and maintaining pace.</p>
+            </Section>
+
+            <Section title="2. Play to Your Strengths">
+                 <p>Every team has specialists. Is your partner a cardio machine? Let them take longer pulls on the rower. Are you great at gymnastics? You should handle the larger sets of toes-to-bar.</p>
+                 <p>For "you go, I go" style workouts, structure your breaks so the stronger athlete is tackling the movement they excel at, giving their partner more rest for a movement they find challenging.</p>
+            </Section>
+
+            <Section title="3. Team Size Strategy: Pairs vs. Quads">
+                <p><strong className="text-text-primary dark:text-dark-text-primary">Working in Pairs (2s):</strong> The pace is often relentless. The work-to-rest ratio is typically 1:1, meaning one person works while the other rests. The resting partner's job isn't just to rest—it's to recover actively, breathe, and be ready to go the instant their turn comes. Transitions must be lightning-fast.</p>
+                <p><strong className="text-text-primary dark:text-dark-text-primary">Working in Quads (4s):</strong> With a 1:3 work-to-rest ratio, you get more recovery time. This often means the "work" periods can be done at a much higher intensity. Strategy becomes more complex. You can create two pairs: one "pacer" pair that moves steadily and one "sprinter" pair that attacks their portion. Logistics are critical—managing four bodies and equipment in one lane requires a clear plan.</p>
+            </Section>
+
+            <Section title="4. Stepping Up for Competition">
+                <p>Competing as a team adds another layer of pressure and excitement. Here’s how to prepare:</p>
+                <ul className="list-disc list-inside space-y-2 pl-2">
+                    <li><strong className="text-text-primary dark:text-dark-text-primary">Know the Standards Cold:</strong> Read the event description and watch the movement standards video multiple times. Practice to that exact standard. A single "no-rep" due to a misunderstanding can cost you dozens of places.</li>
+                    <li><strong className="text-text-primary dark:text-dark-text-primary">Have a Flexible Game Plan:</strong> Plan your rep schemes and transitions, but also plan for when things go wrong. What if someone gets a no-rep? What if a piece of equipment is farther than expected? Discuss "what if" scenarios so you can adapt on the fly without panicking.</li>
+                    <li><strong className="text-text-primary dark:text-dark-text-primary">Scout the Competition Floor:</strong> As soon as you're allowed in the venue, walk your lane. Understand the layout. What is the most efficient path from the rower to the pull-up bar? Where will you place your chalk bucket? These small details make a huge difference under pressure.</li>
+                </ul>
+            </Section>
+            
+            <Section title="5. Master Your Transitions">
+                <p>Workouts are often won or lost in the transitions. Choreograph your station. Where does the barbell go when you're done? Where does your partner stand while they wait? A clean, organized space prevents confusion and saves precious seconds.</p>
+                <p>For partner-carry movements or synchronized work, practice the timing together. A smooth sync-up is faster than two individuals moving at their own max speed.</p>
+            </Section>
+
+            <Section title="6. Pace it Right: The Golden Rule">
+                 <p><strong>Your team's pace is dictated by the athlete who needs the most rest.</strong> Pushing so hard that your partner has no time to recover before their turn is a recipe for disaster. This leads to a "redline" situation where performance plummets.</p>
+                 <p>Find a "comfortably uncomfortable" pace that all team members can sustain. It's better to move consistently for 10 minutes than to sprint for 2 and walk for 8.</p>
+            </Section>
+
+            <Section title="7. Stay Positive & Lift Each Other Up">
+                <p>Attitude is a performance multiplier. When the workout gets tough (and it will), your energy affects your partner. High-fives, words of encouragement ("You got this!", "Great set!"), and a positive mindset can pull a team through the darkest moments of a WOD.</p>
+                <p>Never show frustration with your partner. You succeed as a team, and you fail as a team. Be a rock for them, and they'll be one for you.</p>
+            </Section>
+        </div>
+    );
+}

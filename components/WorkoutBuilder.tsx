@@ -26,12 +26,19 @@ const predefinedLimiters = [
     'Grip Strength',
     'Raw Strength',
     'Mobility / Technique',
+    'Transitions / Logistics',
+    'Communication',
+    'Pacing / Strategy',
+    'Synchronization',
 ];
+
+type TeamSize = 'individual' | 2 | 4;
 
 export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.JSX.Element {
     const [workoutDescription, setWorkoutDescription] = useState<string>('');
     const [analyzedWorkout, setAnalyzedWorkout] = useState<string>('');
     const [limiters, setLimiters] = useState<string[]>([]);
+    const [teamSize, setTeamSize] = useState<TeamSize>('individual');
     const [strategy, setStrategy] = useState<WorkoutStrategy | null>(null);
     const [similarWorkouts, setSimilarWorkouts] = useState<Record<keyof WorkoutStrategy, SuggestedWorkout[] | null>>({
         elite: null,
@@ -93,7 +100,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setAnalyzedWorkout(descriptionForAnalysis);
 
         try {
-            const strategyResult = await generateWorkoutStrategy(descriptionForAnalysis, limiters);
+            const strategyResult = await generateWorkoutStrategy(descriptionForAnalysis, limiters, teamSize);
             if (strategyResult) {
                 setStrategy(strategyResult);
                 setIsLoadingSimilar(true);
@@ -108,7 +115,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         } finally {
             setIsLoading(false);
         }
-    }, [workoutDescription, limiters]);
+    }, [workoutDescription, limiters, teamSize]);
 
     useEffect(() => {
         const fetchSimilarForLevel = async () => {
@@ -134,6 +141,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setStrategy(null);
         setError(null);
         setLimiters([]);
+        setTeamSize('individual');
         setSelectedLevel('rx');
         setAnalyzedWorkout('');
         setIsSaved(false);
@@ -149,6 +157,33 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
             </div>
         )
     }
+
+    const TeamSizeSelector = () => (
+        <div className="mt-6">
+            <label className="block text-lg font-medium text-text-primary dark:text-dark-text-primary mb-3">
+                Who is this workout for?
+            </label>
+            <div className="flex bg-base dark:bg-dark-base rounded-lg border-2 border-border-color dark:border-dark-border-color p-1">
+                {(['individual', 2, 4] as TeamSize[]).map((size) => {
+                    const label = size === 'individual' ? 'Individual' : `Team of ${size}`;
+                    const isSelected = teamSize === size;
+                    return (
+                        <button
+                            key={size}
+                            onClick={() => setTeamSize(size)}
+                            className={`w-1/3 p-2 rounded-md text-sm font-bold transition-colors duration-200 ${
+                                isSelected 
+                                ? 'bg-brand-primary text-white shadow' 
+                                : 'text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
+                            }`}
+                        >
+                            {label}
+                        </button>
+                    )
+                })}
+            </div>
+        </div>
+    );
 
     return (
         <>
@@ -174,6 +209,8 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                         placeholder='Enter a benchmark WOD (e.g., "Fran", "DT") or describe your custom workout.'
                         className="w-full bg-base dark:bg-dark-base text-text-primary dark:text-dark-text-primary p-3 rounded-md border border-border-color dark:border-dark-border-color focus:ring-2 focus:ring-brand-primary focus:border-brand-primary dark:focus:border-brand-primary transition duration-200"
                     />
+
+                    <TeamSizeSelector />
 
                     <div className="mt-6">
                         <label className="block text-lg font-medium text-text-primary dark:text-dark-text-primary mb-3">
