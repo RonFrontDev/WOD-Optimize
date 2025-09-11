@@ -108,6 +108,12 @@ export const CheckCircleIcon = ({ className = 'w-6 h-6' }: IconProps) => (
     </svg>
 );
 
+export const ExclamationTriangleIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    </svg>
+);
+
 export const ClockIcon = ({ className = 'w-6 h-6' }: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -142,5 +148,150 @@ export const SunIcon = ({ className = 'w-6 h-6' }: IconProps) => (
 export const MoonIcon = ({ className = 'w-6 h-6' }: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+);
+
+// FAULT ICONS
+export const RoundedBackIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12C3.75 6.891 7.891 3 13 3c4.136 0 7.5 3.364 7.5 7.5c0 4.136-3.364 7.5-7.5 7.5" transform="rotate(-30 12 12)" />
+        <path d="M10 17.5a7.5 7.5 0 0 1-5.1-12.9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+);
+export const KneesCaveIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 20V10l-2-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 20V10l2-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.5 12h7" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11 12l-2 3" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 12l2 3" />
+    </svg>
+);
+export const ChestDropIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <circle cx="12" cy="5" r="2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l3-5 3 5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15L7 12" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M18 10l-6 2" />
+    </svg>
+);
+export const ShallowDepthIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <circle cx="12" cy="6" r="2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 19l3-4 3 4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 13H8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 15h12" strokeDasharray="2 2" />
+    </svg>
+);
+export const HeelsLiftIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 20h12" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 20L10 4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 20l.5-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 8l-3 1" />
+    </svg>
+);
+export const HipsRiseIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <circle cx="12" cy="5" r="2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l3-5h0" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15l-4-1" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 14l-4-1" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15l6 3" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15l-7 2.5" />
+    </svg>
+);
+export const BarPathIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16" strokeDasharray="2 2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4c2,3,6,6,2,16" />
+        <circle cx="12" cy="4" r="2" />
+        <circle cx="14" cy="20" r="2" />
+    </svg>
+);
+export const EarlyArmBendIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12v8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20h6" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12l5-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12l-5-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8c-1.5 1-3 1.5-5 1.5s-3.5-.5-5-1.5" />
+    </svg>
+);
+export const PressOutIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 12h16" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 12l-2 4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M14 12l2 4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 16V8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 16V8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8V4" />
+    </svg>
+);
+export const UnstableOverheadIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v12" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20h6" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 6l2-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 6l-2-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l-2-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 10l2-2" />
+    </svg>
+);
+export const RhythmIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 12h2l3-6 4 12 3-6h2" />
+        <circle cx="12" cy="12" r="10" />
+    </svg>
+);
+export const PostureIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <circle cx="12" cy="5" r="2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v13" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12h-2l-1 8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12h2l1 8" />
+    </svg>
+);
+export const RangeOfMotionIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 12h16" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 12l4-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 12l4 4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20 12l-4-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M20 12l-4 4" />
+    </svg>
+);
+export const GripWeakIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 14.25c0 .966-.583 1.75-1.5 1.75s-1.5-.784-1.5-1.75" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10 14.25c0 .966-.583 1.75-1.5 1.75S7 15.216 7 14.25" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12.5 10.25h-1c-.966 0-1.75.784-1.75 1.75v.25" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 12v-1.25c0-1.519-1.231-2.75-2.75-2.75h-4.5C8.231 8 7 9.231 7 10.75V12" />
+    </svg>
+);
+export const BalanceIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21V3" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 6h14" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 6l-2 4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 6l2 4" />
+    </svg>
+);
+export const CoreIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+        <circle cx="12" cy="12" r="3" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 20v2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M22 12h-2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 12H2" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.07 4.93l-1.41 1.41" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.34 17.66l-1.41 1.41" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.07 19.07l-1.41-1.41" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.34 6.34l-1.41-1.41" />
     </svg>
 );

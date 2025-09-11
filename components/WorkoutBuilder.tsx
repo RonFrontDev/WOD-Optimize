@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import { generateWorkoutStrategy } from '../services/geminiService';
+import { generateWorkoutStrategy, generateSimilarWorkouts } from '../services/geminiService';
 import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon, ChevronDownIcon } from './Icons';
 import LoadingSpinner from './LoadingSpinner';
-import type { WorkoutStrategy } from '../types';
+import type { WorkoutStrategy, SuggestedWorkout } from '../types';
 import { BENCHMARK_WORKOUTS } from '../constants';
 import Modal from './Modal';
 
@@ -26,9 +26,12 @@ const predefinedLimiters = [
     'Mobility / Technique',
 ];
 
-const StrategySection = ({ title, content, defaultOpen = false }: { title: string, content: string, defaultOpen?: boolean }) => {
+const StrategySection = ({ title, content, defaultOpen = false }: { title: React.ReactNode, content: React.ReactNode, defaultOpen?: boolean }) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
     if (!content) return null;
+
+    // Create a simple, stable ID from the title if it's a string
+    const sectionId = typeof title === 'string' ? title.replace(/\s+/g, '-') : Math.random().toString(36).substring(2, 9);
 
     return (
         <div className="border-b border-border-color dark:border-dark-border-color last:border-b-0">
@@ -36,18 +39,18 @@ const StrategySection = ({ title, content, defaultOpen = false }: { title: strin
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex justify-between items-center py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
                 aria-expanded={isOpen}
-                aria-controls={`strategy-section-${title.replace(/\s+/g, '-')}`}
+                aria-controls={`strategy-section-${sectionId}`}
             >
-                <h4 className="text-lg font-semibold text-text-primary dark:text-dark-text-primary">{title}</h4>
+                <h4 className="text-lg font-semibold">{title}</h4>
                 <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} />
             </button>
             <div
-              id={`strategy-section-${title.replace(/\s+/g, '-')}`}
+              id={`strategy-section-${sectionId}`}
               className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
             >
                 <div className="overflow-hidden">
                     <div className="pt-2 pb-6">
-                        <p className="whitespace-pre-wrap font-sans text-base leading-relaxed">{content}</p>
+                        <div className="whitespace-pre-wrap font-sans text-base leading-relaxed text-text-primary dark:text-dark-text-primary">{content}</div>
                     </div>
                 </div>
             </div>
@@ -61,6 +64,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     const [analyzedWorkout, setAnalyzedWorkout] = useState<string>('');
     const [limiters, setLimiters] = useState<string[]>([]);
     const [strategy, setStrategy] = useState<WorkoutStrategy | null>(null);
+    const [similarWorkouts, setSimilarWorkouts] = useState<SuggestedWorkout[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [selectedLevel, setSelectedLevel] = useState<keyof WorkoutStrategy>('rx');
@@ -81,6 +85,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setIsLoading(true);
         setError(null);
         setStrategy(null);
+        setSimilarWorkouts([]);
 
         const upperCaseInput = workoutDescription.trim().toUpperCase();
         const benchmarkDescription = BENCHMARK_WORKOUTS[upperCaseInput as keyof typeof BENCHMARK_WORKOUTS];
@@ -88,9 +93,11 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setAnalyzedWorkout(descriptionForAnalysis);
 
         try {
-            const result = await generateWorkoutStrategy(descriptionForAnalysis, limiters);
-            if (result) {
-                setStrategy(result);
+            const strategyResult = await generateWorkoutStrategy(descriptionForAnalysis, limiters);
+            if (strategyResult) {
+                setStrategy(strategyResult);
+                const similarWorkoutsResult = await generateSimilarWorkouts(descriptionForAnalysis);
+                setSimilarWorkouts(similarWorkoutsResult);
             } else {
                 setError('An error occurred while generating the strategy.');
             }
@@ -108,6 +115,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setLimiters([]);
         setSelectedLevel('rx');
         setAnalyzedWorkout('');
+        setSimilarWorkouts([]);
     }
 
     if (isLoading) {
@@ -223,42 +231,30 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                         </div>
                                     </div>
     
-                                 <StrategySection
-  title="Overall Strategy & Goal"
-  content={<div className="text-black">{currentStrategy.goal}</div>}
-  defaultOpen={true}
-/>
-
-<StrategySection
-  title="Pacing & Rep Scheme Breakdown"
-  content={<div className="text-black">{currentStrategy.pacing}</div>}
-/>
-
-<StrategySection
-  title="Movement Efficiency Under Fatigue"
-  content={<div className="text-black">{currentStrategy.efficiency}</div>}
-/>
-
-<StrategySection
-  title="Transition Plan"
-  content={<div className="text-black">{currentStrategy.transitions}</div>}
-/>
-
-<StrategySection
-  title="Where to Push vs. Where to Conserve Energy"
-  content={<div className="text-black">{currentStrategy.pushVsConserve}</div>}
-/>
-
-<StrategySection
-  title="Breathing Strategy"
-  content={<div className="text-black">{currentStrategy.breathing}</div>}
-/>
-
-<StrategySection
-  title="How to Improve Your Limiters"
-  content={<div className="text-black">{currentStrategy.improvementFocus}</div>}
-/>
-
+                                    <StrategySection title={<span className="text-brand-secondary">Overall Strategy & Goal</span>} content={currentStrategy.goal} defaultOpen={true} />
+                                    <StrategySection title={<span className="text-brand-secondary">Pacing & Rep Scheme Breakdown</span>} content={currentStrategy.pacing} />
+                                    <StrategySection title={<span className="text-brand-secondary">Movement Efficiency Under Fatigue</span>} content={currentStrategy.efficiency} />
+                                    <StrategySection title={<span className="text-brand-secondary">Transition Plan</span>} content={currentStrategy.transitions} />
+                                    <StrategySection title={<span className="text-brand-secondary">Where to Push vs. Where to Conserve Energy</span>} content={currentStrategy.pushVsConserve} />
+                                    <StrategySection title={<span className="text-brand-secondary">Breathing Strategy</span>} content={currentStrategy.breathing} />
+                                    <StrategySection title={<span className="text-brand-secondary">How to Improve Your Limiters</span>} content={currentStrategy.improvementFocus} />
+                                    
+                                    {similarWorkouts.length > 0 && (
+                                        <StrategySection 
+                                            title={<span className="text-brand-secondary">Similar Stimulus Workouts</span>}
+                                            defaultOpen={true}
+                                            content={
+                                                <div className="space-y-4">
+                                                    {similarWorkouts.map((workout, index) => (
+                                                        <div key={index} className="p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
+                                                            <h4 className="font-bold text-brand-primary">{workout.name}</h4>
+                                                            <p className="whitespace-pre-wrap mt-2">{workout.description}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            } 
+                                        />
+                                    )}
                                 </div>
                             );
                         })()}

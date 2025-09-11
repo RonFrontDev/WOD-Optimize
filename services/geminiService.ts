@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy } from '../types';
+import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout } from '../types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable is not set.");
@@ -254,5 +254,43 @@ export const generateWorkoutStrategy = async (workoutDescription: string, limite
     } catch (error) {
         console.error("Error generating workout strategy:", error);
         return null;
+    }
+};
+
+
+export const generateSimilarWorkouts = async (workoutDescription: string): Promise<SuggestedWorkout[]> => {
+    try {
+        const prompt = `You are an expert CrossFit programmer. Given the workout "${workoutDescription}", generate exactly 3 other named workouts that have a similar training stimulus. For each workout, provide a unique, creative name and a clear description of the movements, reps, and format.`;
+
+        const response = await ai.models.generateContent({
+            model: model,
+            contents: prompt,
+            config: {
+                responseMimeType: "application/json",
+                responseSchema: {
+                    type: Type.OBJECT,
+                    properties: {
+                        workouts: {
+                            type: Type.ARRAY,
+                            items: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    name: { type: Type.STRING },
+                                    description: { type: Type.STRING }
+                                },
+                                required: ["name", "description"]
+                            }
+                        }
+                    },
+                    required: ["workouts"]
+                }
+            }
+        });
+
+        const jsonResponse = JSON.parse(response.text);
+        return jsonResponse.workouts || [];
+    } catch (error) {
+        console.error("Error generating similar workouts:", error);
+        return [];
     }
 };

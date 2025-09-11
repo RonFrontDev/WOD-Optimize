@@ -21,14 +21,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/squat/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Knees Caving In (Valgus)', fix: 'Actively cue "spread the floor" with your feet. A light resistance band around the knees provides tactile feedback to push against, strengthening hip abductors like the gluteus medius.' },
-      { fault: 'Leaning Too Far Forward (Chest Drop)', fix: 'This often indicates weak quads or tight ankles. Keep your chest proud and eyes forward. Pause squats and tempo squats can help build control and an upright torso.' },
-      { fault: 'Not Reaching Depth (Hip Crease Above Knee)', fix: 'Lack of depth is usually a mobility issue. Work on hip and ankle mobility daily. Practice goblet squats to a low box to build comfort and pattern the correct depth.' },
-      { fault: 'Losing Core Tension (Butt Wink)', fix: 'A "butt wink" at the bottom means losing pelvic control. Brace your core tightly before descending. Improve hamstring and adductor flexibility, and don\'t force depth beyond your current mobility.' },
-      { fault: 'Lifting Heels Off the Ground', fix: 'This points to limited ankle dorsiflexion. Stretch your calves and Achilles tendons. As a temporary aid, squat with small plates under your heels, but prioritize improving mobility.' },
-      { fault: 'Bar Rolling on the Back', fix: 'Create a solid, stable shelf by retracting your shoulder blades and pulling the bar down into your traps. A tight upper back is non-negotiable for a heavy squat.' },
-      { fault: 'Premature Hip Rise ("Good Morning" Squat)', fix: 'A sign of weak quads or poor motor control. Your hips and shoulders should rise at the same rate. Lower the weight and focus on driving up with your chest and back.' },
-      { fault: 'Bar Path Not Vertical', fix: 'The bar should travel in a straight line over your mid-foot. Film yourself from the side. Deviations often accompany other faults like leaning forward. Practice with an empty bar to feel the correct path.' }
+      { fault: 'Knees Caving In (Valgus)', fix: 'Actively cue "spread the floor" with your feet. A light resistance band around the knees provides tactile feedback to push against, strengthening hip abductors like the gluteus medius.', iconId: 'kneesCave' },
+      { fault: 'Leaning Too Far Forward (Chest Drop)', fix: 'This often indicates weak quads or tight ankles. Keep your chest proud and eyes forward. Pause squats and tempo squats can help build control and an upright torso.', iconId: 'chestDrop' },
+      { fault: 'Not Reaching Depth (Hip Crease Above Knee)', fix: 'Lack of depth is usually a mobility issue. Work on hip and ankle mobility daily. Practice goblet squats to a low box to build comfort and pattern the correct depth.', iconId: 'shallowDepth' },
+      { fault: 'Losing Core Tension (Butt Wink)', fix: 'A "butt wink" at the bottom means losing pelvic control. Brace your core tightly before descending. Improve hamstring and adductor flexibility, and don\'t force depth beyond your current mobility.', iconId: 'core' },
+      { fault: 'Lifting Heels Off the Ground', fix: 'This points to limited ankle dorsiflexion. Stretch your calves and Achilles tendons. As a temporary aid, squat with small plates under your heels, but prioritize improving mobility.', iconId: 'heelsLift' },
+      { fault: 'Bar Rolling on the Back', fix: 'Create a solid, stable shelf by retracting your shoulder blades and pulling the bar down into your traps. A tight upper back is non-negotiable for a heavy squat.', iconId: 'unstableOverhead' },
+      { fault: 'Premature Hip Rise ("Good Morning" Squat)', fix: 'A sign of weak quads or poor motor control. Your hips and shoulders should rise at the same rate. Lower the weight and focus on driving up with your chest and back.', iconId: 'hipsRise' },
+      { fault: 'Bar Path Not Vertical', fix: 'The bar should travel in a straight line over your mid-foot. Film yourself from the side. Deviations often accompany other faults like leaning forward. Practice with an empty bar to feel the correct path.', iconId: 'barPath' }
     ],
   },
   {
@@ -38,15 +38,15 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/deadlift/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Rounding the Lower Back', fix: 'This is the most critical fault. Keep a neutral spine by engaging your lats ("pulling slack out") and bracing your core. If you can\'t maintain a flat back, the weight is too heavy.' },
-      { fault: 'Incorrect Grip Width', fix: 'Your hands should be placed just outside your shins, so your arms are vertical when looking from the front. A grip that is too wide puts you at a mechanical disadvantage and increases the range of motion.' },
-      { fault: 'Hips Rising Too Fast', fix: 'Your back angle should remain consistent as the bar leaves the floor. Push the floor away with your legs; think of it as a leg press first. Your hips and shoulders should rise together.' },
-      { fault: 'Bar Drifting Away From Body', fix: 'The bar must stay in contact with or very close to your shins and thighs. Engage your lats to "sweep" the bar back. Any space is a leverage disadvantage and risks your lower back.' },
-      { fault: 'Jerking the Bar Off the Floor', fix: 'Create full-body tension before initiating the lift. Pull your chest up and lats down until the bar "clicks". Squeeze the bar off the floor, don\'t yank it.' },
-      { fault: 'Not Engaging Lats Before Pulling', fix: 'Imagine trying to "bend" the bar around your shins or protecting your armpits. This activates the lats, keeps the bar close, and protects your spine.' },
-      { fault: 'Hyperextending the Back at Lockout', fix: 'Finish the lift by powerfully squeezing your glutes to bring your hips to the bar. Do not lean back or shrug excessively. Stand tall and proud.' },
-      { fault: 'Head Position (Looking Up at Ceiling)', fix: 'Avoid looking up, as this can cause hyperextension in the neck and back. Keep a neutral spine by picking a spot on the floor a few feet in front of you.' },
-      { fault: 'Bouncing the Bar (Touch-and-Go Reps)', fix: 'For true strength development, perform dead-stop reps. Let the bar settle completely on the floor before each pull to build strength from a static start and ensure a proper setup every time.' }
+      { fault: 'Rounding the Lower Back', fix: 'This is the most critical fault. Keep a neutral spine by engaging your lats ("pulling slack out") and bracing your core. If you can\'t maintain a flat back, the weight is too heavy.', iconId: 'roundedBack' },
+      { fault: 'Incorrect Grip Width', fix: 'Your hands should be placed just outside your shins, so your arms are vertical when looking from the front. A grip that is too wide puts you at a mechanical disadvantage and increases the range of motion.', iconId: 'grip' },
+      { fault: 'Hips Rising Too Fast', fix: 'Your back angle should remain consistent as the bar leaves the floor. Push the floor away with your legs; think of it as a leg press first. Your hips and shoulders should rise together.', iconId: 'hipsRise' },
+      { fault: 'Bar Drifting Away From Body', fix: 'The bar must stay in contact with or very close to your shins and thighs. Engage your lats to "sweep" the bar back. Any space is a leverage disadvantage and risks your lower back.', iconId: 'barPath' },
+      { fault: 'Jerking the Bar Off the Floor', fix: 'Create full-body tension before initiating the lift. Pull your chest up and lats down until the bar "clicks". Squeeze the bar off the floor, don\'t yank it.', iconId: 'rhythm' },
+      { fault: 'Not Engaging Lats Before Pulling', fix: 'Imagine trying to "bend" the bar around your shins or protecting your armpits. This activates the lats, keeps the bar close, and protects your spine.', iconId: 'core' },
+      { fault: 'Hyperextending the Back at Lockout', fix: 'Finish the lift by powerfully squeezing your glutes to bring your hips to the bar. Do not lean back or shrug excessively. Stand tall and proud.', iconId: 'rom' },
+      { fault: 'Head Position (Looking Up at Ceiling)', fix: 'Avoid looking up, as this can cause hyperextension in the neck and back. Keep a neutral spine by picking a spot on the floor a few feet in front of you.', iconId: 'posture' },
+      { fault: 'Bouncing the Bar (Touch-and-Go Reps)', fix: 'For true strength development, perform dead-stop reps. Let the bar settle completely on the floor before each pull to build strength from a static start and ensure a proper setup every time.', iconId: 'rhythm' }
     ],
   },
   {
@@ -56,14 +56,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/ohs/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Losing Bar Position Overhead', fix: 'Actively push up into the bar through the entire movement. Think "show your armpits forward" to externally rotate and stabilize the shoulders. Improve shoulder and thoracic mobility.' },
-      { fault: 'Shallow Squat Depth', fix: 'This movement exposes mobility limitations everywhere. Work consistently on ankles, hips, thoracic spine, and shoulder mobility. Use PVC pipe drills and pause OHS.' },
-      { fault: 'Leaning Excessively Forward', fix: 'Keep your torso as upright as possible. This requires a tight upper back and excellent hip and ankle mobility. Practice with wall-facing overhead squats to force an upright posture.' },
-      { fault: 'Bent Elbows (Soft Lockout)', fix: 'Maintain an aggressive, locked-out elbow position. This is a stability issue. Strengthen your triceps and practice overhead holds and carries to build endurance.' },
-      { fault: 'Inconsistent Grip Width', fix: 'Find your optimal snatch grip width and use it every time. A grip that is too wide or too narrow will compromise stability and shoulder health.' },
-      { fault: '"Soft" Shoulders at the Bottom', fix: 'Actively push the bar to the ceiling throughout the entire squat, especially at the bottom. This active pressure is key to maintaining stability when you are most vulnerable.' },
-      { fault: 'Bar Drifting Forward or Backward', fix: 'The bar must remain over your mid-foot. A forward drift indicates tight lats or weak shoulders. A backward drift suggests a lack of thoracic extension. Practice with an empty PVC pipe focusing on bar path.' },
-      { fault: 'Unstable, Slow Descent', fix: 'Control the descent, but don\'t be so slow that you lose tension. Maintain active pressure upwards on the bar. OHS Sotts presses can build confidence and stability in the bottom position.' }
+      { fault: 'Losing Bar Position Overhead', fix: 'Actively push up into the bar through the entire movement. Think "show your armpits forward" to externally rotate and stabilize the shoulders. Improve shoulder and thoracic mobility.', iconId: 'unstableOverhead' },
+      { fault: 'Shallow Squat Depth', fix: 'This movement exposes mobility limitations everywhere. Work consistently on ankles, hips, thoracic spine, and shoulder mobility. Use PVC pipe drills and pause OHS.', iconId: 'shallowDepth' },
+      { fault: 'Leaning Excessively Forward', fix: 'Keep your torso as upright as possible. This requires a tight upper back and excellent hip and ankle mobility. Practice with wall-facing overhead squats to force an upright posture.', iconId: 'chestDrop' },
+      { fault: 'Bent Elbows (Soft Lockout)', fix: 'Maintain an aggressive, locked-out elbow position. This is a stability issue. Strengthen your triceps and practice overhead holds and carries to build endurance.', iconId: 'pressOut' },
+      { fault: 'Inconsistent Grip Width', fix: 'Find your optimal snatch grip width and use it every time. A grip that is too wide or too narrow will compromise stability and shoulder health.', iconId: 'grip' },
+      { fault: '"Soft" Shoulders at the Bottom', fix: 'Actively push the bar to the ceiling throughout the entire squat, especially at the bottom. This active pressure is key to maintaining stability when you are most vulnerable.', iconId: 'unstableOverhead' },
+      { fault: 'Bar Drifting Forward or Backward', fix: 'The bar must remain over your mid-foot. A forward drift indicates tight lats or weak shoulders. A backward drift suggests a lack of thoracic extension. Practice with an empty PVC pipe focusing on bar path.', iconId: 'barPath' },
+      { fault: 'Unstable, Slow Descent', fix: 'Control the descent, but don\'t be so slow that you lose tension. Maintain active pressure upwards on the bar. OHS Sotts presses can build confidence and stability in the bottom position.', iconId: 'balance' }
     ],
   },
   {
@@ -73,15 +73,15 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/clean/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Early Arm Pull in Clean', fix: 'Your arms are ropes, not engines. Be patient and let your powerful leg and hip extension elevate the bar. The arms only pull you *under* the bar.' },
-      { fault: 'Incorrect Grip Width (Clean)', fix: 'Your clean grip should be just outside your shoulders, typically with your thumbs ending up just outside your thighs. This position allows for a powerful pull and a solid front rack receiving position.' },
-      { fault: 'Not Reaching Full Hip Extension', fix: 'You must be violent and aggressive at the top of the pull. Focus on jumping vertically and shrugging hard to create maximum bar height before pulling under.' },
-      { fault: 'Pressing Out the Jerk', fix: 'A press-out means the leg drive was insufficient. The jerk is a powerful leg drive followed by a quick drop *under* the bar into a locked-out position, not a push press.' },
-      { fault: 'Crashing the Bar on the Shoulders', fix: 'Don\'t let the bar crash on you. Actively meet the bar by pulling yourself under it and whipping your elbows around into a solid front rack position.' },
-      { fault: 'Jumping Forward to Meet the Bar (Clean)', fix: 'This indicates the bar is looping away from you. Keep the bar close and focus on a vertical pull. Your feet should land in your squat stance, roughly where they started.' },
-      { fault: 'Short-Stepping the Split (Jerk)', fix: 'A short step creates an unstable base. Drive the front foot forward and the back foot back into a solid, balanced split position with both knees bent. Practice with jerk balances.' },
-      { fault: 'Poor Front Rack Position', fix: 'In the clean, the bar must be supported by your shoulders, not your hands. Improve wrist, tricep, and lat mobility to allow for high elbows and a solid receiving position.' },
-      { fault: 'Incorrect Dip and Drive in Jerk', fix: 'The dip should be straight down and the drive straight up. Avoid dipping forward onto your toes. The drive must be explosive to elevate the bar off your shoulders.' }
+      { fault: 'Early Arm Pull in Clean', fix: 'Your arms are ropes, not engines. Be patient and let your powerful leg and hip extension elevate the bar. The arms only pull you *under* the bar.', iconId: 'earlyArmBend' },
+      { fault: 'Incorrect Grip Width (Clean)', fix: 'Your clean grip should be just outside your shoulders, typically with your thumbs ending up just outside your thighs. This position allows for a powerful pull and a solid front rack receiving position.', iconId: 'grip' },
+      { fault: 'Not Reaching Full Hip Extension', fix: 'You must be violent and aggressive at the top of the pull. Focus on jumping vertically and shrugging hard to create maximum bar height before pulling under.', iconId: 'rom' },
+      { fault: 'Pressing Out the Jerk', fix: 'A press-out means the leg drive was insufficient. The jerk is a powerful leg drive followed by a quick drop *under* the bar into a locked-out position, not a push press.', iconId: 'pressOut' },
+      { fault: 'Crashing the Bar on the Shoulders', fix: 'Don\'t let the bar crash on you. Actively meet the bar by pulling yourself under it and whipping your elbows around into a solid front rack position.', iconId: 'unstableOverhead' },
+      { fault: 'Jumping Forward to Meet the Bar (Clean)', fix: 'This indicates the bar is looping away from you. Keep the bar close and focus on a vertical pull. Your feet should land in your squat stance, roughly where they started.', iconId: 'balance' },
+      { fault: 'Short-Stepping the Split (Jerk)', fix: 'A short step creates an unstable base. Drive the front foot forward and the back foot back into a solid, balanced split position with both knees bent. Practice with jerk balances.', iconId: 'shallowDepth' },
+      { fault: 'Poor Front Rack Position', fix: 'In the clean, the bar must be supported by your shoulders, not your hands. Improve wrist, tricep, and lat mobility to allow for high elbows and a solid receiving position.', iconId: 'posture' },
+      { fault: 'Incorrect Dip and Drive in Jerk', fix: 'The dip should be straight down and the drive straight up. Avoid dipping forward onto your toes. The drive must be explosive to elevate the bar off your shoulders.', iconId: 'rhythm' }
     ],
   },
   {
@@ -91,15 +91,15 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/snatch/600/400',
     category: 'Weightlifting',
     commonFaults: [
-        { fault: 'Looping the Bar Away From Body', fix: 'Keep the bar extremely close to your body throughout the entire pull. Imagine you are trying to drag it up your shirt. Use your lats to "sweep" it in.' },
-        { fault: 'Incorrect Grip Width', fix: 'Your grip should be wide enough that the bar rests in your hip crease when you stand up straight. A grip that is too narrow will limit power, while a grip that is too wide will be unstable and stressful on the shoulders.' },
-        { fault: 'Jumping Forward or Backward', fix: 'This indicates a balance issue and an inefficient bar path. Focus on a vertical drive with even foot pressure. Your feet should land in your overhead squat stance.' },
-        { fault: 'Soft Elbows in Catch Position', fix: 'The catch must be aggressive and decisive. Aggressively punch the bar up to a locked-out overhead position as you pull yourself under it. There is no time to press it out.' },
-        { fault: 'Humping the Bar (Excessive Hip Thrust)', fix: 'The hips should drive vertically, not forward. Hitting the bar with your hips sends it on a looping path. Focus on extending up, not out.' },
-        { fault: 'Receiving the Bar on Toes', fix: 'You must land flat-footed in the overhead squat position to be stable. A forward weight shift means the bar is likely in front of you. Practice snatch balances.' },
-        { fault: 'Slow Turnover Under the Bar', fix: 'The transition from pulling up to pulling down under the bar must be lightning fast. Be aggressive. Think "pull the bar up, then pull yourself under it". High pulls and tall snatches help.' },
-        { fault: 'Starting with Hips Too High/Low', fix: 'Your setup determines the entire lift. Hips should be higher than knees, but low enough to use your legs effectively. Your back angle should be set and maintained off the floor.' },
-        { fault: 'Losing Upper Back Tension', fix: 'Your upper back must stay tight and engaged from start to finish. A soft upper back will cause the chest to drop and the bar to drift forward.' }
+        { fault: 'Looping the Bar Away From Body', fix: 'Keep the bar extremely close to your body throughout the entire pull. Imagine you are trying to drag it up your shirt. Use your lats to "sweep" it in.', iconId: 'barPath' },
+        { fault: 'Incorrect Grip Width', fix: 'Your grip should be wide enough that the bar rests in your hip crease when you stand up straight. A grip that is too narrow will limit power, while a grip that is too wide will be unstable and stressful on the shoulders.', iconId: 'grip' },
+        { fault: 'Jumping Forward or Backward', fix: 'This indicates a balance issue and an inefficient bar path. Focus on a vertical drive with even foot pressure. Your feet should land in your overhead squat stance.', iconId: 'balance' },
+        { fault: 'Soft Elbows in Catch Position', fix: 'The catch must be aggressive and decisive. Aggressively punch the bar up to a locked-out overhead position as you pull yourself under it. There is no time to press it out.', iconId: 'pressOut' },
+        { fault: 'Humping the Bar (Excessive Hip Thrust)', fix: 'The hips should drive vertically, not forward. Hitting the bar with your hips sends it on a looping path. Focus on extending up, not out.', iconId: 'hipsRise' },
+        { fault: 'Receiving the Bar on Toes', fix: 'You must land flat-footed in the overhead squat position to be stable. A forward weight shift means the bar is likely in front of you. Practice snatch balances.', iconId: 'heelsLift' },
+        { fault: 'Slow Turnover Under the Bar', fix: 'The transition from pulling up to pulling down under the bar must be lightning fast. Be aggressive. Think "pull the bar up, then pull yourself under it". High pulls and tall snatches help.', iconId: 'rhythm' },
+        { fault: 'Starting with Hips Too High/Low', fix: 'Your setup determines the entire lift. Hips should be higher than knees, but low enough to use your legs effectively. Your back angle should be set and maintained off the floor.', iconId: 'posture' },
+        { fault: 'Losing Upper Back Tension', fix: 'Your upper back must stay tight and engaged from start to finish. A soft upper back will cause the chest to drop and the bar to drift forward.', iconId: 'roundedBack' }
     ],
   },
     {
@@ -109,14 +109,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/kettlebell/600/400',
     category: 'Kettlebell',
     commonFaults: [
-        { fault: 'Using Arms to Lift (Front Raise)', fix: 'The power comes from an explosive hip thrust, not the arms. Your arms are just ropes; they guide the bell, they don\'t lift it.' },
-        { fault: 'Squatting Instead of Hinging', fix: 'This is a hinge, not a squat. Keep your shins relatively vertical and push your hips straight back. The knees should only bend slightly.' },
-        { fault: 'Hyperextending the Back at the Top', fix: 'Finish in a solid, upright plank position by squeezing your glutes and abs hard. Do not lean back; this puts dangerous pressure on your lumbar spine.' },
-        { fault: 'Not Engaging Lats', fix: 'Keep the bell close to your body on the downswing by engaging your lats. Imagine you are trying to protect your armpits. This prevents the bell from pulling you forward.' },
-        { fault: 'Kettlebell Going Too Low', fix: 'The kettlebell should pass high in the groin "triangle". If it\'s going down by your knees, you are squatting too much and not hinging properly.' },
-        { fault: 'Letting the Bell Pull You Down', fix: 'Actively hike the kettlebell back on the downswing. Stay in control of the bell; don\'t let its momentum dictate your movement.' },
-        { fault: 'Broken Neck Position (Looking Up)', fix: 'Keep a neutral spine by packing your chin. Your head should be in line with your torso at all times, meaning your gaze follows the arc of the bell.' },
-        { fault: 'Shoulders Rounded at the Hinge', fix: 'Keep your chest proud and shoulders pulled back even at the bottom of the hinge. This maintains a safe, neutral spine.' }
+        { fault: 'Using Arms to Lift (Front Raise)', fix: 'The power comes from an explosive hip thrust, not the arms. Your arms are just ropes; they guide the bell, they don\'t lift it.', iconId: 'earlyArmBend' },
+        { fault: 'Squatting Instead of Hinging', fix: 'This is a hinge, not a squat. Keep your shins relatively vertical and push your hips straight back. The knees should only bend slightly.', iconId: 'hipsRise' },
+        { fault: 'Hyperextending the Back at the Top', fix: 'Finish in a solid, upright plank position by squeezing your glutes and abs hard. Do not lean back; this puts dangerous pressure on your lumbar spine.', iconId: 'roundedBack' },
+        { fault: 'Not Engaging Lats', fix: 'Keep the bell close to your body on the downswing by engaging your lats. Imagine you are trying to protect your armpits. This prevents the bell from pulling you forward.', iconId: 'core' },
+        { fault: 'Kettlebell Going Too Low', fix: 'The kettlebell should pass high in the groin "triangle". If it\'s going down by your knees, you are squatting too much and not hinging properly.', iconId: 'barPath' },
+        { fault: 'Letting the Bell Pull You Down', fix: 'Actively hike the kettlebell back on the downswing. Stay in control of the bell; don\'t let its momentum dictate your movement.', iconId: 'unstableOverhead' },
+        { fault: 'Broken Neck Position (Looking Up)', fix: 'Keep a neutral spine by packing your chin. Your head should be in line with your torso at all times, meaning your gaze follows the arc of the bell.', iconId: 'posture' },
+        { fault: 'Shoulders Rounded at the Hinge', fix: 'Keep your chest proud and shoulders pulled back even at the bottom of the hinge. This maintains a safe, neutral spine.', iconId: 'roundedBack' }
     ],
   },
   {
@@ -126,15 +126,15 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/pullup/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Not Reaching Full Extension at Bottom', fix: 'Each rep must start from a dead hang with locked-out elbows. This ensures full range of motion and develops strength through the entire movement.' },
-      { fault: 'Grip Too Wide or Too Narrow', fix: 'A grip slightly wider than shoulder-width is ideal for engaging the lats. A very wide grip limits range of motion and can stress the shoulders, while a very narrow grip turns the movement into more of a chin-up, emphasizing the biceps.' },
-      { fault: 'Chin Not Clearing the Bar', fix: 'The rep standard is chin over the bar. Focus on pulling your chest *to* the bar, which will naturally get your chin high enough. Pulling higher builds more strength.' },
-      { fault: 'Using a Kip Before Developing Strict Strength', fix: 'Kipping is a skill, not a substitute for strength. Build a base with strict pull-ups, negatives (slow lowering), and ring rows before attempting kipping pull-ups.' },
-      { fault: 'Shoulders Shrugging to Ears', fix: 'Initiate the pull by depressing your scapula (pulling shoulder blades down and back). This engages your lats properly instead of relying on biceps and traps.' },
-      { fault: 'Letting Go at the Top (Uncontrolled Eccentric)', fix: 'Control the descent. The negative portion is crucial for building strength. Aim for a 2-3 second controlled lower on every rep.' },
-      { fault: 'Initiating With a Head-Jerk or Reaching with Chin', fix: 'Keep a neutral neck and look forward. The movement should be your body moving up in space, not your head craning to reach the bar.' },
-      { fault: 'Elbows Flaring Behind the Body', fix: 'Think about driving your elbows down towards your hips. This helps engage the lats more effectively for a stronger, more vertical pull.' },
-      { fault: 'Swinging Legs for Momentum (Strict Pull-up)', fix: 'Maintain a tight core and a slight hollow body position by squeezing your abs and glutes. This prevents energy leaks and focuses the work on your upper body.' }
+      { fault: 'Not Reaching Full Extension at Bottom', fix: 'Each rep must start from a dead hang with locked-out elbows. This ensures full range of motion and develops strength through the entire movement.', iconId: 'rom' },
+      { fault: 'Grip Too Wide or Too Narrow', fix: 'A grip slightly wider than shoulder-width is ideal for engaging the lats. A very wide grip limits range of motion and can stress the shoulders, while a very narrow grip turns the movement into more of a chin-up, emphasizing the biceps.', iconId: 'grip' },
+      { fault: 'Chin Not Clearing the Bar', fix: 'The rep standard is chin over the bar. Focus on pulling your chest *to* the bar, which will naturally get your chin high enough. Pulling higher builds more strength.', iconId: 'rom' },
+      { fault: 'Using a Kip Before Developing Strict Strength', fix: 'Kipping is a skill, not a substitute for strength. Build a base with strict pull-ups, negatives (slow lowering), and ring rows before attempting kipping pull-ups.', iconId: 'rhythm' },
+      { fault: 'Shoulders Shrugging to Ears', fix: 'Initiate the pull by depressing your scapula (pulling shoulder blades down and back). This engages your lats properly instead of relying on biceps and traps.', iconId: 'posture' },
+      { fault: 'Letting Go at the Top (Uncontrolled Eccentric)', fix: 'Control the descent. The negative portion is crucial for building strength. Aim for a 2-3 second controlled lower on every rep.', iconId: 'rhythm' },
+      { fault: 'Initiating With a Head-Jerk or Reaching with Chin', fix: 'Keep a neutral neck and look forward. The movement should be your body moving up in space, not your head craning to reach the bar.', iconId: 'posture' },
+      { fault: 'Elbows Flaring Behind the Body', fix: 'Think about driving your elbows down towards your hips. This helps engage the lats more effectively for a stronger, more vertical pull.', iconId: 'earlyArmBend' },
+      { fault: 'Swinging Legs for Momentum (Strict Pull-up)', fix: 'Maintain a tight core and a slight hollow body position by squeezing your abs and glutes. This prevents energy leaks and focuses the work on your upper body.', iconId: 'core' }
     ],
   },
   {
@@ -144,14 +144,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/pushup/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Sagging Hips or Piking', fix: 'Your body must be a rigid plank. Squeeze your core, glutes, and quads to maintain a straight line from your head to your heels throughout the entire rep.' },
-      { fault: 'Flaring Elbows Too Wide', fix: 'Keep your elbows tucked at about a 45-degree angle from your body, not flared out to 90 degrees. This protects your shoulders and engages your chest and triceps more effectively.' },
-      { fault: 'Not Achieving Full Range of Motion', fix: 'Lower your chest to the ground (or within a fist\'s height) and fully extend your elbows at the top, pushing your shoulder blades apart (protraction).' },
-      { fault: 'Incorrect Head Position', fix: 'Maintain a neutral spine by looking at the floor slightly ahead of you. Don\'t let your head drop or look up, as this breaks the plank position.' },
-      { fault: '"Worming" Up (Chest Rises Before Hips)', fix: 'This is a sign of a weak core. Squeeze your glutes and abs tightly to ensure your chest and hips rise simultaneously. If needed, scale to your knees or an incline.' },
-      { fault: 'Hands Too Wide or Too Far Forward', fix: 'Place your hands directly under your shoulders. This provides the most stable base and optimal line of force for the press.' },
-      { fault: 'Shoulder Blades Pinching Together at Top', fix: 'At the top of the push-up, you should actively press through the floor to protract your scapula (spread them apart). This fully engages the serratus anterior, a key shoulder stabilizer.' },
-      { fault: 'Losing Tension at the Bottom', fix: 'Stay tight and active at the bottom. Don\'t just rest on the floor. Maintain muscle tension to explosively press back up.' }
+      { fault: 'Sagging Hips or Piking', fix: 'Your body must be a rigid plank. Squeeze your core, glutes, and quads to maintain a straight line from your head to your heels throughout the entire rep.', iconId: 'core' },
+      { fault: 'Flaring Elbows Too Wide', fix: 'Keep your elbows tucked at about a 45-degree angle from your body, not flared out to 90 degrees. This protects your shoulders and engages your chest and triceps more effectively.', iconId: 'pressOut' },
+      { fault: 'Not Achieving Full Range of Motion', fix: 'Lower your chest to the ground (or within a fist\'s height) and fully extend your elbows at the top, pushing your shoulder blades apart (protraction).', iconId: 'rom' },
+      { fault: 'Incorrect Head Position', fix: 'Maintain a neutral spine by looking at the floor slightly ahead of you. Don\'t let your head drop or look up, as this breaks the plank position.', iconId: 'posture' },
+      { fault: '"Worming" Up (Chest Rises Before Hips)', fix: 'This is a sign of a weak core. Squeeze your glutes and abs tightly to ensure your chest and hips rise simultaneously. If needed, scale to your knees or an incline.', iconId: 'rhythm' },
+      { fault: 'Hands Too Wide or Too Far Forward', fix: 'Place your hands directly under your shoulders. This provides the most stable base and optimal line of force for the press.', iconId: 'grip' },
+      { fault: 'Shoulder Blades Pinching Together at Top', fix: 'At the top of the push-up, you should actively press through the floor to protract your scapula (spread them apart). This fully engages the serratus anterior, a key shoulder stabilizer.', iconId: 'posture' },
+      { fault: 'Losing Tension at the Bottom', fix: 'Stay tight and active at the bottom. Don\'t just rest on the floor. Maintain muscle tension to explosively press back up.', iconId: 'core' }
     ],
   },
   {
@@ -161,14 +161,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/t2b/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Swinging Uncontrollably', fix: 'Master the basic kipping swing first (hollow to arch). The toes-to-bar is a controlled application of that swing, not a wild flail.' },
-      { fault: 'Pulling with the Arms', fix: 'The initial elevation comes from your lats and core. Think about pushing *down* on the bar with straight arms as you close your shoulder angle, which lifts your body back.' },
-      { fault: 'Bending Legs Too Early', fix: 'Keep your legs straight for as long as possible as they rise. This creates a longer lever and more momentum. The knees bend and feet flick at the very end to touch the bar.' },
-      { fault: 'Not Actively Pushing Away at the Top', fix: 'After touching the bar, actively push away from it. This action re-establishes the hollow body position and propels you back into the arch for the next rep.' },
-      { fault: 'Losing Tension in Hollow Position', fix: 'The kip lives and dies by core tension. Practice hollow rocks on the floor to understand the feeling of a tight, braced midline.' },
-      { fault: 'Only Getting Toes to Eye Level', fix: 'This is often a combination of three things: not getting your body behind the bar enough, a lack of hamstring flexibility, and not being aggressive enough with the final "flick".' },
-      { fault: 'Inefficient Rhythm and Breathing', fix: 'Find a rhythm. Exhale as your feet go up, inhale as you come back down. Rushing leads to burnout and loss of control.' },
-      { fault: 'Using a Very Wide Grip', fix: 'A grip slightly wider than your shoulders is ideal. Too wide a grip can limit your range of motion and put unnecessary stress on your shoulders.' }
+      { fault: 'Swinging Uncontrollably', fix: 'Master the basic kipping swing first (hollow to arch). The toes-to-bar is a controlled application of that swing, not a wild flail.', iconId: 'balance' },
+      { fault: 'Pulling with the Arms', fix: 'The initial elevation comes from your lats and core. Think about pushing *down* on the bar with straight arms as you close your shoulder angle, which lifts your body back.', iconId: 'earlyArmBend' },
+      { fault: 'Bending Legs Too Early', fix: 'Keep your legs straight for as long as possible as they rise. This creates a longer lever and more momentum. The knees bend and feet flick at the very end to touch the bar.', iconId: 'rhythm' },
+      { fault: 'Not Actively Pushing Away at the Top', fix: 'After touching the bar, actively push away from it. This action re-establishes the hollow body position and propels you back into the arch for the next rep.', iconId: 'rhythm' },
+      { fault: 'Losing Tension in Hollow Position', fix: 'The kip lives and dies by core tension. Practice hollow rocks on the floor to understand the feeling of a tight, braced midline.', iconId: 'core' },
+      { fault: 'Only Getting Toes to Eye Level', fix: 'This is often a combination of three things: not getting your body behind the bar enough, a lack of hamstring flexibility, and not being aggressive enough with the final "flick".', iconId: 'rom' },
+      { fault: 'Inefficient Rhythm and Breathing', fix: 'Find a rhythm. Exhale as your feet go up, inhale as you come back down. Rushing leads to burnout and loss of control.', iconId: 'rhythm' },
+      { fault: 'Using a Very Wide Grip', fix: 'A grip slightly wider than your shoulders is ideal. Too wide a grip can limit your range of motion and put unnecessary stress on your shoulders.', iconId: 'grip' }
     ],
   },
   {
@@ -178,14 +178,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/muscleup/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Chicken Winging (Uneven Arms)', fix: 'This happens when one arm internally rotates and gets stuck. Strengthen your false grip and practice keeping the rings close to your body with transition drills.' },
-      { fault: 'Pulling Too Low', fix: 'Don\'t rush the pull. Be patient in the kip and focus on pulling the rings to your sternum/lower chest, not just your chin, before initiating the transition.' },
-      { fault: 'Not Getting Head Through Quickly', fix: 'The transition should be an aggressive "sit-up" motion. As soon as the rings pass your chest, throw your head and shoulders through the rings violently.' },
-      { fault: 'Weak False Grip', fix: 'The false grip is non-negotiable. It pre-positions your hands for the dip. Practice holding a false grip, performing ring rows, and strict pull-ups with it to build specific strength.' },
-      { fault: 'Rings Flying Out Wide', fix: 'Keep the rings close to your body throughout the entire movement. Think "pull rings to your chest, not chest to rings". Use a band connecting the rings if necessary for practice.' },
-      { fault: 'Getting Stuck in the Dip', fix: 'The bottom of the dip is the hardest part. You need specific strength here. Practice deep ring dips and support holds to build the strength to press out.' },
-      { fault: 'Inefficient Kip (All Legs)', fix: 'The kip is a full-body movement originating from the shoulders. Practice a powerful arch-to-hollow swing on the rings, ensuring your whole body contributes.' },
-      { fault: 'No Hip Pop', fix: 'At the apex of the kip, you need an explosive pop of the hips (similar to a kettlebell swing) to create a moment of weightlessness, making the pull and transition much easier.' }
+      { fault: 'Chicken Winging (Uneven Arms)', fix: 'This happens when one arm internally rotates and gets stuck. Strengthen your false grip and practice keeping the rings close to your body with transition drills.', iconId: 'rhythm' },
+      { fault: 'Pulling Too Low', fix: 'Don\'t rush the pull. Be patient in the kip and focus on pulling the rings to your sternum/lower chest, not just your chin, before initiating the transition.', iconId: 'shallowDepth' },
+      { fault: 'Not Getting Head Through Quickly', fix: 'The transition should be an aggressive "sit-up" motion. As soon as the rings pass your chest, throw your head and shoulders through the rings violently.', iconId: 'rhythm' },
+      { fault: 'Weak False Grip', fix: 'The false grip is non-negotiable. It pre-positions your hands for the dip. Practice holding a false grip, performing ring rows, and strict pull-ups with it to build specific strength.', iconId: 'grip' },
+      { fault: 'Rings Flying Out Wide', fix: 'Keep the rings close to your body throughout the entire movement. Think "pull rings to your chest, not chest to rings". Use a band connecting the rings if necessary for practice.', iconId: 'barPath' },
+      { fault: 'Getting Stuck in the Dip', fix: 'The bottom of the dip is the hardest part. You need specific strength here. Practice deep ring dips and support holds to build the strength to press out.', iconId: 'unstableOverhead' },
+      { fault: 'Inefficient Kip (All Legs)', fix: 'The kip is a full-body movement originating from the shoulders. Practice a powerful arch-to-hollow swing on the rings, ensuring your whole body contributes.', iconId: 'core' },
+      { fault: 'No Hip Pop', fix: 'At the apex of the kip, you need an explosive pop of the hips (similar to a kettlebell swing) to create a moment of weightlessness, making the pull and transition much easier.', iconId: 'hipsRise' }
     ],
   },
   {
@@ -195,14 +195,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/hspu/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Arching the Back Excessively', fix: 'Stay in a hollow body position by squeezing your core and glutes. Point your toes to the ceiling. This protects your spine and creates a more efficient line of force.' },
-      { fault: 'Elbows Flaring Out Wide', fix: 'Keep your elbows tucked in at roughly a 45-degree angle. This creates a stable tripod with your head and hands and is much safer for your shoulder joints.' },
-      { fault: 'Not Reaching Full Lockout', fix: 'A rep is only complete when you press all the way up until your elbows are fully extended and your head is through, finishing in a stacked handstand position.' },
-      { fault: 'Kipping Inefficiently (Heels to Wall)', fix: 'The power of the kip comes from driving your heels straight up to the ceiling, not kicking back into the wall. Bring your knees towards your chest and then explode upwards.' },
-      { fault: 'Losing Balance', fix: 'Create a stable base by spreading your fingers wide and actively gripping the floor. Your hands and head should form a solid tripod, not a straight line.' },
-      { fault: 'Resting Head on the Ground', fix: 'Lower yourself under control and gently "kiss" the ground with your head. Don\'t crash down or rest at the bottom, as this dissipates all the stored energy needed for the press.' },
-      { fault: 'Poor Hand Placement', fix: 'Place hands about shoulder-width apart and a few inches from the wall. Too close, and you\'ll be unstable. Too far, and you\'ll increase the difficulty unnecessarily.' },
-      { fault: 'Pressing Forward Instead of Up', fix: 'From the tripod position, think about pressing up and back towards the wall simultaneously. This will get your head back through your arms into a stable handstand.' }
+      { fault: 'Arching the Back Excessively', fix: 'Stay in a hollow body position by squeezing your core and glutes. Point your toes to the ceiling. This protects your spine and creates a more efficient line of force.', iconId: 'roundedBack' },
+      { fault: 'Elbows Flaring Out Wide', fix: 'Keep your elbows tucked in at roughly a 45-degree angle. This creates a stable tripod with your head and hands and is much safer for your shoulder joints.', iconId: 'pressOut' },
+      { fault: 'Not Reaching Full Lockout', fix: 'A rep is only complete when you press all the way up until your elbows are fully extended and your head is through, finishing in a stacked handstand position.', iconId: 'rom' },
+      { fault: 'Kipping Inefficiently (Heels to Wall)', fix: 'The power of the kip comes from driving your heels straight up to the ceiling, not kicking back into the wall. Bring your knees towards your chest and then explode upwards.', iconId: 'rhythm' },
+      { fault: 'Losing Balance', fix: 'Create a stable base by spreading your fingers wide and actively gripping the floor. Your hands and head should form a solid tripod, not a straight line.', iconId: 'balance' },
+      { fault: 'Resting Head on the Ground', fix: 'Lower yourself under control and gently "kiss" the ground with your head. Don\'t crash down or rest at the bottom, as this dissipates all the stored energy needed for the press.', iconId: 'rhythm' },
+      { fault: 'Poor Hand Placement', fix: 'Place hands about shoulder-width apart and a few inches from the wall. Too close, and you\'ll be unstable. Too far, and you\'ll increase the difficulty unnecessarily.', iconId: 'grip' },
+      { fault: 'Pressing Forward Instead of Up', fix: 'From the tripod position, think about pressing up and back towards the wall simultaneously. This will get your head back through your arms into a stable handstand.', iconId: 'barPath' }
     ],
   },
   {
@@ -212,14 +212,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/burpee/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Worming Up from the Push-up', fix: 'Maintain core tension to lift your chest and hips at the same time as a single unit. If you can\'t, scale the push-up to your knees or omit it (sprawl).' },
-      { fault: 'Not Opening Hips at the Top', fix: 'The rep finishes with a small vertical jump where the hips and knees reach full extension and the hands clap overhead. Don\'t shortchange the rep.' },
-      { fault: 'Landing on Toes', fix: 'When jumping your feet back in from the plank, land on flat feet in a stable squat stance. This provides a solid base to stand and jump from.' },
-      { fault: 'Inefficient Breathing', fix: 'Try to find a rhythm. A common pattern is to exhale as you drop to the floor and inhale as you stand up. Holding your breath will lead to rapid fatigue.' },
-      { fault: 'Stepping Back Instead of Jumping', fix: 'For maximum efficiency and speed, jump both feet back to the plank position simultaneously (unless you are intentionally scaling).' },
-      { fault: 'Landing With Feet Too Wide/Narrow', fix: 'Land with your feet just outside your hands, in your squat stance. Too narrow makes it hard to stand up; too wide is an inefficient extra movement.' },
-      { fault: 'Wasted Movement', fix: 'Strive for economy of motion. Drop straight down, jump straight back, jump straight in, jump straight up. Minimize any extra steps or adjustments.' },
-      { fault: 'Slow Transition from Floor to Feet', fix: 'This is where time is lost. As you push up, begin to snap your hips and bring your knees to your chest to get your feet under you in one fluid motion.' }
+      { fault: 'Worming Up from the Push-up', fix: 'Maintain core tension to lift your chest and hips at the same time as a single unit. If you can\'t, scale the push-up to your knees or omit it (sprawl).', iconId: 'rhythm' },
+      { fault: 'Not Opening Hips at the Top', fix: 'The rep finishes with a small vertical jump where the hips and knees reach full extension and the hands clap overhead. Don\'t shortchange the rep.', iconId: 'rom' },
+      { fault: 'Landing on Toes', fix: 'When jumping your feet back in from the plank, land on flat feet in a stable squat stance. This provides a solid base to stand and jump from.', iconId: 'heelsLift' },
+      { fault: 'Inefficient Breathing', fix: 'Try to find a rhythm. A common pattern is to exhale as you drop to the floor and inhale as you stand up. Holding your breath will lead to rapid fatigue.', iconId: 'rhythm' },
+      { fault: 'Stepping Back Instead of Jumping', fix: 'For maximum efficiency and speed, jump both feet back to the plank position simultaneously (unless you are intentionally scaling).', iconId: 'rhythm' },
+      { fault: 'Landing With Feet Too Wide/Narrow', fix: 'Land with your feet just outside your hands, in your squat stance. Too narrow makes it hard to stand up; too wide is an inefficient extra movement.', iconId: 'balance' },
+      { fault: 'Wasted Movement', fix: 'Strive for economy of motion. Drop straight down, jump straight back, jump straight in, jump straight up. Minimize any extra steps or adjustments.', iconId: 'rhythm' },
+      { fault: 'Slow Transition from Floor to Feet', fix: 'This is where time is lost. As you push up, begin to snap your hips and bring your knees to your chest to get your feet under you in one fluid motion.', iconId: 'rhythm' }
     ],
   },
   {
@@ -229,14 +229,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/boxjump/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Jumping with Stiff Legs', fix: 'A box jump is a dynamic movement. Load the jump by dipping your hips and swinging your arms back, then explode up by extending your hips, knees, and ankles.' },
-      { fault: 'Landing Too Low in a Deep Squat', fix: 'Land softly and quietly in a partial squat (quarter or half squat). A deep squat landing means you likely didn\'t jump high enough for that box height.' },
-      { fault: 'Rebounding Off the Box', fix: 'Step down one foot at a time. Rebounding (jumping down) places a massive eccentric load on the Achilles tendon and greatly increases injury risk for no real benefit.' },
-      { fault: 'Not Landing Fully on the Box', fix: 'Ensure both feet land completely on the box surface. Having heels or toes hanging off is unstable and can lead to slips and scraped shins.' },
-      { fault: 'Not Using Arms for Momentum', fix: 'Your arms are crucial for generating upward momentum. Swing them back during the dip and explosively forward and up as you jump.' },
-      { fault: 'Landing Loudly', fix: 'Land softly like a "ninja". A loud landing indicates you are not absorbing the impact correctly through your muscles, which puts stress on your joints.' },
-      { fault: 'Not Standing Up Fully on the Box', fix: 'A complete rep requires you to land on the box and then stand up to full hip and knee extension before stepping down. Don\'t cut the rep short.' },
-      { fault: 'Staring at the Box', fix: 'Pick your landing spot, but then look straight ahead as you jump. This helps promote a more powerful, upright hip extension.' }
+      { fault: 'Jumping with Stiff Legs', fix: 'A box jump is a dynamic movement. Load the jump by dipping your hips and swinging your arms back, then explode up by extending your hips, knees, and ankles.', iconId: 'rom' },
+      { fault: 'Landing Too Low in a Deep Squat', fix: 'Land softly and quietly in a partial squat (quarter or half squat). A deep squat landing means you likely didn\'t jump high enough for that box height.', iconId: 'shallowDepth' },
+      { fault: 'Rebounding Off the Box', fix: 'Step down one foot at a time. Rebounding (jumping down) places a massive eccentric load on the Achilles tendon and greatly increases injury risk for no real benefit.', iconId: 'rhythm' },
+      { fault: 'Not Landing Fully on the Box', fix: 'Ensure both feet land completely on the box surface. Having heels or toes hanging off is unstable and can lead to slips and scraped shins.', iconId: 'balance' },
+      { fault: 'Not Using Arms for Momentum', fix: 'Your arms are crucial for generating upward momentum. Swing them back during the dip and explosively forward and up as you jump.', iconId: 'earlyArmBend' },
+      { fault: 'Landing Loudly', fix: 'Land softly like a "ninja". A loud landing indicates you are not absorbing the impact correctly through your muscles, which puts stress on your joints.', iconId: 'rhythm' },
+      { fault: 'Not Standing Up Fully on the Box', fix: 'A complete rep requires you to land on the box and then stand up to full hip and knee extension before stepping down. Don\'t cut the rep short.', iconId: 'rom' },
+      { fault: 'Staring at the Box', fix: 'Pick your landing spot, but then look straight ahead as you jump. This helps promote a more powerful, upright hip extension.', iconId: 'posture' }
     ],
   },
   {
@@ -246,14 +246,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/frontsquat/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Dropping Elbows', fix: 'Elbows must stay high. Actively drive your elbows up throughout the entire movement. If they drop, your torso will follow, and you\'ll likely lose the bar forward.' },
-      { fault: 'Losing the Bar Forward', fix: 'This is caused by dropping elbows or a weak upper back. Maintain a proud chest and focus on keeping your upper back tight and extended.' },
-      { fault: 'Heels Lifting Off the Ground', fix: 'This indicates a lack of ankle mobility or a weight shift that is too far forward. Work on ankle dorsiflexion and focus on sitting back into the squat.' },
-      { fault: 'Poor Breathing and Bracing', fix: 'Take a big breath and brace your core at the top before each rep. This creates intra-abdominal pressure that keeps your torso rigid and safe.' },
-      { fault: 'Relaxing Upper Back', fix: 'Your upper back must be actively engaged to create a solid shelf for the barbell. Think about squeezing your shoulder blades together slightly.' },
-      { fault: 'Incorrect Grip/Rack Position', fix: 'The bar should rest on your deltoids, lightly touching your throat. Your hands are just there to support it. Use a full clean grip or a cross-grip if mobility is an issue.' },
-      { fault: 'Hips Shooting Back on Ascent', fix: 'Drive straight up out of the hole. Think about leading with your elbows and chest. This is often a sign of weak quads relative to your posterior chain.' },
-      { fault: 'Pausing or "Bouncing" out of the Hole', fix: 'Maintain tension at the bottom and have a smooth, controlled transition from descent to ascent. Bouncing can lead to a loss of position and potential injury.' }
+      { fault: 'Dropping Elbows', fix: 'Elbows must stay high. Actively drive your elbows up throughout the entire movement. If they drop, your torso will follow, and you\'ll likely lose the bar forward.', iconId: 'chestDrop' },
+      { fault: 'Losing the Bar Forward', fix: 'This is caused by dropping elbows or a weak upper back. Maintain a proud chest and focus on keeping your upper back tight and extended.', iconId: 'unstableOverhead' },
+      { fault: 'Heels Lifting Off the Ground', fix: 'This indicates a lack of ankle mobility or a weight shift that is too far forward. Work on ankle dorsiflexion and focus on sitting back into the squat.', iconId: 'heelsLift' },
+      { fault: 'Poor Breathing and Bracing', fix: 'Take a big breath and brace your core at the top before each rep. This creates intra-abdominal pressure that keeps your torso rigid and safe.', iconId: 'rhythm' },
+      { fault: 'Relaxing Upper Back', fix: 'Your upper back must be actively engaged to create a solid shelf for the barbell. Think about squeezing your shoulder blades together slightly.', iconId: 'roundedBack' },
+      { fault: 'Incorrect Grip/Rack Position', fix: 'The bar should rest on your deltoids, lightly touching your throat. Your hands are just there to support it. Use a full clean grip or a cross-grip if mobility is an issue.', iconId: 'grip' },
+      { fault: 'Hips Shooting Back on Ascent', fix: 'Drive straight up out of the hole. Think about leading with your elbows and chest. This is often a sign of weak quads relative to your posterior chain.', iconId: 'hipsRise' },
+      { fault: 'Pausing or "Bouncing" out of the Hole', fix: 'Maintain tension at the bottom and have a smooth, controlled transition from descent to ascent. Bouncing can lead to a loss of position and potential injury.', iconId: 'rhythm' }
     ],
   },
   {
@@ -263,14 +263,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/thruster/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Pausing at the Top of the Squat', fix: 'The power of the thruster comes from seamless momentum transfer. Use the upward drive from the squat to propel the bar directly overhead without any pause.' },
-      { fault: 'Pressing Early with Arms', fix: 'This is a leg-driven movement. Wait for full hip and leg extension before initiating the press. The press should be an extension of the squat\'s power, not a separate movement.' },
-      { fault: 'Shallow Squat Depth', fix: 'A valid thruster requires a full-depth front squat. Ensure your hip crease goes below the top of your knees in every rep.' },
-      { fault: 'Bar Path Not Vertical (Looping Forward)', fix: 'The bar should travel in a straight line up. As you press, get your head back out of the way, then push it through once the bar passes your face. Finish with the bar over your heels.' },
-      { fault: 'Crashing the Bar Down', fix: 'Control the bar on the way down. Actively guide it back to the front rack position and absorb the impact by immediately starting the descent of the next squat.' },
-      { fault: 'Inefficient Breathing', fix: 'Inhale at the top, hold your breath and brace during the squat, and exhale explosively during the press overhead. A poor breathing pattern will cause you to gas out quickly.' },
-      { fault: 'Dropping Elbows in the Squat', fix: 'Just like a front squat, you must keep your elbows high. If they drop, your chest will fall, making the press much harder and less efficient.' },
-      { fault: 'Not Reaching Full Lockout Overhead', fix: 'Finish each rep with the bar locked out overhead, with active shoulders, straight elbows, and your head pushed through your arms.' }
+      { fault: 'Pausing at the Top of the Squat', fix: 'The power of the thruster comes from seamless momentum transfer. Use the upward drive from the squat to propel the bar directly overhead without any pause.', iconId: 'rhythm' },
+      { fault: 'Pressing Early with Arms', fix: 'This is a leg-driven movement. Wait for full hip and leg extension before initiating the press. The press should be an extension of the squat\'s power, not a separate movement.', iconId: 'earlyArmBend' },
+      { fault: 'Shallow Squat Depth', fix: 'A valid thruster requires a full-depth front squat. Ensure your hip crease goes below the top of your knees in every rep.', iconId: 'shallowDepth' },
+      { fault: 'Bar Path Not Vertical (Looping Forward)', fix: 'The bar should travel in a straight line up. As you press, get your head back out of the way, then push it through once the bar passes your face. Finish with the bar over your heels.', iconId: 'barPath' },
+      { fault: 'Crashing the Bar Down', fix: 'Control the bar on the way down. Actively guide it back to the front rack position and absorb the impact by immediately starting the descent of the next squat.', iconId: 'unstableOverhead' },
+      { fault: 'Inefficient Breathing', fix: 'Inhale at the top, hold your breath and brace during the squat, and exhale explosively during the press overhead. A poor breathing pattern will cause you to gas out quickly.', iconId: 'rhythm' },
+      { fault: 'Dropping Elbows in the Squat', fix: 'Just like a front squat, you must keep your elbows high. If they drop, your chest will fall, making the press much harder and less efficient.', iconId: 'chestDrop' },
+      { fault: 'Not Reaching Full Lockout Overhead', fix: 'Finish each rep with the bar locked out overhead, with active shoulders, straight elbows, and your head pushed through your arms.', iconId: 'rom' }
     ],
   },
   {
@@ -280,14 +280,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/wallball/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Standing Too Close or Too Far', fix: 'Find your optimal distance (usually holding the ball at arm\'s length to the wall). Too close makes the throw awkward; too far makes you throw forward instead of up.' },
-      { fault: 'Not Using Hip Drive', fix: 'The power comes from exploding out of the bottom of the squat. Use your legs and hips to propel the ball upwards; your arms are just for guidance.' },
-      { fault: 'Catching the Ball Too Low', fix: 'Catch the ball at its highest possible point with your arms extended. This creates a smoother cycle and allows you to use its downward momentum to help initiate the next squat.' },
-      { fault: 'Throwing the Ball Forward, Not Up', fix: 'Focus on a vertical trajectory. The goal is to hit the target, which comes from a powerful upward hip drive, not a forward chest pass.' },
-      { fault: 'Ball Dropping Chest Forward', fix: 'Keep your elbows up and chest proud as you descend into the squat. Hold the ball securely at your chin. If your chest drops, the movement becomes much harder.' },
-      { fault: 'Tossing with Arms Only', fix: 'This will fatigue your shoulders immediately. The power comes from the legs and hips. The arms just finish the movement at the very end.' },
-      { fault: 'Shallow Squat', fix: 'Each rep requires a full squat with your hip crease passing below your knee. Don\'t cut the reps short, especially when fatigued.' },
-      { fault: 'Losing Breathing Rhythm', fix: 'Develop a consistent breathing pattern, typically exhaling as you throw and inhaling as you squat. Holding your breath will elevate your heart rate unnecessarily.' }
+      { fault: 'Standing Too Close or Too Far', fix: 'Find your optimal distance (usually holding the ball at arm\'s length to the wall). Too close makes the throw awkward; too far makes you throw forward instead of up.', iconId: 'balance' },
+      { fault: 'Not Using Hip Drive', fix: 'The power comes from exploding out of the bottom of the squat. Use your legs and hips to propel the ball upwards; your arms are just for guidance.', iconId: 'hipsRise' },
+      { fault: 'Catching the Ball Too Low', fix: 'Catch the ball at its highest possible point with your arms extended. This creates a smoother cycle and allows you to use its downward momentum to help initiate the next squat.', iconId: 'rhythm' },
+      { fault: 'Throwing the Ball Forward, Not Up', fix: 'Focus on a vertical trajectory. The goal is to hit the target, which comes from a powerful upward hip drive, not a forward chest pass.', iconId: 'barPath' },
+      { fault: 'Ball Dropping Chest Forward', fix: 'Keep your elbows up and chest proud as you descend into the squat. Hold the ball securely at your chin. If your chest drops, the movement becomes much harder.', iconId: 'chestDrop' },
+      { fault: 'Tossing with Arms Only', fix: 'This will fatigue your shoulders immediately. The power comes from the legs and hips. The arms just finish the movement at the very end.', iconId: 'earlyArmBend' },
+      { fault: 'Shallow Squat', fix: 'Each rep requires a full squat with your hip crease passing below your knee. Don\'t cut the reps short, especially when fatigued.', iconId: 'shallowDepth' },
+      { fault: 'Losing Breathing Rhythm', fix: 'Develop a consistent breathing pattern, typically exhaling as you throw and inhaling as you squat. Holding your breath will elevate your heart rate unnecessarily.', iconId: 'rhythm' }
     ],
   },
   {
@@ -297,14 +297,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/doubleunder/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Piking or Tucking Knees High', fix: 'Stay tall and relaxed. The jump should be a small, efficient bounce from the balls of your feet, just high enough to clear the rope. No need for a high tuck jump.' },
-      { fault: 'Arms Flying Out Wide', fix: 'Keep your elbows tucked in close to your sides. The rotation should come from your wrists, not from making big circles with your arms. Your hands should be slightly in front of your hips.' },
-      { fault: 'Rope is the Wrong Length', fix: 'Proper rope length is crucial. A good starting point is to stand on the middle of the rope and have the handles reach your armpits.' },
-      { fault: 'Jumping Too High (Donkey Kick)', fix: 'The jump is a small, relaxed rebound. Wasting energy by jumping too high will lead to rapid fatigue and break your rhythm.' },
-      { fault: 'Tense Shoulders and Upper Body', fix: 'Stay relaxed from the shoulders down. Tension is the enemy of double-unders. The movement is all in the wrists.' },
-      { fault: 'Inconsistent Timing/Rhythm', fix: 'The rhythm is a quick "jump-flick-flick". Practice with single-single-double drills to develop a consistent tempo. Listen to the sound of the rope hitting the floor.' },
-      { fault: 'Looking Down at Feet', fix: 'Keep your gaze fixed forward. Looking down can cause your posture to break down and throw off your balance and rhythm.' },
-      { fault: 'Using a "Death Grip" on Handles', fix: 'Hold the handles with a relaxed grip, primarily with your thumb and index/middle fingers. A tight grip creates tension up into your forearms and shoulders.' }
+      { fault: 'Piking or Tucking Knees High', fix: 'Stay tall and relaxed. The jump should be a small, efficient bounce from the balls of your feet, just high enough to clear the rope. No need for a high tuck jump.', iconId: 'posture' },
+      { fault: 'Arms Flying Out Wide', fix: 'Keep your elbows tucked in close to your sides. The rotation should come from your wrists, not from making big circles with your arms. Your hands should be slightly in front of your hips.', iconId: 'barPath' },
+      { fault: 'Rope is the Wrong Length', fix: 'Proper rope length is crucial. A good starting point is to stand on the middle of the rope and have the handles reach your armpits.', iconId: 'grip' },
+      { fault: 'Jumping Too High (Donkey Kick)', fix: 'The jump is a small, relaxed rebound. Wasting energy by jumping too high will lead to rapid fatigue and break your rhythm.', iconId: 'rhythm' },
+      { fault: 'Tense Shoulders and Upper Body', fix: 'Stay relaxed from the shoulders down. Tension is the enemy of double-unders. The movement is all in the wrists.', iconId: 'posture' },
+      { fault: 'Inconsistent Timing/Rhythm', fix: 'The rhythm is a quick "jump-flick-flick". Practice with single-single-double drills to develop a consistent tempo. Listen to the sound of the rope hitting the floor.', iconId: 'rhythm' },
+      { fault: 'Looking Down at Feet', fix: 'Keep your gaze fixed forward. Looking down can cause your posture to break down and throw off your balance and rhythm.', iconId: 'posture' },
+      { fault: 'Using a "Death Grip" on Handles', fix: 'Hold the handles with a relaxed grip, primarily with your thumb and index/middle fingers. A tight grip creates tension up into your forearms and shoulders.', iconId: 'grip' }
     ],
   },
   {
@@ -314,14 +314,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/rowing/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Opening Back Too Early', fix: 'The sequence is critical: 1. Legs, 2. Back, 3. Arms. On the return, it\'s the reverse: 1. Arms, 2. Back, 3. Legs. Don\'t blend the movements.' },
-      { fault: 'Shooting the Slide', fix: 'This is when your legs extend but your shoulders don\'t move back with them. Push with the legs first, keeping the back angle consistent, then swing the torso open.' },
-      { fault: 'Pulling Only with the Arms', fix: 'The power comes primarily from the leg drive (~60%), then the back (~30%), and finally the arms (~10%). The arms just finish the stroke.' },
-      { fault: 'Rushing the Recovery', fix: 'The recovery (return to the catch) should be controlled and about twice as long as the drive. This is your chance to breathe and prepare for the next powerful stroke.' },
-      { fault: '"Flying and Dying" (Pacing)', fix: 'Learn to pace using the monitor. Hold a consistent split time (/500m) rather than starting at an all-out sprint and burning out quickly.' },
-      { fault: 'Handle Hitting Knees on Recovery', fix: 'This is a sequence error. You must extend your arms fully *before* you pivot your torso forward, and only then should you bend your knees.' },
-      { fault: 'Very High Stroke Rate', fix: 'Faster is not always better. Focus on powerful, efficient strokes at a lower rate (e.g., 24-30 spm) rather than short, frantic strokes at a high rate.' },
-      { fault: 'Weak Catch Position', fix: 'At the start of the stroke (the catch), your shins should be vertical, your back should be strong, and your arms should be straight. Don\'t over-compress or round your back.' }
+      { fault: 'Opening Back Too Early', fix: 'The sequence is critical: 1. Legs, 2. Back, 3. Arms. On the return, it\'s the reverse: 1. Arms, 2. Back, 3. Legs. Don\'t blend the movements.', iconId: 'rhythm' },
+      { fault: 'Shooting the Slide', fix: 'This is when your legs extend but your shoulders don\'t move back with them. Push with the legs first, keeping the back angle consistent, then swing the torso open.', iconId: 'hipsRise' },
+      { fault: 'Pulling Only with the Arms', fix: 'The power comes primarily from the leg drive (~60%), then the back (~30%), and finally the arms (~10%). The arms just finish the stroke.', iconId: 'earlyArmBend' },
+      { fault: 'Rushing the Recovery', fix: 'The recovery (return to the catch) should be controlled and about twice as long as the drive. This is your chance to breathe and prepare for the next powerful stroke.', iconId: 'rhythm' },
+      { fault: '"Flying and Dying" (Pacing)', fix: 'Learn to pace using the monitor. Hold a consistent split time (/500m) rather than starting at an all-out sprint and burning out quickly.', iconId: 'rhythm' },
+      { fault: 'Handle Hitting Knees on Recovery', fix: 'This is a sequence error. You must extend your arms fully *before* you pivot your torso forward, and only then should you bend your knees.', iconId: 'barPath' },
+      { fault: 'Very High Stroke Rate', fix: 'Faster is not always better. Focus on powerful, efficient strokes at a lower rate (e.g., 24-30 spm) rather than short, frantic strokes at a high rate.', iconId: 'rhythm' },
+      { fault: 'Weak Catch Position', fix: 'At the start of the stroke (the catch), your shins should be vertical, your back should be strong, and your arms should be straight. Don\'t over-compress or round your back.', iconId: 'posture' }
     ],
   },
   {
@@ -331,14 +331,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/ringdip/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Shoulders Rolling Forward', fix: 'Keep your shoulders pulled back and down, maintaining a proud chest. An active, externally rotated shoulder position is crucial for health and stability.' },
-      { fault: 'Not Reaching Full Depth', fix: 'For a full rep, you must lower yourself until your shoulder is clearly below your elbow at the bottom of the dip. Work on partial range if needed to build strength.' },
-      { fault: 'Flaring Elbows Out', fix: 'Keep your elbows tucked in close to your body throughout the movement. This provides a more stable and powerful pressing position.' },
-      { fault: 'Unstable Support at the Top', fix: 'At the top, actively turn your palms out (external rotation). This engages the shoulder stabilizers and creates a solid, locked-out position.' },
-      { fault: 'Piking at the Hips', fix: 'Maintain a straight body line or a slight hollow position. Squeeze your glutes and core to prevent your hips from bending, which makes the movement easier.' },
-      { fault: 'Stopping Short of Full Lockout', fix: 'Press all the way to straight arms and an active support position at the top of every rep. A soft lockout is an incomplete rep.' },
-      { fault: 'Rings Swinging Wildly', fix: 'Control the movement. Lower and press with deliberation. If the rings are shaking uncontrollably, you need to build more stability with support holds and slow negatives.' },
-      { fault: 'Dropping Uncontrolled into the Bottom', fix: 'Control the eccentric (lowering) phase. This is where you build the most strength and stability. Aim for a 2-3 second descent.' }
+      { fault: 'Shoulders Rolling Forward', fix: 'Keep your shoulders pulled back and down, maintaining a proud chest. An active, externally rotated shoulder position is crucial for health and stability.', iconId: 'roundedBack' },
+      { fault: 'Not Reaching Full Depth', fix: 'For a full rep, you must lower yourself until your shoulder is clearly below your elbow at the bottom of the dip. Work on partial range if needed to build strength.', iconId: 'shallowDepth' },
+      { fault: 'Flaring Elbows Out', fix: 'Keep your elbows tucked in close to your body throughout the movement. This provides a more stable and powerful pressing position.', iconId: 'pressOut' },
+      { fault: 'Unstable Support at the Top', fix: 'At the top, actively turn your palms out (external rotation). This engages the shoulder stabilizers and creates a solid, locked-out position.', iconId: 'unstableOverhead' },
+      { fault: 'Piking at the Hips', fix: 'Maintain a straight body line or a slight hollow position. Squeeze your glutes and core to prevent your hips from bending, which makes the movement easier.', iconId: 'core' },
+      { fault: 'Stopping Short of Full Lockout', fix: 'Press all the way to straight arms and an active support position at the top of every rep. A soft lockout is an incomplete rep.', iconId: 'rom' },
+      { fault: 'Rings Swinging Wildly', fix: 'Control the movement. Lower and press with deliberation. If the rings are shaking uncontrollably, you need to build more stability with support holds and slow negatives.', iconId: 'balance' },
+      { fault: 'Dropping Uncontrolled into the Bottom', fix: 'Control the eccentric (lowering) phase. This is where you build the most strength and stability. Aim for a 2-3 second descent.', iconId: 'rhythm' }
     ],
   },
   {
@@ -348,14 +348,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/barmuscleup/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Pulling Too Early', fix: 'Be patient in the kip. The pull comes *after* the hips rise. Wait for that moment of weightlessness before pulling the bar aggressively to your chest.' },
-      { fault: 'Looping Over the Bar ("Rainbow")', fix: 'This is inefficient. Focus on keeping the bar close to your body and a fast, aggressive "sit-up" motion over the bar, not a slow arc around it.' },
-      { fault: 'Bent Arms During Kip', fix: 'Keep your arms straight for as long as possible during the kip swing. Bending them early bleeds power and limits the height you can generate.' },
-      { fault: 'Not Getting Hips High Enough', fix: 'The goal of the kip is to get your hips to the bar. This creates the leverage needed for the turnover. Practice kipping swings focusing on hip height.' },
-      { fault: 'Getting Stuck in the Transition', fix: 'The transition from pull to dip must be violent. Think "fastest sit-up of your life". As soon as the bar is at your chest, throw your shoulders and head over.' },
-      { fault: 'Not Pushing Down on the Bar', fix: 'During the kip, actively push down on the bar with straight arms (engaging the lats) as your feet go forward. This helps elevate your body.' },
-      { fault: 'Casting Away from the Bar', fix: 'On the backswing (arch), don\'t let your feet swing too far behind you. Keep the arch tight, which will lead to a more powerful and vertical hollow position.' },
-      { fault: 'Landing in a Deep Dip', fix: 'A more efficient muscle-up has you landing with your arms nearly locked out. This requires a more powerful kip and faster transition.' }
+      { fault: 'Pulling Too Early', fix: 'Be patient in the kip. The pull comes *after* the hips rise. Wait for that moment of weightlessness before pulling the bar aggressively to your chest.', iconId: 'earlyArmBend' },
+      { fault: 'Looping Over the Bar ("Rainbow")', fix: 'This is inefficient. Focus on keeping the bar close to your body and a fast, aggressive "sit-up" motion over the bar, not a slow arc around it.', iconId: 'barPath' },
+      { fault: 'Bent Arms During Kip', fix: 'Keep your arms straight for as long as possible during the kip swing. Bending them early bleeds power and limits the height you can generate.', iconId: 'earlyArmBend' },
+      { fault: 'Not Getting Hips High Enough', fix: 'The goal of the kip is to get your hips to the bar. This creates the leverage needed for the turnover. Practice kipping swings focusing on hip height.', iconId: 'hipsRise' },
+      { fault: 'Getting Stuck in the Transition', fix: 'The transition from pull to dip must be violent. Think "fastest sit-up of your life". As soon as the bar is at your chest, throw your shoulders and head over.', iconId: 'rhythm' },
+      { fault: 'Not Pushing Down on the Bar', fix: 'During the kip, actively push down on the bar with straight arms (engaging the lats) as your feet go forward. This helps elevate your body.', iconId: 'unstableOverhead' },
+      { fault: 'Casting Away from the Bar', fix: 'On the backswing (arch), don\'t let your feet swing too far behind you. Keep the arch tight, which will lead to a more powerful and vertical hollow position.', iconId: 'barPath' },
+      { fault: 'Landing in a Deep Dip', fix: 'A more efficient muscle-up has you landing with your arms nearly locked out. This requires a more powerful kip and faster transition.', iconId: 'shallowDepth' }
     ],
   },
   {
@@ -365,14 +365,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/pistol/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Heel Lifting Off the Ground', fix: 'This is almost always an ankle mobility issue (dorsiflexion). Stretch your calves and practice by holding onto a post for balance to keep the heel down.' },
-      { fault: 'Falling Backwards', fix: 'Keep your chest up and extend your non-squatting leg and arms out in front as a counterbalance. Core strength is key here.' },
-      { fault: 'Knee Caving Inward (Valgus)', fix: 'Focus on tracking your knee over your foot. This requires strong hip abductors (glutes). Single-leg RDLs and banded work can help.' },
-      { fault: 'Lack of Control on the Eccentric (Lowering)', fix: 'Lower yourself slowly and with control. This builds strength and stability for the entire movement. Don\'t just drop into the bottom.' },
-      { fault: 'Non-Working Foot Touching Ground', fix: 'Actively keep your free leg straight and off the floor throughout the entire rep. This requires significant core and hip flexor strength.' },
-      { fault: 'Rounding the Lower Back Excessively', fix: 'While some rounding is normal, excessive rounding indicates a lack of hip mobility or core strength. Try to maintain as upright a torso as possible.' },
-      { fault: 'Using Momentum to Bounce out of the Bottom', fix: 'Pause for a split second at the bottom to eliminate the stretch reflex. This builds true single-leg strength rather than relying on a bounce.' },
-      { fault: 'Can\'t Stand Up from the Bottom', fix: 'This is a strength deficit. Work on progressions like box pistols (squatting to a box), weighted step-ups, and Bulgarian split squats.' }
+      { fault: 'Heel Lifting Off the Ground', fix: 'This is almost always an ankle mobility issue (dorsiflexion). Stretch your calves and practice by holding onto a post for balance to keep the heel down.', iconId: 'heelsLift' },
+      { fault: 'Falling Backwards', fix: 'Keep your chest up and extend your non-squatting leg and arms out in front as a counterbalance. Core strength is key here.', iconId: 'balance' },
+      { fault: 'Knee Caving Inward (Valgus)', fix: 'Focus on tracking your knee over your foot. This requires strong hip abductors (glutes). Single-leg RDLs and banded work can help.', iconId: 'kneesCave' },
+      { fault: 'Lack of Control on the Eccentric (Lowering)', fix: 'Lower yourself slowly and with control. This builds strength and stability for the entire movement. Don\'t just drop into the bottom.', iconId: 'rhythm' },
+      { fault: 'Non-Working Foot Touching Ground', fix: 'Actively keep your free leg straight and off the floor throughout the entire rep. This requires significant core and hip flexor strength.', iconId: 'rom' },
+      { fault: 'Rounding the Lower Back Excessively', fix: 'While some rounding is normal, excessive rounding indicates a lack of hip mobility or core strength. Try to maintain as upright a torso as possible.', iconId: 'roundedBack' },
+      { fault: 'Using Momentum to Bounce out of the Bottom', fix: 'Pause for a split second at the bottom to eliminate the stretch reflex. This builds true single-leg strength rather than relying on a bounce.', iconId: 'rhythm' },
+      { fault: 'Can\'t Stand Up from the Bottom', fix: 'This is a strength deficit. Work on progressions like box pistols (squatting to a box), weighted step-ups, and Bulgarian split squats.', iconId: 'unstableOverhead' }
     ],
   },
   {
@@ -382,14 +382,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/pushpress/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Pressing Before Legs are Extended', fix: 'The sequence is "dip, DRIVE, press". You must reach full, violent hip and knee extension before your arms begin to press. The press finishes what the legs started.' },
-      { fault: 'Leaning Back Excessively (Arching)', fix: 'Keep your core tight and squeeze your glutes to maintain a neutral spine. A significant back arch is a sign you are trying to press weight that is too heavy.' },
-      { fault: 'Dip is Too Deep or Slow', fix: 'The dip should be shallow (a few inches), quick, and explosive. Think of it as a small, sharp bounce to load your legs.' },
-      { fault: 'Not Resetting for the Next Rep', fix: 'After pressing, control the bar back to the shoulders and absorb the weight by bending your knees slightly. This sets you up for the next explosive dip and drive.' },
-      { fault: 'Dip Drives Forward Onto Toes', fix: 'Keep your weight balanced on your mid-foot during the dip and drive. Your torso should remain vertical, and you should drive straight up.' },
-      { fault: 'Muted Hip Drive', fix: 'The "drive" phase must be an aggressive, explosive extension of the hips and knees. It\'s this power that makes the lift a push press and not a strict press.' },
-      { fault: 'Bar Path Looping Forward', fix: 'Pull your head back to let the bar pass, then push your head "through the window" as the bar goes up. The bar should finish directly over your heels.' },
-      { fault: 'Catching the Bar Stiff-Legged', fix: 'When the bar returns to your shoulders, absorb the impact by bending your knees. Catching it with straight legs sends a shockwave through your body.' }
+      { fault: 'Pressing Before Legs are Extended', fix: 'The sequence is "dip, DRIVE, press". You must reach full, violent hip and knee extension before your arms begin to press. The press finishes what the legs started.', iconId: 'rhythm' },
+      { fault: 'Leaning Back Excessively (Arching)', fix: 'Keep your core tight and squeeze your glutes to maintain a neutral spine. A significant back arch is a sign you are trying to press weight that is too heavy.', iconId: 'roundedBack' },
+      { fault: 'Dip is Too Deep or Slow', fix: 'The dip should be shallow (a few inches), quick, and explosive. Think of it as a small, sharp bounce to load your legs.', iconId: 'shallowDepth' },
+      { fault: 'Not Resetting for the Next Rep', fix: 'After pressing, control the bar back to the shoulders and absorb the weight by bending your knees slightly. This sets you up for the next explosive dip and drive.', iconId: 'rhythm' },
+      { fault: 'Dip Drives Forward Onto Toes', fix: 'Keep your weight balanced on your mid-foot during the dip and drive. Your torso should remain vertical, and you should drive straight up.', iconId: 'heelsLift' },
+      { fault: 'Muted Hip Drive', fix: 'The "drive" phase must be an aggressive, explosive extension of the hips and knees. It\'s this power that makes the lift a push press and not a strict press.', iconId: 'hipsRise' },
+      { fault: 'Bar Path Looping Forward', fix: 'Pull your head back to let the bar pass, then push your head "through the window" as the bar goes up. The bar should finish directly over your heels.', iconId: 'barPath' },
+      { fault: 'Catching the Bar Stiff-Legged', fix: 'When the bar returns to your shoulders, absorb the impact by bending your knees. Catching it with straight legs sends a shockwave through your body.', iconId: 'unstableOverhead' }
     ],
   },
   {
@@ -399,14 +399,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/sdhp/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Pulling with the Arms Too Early', fix: 'The movement is initiated by a powerful leg and hip extension. The arms only begin to pull *after* the hips have fully opened and the bar is weightless.' },
-      { fault: 'Elbows Lower Than Hands', fix: 'Lead with the elbows. Focus on pulling your elbows high and to the outside, keeping your hands close to your body. The bar should rise to about your collarbone.' },
-      { fault: 'Losing Back Posture', fix: 'Maintain a flat, neutral spine throughout the lift, especially in the setup and initial pull from the floor. Do not let your back round.' },
-      { fault: 'Bar is Too Far from the Body', fix: 'Keep the bar close, almost dragging it up your shins and torso. This ensures an efficient and safe vertical bar path.' },
-      { fault: 'Not Reaching Full Hip Extension', fix: 'You must finish the "deadlift" part of the movement by squeezing the glutes hard before initiating the high pull with the arms. It\'s a two-part sequence.' },
-      { fault: 'Stance is Too Wide or Too Narrow', fix: 'Your stance should be wide enough that your arms can be inside your knees (sumo stance), but not so wide that you can\'t generate power. Shins should be roughly vertical at setup.' },
-      { fault: 'No Aggression', fix: 'This is a power movement. The extension of the hips and the pull with the arms must be fast and aggressive to generate bar speed.' },
-      { fault: 'Crashing the Bar Down', fix: 'Control the barbell on the way down instead of just dropping it. Reverse the motion: arms lower, hips hinge, knees bend.' }
+      { fault: 'Pulling with the Arms Too Early', fix: 'The movement is initiated by a powerful leg and hip extension. The arms only begin to pull *after* the hips have fully opened and the bar is weightless.', iconId: 'earlyArmBend' },
+      { fault: 'Elbows Lower Than Hands', fix: 'Lead with the elbows. Focus on pulling your elbows high and to the outside, keeping your hands close to your body. The bar should rise to about your collarbone.', iconId: 'pressOut' },
+      { fault: 'Losing Back Posture', fix: 'Maintain a flat, neutral spine throughout the lift, especially in the setup and initial pull from the floor. Do not let your back round.', iconId: 'roundedBack' },
+      { fault: 'Bar is Too Far from the Body', fix: 'Keep the bar close, almost dragging it up your shins and torso. This ensures an efficient and safe vertical bar path.', iconId: 'barPath' },
+      { fault: 'Not Reaching Full Hip Extension', fix: 'You must finish the "deadlift" part of the movement by squeezing the glutes hard before initiating the high pull with the arms. It\'s a two-part sequence.', iconId: 'rom' },
+      { fault: 'Stance is Too Wide or Too Narrow', fix: 'Your stance should be wide enough that your arms can be inside your knees (sumo stance), but not so wide that you can\'t generate power. Shins should be roughly vertical at setup.', iconId: 'balance' },
+      { fault: 'No Aggression', fix: 'This is a power movement. The extension of the hips and the pull with the arms must be fast and aggressive to generate bar speed.', iconId: 'rhythm' },
+      { fault: 'Crashing the Bar Down', fix: 'Control the barbell on the way down instead of just dropping it. Reverse the motion: arms lower, hips hinge, knees bend.', iconId: 'unstableOverhead' }
     ],
   },
   {
@@ -416,14 +416,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/assaultbike/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Improper Seat Height', fix: 'Set the seat height so your leg has a slight, athletic bend at the bottom of the pedal stroke. Too low or too high will be inefficient and stressful on your knees.' },
-      { fault: 'Focusing Only on Legs or Arms', fix: 'It\'s a full-body machine. Coordinate pushing with one leg while pulling with the opposite arm, and vice versa. Drive hard with both your upper and lower body.' },
-      { fault: 'Poor Pacing ("Fly and Die")', fix: 'Don\'t start at a 100% sprint unless that is the workout. Find a sustainable pace (using RPMs or watts on the monitor) that you can hold for the required duration.' },
-      { fault: 'Not Using the Monitor for Feedback', fix: 'The monitor is your coach. Pay attention to RPMs, watts, or calories to maintain a consistent effort, track your performance, and pace effectively.' },
-      { fault: 'Slouching Posture', fix: 'Sit upright with a proud chest. A slouched, rounded-back position restricts your diaphragm and makes breathing much less efficient.' },
-      { fault: 'Bouncing in the Seat', fix: 'Apply force smoothly through the entire pedal stroke, not just by stomping down. Think about making full, smooth circles with your feet. Bouncing is wasted energy.' },
-      { fault: 'Seat Position Too Far Forward/Back', fix: 'Adjust the seat horizontally so that when the pedals are level, your front knee is roughly over the ball of your foot. This ensures an efficient pedaling position.' },
-      { fault: 'Ignoring the Push-Pull of the Arms', fix: 'Don\'t just passively move the handles. Actively push with one arm and pull with the other. This contributes significant power to your total output.' }
+      { fault: 'Improper Seat Height', fix: 'Set the seat height so your leg has a slight, athletic bend at the bottom of the pedal stroke. Too low or too high will be inefficient and stressful on your knees.', iconId: 'posture' },
+      { fault: 'Focusing Only on Legs or Arms', fix: 'It\'s a full-body machine. Coordinate pushing with one leg while pulling with the opposite arm, and vice versa. Drive hard with both your upper and lower body.', iconId: 'rhythm' },
+      { fault: 'Poor Pacing ("Fly and Die")', fix: 'Don\'t start at a 100% sprint unless that is the workout. Find a sustainable pace (using RPMs or watts on the monitor) that you can hold for the required duration.', iconId: 'rhythm' },
+      { fault: 'Not Using the Monitor for Feedback', fix: 'The monitor is your coach. Pay attention to RPMs, watts, or calories to maintain a consistent effort, track your performance, and pace effectively.', iconId: 'rhythm' },
+      { fault: 'Slouching Posture', fix: 'Sit upright with a proud chest. A slouched, rounded-back position restricts your diaphragm and makes breathing much less efficient.', iconId: 'posture' },
+      { fault: 'Bouncing in the Seat', fix: 'Apply force smoothly through the entire pedal stroke, not just by stomping down. Think about making full, smooth circles with your feet. Bouncing is wasted energy.', iconId: 'balance' },
+      { fault: 'Seat Position Too Far Forward/Back', fix: 'Adjust the seat horizontally so that when the pedals are level, your front knee is roughly over the ball of your foot. This ensures an efficient pedaling position.', iconId: 'posture' },
+      { fault: 'Ignoring the Push-Pull of the Arms', fix: 'Don\'t just passively move the handles. Actively push with one arm and pull with the other. This contributes significant power to your total output.', iconId: 'earlyArmBend' }
     ],
   },
   {
@@ -433,14 +433,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/devilspress/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Using arms to lift (muscling it up)', fix: 'Power comes from an explosive hip hinge, like a powerful kettlebell swing. The arms guide the dumbbells, they don\'t do the primary lifting.' },
-      { fault: 'Rounded back on burpee or swing', fix: 'Maintain a flat, neutral spine throughout the entire movement. Brace your core, especially when handling the dumbbells.' },
-      { fault: 'Inefficient transition from floor', fix: 'As you push up from the burpee, jump your feet wide, outside the dumbbells. This puts you directly into a powerful hinge position ready to swing.' },
-      { fault: 'Pressing out overhead', fix: 'The movement is a single fluid snatch or swing. If you have to press it out, the weight is likely too heavy or your hip drive is not powerful enough.' },
-      { fault: 'Dumbbells flying out wide', fix: 'Keep the dumbbells close to your body in a tight arc. This creates a more efficient bar path and is safer for your shoulders.' },
-      { fault: 'Losing control on the way down', fix: 'Control the descent of the dumbbells back to the floor. This sets you up for a safe and efficient next rep.' },
-      { fault: 'Feet too narrow on the swing', fix: 'A wider stance (outside the dumbbells) provides a stable base and allows the dumbbells to pass through your legs without obstruction.' },
-      { fault: 'Lack of explosive hip extension', fix: 'The "snap" of the hips is what creates the power. Squeeze your glutes aggressively at the top of the swing to propel the weight overhead.' },
+      { fault: 'Using arms to lift (muscling it up)', fix: 'Power comes from an explosive hip hinge, like a powerful kettlebell swing. The arms guide the dumbbells, they don\'t do the primary lifting.', iconId: 'earlyArmBend' },
+      { fault: 'Rounded back on burpee or swing', fix: 'Maintain a flat, neutral spine throughout the entire movement. Brace your core, especially when handling the dumbbells.', iconId: 'roundedBack' },
+      { fault: 'Inefficient transition from floor', fix: 'As you push up from the burpee, jump your feet wide, outside the dumbbells. This puts you directly into a powerful hinge position ready to swing.', iconId: 'rhythm' },
+      { fault: 'Pressing out overhead', fix: 'The movement is a single fluid snatch or swing. If you have to press it out, the weight is likely too heavy or your hip drive is not powerful enough.', iconId: 'pressOut' },
+      { fault: 'Dumbbells flying out wide', fix: 'Keep the dumbbells close to your body in a tight arc. This creates a more efficient bar path and is safer for your shoulders.', iconId: 'barPath' },
+      { fault: 'Losing control on the way down', fix: 'Control the descent of the dumbbells back to the floor. This sets you up for a safe and efficient next rep.', iconId: 'unstableOverhead' },
+      { fault: 'Feet too narrow on the swing', fix: 'A wider stance (outside the dumbbells) provides a stable base and allows the dumbbells to pass through your legs without obstruction.', iconId: 'balance' },
+      { fault: 'Lack of explosive hip extension', fix: 'The "snap" of the hips is what creates the power. Squeeze your glutes aggressively at the top of the swing to propel the weight overhead.', iconId: 'hipsRise' },
     ],
   },
   {
@@ -450,14 +450,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/burpeepullup/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Inefficient positioning', fix: 'Perform the burpee directly under the pull-up bar to allow for a direct, vertical jump to the bar.' },
-      { fault: 'Wasted energy jumping to the bar', fix: 'Use the momentum from standing up out of the burpee to help initiate the jump. A small hop is all that should be needed.' },
-      { fault: 'Relying on a large kip', fix: 'For efficiency, use the momentum of your jump to get your chin over the bar. A large, time-consuming kip is often unnecessary and slower.' },
-      { fault: 'Not meeting rep standards', fix: 'Ensure your chest touches the ground in the burpee and your chin clears the bar on the pull-up for every single rep.' },
-      { fault: 'Dropping uncontrollably from the bar', fix: 'Control your drop from the bar to land safely and immediately flow into the next burpee, absorbing the impact with your legs.' },
-      { fault: 'Grip burnout', fix: 'Pace your reps from the beginning. A blistering start can lead to premature grip failure, forcing longer breaks later.' },
-      { fault: 'Poor breathing rhythm', fix: 'Exhale as you jump and pull. Inhale as you drop and go into the next burpee. A consistent breathing pattern is key.' },
-      { fault: 'Incorrect bar height for burpee', fix: 'If the bar is too low, you may hit your head. Ensure there is enough clearance to safely perform the burpee underneath.' },
+      { fault: 'Inefficient positioning', fix: 'Perform the burpee directly under the pull-up bar to allow for a direct, vertical jump to the bar.', iconId: 'balance' },
+      { fault: 'Wasted energy jumping to the bar', fix: 'Use the momentum from standing up out of the burpee to help initiate the jump. A small hop is all that should be needed.', iconId: 'rhythm' },
+      { fault: 'Relying on a large kip', fix: 'For efficiency, use the momentum of your jump to get your chin over the bar. A large, time-consuming kip is often unnecessary and slower.', iconId: 'rhythm' },
+      { fault: 'Not meeting rep standards', fix: 'Ensure your chest touches the ground in the burpee and your chin clears the bar on the pull-up for every single rep.', iconId: 'rom' },
+      { fault: 'Dropping uncontrollably from the bar', fix: 'Control your drop from the bar to land safely and immediately flow into the next burpee, absorbing the impact with your legs.', iconId: 'unstableOverhead' },
+      { fault: 'Grip burnout', fix: 'Pace your reps from the beginning. A blistering start can lead to premature grip failure, forcing longer breaks later.', iconId: 'grip' },
+      { fault: 'Poor breathing rhythm', fix: 'Exhale as you jump and pull. Inhale as you drop and go into the next burpee. A consistent breathing pattern is key.', iconId: 'rhythm' },
+      { fault: 'Incorrect bar height for burpee', fix: 'If the bar is too low, you may hit your head. Ensure there is enough clearance to safely perform the burpee underneath.', iconId: 'balance' },
     ],
   },
   {
@@ -467,14 +467,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/burpeeboxjump/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Slow transition from burpee to jump', fix: 'Land the burpee in a coiled, ready-to-jump position. Minimize any pause between standing and jumping.' },
-      { fault: 'Rebounding off the box', fix: 'Jumping down greatly increases injury risk to the Achilles tendon. Step down one foot at a time to stay safe and control your pace.' },
-      { fault: 'Not reaching full extension on the box', fix: 'A valid rep requires you to stand up fully on top of the box, opening your hips and knees completely.' },
-      { fault: 'Inefficient burpee mechanics', fix: 'Ensure your chest touches the ground. When jumping your feet back in, land them wide enough to be in a stable squat stance, ready to jump.' },
-      { fault: 'Landing too deep on the box', fix: 'Aim to land softly in a partial squat. A very deep landing means you barely cleared the box and are wasting energy.' },
-      { fault: 'Wasted steps before jumping', fix: 'Position your burpee so you can jump directly onto the box without taking extra steps to get in position.' },
-      { fault: 'Using a box that is too high', fix: 'Scale the height to something you can consistently jump to with good form, even under fatigue. Safety first.' },
-      { fault: 'Poor pacing', fix: 'Find a steady, piston-like rhythm you can maintain. Do not sprint the first few reps only to burn out.' },
+      { fault: 'Slow transition from burpee to jump', fix: 'Land the burpee in a coiled, ready-to-jump position. Minimize any pause between standing and jumping.', iconId: 'rhythm' },
+      { fault: 'Rebounding off the box', fix: 'Jumping down greatly increases injury risk to the Achilles tendon. Step down one foot at a time to stay safe and control your pace.', iconId: 'rhythm' },
+      { fault: 'Not reaching full extension on the box', fix: 'A valid rep requires you to stand up fully on top of the box, opening your hips and knees completely.', iconId: 'rom' },
+      { fault: 'Inefficient burpee mechanics', fix: 'Ensure your chest touches the ground. When jumping your feet back in, land them wide enough to be in a stable squat stance, ready to jump.', iconId: 'rhythm' },
+      { fault: 'Landing too deep on the box', fix: 'Aim to land softly in a partial squat. A very deep landing means you barely cleared the box and are wasting energy.', iconId: 'shallowDepth' },
+      { fault: 'Wasted steps before jumping', fix: 'Position your burpee so you can jump directly onto the box without taking extra steps to get in position.', iconId: 'balance' },
+      { fault: 'Using a box that is too high', fix: 'Scale the height to something you can consistently jump to with good form, even under fatigue. Safety first.', iconId: 'unstableOverhead' },
+      { fault: 'Poor pacing', fix: 'Find a steady, piston-like rhythm you can maintain. Do not sprint the first few reps only to burn out.', iconId: 'rhythm' },
     ],
   },
   {
@@ -484,14 +484,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/manmaker/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Rushing the sequence', fix: 'Be deliberate with each component: push-up, row, row, clean, thruster. Sloppy transitions lead to failed reps and injury.' },
-      { fault: 'Hips twisting during rows', fix: 'Engage your core and take a wider foot stance for stability. The goal is to isolate the back and arm, not twist your whole body.' },
-      { fault: 'Poor squat clean form', fix: 'After the rows, jump your feet into a solid squat stance. Keep your chest up and pull the dumbbells into a proper front rack position.' },
-      { fault: 'Muscling the thruster', fix: 'The power for the thruster comes from the leg drive out of the squat clean. Use that momentum to drive the dumbbells overhead.' },
-      { fault: 'Unstable dumbbell base', fix: 'Use hex dumbbells if possible. Ensure they are placed at shoulder-width on a stable surface before starting the push-up.' },
-      { fault: 'Losing core tension', fix: 'Your core must stay braced throughout the entire complex sequence to protect your spine and transfer force efficiently.' },
-      { fault: 'Inefficient transitions', fix: 'Flow smoothly from one part to the next. The jump from the row position into the squat clean stance is a key area to practice for speed.' },
-      { fault: 'Using momentum on rows', fix: 'Perform a strict row. Avoid using a jerking motion or body english to lift the dumbbell.' }
+      { fault: 'Rushing the sequence', fix: 'Be deliberate with each component: push-up, row, row, clean, thruster. Sloppy transitions lead to failed reps and injury.', iconId: 'rhythm' },
+      { fault: 'Hips twisting during rows', fix: 'Engage your core and take a wider foot stance for stability. The goal is to isolate the back and arm, not twist your whole body.', iconId: 'core' },
+      { fault: 'Poor squat clean form', fix: 'After the rows, jump your feet into a solid squat stance. Keep your chest up and pull the dumbbells into a proper front rack position.', iconId: 'posture' },
+      { fault: 'Muscling the thruster', fix: 'The power for the thruster comes from the leg drive out of the squat clean. Use that momentum to drive the dumbbells overhead.', iconId: 'earlyArmBend' },
+      { fault: 'Unstable dumbbell base', fix: 'Use hex dumbbells if possible. Ensure they are placed at shoulder-width on a stable surface before starting the push-up.', iconId: 'balance' },
+      { fault: 'Losing core tension', fix: 'Your core must stay braced throughout the entire complex sequence to protect your spine and transfer force efficiently.', iconId: 'core' },
+      { fault: 'Inefficient transitions', fix: 'Flow smoothly from one part to the next. The jump from the row position into the squat clean stance is a key area to practice for speed.', iconId: 'rhythm' },
+      { fault: 'Using momentum on rows', fix: 'Perform a strict row. Avoid using a jerking motion or body english to lift the dumbbell.', iconId: 'rhythm' }
     ],
   },
   {
@@ -501,14 +501,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/cluster/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Pausing at the top of the squat', fix: 'The defining feature is the lack of a pause. Drive directly from the bottom of the squat clean into the overhead press. It must be one fluid motion.' },
-      { fault: 'Pressing with arms too early', fix: 'Let the powerful leg and hip drive do the work of elevating the bar. The arms only engage at the very end to lock out overhead.' },
-      { fault: 'Receiving the clean on your toes', fix: 'Land flat-footed from the pull and maintain that balance as you ride the bar down into the squat. Stability starts from the ground up.' },
-      { fault: 'Not reaching full squat depth', fix: 'You must pass through a full-depth squat (hip crease below knee) for the rep to count. The "squat" part of squat clean is non-negotiable.' },
-      { fault: 'Dropping elbows in the squat', fix: 'Keep elbows high to maintain a solid front rack. If they drop, your chest will fall, making the thruster portion nearly impossible.' },
-      { fault: 'Looping bar path', fix: 'Keep the bar close during the pull and drive vertically overhead. A looping path is inefficient and unstable.' },
-      { fault: 'Soft lockout overhead', fix: 'Finish with the bar fully locked out overhead, with your head pushed through your arms, demonstrating complete control.' },
-      { fault: 'Poor breathing', fix: 'Take a deep breath at the start, brace your core, and exhale explosively as you drive the bar overhead.' }
+      { fault: 'Pausing at the top of the squat', fix: 'The defining feature is the lack of a pause. Drive directly from the bottom of the squat clean into the overhead press. It must be one fluid motion.', iconId: 'rhythm' },
+      { fault: 'Pressing with arms too early', fix: 'Let the powerful leg and hip drive do the work of elevating the bar. The arms only engage at the very end to lock out overhead.', iconId: 'earlyArmBend' },
+      { fault: 'Receiving the clean on your toes', fix: 'Land flat-footed from the pull and maintain that balance as you ride the bar down into the squat. Stability starts from the ground up.', iconId: 'heelsLift' },
+      { fault: 'Not reaching full squat depth', fix: 'You must pass through a full-depth squat (hip crease below knee) for the rep to count. The "squat" part of squat clean is non-negotiable.', iconId: 'shallowDepth' },
+      { fault: 'Dropping elbows in the squat', fix: 'Keep elbows high to maintain a solid front rack. If they drop, your chest will fall, making the thruster portion nearly impossible.', iconId: 'chestDrop' },
+      { fault: 'Looping bar path', fix: 'Keep the bar close during the pull and drive vertically overhead. A looping path is inefficient and unstable.', iconId: 'barPath' },
+      { fault: 'Soft lockout overhead', fix: 'Finish with the bar fully locked out overhead, with your head pushed through your arms, demonstrating complete control.', iconId: 'rom' },
+      { fault: 'Poor breathing', fix: 'Take a deep breath at the start, brace your core, and exhale explosively as you drive the bar overhead.', iconId: 'rhythm' }
     ],
   },
   {
@@ -518,14 +518,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/dbsnatch/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Using the arm to lift (like a curl)', fix: 'Power comes from the legs and hips. The arm is just a rope. Explode with your hips and let that momentum carry the dumbbell up.' },
-      { fault: 'Looping the dumbbell away from the body', fix: 'Keep the dumbbell as close to your centerline as possible. A straight path is an efficient path.' },
-      { fault: 'Not reaching full hip extension', fix: 'You must fully and aggressively open your hips to generate the power needed to elevate the dumbbell.' },
-      { fault: 'Catching with a bent elbow (pressing out)', fix: 'Punch your hand to the ceiling to lock out the dumbbell as you drop under it slightly. A press-out is a failed rep in competition.' },
-      { fault: 'A rounded back at the start', fix: 'Set up with a flat back and your chest up, just like a deadlift. Protect your spine.' },
-      { fault: 'Not using the off-hand for balance', fix: 'Use your non-working arm as a counterbalance by extending it out to the side. This improves stability.' },
-      { fault: 'Inefficient hand switch', fix: 'For alternating reps, switch hands in front of your body as the dumbbell descends, not when it is on the floor. This is much faster.' },
-      { fault: 'Landing on toes', fix: 'Receive the weight with full feet on the ground in a stable partial squat. This ensures you have control of the weight overhead.' }
+      { fault: 'Using the arm to lift (like a curl)', fix: 'Power comes from the legs and hips. The arm is just a rope. Explode with your hips and let that momentum carry the dumbbell up.', iconId: 'earlyArmBend' },
+      { fault: 'Looping the dumbbell away from the body', fix: 'Keep the dumbbell as close to your centerline as possible. A straight path is an efficient path.', iconId: 'barPath' },
+      { fault: 'Not reaching full hip extension', fix: 'You must fully and aggressively open your hips to generate the power needed to elevate the dumbbell.', iconId: 'rom' },
+      { fault: 'Catching with a bent elbow (pressing out)', fix: 'Punch your hand to the ceiling to lock out the dumbbell as you drop under it slightly. A press-out is a failed rep in competition.', iconId: 'pressOut' },
+      { fault: 'A rounded back at the start', fix: 'Set up with a flat back and your chest up, just like a deadlift. Protect your spine.', iconId: 'roundedBack' },
+      { fault: 'Not using the off-hand for balance', fix: 'Use your non-working arm as a counterbalance by extending it out to the side. This improves stability.', iconId: 'balance' },
+      { fault: 'Inefficient hand switch', fix: 'For alternating reps, switch hands in front of your body as the dumbbell descends, not when it is on the floor. This is much faster.', iconId: 'rhythm' },
+      { fault: 'Landing on toes', fix: 'Receive the weight with full feet on the ground in a stable partial squat. This ensures you have control of the weight overhead.', iconId: 'heelsLift' }
     ],
   },
   {
@@ -535,14 +535,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/c2b/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Over-relying on the kip', fix: 'The kip helps, but you need the raw pulling strength to get your body high enough. Work on strict pull-ups and weighted pull-ups.' },
-      { fault: 'Arching back to touch ("humping")', fix: 'The chest should touch in a controlled, slightly hollow position. Hinging violently at the back is inefficient and dangerous.' },
-      { fault: 'Not getting full extension at the bottom', fix: 'A rep begins with arms fully locked out. Short reps build bad habits and don\'t develop full-range strength.' },
-      { fault: 'Craning the neck to reach', fix: 'Keep a neutral head position. The goal is to bring your body to the bar, not your head.' },
-      { fault: 'Losing kip rhythm', fix: 'The C2B requires a slightly longer and more patient kip than a regular pull-up to generate more height. Find a sustainable rhythm.' },
-      { fault: 'Pulling early with bent arms', fix: 'Keep arms long during the kip swing. The pull happens at the apex of the swing after the powerful hip pop.' },
-      { fault: 'Not pulling elbows back', fix: 'To get your chest to touch, you must actively pull your elbows down and back, which opens your chest up towards the bar.' },
-      { fault: 'Inefficient timing', fix: 'The sequence of hip pop followed immediately by an aggressive pull is crucial. A delay between the two actions will kill your momentum.' }
+      { fault: 'Over-relying on the kip', fix: 'The kip helps, but you need the raw pulling strength to get your body high enough. Work on strict pull-ups and weighted pull-ups.', iconId: 'rhythm' },
+      { fault: 'Arching back to touch ("humping")', fix: 'The chest should touch in a controlled, slightly hollow position. Hinging violently at the back is inefficient and dangerous.', iconId: 'roundedBack' },
+      { fault: 'Not getting full extension at the bottom', fix: 'A rep begins with arms fully locked out. Short reps build bad habits and don\'t develop full-range strength.', iconId: 'rom' },
+      { fault: 'Craning the neck to reach', fix: 'Keep a neutral head position. The goal is to bring your body to the bar, not your head.', iconId: 'posture' },
+      { fault: 'Losing kip rhythm', fix: 'The C2B requires a slightly longer and more patient kip than a regular pull-up to generate more height. Find a sustainable rhythm.', iconId: 'rhythm' },
+      { fault: 'Pulling early with bent arms', fix: 'Keep arms long during the kip swing. The pull happens at the apex of the swing after the powerful hip pop.', iconId: 'earlyArmBend' },
+      { fault: 'Not pulling elbows back', fix: 'To get your chest to touch, you must actively pull your elbows down and back, which opens your chest up towards the bar.', iconId: 'rhythm' },
+      { fault: 'Inefficient timing', fix: 'The sequence of hip pop followed immediately by an aggressive pull is crucial. A delay between the two actions will kill your momentum.', iconId: 'rhythm' }
     ],
   },
   {
@@ -552,14 +552,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/barfacingburpee/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Not getting chest to the ground', fix: 'A valid burpee requires your chest and thighs to touch the ground at the bottom of the rep.' },
-      { fault: 'Taking extra steps', fix: 'For maximum speed, jump your feet from the burpee into a position where you can immediately jump over the bar. Minimize or eliminate extra steps.' },
-      { fault: 'One-footed jump', fix: 'The standard requires a two-foot takeoff when jumping over the bar. This is a common fault when fatigued.' },
-      { fault: 'Landing too far from the bar', fix: 'After jumping over, land and turn in a position that sets you up to drop straight into the next burpee with minimal wasted space.' },
-      { fault: 'Inefficient turn', fix: 'Practice a small hop-turn as you land on the other side of the bar. This is faster than landing and then turning as a separate step.' },
-      { fault: '"Worming" up from the push-up', fix: 'Maintain core tension and push up as a single unit. If this breaks down, use a step-up/step-down burpee to maintain a safe spine position.' },
-      { fault: 'Not clearing the bar safely', fix: 'Jump high enough to clear the bar. Don\'t get lazy, as clipping your feet can lead to a fall.' },
-      { fault: 'Poor pacing', fix: 'This movement can elevate your heart rate extremely quickly. Find a steady, sustainable pace from the first rep.' }
+      { fault: 'Not getting chest to the ground', fix: 'A valid burpee requires your chest and thighs to touch the ground at the bottom of the rep.', iconId: 'rom' },
+      { fault: 'Taking extra steps', fix: 'For maximum speed, jump your feet from the burpee into a position where you can immediately jump over the bar. Minimize or eliminate extra steps.', iconId: 'rhythm' },
+      { fault: 'One-footed jump', fix: 'The standard requires a two-foot takeoff when jumping over the bar. This is a common fault when fatigued.', iconId: 'balance' },
+      { fault: 'Landing too far from the bar', fix: 'After jumping over, land and turn in a position that sets you up to drop straight into the next burpee with minimal wasted space.', iconId: 'balance' },
+      { fault: 'Inefficient turn', fix: 'Practice a small hop-turn as you land on the other side of the bar. This is faster than landing and then turning as a separate step.', iconId: 'rhythm' },
+      { fault: '"Worming" up from the push-up', fix: 'Maintain core tension and push up as a single unit. If this breaks down, use a step-up/step-down burpee to maintain a safe spine position.', iconId: 'core' },
+      { fault: 'Not clearing the bar safely', fix: 'Jump high enough to clear the bar. Don\'t get lazy, as clipping your feet can lead to a fall.', iconId: 'unstableOverhead' },
+      { fault: 'Poor pacing', fix: 'This movement can elevate your heart rate extremely quickly. Find a steady, sustainable pace from the first rep.', iconId: 'rhythm' }
     ],
   },
   {
@@ -569,14 +569,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/boxjumpover/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Rebounding off the box', fix: 'This is the most dangerous fault. It places extreme eccentric load on the Achilles tendon. Step or jump down off the box, but do not "bounce" off the top.' },
-      { fault: 'Not clearing the box safely', fix: 'Ensure you jump high enough to get both feet fully on the box before proceeding to the other side. Clipping a foot can lead to a serious fall.' },
-      { fault: 'Landing with only one foot on the box', fix: 'Both feet must make contact with the box before you can move to the other side. This is a safety and rep standard issue.' },
-      { fault: 'Turning in the air without looking', fix: 'Always spot your landing. Whether stepping down or jumping down on the other side, look where you are going to land.' },
-      { fault: 'Inefficient transition', fix: 'Minimize time on the box. As soon as your feet hit, start moving to the other side and prepare for the next jump.' },
-      { fault: 'Stutter-stepping before the jump', fix: 'Be decisive. Approach the box and jump. Wasting time with small, hesitant steps before each jump adds up significantly over a workout.' },
-      { fault: 'Using a box that is too high', fix: 'The goal of box jump overs is speed and cycle time. Use a height you can move through quickly and safely, even under fatigue.' },
-      { fault: 'Not using arms for momentum', fix: 'Use a powerful arm swing to help generate height and power for the jump. This is crucial for efficiency.' }
+      { fault: 'Rebounding off the box', fix: 'This is the most dangerous fault. It places extreme eccentric load on the Achilles tendon. Step or jump down off the box, but do not "bounce" off the top.', iconId: 'rhythm' },
+      { fault: 'Not clearing the box safely', fix: 'Ensure you jump high enough to get both feet fully on the box before proceeding to the other side. Clipping a foot can lead to a serious fall.', iconId: 'unstableOverhead' },
+      { fault: 'Landing with only one foot on the box', fix: 'Both feet must make contact with the box before you can move to the other side. This is a safety and rep standard issue.', iconId: 'balance' },
+      { fault: 'Turning in the air without looking', fix: 'Always spot your landing. Whether stepping down or jumping down on the other side, look where you are going to land.', iconId: 'posture' },
+      { fault: 'Inefficient transition', fix: 'Minimize time on the box. As soon as your feet hit, start moving to the other side and prepare for the next jump.', iconId: 'rhythm' },
+      { fault: 'Stutter-stepping before the jump', fix: 'Be decisive. Approach the box and jump. Wasting time with small, hesitant steps before each jump adds up significantly over a workout.', iconId: 'rhythm' },
+      { fault: 'Using a box that is too high', fix: 'The goal of box jump overs is speed and cycle time. Use a height you can move through quickly and safely, even under fatigue.', iconId: 'unstableOverhead' },
+      { fault: 'Not using arms for momentum', fix: 'Use a powerful arm swing to help generate height and power for the jump. This is crucial for efficiency.', iconId: 'earlyArmBend' }
     ],
   },
   {
@@ -586,14 +586,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/skierg/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Pulling only with arms', fix: 'This is a full-body movement. Initiate with a powerful hip hinge and core crunch, using your bodyweight to drive the handles down. Arms finish the pull.' },
-      { fault: 'Bending arms too early', fix: 'Keep arms relatively straight at the top. The power comes from the core and hips, not an arm pull-down.' },
-      { fault: 'Not reaching full extension at the top', fix: 'Reach high at the top of each stroke to engage your lats through the full range of motion.' },
-      { fault: 'Hunching over at the bottom', fix: 'Maintain a strong, flat back. Hinge at the hips, don\'t round your spine.' },
-      { fault: 'Inconsistent pacing', fix: 'Use the monitor. Find a sustainable watts or cal/hr pace and hold it. Don\'t fly and die.' },
-      { fault: 'Rushing the recovery', fix: 'The recovery should be controlled. Let the handles return to the top in a smooth motion, mirroring your pull.' },
-      { fault: 'No hip drive', fix: 'Think of it like a kettlebell swing. The explosive "snap" of the hips is where the power is generated.' },
-      { fault: 'Letting go of core tension', fix: 'Brace your core as if you\'re about to be punched. This protects your back and transfers power efficiently.' }
+      { fault: 'Pulling only with arms', fix: 'This is a full-body movement. Initiate with a powerful hip hinge and core crunch, using your bodyweight to drive the handles down. Arms finish the pull.', iconId: 'earlyArmBend' },
+      { fault: 'Bending arms too early', fix: 'Keep arms relatively straight at the top. The power comes from the core and hips, not an arm pull-down.', iconId: 'earlyArmBend' },
+      { fault: 'Not reaching full extension at the top', fix: 'Reach high at the top of each stroke to engage your lats through the full range of motion.', iconId: 'rom' },
+      { fault: 'Hunching over at the bottom', fix: 'Maintain a strong, flat back. Hinge at the hips, don\'t round your spine.', iconId: 'roundedBack' },
+      { fault: 'Inconsistent pacing', fix: 'Use the monitor. Find a sustainable watts or cal/hr pace and hold it. Don\'t fly and die.', iconId: 'rhythm' },
+      { fault: 'Rushing the recovery', fix: 'The recovery should be controlled. Let the handles return to the top in a smooth motion, mirroring your pull.', iconId: 'rhythm' },
+      { fault: 'No hip drive', fix: 'Think of it like a kettlebell swing. The explosive "snap" of the hips is where the power is generated.', iconId: 'hipsRise' },
+      { fault: 'Letting go of core tension', fix: 'Brace your core as if you\'re about to be punched. This protects your back and transfers power efficiently.', iconId: 'core' }
     ],
   },
   {
@@ -603,14 +603,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/bikeerg/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Incorrect seat height', fix: 'Set the seat so your leg is almost fully extended at the bottom of the pedal stroke. A slight bend is optimal.' },
-      { fault: 'Bouncing in the saddle', fix: 'Focus on a smooth, circular pedal stroke rather than just stomping down. Pull up with the hamstrings as you push down with the quads.' },
-      { fault: 'Setting damper too high', fix: 'A higher damper is not always better. It requires more force per stroke. Find a moderate damper setting that allows for a high, sustainable RPM.' },
-      { fault: 'Slouching posture', fix: 'Sit up tall with a proud chest. This opens up your diaphragm for more efficient breathing.' },
-      { fault: 'Not using the monitor', fix: 'The monitor provides crucial feedback. Use RPMs or watts to maintain a consistent pace and effort.' },
-      { fault: 'Knees flaring out', fix: 'Keep your knees tracking in line with your feet. Flaring out can indicate weak glutes or poor setup.' },
-      { fault: '"Mashing" the pedals', fix: 'Think about scraping mud off the bottom of your shoe on the upstroke. This engages the hamstrings and creates a more efficient pedal cycle.' },
-      { fault: 'Inconsistent effort', fix: 'Pacing is everything. Whether it\'s a sprint or a long endurance piece, have a target pace in mind and stick to it.' }
+      { fault: 'Incorrect seat height', fix: 'Set the seat so your leg is almost fully extended at the bottom of the pedal stroke. A slight bend is optimal.', iconId: 'posture' },
+      { fault: 'Bouncing in the saddle', fix: 'Focus on a smooth, circular pedal stroke rather than just stomping down. Pull up with the hamstrings as you push down with the quads.', iconId: 'balance' },
+      { fault: 'Setting damper too high', fix: 'A higher damper is not always better. It requires more force per stroke. Find a moderate damper setting that allows for a high, sustainable RPM.', iconId: 'rhythm' },
+      { fault: 'Slouching posture', fix: 'Sit up tall with a proud chest. This opens up your diaphragm for more efficient breathing.', iconId: 'posture' },
+      { fault: 'Not using the monitor', fix: 'The monitor provides crucial feedback. Use RPMs or watts to maintain a consistent pace and effort.', iconId: 'rhythm' },
+      { fault: 'Knees flaring out', fix: 'Keep your knees tracking in line with your feet. Flaring out can indicate weak glutes or poor setup.', iconId: 'kneesCave' },
+      { fault: '"Mashing" the pedals', fix: 'Think about scraping mud off the bottom of your shoe on the upstroke. This engages the hamstrings and creates a more efficient pedal cycle.', iconId: 'rhythm' },
+      { fault: 'Inconsistent effort', fix: 'Pacing is everything. Whether it\'s a sprint or a long endurance piece, have a target pace in mind and stick to it.', iconId: 'rhythm' }
     ],
   },
   {
@@ -620,14 +620,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/ghdsitup/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Overextending at the bottom', fix: 'Descend only to parallel or slightly below until you have the requisite strength and control. Do not drop into uncontrolled hyperextension.' },
-      { fault: 'Using only hip flexors', fix: 'Initiate the sit-up by leading with your chest and squeezing your abs. The legs and hips assist, but the core should be the prime mover.' },
-      { fault: 'Violent, uncontrolled descent', fix: 'Control the eccentric (lowering) phase. This builds strength and protects your back. Don\'t just fall backward.' },
-      { fault: 'Throwing the head forward', fix: 'Keep a neutral neck. The movement is driven by your torso, not by jerking your head to create momentum.' },
-      { fault: 'Not using arms for momentum correctly', fix: 'Swing your arms from overhead towards your feet in a smooth arc. This momentum is part of the movement, but it should be controlled.' },
-      { fault: 'Going too fast too soon', fix: 'This is a high-skill, high-intensity movement. Build volume slowly to avoid severe DOMS and potential injury like rhabdomyolysis.' },
-      { fault: 'Incorrect machine setup', fix: 'Your glutes should be slightly off the front of the pad, allowing your hips to move freely. Feet should be securely anchored.' },
-      { fault: 'Holding breath', fix: 'Exhale forcefully as you sit up. This helps engage the abdominal muscles. Inhale on the way down.' }
+      { fault: 'Overextending at the bottom', fix: 'Descend only to parallel or slightly below until you have the requisite strength and control. Do not drop into uncontrolled hyperextension.', iconId: 'rom' },
+      { fault: 'Using only hip flexors', fix: 'Initiate the sit-up by leading with your chest and squeezing your abs. The legs and hips assist, but the core should be the prime mover.', iconId: 'core' },
+      { fault: 'Violent, uncontrolled descent', fix: 'Control the eccentric (lowering) phase. This builds strength and protects your back. Don\'t just fall backward.', iconId: 'rhythm' },
+      { fault: 'Throwing the head forward', fix: 'Keep a neutral neck. The movement is driven by your torso, not by jerking your head to create momentum.', iconId: 'posture' },
+      { fault: 'Not using arms for momentum correctly', fix: 'Swing your arms from overhead towards your feet in a smooth arc. This momentum is part of the movement, but it should be controlled.', iconId: 'earlyArmBend' },
+      { fault: 'Going too fast too soon', fix: 'This is a high-skill, high-intensity movement. Build volume slowly to avoid severe DOMS and potential injury like rhabdomyolysis.', iconId: 'rhythm' },
+      { fault: 'Incorrect machine setup', fix: 'Your glutes should be slightly off the front of the pad, allowing your hips to move freely. Feet should be securely anchored.', iconId: 'posture' },
+      { fault: 'Holding breath', fix: 'Exhale forcefully as you sit up. This helps engage the abdominal muscles. Inhale on the way down.', iconId: 'rhythm' }
     ],
   },
   {
@@ -637,14 +637,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/running/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Heel striking', fix: 'Try to land on your mid-foot, directly underneath your center of mass. This reduces braking forces and impact on your joints.' },
-      { fault: 'Over-striding', fix: 'Increase your cadence (steps per minute) rather than the length of your stride. Think "quick, light feet."' },
-      { fault: 'Tense upper body and arms', fix: 'Relax your shoulders, neck, and hands. Swing your arms forward and back, not across your body. Hands should be relaxed, not clenched fists.' },
-      { fault: 'Slouching posture', fix: 'Run tall with a proud chest and a slight forward lean from the ankles. This engages your core and improves breathing efficiency.' },
-      { fault: 'Inefficient breathing', fix: 'Breathe deeply from your belly (diaphragmatic breathing), not shallow chest breaths. Find a rhythm that syncs with your cadence.' },
-      { fault: 'Not using arms', fix: 'Your arms counterbalance your legs. A powerful arm swing can help drive your legs and maintain rhythm. Keep elbows at about 90 degrees.' },
-      { fault: 'Bouncing vertically', fix: 'Propel yourself forward, not upward. Wasted vertical motion is wasted energy.' },
-      { fault: 'Poor pacing', fix: 'Don\'t start out at a full sprint. Find a "conversation pace" for longer distances and learn what different efforts feel like.' }
+      { fault: 'Heel striking', fix: 'Try to land on your mid-foot, directly underneath your center of mass. This reduces braking forces and impact on your joints.', iconId: 'heelsLift' },
+      { fault: 'Over-striding', fix: 'Increase your cadence (steps per minute) rather than the length of your stride. Think "quick, light feet."', iconId: 'rhythm' },
+      { fault: 'Tense upper body and arms', fix: 'Relax your shoulders, neck, and hands. Swing your arms forward and back, not across your body. Hands should be relaxed, not clenched fists.', iconId: 'posture' },
+      { fault: 'Slouching posture', fix: 'Run tall with a proud chest and a slight forward lean from the ankles. This engages your core and improves breathing efficiency.', iconId: 'posture' },
+      { fault: 'Inefficient breathing', fix: 'Breathe deeply from your belly (diaphragmatic breathing), not shallow chest breaths. Find a rhythm that syncs with your cadence.', iconId: 'rhythm' },
+      { fault: 'Not using arms', fix: 'Your arms counterbalance your legs. A powerful arm swing can help drive your legs and maintain rhythm. Keep elbows at about 90 degrees.', iconId: 'earlyArmBend' },
+      { fault: 'Bouncing vertically', fix: 'Propel yourself forward, not upward. Wasted vertical motion is wasted energy.', iconId: 'balance' },
+      { fault: 'Poor pacing', fix: 'Don\'t start out at a full sprint. Find a "conversation pace" for longer distances and learn what different efforts feel like.', iconId: 'rhythm' }
     ],
   },
   {
@@ -654,14 +654,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/ropeclimb/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Relying solely on arm strength', fix: 'Use your feet. The J-hook or S-wrap technique locks the rope with your feet, allowing your powerful legs to stand up, saving your arms.' },
-      { fault: 'Inefficient foot clamp', fix: 'Practice the J-hook or S-wrap on the ground or from a box until it is second nature. A weak clamp means you are just holding your bodyweight with your arms.' },
-      { fault: 'Small, choppy pulls', fix: 'Make each "stand" a large movement. Reach high with the hands, bring your knees to your chest, establish a solid foot clamp, and then stand all the way up.' },
-      { fault: 'Sliding down uncontrollably', fix: 'Descend hand-over-hand. Do not slide down, as this can cause severe rope burn. Control your descent to stay safe.' },
-      { fault: 'Losing core tension', fix: 'Keep your core engaged to bring your knees high to your chest. A loose core makes it difficult to position your feet for a good clamp.' },
-      { fault: 'Grip burning out', fix: 'Trust your feet. The more weight you can put on your foot clamp, the less you have to hold with your hands. Relax your grip when your feet are secure.' },
-      { fault: 'Looking down', fix: 'Look up to where you are going. This helps maintain a better body position and focus on the goal.' },
-      { fault: 'Not practicing legless climbs', fix: 'To build supreme upper body pulling strength, incorporate legless rope climb progressions like pull-to-stands or full legless climbs.' }
+      { fault: 'Relying solely on arm strength', fix: 'Use your feet. The J-hook or S-wrap technique locks the rope with your feet, allowing your powerful legs to stand up, saving your arms.', iconId: 'earlyArmBend' },
+      { fault: 'Inefficient foot clamp', fix: 'Practice the J-hook or S-wrap on the ground or from a box until it is second nature. A weak clamp means you are just holding your bodyweight with your arms.', iconId: 'grip' },
+      { fault: 'Small, choppy pulls', fix: 'Make each "stand" a large movement. Reach high with the hands, bring your knees to your chest, establish a solid foot clamp, and then stand all the way up.', iconId: 'rhythm' },
+      { fault: 'Sliding down uncontrollably', fix: 'Descend hand-over-hand. Do not slide down, as this can cause severe rope burn. Control your descent to stay safe.', iconId: 'unstableOverhead' },
+      { fault: 'Losing core tension', fix: 'Keep your core engaged to bring your knees high to your chest. A loose core makes it difficult to position your feet for a good clamp.', iconId: 'core' },
+      { fault: 'Grip burning out', fix: 'Trust your feet. The more weight you can put on your foot clamp, the less you have to hold with your hands. Relax your grip when your feet are secure.', iconId: 'grip' },
+      { fault: 'Looking down', fix: 'Look up to where you are going. This helps maintain a better body position and focus on the goal.', iconId: 'posture' },
+      { fault: 'Not practicing legless climbs', fix: 'To build supreme upper body pulling strength, incorporate legless rope climb progressions like pull-to-stands or full legless climbs.', iconId: 'rom' }
     ],
   },
   {
@@ -671,14 +671,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/lsit/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Bent knees', fix: 'This is often a flexibility issue (hamstrings) or a strength issue (quads/hip flexors). Work on hamstring stretches and practice single-leg extensions.' },
-      { fault: 'Shoulders shrugged up by ears', fix: 'Actively depress your scapula by pushing down into the floor or parallettes. Think about creating as much space between your ears and shoulders as possible.' },
-      { fault: 'Hips are behind hands', fix: 'Your hips should be slightly in front of your hands. This requires significant core compression and pushing down through the shoulders.' },
-      { fault: 'Not locking out elbows', fix: 'Maintain straight, locked-out arms. If you can\'t, it indicates a need for more triceps and shoulder strength. Practice support holds.' },
-      { fault: 'Pointing toes down', fix: 'Actively point your toes forward. This engages the quads and creates a cleaner body line.' },
-      { fault: 'Not breathing', fix: 'It\'s easy to hold your breath in an intense isometric hold. Practice taking small, controlled breaths to stay calm and extend your hold time.' },
-      { fault: 'Hunched or rounded back', fix: 'Try to maintain a proud chest and a relatively neutral spine. This is difficult but is the goal for a perfect L-sit.' },
-      { fault: 'Only holding for a second', fix: 'Use progressions. Start with a tuck sit (knees bent), then a single-leg L-sit, and gradually work towards the full position. Accumulate time.' }
+      { fault: 'Bent knees', fix: 'This is often a flexibility issue (hamstrings) or a strength issue (quads/hip flexors). Work on hamstring stretches and practice single-leg extensions.', iconId: 'rom' },
+      { fault: 'Shoulders shrugged up by ears', fix: 'Actively depress your scapula by pushing down into the floor or parallettes. Think about creating as much space between your ears and shoulders as possible.', iconId: 'posture' },
+      { fault: 'Hips are behind hands', fix: 'Your hips should be slightly in front of your hands. This requires significant core compression and pushing down through the shoulders.', iconId: 'hipsRise' },
+      { fault: 'Not locking out elbows', fix: 'Maintain straight, locked-out arms. If you can\'t, it indicates a need for more triceps and shoulder strength. Practice support holds.', iconId: 'pressOut' },
+      { fault: 'Pointing toes down', fix: 'Actively point your toes forward. This engages the quads and creates a cleaner body line.', iconId: 'posture' },
+      { fault: 'Not breathing', fix: 'It\'s easy to hold your breath in an intense isometric hold. Practice taking small, controlled breaths to stay calm and extend your hold time.', iconId: 'rhythm' },
+      { fault: 'Hunched or rounded back', fix: 'Try to maintain a proud chest and a relatively neutral spine. This is difficult but is the goal for a perfect L-sit.', iconId: 'roundedBack' },
+      { fault: 'Only holding for a second', fix: 'Use progressions. Start with a tuck sit (knees bent), then a single-leg L-sit, and gradually work towards the full position. Accumulate time.', iconId: 'rhythm' }
     ],
   },
   {
@@ -688,15 +688,15 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/hswalk/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Arching the back ("banana back")', fix: 'Engage your core and glutes to maintain a hollow body position. Look between your hands, not far in front. This keeps your body stacked.' },
-      { fault: 'Incorrect Hand and Finger Position', fix: 'Spread your fingers wide and grip the floor to create a stable base. Point your index fingers forward or slightly outward. This active grip helps with balance and control.' },
-      { fault: 'Walking with hands too wide', fix: 'Your hands should be about shoulder-width apart, just as when you walk on your feet. A wide base is less efficient for shifting weight.' },
-      { fault: 'Shoulders not "open"', fix: 'Actively push the ground away, fully extending through your shoulders. A "closed" or shrugged shoulder is unstable.' },
-      { fault: 'Taking large, uncontrolled "steps"', fix: 'Think small, quick steps. The movement is a controlled fall, shifting your weight from one hand to the other. Don\'t try to leap forward.' },
-      { fault: 'Looking too far ahead', fix: 'Your gaze should be focused on the floor between your hands. Looking too far forward encourages an arched back.' },
-      { fault: 'Letting legs flop around', fix: 'Keep your legs together and toes pointed. This creates a tighter, more controllable body line.' },
-      { fault: 'Not shifting weight', fix: 'To lift one hand, you must first shift your center of mass over the supporting hand. Practice shoulder taps against a wall.' },
-      { fault: 'Giving up after losing balance', fix: 'Practice falling safely. Learning to pirouette out or roll out will give you the confidence to practice more without fear.' }
+      { fault: 'Arching the back ("banana back")', fix: 'Engage your core and glutes to maintain a hollow body position. Look between your hands, not far in front. This keeps your body stacked.', iconId: 'roundedBack' },
+      { fault: 'Incorrect Hand and Finger Position', fix: 'Spread your fingers wide and grip the floor to create a stable base. Point your index fingers forward or slightly outward. This active grip helps with balance and control.', iconId: 'grip' },
+      { fault: 'Walking with hands too wide', fix: 'Your hands should be about shoulder-width apart, just as when you walk on your feet. A wide base is less efficient for shifting weight.', iconId: 'balance' },
+      { fault: 'Shoulders not "open"', fix: 'Actively push the ground away, fully extending through your shoulders. A "closed" or shrugged shoulder is unstable.', iconId: 'unstableOverhead' },
+      { fault: 'Taking large, uncontrolled "steps"', fix: 'Think small, quick steps. The movement is a controlled fall, shifting your weight from one hand to the other. Don\'t try to leap forward.', iconId: 'rhythm' },
+      { fault: 'Looking too far ahead', fix: 'Your gaze should be focused on the floor between your hands. Looking too far forward encourages an arched back.', iconId: 'posture' },
+      { fault: 'Letting legs flop around', fix: 'Keep your legs together and toes pointed. This creates a tighter, more controllable body line.', iconId: 'balance' },
+      { fault: 'Not shifting weight', fix: 'To lift one hand, you must first shift your center of mass over the supporting hand. Practice shoulder taps against a wall.', iconId: 'balance' },
+      { fault: 'Giving up after losing balance', fix: 'Practice falling safely. Learning to pirouette out or roll out will give you the confidence to practice more without fear.', iconId: 'rhythm' }
     ],
   },
   {
@@ -706,14 +706,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/wallwalk/600/400',
     category: 'Gymnastics',
     commonFaults: [
-      { fault: 'Hips sagging towards the floor', fix: 'Maintain a rigid plank or hollow body position throughout. Squeeze your core and glutes to keep a straight line from hands to feet.' },
-      { fault: 'Not getting close enough to the wall', fix: 'The goal is to get your chest and nose as close to the wall as possible. Take small hand steps back towards the wall on the way up.' },
-      { fault: 'Starting with hands too far from wall', fix: 'Begin in a plank position with your feet touching the wall. This sets you up for a smooth and controlled ascent.' },
-      { fault: 'Uncontrolled descent ("peeling off")', fix: 'Control the walk back down. Walk your hands forward one at a time as you walk your feet down the wall. Don\'t just collapse.' },
-      { fault: 'Shoulders shrugging or collapsing', fix: 'Actively push the floor away at all times. Keep your shoulders engaged and elbows locked to build stability.' },
-      { fault: 'Looking forward', fix: 'Keep your head in a neutral position, looking between your hands. This helps maintain a better body line.' },
-      { fault: 'Feet sliding off the wall', fix: 'Actively press your toes into the wall. Ensure your footwear has adequate grip.' },
-      { fault: 'Bending elbows', fix: 'Keep your arms locked out. This is a stability exercise, not a push-up. If you need to bend your arms, you lack the required strength and should scale the range of motion.' }
+      { fault: 'Hips sagging towards the floor', fix: 'Maintain a rigid plank or hollow body position throughout. Squeeze your core and glutes to keep a straight line from hands to feet.', iconId: 'core' },
+      { fault: 'Not getting close enough to the wall', fix: 'The goal is to get your chest and nose as close to the wall as possible. Take small hand steps back towards the wall on the way up.', iconId: 'rom' },
+      { fault: 'Starting with hands too far from wall', fix: 'Begin in a plank position with your feet touching the wall. This sets you up for a smooth and controlled ascent.', iconId: 'balance' },
+      { fault: 'Uncontrolled descent ("peeling off")', fix: 'Control the walk back down. Walk your hands forward one at a time as you walk your feet down the wall. Don\'t just collapse.', iconId: 'rhythm' },
+      { fault: 'Shoulders shrugging or collapsing', fix: 'Actively push the floor away at all times. Keep your shoulders engaged and elbows locked to build stability.', iconId: 'unstableOverhead' },
+      { fault: 'Looking forward', fix: 'Keep your head in a neutral position, looking between your hands. This helps maintain a better body line.', iconId: 'posture' },
+      { fault: 'Feet sliding off the wall', fix: 'Actively press your toes into the wall. Ensure your footwear has adequate grip.', iconId: 'balance' },
+      { fault: 'Bending elbows', fix: 'Keep your arms locked out. This is a stability exercise, not a push-up. If you need to bend your arms, you lack the required strength and should scale the range of motion.', iconId: 'pressOut' }
     ],
   },
   {
@@ -723,14 +723,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/lunge/600/400',
     category: 'Monostructural',
     commonFaults: [
-      { fault: 'Front knee going past toes', fix: 'Take a larger step forward. The goal is to have your front shin be roughly vertical at the bottom of the lunge.' },
-      { fault: 'Leaning torso too far forward', fix: 'Keep your chest up and your torso upright. This engages your core and puts the focus on your legs and glutes.' },
-      { fault: 'Pushing off the back foot', fix: 'Drive through the heel of your front foot to return to the starting position. The front leg should be doing the majority of the work.' },
-      { fault: 'Back knee slamming into the ground', fix: 'Control your descent. Gently "kiss" the ground with your back knee instead of crashing down.' },
-      { fault: 'Front knee caving inward', fix: 'Focus on tracking your knee over your foot. This may indicate weak hip stabilizers (gluteus medius). Think about "screwing" your front foot into the ground.' },
-      { fault: 'Taking too short a step', fix: 'A short step often leads to the front knee going past the toe and an unstable base. Take a comfortable, moderately long step.' },
-      { fault: 'Losing balance', fix: 'Widen your stance slightly as if you are on railroad tracks, not a tightrope. Engage your core for stability.' },
-      { fault: 'Not reaching full hip extension at the top', fix: 'Finish each rep by standing up completely and squeezing the glute of your back leg. This ensures a full range of motion.' }
+      { fault: 'Front knee going past toes', fix: 'Take a larger step forward. The goal is to have your front shin be roughly vertical at the bottom of the lunge.', iconId: 'kneesCave' },
+      { fault: 'Leaning torso too far forward', fix: 'Keep your chest up and your torso upright. This engages your core and puts the focus on your legs and glutes.', iconId: 'chestDrop' },
+      { fault: 'Pushing off the back foot', fix: 'Drive through the heel of your front foot to return to the starting position. The front leg should be doing the majority of the work.', iconId: 'balance' },
+      { fault: 'Back knee slamming into the ground', fix: 'Control your descent. Gently "kiss" the ground with your back knee instead of crashing down.', iconId: 'rhythm' },
+      { fault: 'Front knee caving inward', fix: 'Focus on tracking your knee over your foot. This may indicate weak hip stabilizers (gluteus medius). Think about "screwing" your front foot into the ground.', iconId: 'kneesCave' },
+      { fault: 'Taking too short a step', fix: 'A short step often leads to the front knee going past the toe and an unstable base. Take a comfortable, moderately long step.', iconId: 'shallowDepth' },
+      { fault: 'Losing balance', fix: 'Widen your stance slightly as if you are on railroad tracks, not a tightrope. Engage your core for stability.', iconId: 'balance' },
+      { fault: 'Not reaching full hip extension at the top', fix: 'Finish each rep by standing up completely and squeezing the glute of your back leg. This ensures a full range of motion.', iconId: 'rom' }
     ],
   },
   {
@@ -740,14 +740,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/gto/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Inefficient movement choice', fix: 'For lighter loads, a snatch (power or squat) is fastest. For heavier loads, a clean and jerk (power or squat, split or push) is more effective. Choose the right tool for the job.' },
-      { fault: 'Poor starting position', fix: 'Regardless of the method, start with a flat back, engaged core, and chest up. A bad first pull from the ground ruins the entire lift.' },
-      { fault: 'Muscling the weight with arms', fix: 'Use your hips. All GTO variations are powered by an explosive hip extension. The arms guide and finish the movement.' },
-      { fault: 'Not reaching full lockout', fix: 'The rep is only complete when the weight is stable overhead with hips, knees, and arms fully extended, and feet under the hips.' },
-      { fault: 'Looping bar path', fix: 'Keep the implement close to your body. A bar path that swings away from you is inefficient and puts your back at risk.' },
-      { fault: 'Pressing out the lift', fix: 'A press-out indicates you didn\'t get under the bar fast enough or didn\'t generate enough power from your hips. Be aggressive in your turnover and catch.' },
-      { fault: 'Crashing the weight down', fix: 'Control the eccentric portion of the lift, especially in a workout for time. Dropping from overhead can cause the bar to bounce unpredictably, wasting time.' },
-      { fault: 'Poor breathing and pacing', fix: 'For multiple reps, find a rhythm. Exhale on the explosive upward drive. Don\'t hold your breath for too long.' }
+      { fault: 'Inefficient movement choice', fix: 'For lighter loads, a snatch (power or squat) is fastest. For heavier loads, a clean and jerk (power or squat, split or push) is more effective. Choose the right tool for the job.', iconId: 'rhythm' },
+      { fault: 'Poor starting position', fix: 'Regardless of the method, start with a flat back, engaged core, and chest up. A bad first pull from the ground ruins the entire lift.', iconId: 'posture' },
+      { fault: 'Muscling the weight with arms', fix: 'Use your hips. All GTO variations are powered by an explosive hip extension. The arms guide and finish the movement.', iconId: 'earlyArmBend' },
+      { fault: 'Not reaching full lockout', fix: 'The rep is only complete when the weight is stable overhead with hips, knees, and arms fully extended, and feet under the hips.', iconId: 'rom' },
+      { fault: 'Looping bar path', fix: 'Keep the implement close to your body. A bar path that swings away from you is inefficient and puts your back at risk.', iconId: 'barPath' },
+      { fault: 'Pressing out the lift', fix: 'A press-out indicates you didn\'t get under the bar fast enough or didn\'t generate enough power from your hips. Be aggressive in your turnover and catch.', iconId: 'pressOut' },
+      { fault: 'Crashing the weight down', fix: 'Control the eccentric portion of the lift, especially in a workout for time. Dropping from overhead can cause the bar to bounce unpredictably, wasting time.', iconId: 'unstableOverhead' },
+      { fault: 'Poor breathing and pacing', fix: 'For multiple reps, find a rhythm. Exhale on the explosive upward drive. Don\'t hold your breath for too long.', iconId: 'rhythm' }
     ],
   },
   {
@@ -757,14 +757,14 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: 'https://picsum.photos/seed/dbcleanjerk/600/400',
     category: 'Weightlifting',
     commonFaults: [
-      { fault: 'Curling the dumbbells in the clean', fix: 'The clean is powered by a hip-driven jump, not a bicep curl. Keep arms long and use your hips to elevate the dumbbells.' },
-      { fault: 'Swinging dumbbells away from body', fix: 'Keep the dumbbells close to your body, with the heads tracking along your shins and thighs for an efficient path.' },
-      { fault: 'Receiving the clean with a rounded back', fix: 'Catch the dumbbells on your shoulders in a solid, upright partial squat. Keep your chest proud and elbows up.' },
-      { fault: 'Pressing out the jerk (strict press)', fix: 'Use the dip and drive of your legs to propel the dumbbells off your shoulders. The arms should only finish the lockout, not do all the work.' },
-      { fault: 'Inefficient dip and drive', fix: 'The dip should be shallow and straight down, followed by a violent upward drive. Avoid dipping forward onto your toes.' },
-      { fault: 'Unstable overhead position', fix: 'Finish with dumbbells locked out, biceps by your ears, and core tight. Don\'t arch your back excessively.' },
-      { fault: 'Not controlling the descent', fix: 'Lower the dumbbells back to the shoulder under control before dropping them for the next rep. This saves energy and sets you up better.' },
-      { fault: 'Mismatched timing on two-arm versions', fix: 'Focus on moving both dumbbells in sync. They should leave the floor, land on the shoulders, and lock out overhead at the same time.' }
+      { fault: 'Curling the dumbbells in the clean', fix: 'The clean is powered by a hip-driven jump, not a bicep curl. Keep arms long and use your hips to elevate the dumbbells.', iconId: 'earlyArmBend' },
+      { fault: 'Swinging dumbbells away from body', fix: 'Keep the dumbbells close to your body, with the heads tracking along your shins and thighs for an efficient path.', iconId: 'barPath' },
+      { fault: 'Receiving the clean with a rounded back', fix: 'Catch the dumbbells on your shoulders in a solid, upright partial squat. Keep your chest proud and elbows up.', iconId: 'roundedBack' },
+      { fault: 'Pressing out the jerk (strict press)', fix: 'Use the dip and drive of your legs to propel the dumbbells off your shoulders. The arms should only finish the lockout, not do all the work.', iconId: 'pressOut' },
+      { fault: 'Inefficient dip and drive', fix: 'The dip should be shallow and straight down, followed by a violent upward drive. Avoid dipping forward onto your toes.', iconId: 'rhythm' },
+      { fault: 'Unstable overhead position', fix: 'Finish with dumbbells locked out, biceps by your ears, and core tight. Don\'t arch your back excessively.', iconId: 'unstableOverhead' },
+      { fault: 'Not controlling the descent', fix: 'Lower the dumbbells back to the shoulder under control before dropping them for the next rep. This saves energy and sets you up better.', iconId: 'rhythm' },
+      { fault: 'Mismatched timing on two-arm versions', fix: 'Focus on moving both dumbbells in sync. They should leave the floor, land on the shoulders, and lock out overhead at the same time.', iconId: 'rhythm' }
     ],
   },
   {
@@ -774,10 +774,10 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: `https://picsum.photos/seed/kbsnatch/600/400`,
     category: 'Kettlebell',
     commonFaults: [
-        { fault: 'Taming the arc (bell flipping over and hitting forearm)', fix: 'Focus on a high pull, keeping the bell close to your body. At the top, punch your hand through the bell rather than letting it flop over. Think of it as a zip-up motion.' },
-        { fault: 'Using arm strength instead of hip power', fix: 'The power comes from a violent hip hinge, not a front raise. The arm simply guides the bell to its overhead destination.' },
-        { fault: 'Not stabilizing overhead', fix: 'Finish each rep in a stable overhead position with an active shoulder, locked elbow, and bicep by your ear before lowering.' },
-        { fault: 'Letting the bell pull you down', fix: 'Control the eccentric portion. Hinge at the hips to absorb the momentum rather than letting it yank your shoulder down.' }
+        { fault: 'Taming the arc (bell flipping over and hitting forearm)', fix: 'Focus on a high pull, keeping the bell close to your body. At the top, punch your hand through the bell rather than letting it flop over. Think of it as a zip-up motion.', iconId: 'barPath' },
+        { fault: 'Using arm strength instead of hip power', fix: 'The power comes from a violent hip hinge, not a front raise. The arm simply guides the bell to its overhead destination.', iconId: 'earlyArmBend' },
+        { fault: 'Not stabilizing overhead', fix: 'Finish each rep in a stable overhead position with an active shoulder, locked elbow, and bicep by your ear before lowering.', iconId: 'unstableOverhead' },
+        { fault: 'Letting the bell pull you down', fix: 'Control the eccentric portion. Hinge at the hips to absorb the momentum rather than letting it yank your shoulder down.', iconId: 'rhythm' }
     ]
   },
   {
@@ -787,10 +787,10 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: `https://picsum.photos/seed/tgu/600/400`,
     category: 'Kettlebell',
     commonFaults: [
-        { fault: 'Rushing the steps', fix: 'The TGU is a slow, deliberate movement. Own each position before moving to the next. It is a practice in stability, not speed.' },
-        { fault: 'Eyes not on the bell', fix: 'Keep your eyes on the weight for the majority of the movement. This helps maintain stability and awareness of your overhead position.' },
-        { fault: 'Shoulder instability', fix: 'Keep an "active" shoulder by packing it into its socket. Never let the shoulder shrug up towards your ear.' },
-        { fault: 'Lifting the heel of the bent leg', fix: 'In the initial press and roll to elbow, keep the foot of your bent leg firmly planted on the floor to provide a stable base.' }
+        { fault: 'Rushing the steps', fix: 'The TGU is a slow, deliberate movement. Own each position before moving to the next. It is a practice in stability, not speed.', iconId: 'rhythm' },
+        { fault: 'Eyes not on the bell', fix: 'Keep your eyes on the weight for the majority of the movement. This helps maintain stability and awareness of your overhead position.', iconId: 'posture' },
+        { fault: 'Shoulder instability', fix: 'Keep an "active" shoulder by packing it into its socket. Never let the shoulder shrug up towards your ear.', iconId: 'unstableOverhead' },
+        { fault: 'Lifting the heel of the bent leg', fix: 'In the initial press and roll to elbow, keep the foot of your bent leg firmly planted on the floor to provide a stable base.', iconId: 'heelsLift' }
     ]
   },
   {
@@ -800,10 +800,10 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: `https://picsum.photos/seed/gobletsquat/600/400`,
     category: 'Kettlebell',
     commonFaults: [
-        { fault: 'Dropping the chest forward', fix: 'Keep your elbows tucked in and actively "pry" your knees apart with them at the bottom. This forces your chest to stay up.' },
-        { fault: 'Heels lifting off the ground', fix: 'This points to ankle mobility issues. Focus on sitting back and keeping your weight on your mid-foot. Practice with your heels on small plates if needed.' },
-        { fault: 'Not reaching full depth', fix: 'The goblet squat is a great tool for improving squat depth. Hold the bottom position for a few seconds to build comfort and mobility.' },
-        { fault: 'Resting the bell on the chest', fix: 'Actively hold the kettlebell slightly away from your chest. This engages your upper back and core throughout the movement.' }
+        { fault: 'Dropping the chest forward', fix: 'Keep your elbows tucked in and actively "pry" your knees apart with them at the bottom. This forces your chest to stay up.', iconId: 'chestDrop' },
+        { fault: 'Heels lifting off the ground', fix: 'This points to ankle mobility issues. Focus on sitting back and keeping your weight on your mid-foot. Practice with your heels on small plates if needed.', iconId: 'heelsLift' },
+        { fault: 'Not reaching full depth', fix: 'The goblet squat is a great tool for improving squat depth. Hold the bottom position for a few seconds to build comfort and mobility.', iconId: 'shallowDepth' },
+        { fault: 'Resting the bell on the chest', fix: 'Actively hold the kettlebell slightly away from your chest. This engages your upper back and core throughout the movement.', iconId: 'core' }
     ]
   },
   {
@@ -813,10 +813,10 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: `https://picsum.photos/seed/farmerscarry/600/400`,
     category: 'Strongman',
     commonFaults: [
-        { fault: 'Rounded shoulders and back', fix: 'Stay tall. Keep your chest proud, shoulders pulled back and down, and core braced. Imagine a string pulling the top of your head to the ceiling.' },
-        { fault: 'Taking short, choppy steps', fix: 'Take smooth, controlled steps. A choppy stride indicates a lack of stability. Slow down and focus on staying upright.' },
-        { fault: 'Looking down', fix: 'Keep your gaze fixed forward. This helps maintain an upright posture and balance.' },
-        { fault: 'Letting weights drift from sides', fix: 'Actively engage your lats to keep the weights tight to your body. Don\'t let them swing or control you.' }
+        { fault: 'Rounded shoulders and back', fix: 'Stay tall. Keep your chest proud, shoulders pulled back and down, and core braced. Imagine a string pulling the top of your head to the ceiling.', iconId: 'roundedBack' },
+        { fault: 'Taking short, choppy steps', fix: 'Take smooth, controlled steps. A choppy stride indicates a lack of stability. Slow down and focus on staying upright.', iconId: 'rhythm' },
+        { fault: 'Looking down', fix: 'Keep your gaze fixed forward. This helps maintain an upright posture and balance.', iconId: 'posture' },
+        { fault: 'Letting weights drift from sides', fix: 'Actively engage your lats to keep the weights tight to your body. Don\'t let them swing or control you.', iconId: 'barPath' }
     ]
   },
   {
@@ -826,10 +826,10 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: `https://picsum.photos/seed/sandbag/600/400`,
     category: 'Strongman',
     commonFaults: [
-        { fault: 'Trying to curl the bag', fix: 'The power comes from a violent hip extension. Get your hips low, hug the bag tight to your body, and explode upwards, pulling the bag into your lap or up to your shoulder.' },
-        { fault: 'Losing posture', fix: 'Maintain a strong, flat back, especially on the initial pick. It is easy to round with an awkward object; fight to keep your chest up.' },
-        { fault: 'Bag slipping from grip', fix: 'Get a deep grip on the bag material. Squeeze it tight into your body and use your arms as hooks.' },
-        { fault: 'Not getting under the bag', fix: 'After the hip extension, you must be aggressive in dropping your level to get under the bag and secure it on your shoulder or in your lap.' }
+        { fault: 'Trying to curl the bag', fix: 'The power comes from a violent hip extension. Get your hips low, hug the bag tight to your body, and explode upwards, pulling the bag into your lap or up to your shoulder.', iconId: 'earlyArmBend' },
+        { fault: 'Losing posture', fix: 'Maintain a strong, flat back, especially on the initial pick. It is easy to round with an awkward object; fight to keep your chest up.', iconId: 'roundedBack' },
+        { fault: 'Bag slipping from grip', fix: 'Get a deep grip on the bag material. Squeeze it tight into your body and use your arms as hooks.', iconId: 'grip' },
+        { fault: 'Not getting under the bag', fix: 'After the hip extension, you must be aggressive in dropping your level to get under the bag and secure it on your shoulder or in your lap.', iconId: 'rhythm' }
     ]
   },
   {
@@ -839,10 +839,10 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: `https://picsum.photos/seed/yokecarry/600/400`,
     category: 'Strongman',
     commonFaults: [
-        { fault: 'Slow, hesitant start', fix: 'The pickup must be aggressive. Get under the yoke, brace your core, and stand up explosively. The first few steps are crucial for building momentum.' },
-        { fault: 'Taking steps that are too long', fix: 'Focus on short, choppy, fast steps. This keeps your center of gravity under you and prevents the yoke from swinging wildly.' },
-        { fault: 'Losing core tightness', fix: 'Take a huge breath into your belly and brace your entire torso as if you are about to be hit. Any softness in the middle will cause the yoke to whip.' },
-        { fault: 'Looking down', fix: 'Keep your eyes up and focused on the finish line. This promotes a better, more upright posture.' }
+        { fault: 'Slow, hesitant start', fix: 'The pickup must be aggressive. Get under the yoke, brace your core, and stand up explosively. The first few steps are crucial for building momentum.', iconId: 'rhythm' },
+        { fault: 'Taking steps that are too long', fix: 'Focus on short, choppy, fast steps. This keeps your center of gravity under you and prevents the yoke from swinging wildly.', iconId: 'balance' },
+        { fault: 'Losing core tightness', fix: 'Take a huge breath into your belly and brace your entire torso as if you are about to be hit. Any softness in the middle will cause the yoke to whip.', iconId: 'core' },
+        { fault: 'Looking down', fix: 'Keep your eyes up and focused on the finish line. This promotes a better, more upright posture.', iconId: 'posture' }
     ]
   },
   {
@@ -852,10 +852,10 @@ export const MOVEMENTS: Movement[] = [
     imageUrl: `https://picsum.photos/seed/tireflip/600/400`,
     category: 'Strongman',
     commonFaults: [
-        { fault: 'Bicep curling the tire', fix: 'This is a great way to tear a bicep. Drive with your legs and chest. Your arms should be straight and function as levers, not primary movers.' },
-        { fault: 'Starting too far from the tire', fix: 'Get your chest and hips as close to the tire as possible. This improves your leverage for the initial lift.' },
-        { fault: 'Not using a hip pop', fix: 'Once the tire is about knee height, you need to aggressively drive your hip forward into it to generate upward momentum.' },
-        { fault: 'Pushing too early', fix: 'Wait until the tire is past a 45-degree angle before you transition from lifting to pushing it over. Pushing too soon will stall the lift.' }
+        { fault: 'Bicep curling the tire', fix: 'This is a great way to tear a bicep. Drive with your legs and chest. Your arms should be straight and function as levers, not primary movers.', iconId: 'earlyArmBend' },
+        { fault: 'Starting too far from the tire', fix: 'Get your chest and hips as close to the tire as possible. This improves your leverage for the initial lift.', iconId: 'balance' },
+        { fault: 'Not using a hip pop', fix: 'Once the tire is about knee height, you need to aggressively drive your hip forward into it to generate upward momentum.', iconId: 'hipsRise' },
+        { fault: 'Pushing too early', fix: 'Wait until the tire is past a 45-degree angle before you transition from lifting to pushing it over. Pushing too soon will stall the lift.', iconId: 'rhythm' }
     ]
   },
 ];

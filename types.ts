@@ -4,7 +4,7 @@ export interface Movement {
   description: string;
   imageUrl: string;
   category: 'Weightlifting' | 'Gymnastics' | 'Monostructural' | 'Kettlebell' | 'Strongman';
-  commonFaults: { fault: string; fix: string }[];
+  commonFaults: { fault: string; fix: string; iconId: string; }[];
 }
 
 export interface Drill {
@@ -50,4 +50,9 @@ export interface AnalysisSession {
   date: string;
   imageDataUrl: string;
   feedback: string;
+}
+
+export interface SuggestedWorkout {
+  name: string;
+  description: string;
 }

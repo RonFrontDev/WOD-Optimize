@@ -5,7 +5,13 @@ import FileUpload from './FileUpload';
 import LoadingSpinner from './LoadingSpinner';
 import SkeletonLoader from './SkeletonLoader';
 import Modal from './Modal';
-import { ArrowLeftIcon, HeartIcon, LightningIcon, SparklesIcon, XCircleIcon, ForwardIcon, EnergyIcon, ArchiveBoxIcon, GripIcon } from './Icons';
+import { 
+    ArrowLeftIcon, HeartIcon, LightningIcon, SparklesIcon, XCircleIcon, ForwardIcon, 
+    EnergyIcon, ArchiveBoxIcon, GripIcon, RoundedBackIcon, KneesCaveIcon, ChestDropIcon,
+    ShallowDepthIcon, HeelsLiftIcon, HipsRiseIcon, BarPathIcon, EarlyArmBendIcon,
+    PressOutIcon, UnstableOverheadIcon, RhythmIcon, PostureIcon, RangeOfMotionIcon,
+    GripWeakIcon, BalanceIcon, CoreIcon, CheckCircleIcon, ExclamationTriangleIcon
+} from './Icons';
 import GripGuide from './GripGuide';
 
 interface MovementDetailProps {
@@ -23,9 +29,84 @@ const noGripMovementIds = [
   'running', 'l-sit', 'handstand-walk', 'wall-walk', 'lunge'
 ];
 
+const FaultIcon = ({ iconId, className }: { iconId: string; className: string }) => {
+    switch (iconId) {
+        case 'roundedBack': return <RoundedBackIcon className={className} />;
+        case 'kneesCave': return <KneesCaveIcon className={className} />;
+        case 'chestDrop': return <ChestDropIcon className={className} />;
+        case 'shallowDepth': return <ShallowDepthIcon className={className} />;
+        case 'heelsLift': return <HeelsLiftIcon className={className} />;
+        case 'hipsRise': return <HipsRiseIcon className={className} />;
+        case 'barPath': return <BarPathIcon className={className} />;
+        case 'earlyArmBend': return <EarlyArmBendIcon className={className} />;
+        case 'pressOut': return <PressOutIcon className={className} />;
+        case 'unstableOverhead': return <UnstableOverheadIcon className={className} />;
+        case 'rhythm': return <RhythmIcon className={className} />;
+        case 'posture': return <PostureIcon className={className} />;
+        case 'rom': return <RangeOfMotionIcon className={className} />;
+        case 'grip': return <GripWeakIcon className={className} />;
+        case 'balance': return <BalanceIcon className={className} />;
+        case 'core': return <CoreIcon className={className} />;
+        default: return <XCircleIcon className={className} />;
+    }
+};
+
+const ParsedFeedback = ({ feedbackText }: { feedbackText: string }) => {
+    const overallMatch = feedbackText.match(/Overall Impression:([\s\S]*?)(Points of Performance:|Areas for Improvement:|$)/i);
+    const pointsMatch = feedbackText.match(/Points of Performance:([\s\S]*?)(Areas for Improvement:|$)/i);
+    const improvementMatch = feedbackText.match(/Areas for Improvement:([\s\S]*)/i);
+
+    const overall = overallMatch ? overallMatch[1].trim() : null;
+    const points = pointsMatch ? pointsMatch[1].trim().split('\n').map(s => s.replace(/^-|^\d+\.\s*/, '').trim()).filter(Boolean) : [];
+    const improvements = improvementMatch ? improvementMatch[1].trim().split('\n').map(s => s.replace(/^-|^\d+\.\s*/, '').trim()).filter(Boolean) : [];
+
+    // Fallback for unexpected formats
+    if (!overall && points.length === 0 && improvements.length === 0) {
+        return <div className="whitespace-pre-wrap font-mono text-sm">{feedbackText}</div>;
+    }
+
+    return (
+        <div className="space-y-6 text-text-primary dark:text-dark-text-primary">
+            {overall && (
+                <div>
+                    <h4 className="font-bold text-lg mb-2">Overall Impression</h4>
+                    <p className="text-text-muted dark:text-dark-text-muted">{overall}</p>
+                </div>
+            )}
+            {points.length > 0 && (
+                 <div>
+                    <h4 className="font-bold text-lg mb-3 text-emerald-600 dark:text-emerald-400">Points of Performance</h4>
+                    <ul className="space-y-3">
+                        {points.map((point, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                                <CheckCircleIcon className="w-6 h-6 text-emerald-500 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+                                <span>{point}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+             {improvements.length > 0 && (
+                 <div>
+                    <h4 className="font-bold text-lg mb-3 text-red-600 dark:text-red-400">Areas for Improvement</h4>
+                    <ul className="space-y-3">
+                        {improvements.map((imp, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                                <ExclamationTriangleIcon className="w-6 h-6 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                                <span>{imp}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+};
+
+
 export default function MovementDetail({ movement, onBack }: MovementDetailProps): React.JSX.Element {
   const [view, setView] = useState<ViewMode>('details');
-  const [selectedFault, setSelectedFault] = useState<{ fault: string; fix: string } | null>(null);
+  const [modalContent, setModalContent] = useState<{ title: string; content: React.ReactNode } | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [feedback, setFeedback] = useState<string>('');
   const [drills, setDrills] = useState<Drill[]>([]);
@@ -46,11 +127,10 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
     try {
         const allHistory = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY) || '{}');
         const movementHistory = allHistory[movementId] || [];
-        // Add new session to the beginning of the array
         const updatedHistory = [session, ...movementHistory];
         allHistory[movementId] = updatedHistory;
         localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(allHistory));
-        setHistory(updatedHistory); // Update state
+        setHistory(updatedHistory);
     } catch (e) {
         console.error("Failed to save history to localStorage", e);
     }
@@ -64,7 +144,6 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
     try {
       const result = await analyzeMovementForm(imageFile, movement.name);
       setFeedback(result);
-      // Save to history
       const reader = new FileReader();
       reader.onloadend = () => {
           const imageDataUrl = reader.result as string;
@@ -136,8 +215,6 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
     }
   }, [movement.name]);
 
-  // If the user switches to a movement without a grip guide while on that tab,
-  // switch back to the details view.
   useEffect(() => {
     if (!showGripGuide && view === 'grip') {
       setView('details');
@@ -155,14 +232,12 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
         }
     };
 
-    // Preload all data when the component mounts
     fetchDrills();
     fetchMobility();
     fetchTransitionTips();
     fetchEnergySavingTips();
     setHistory(getHistoryForMovement(movement.id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movement.id, movement.name]);
+  }, [movement.id, movement.name, fetchDrills, fetchMobility, fetchTransitionTips, fetchEnergySavingTips]);
 
   const renderContent = () => {
     if(error){
@@ -179,15 +254,20 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
               {movement.commonFaults.map((item, index) => (
                 <li
                   key={index}
-                  onClick={() => setSelectedFault(item)}
-                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setSelectedFault(item)}
+                  onClick={() => setModalContent({ title: item.fault, content: ( <div className="flex items-start gap-4"> <FaultIcon iconId={item.iconId} className="w-12 h-12 text-brand-secondary flex-shrink-0 mt-1" /> <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{item.fix}</p> </div> ) })}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalContent({ title: item.fault, content: ( <div className="flex items-start gap-4"> <FaultIcon iconId={item.iconId} className="w-12 h-12 text-brand-secondary flex-shrink-0 mt-1" /> <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{item.fix}</p> </div> ) })}
                   role="button"
                   tabIndex={0}
                   aria-label={`View details for ${item.fault}`}
                   className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 border border-border-color dark:border-dark-border-color transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary"
                 >
-                  <p className="font-semibold text-brand-secondary">{item.fault}</p>
-                  <p className="text-text-muted dark:text-dark-text-muted mt-1">{item.fix}</p>
+                    <div className="flex items-start gap-4">
+                        <FaultIcon iconId={item.iconId} className="w-8 h-8 text-brand-secondary flex-shrink-0 mt-1" />
+                        <div>
+                            <p className="font-semibold text-text-primary dark:text-dark-text-primary">{item.fault}</p>
+                            <p className="text-text-muted dark:text-dark-text-muted mt-1 text-sm">{item.fix}</p>
+                        </div>
+                    </div>
                 </li>
               ))}
             </ul>
@@ -209,8 +289,8 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
             </button>
             {isAnalyzing && <div className="mt-6 flex justify-center"><LoadingSpinner /></div>}
             {feedback && (
-              <div className="mt-8 p-6 bg-slate-100 dark:bg-slate-800 rounded-lg whitespace-pre-wrap font-mono text-text-primary dark:text-dark-text-primary text-sm">
-                {feedback}
+              <div className="mt-8 p-6 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <ParsedFeedback feedbackText={feedback} />
               </div>
             )}
           </div>
@@ -226,7 +306,13 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {drills.map((drill, i) => (
-                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
+                          <li key={i}
+                              onClick={() => setModalContent({ title: drill.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{drill.description}</p> })}
+                              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalContent({ title: drill.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{drill.description}</p> })}
+                              role="button"
+                              tabIndex={0}
+                              aria-label={`View details for ${drill.name}`}
+                              className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 border border-border-color dark:border-dark-border-color transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary">
                               <p className="font-semibold text-brand-primary">{drill.name}</p>
                               <p className="text-text-muted dark:text-dark-text-muted mt-1">{drill.description}</p>
                           </li>
@@ -246,7 +332,13 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {mobility.map((ex, i) => (
-                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
+                          <li key={i}
+                              onClick={() => setModalContent({ title: ex.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{ex.description}</p> })}
+                              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalContent({ title: ex.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{ex.description}</p> })}
+                              role="button"
+                              tabIndex={0}
+                              aria-label={`View details for ${ex.name}`}
+                              className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 border border-border-color dark:border-dark-border-color transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary">
                               <p className="font-semibold text-brand-primary">{ex.name}</p>
                               <p className="text-text-muted dark:text-dark-text-muted mt-1">{ex.description}</p>
                           </li>
@@ -268,7 +360,13 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {transitionTips.map((tip, i) => (
-                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
+                          <li key={i}
+                              onClick={() => setModalContent({ title: tip.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{tip.description}</p> })}
+                              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalContent({ title: tip.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{tip.description}</p> })}
+                              role="button"
+                              tabIndex={0}
+                              aria-label={`View details for ${tip.name}`}
+                              className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 border border-border-color dark:border-dark-border-color transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary">
                               <p className="font-semibold text-brand-primary">{tip.name}</p>
                               <p className="text-text-muted dark:text-dark-text-muted mt-1">{tip.description}</p>
                           </li>
@@ -288,7 +386,13 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
                 ) : (
                   <ul className="space-y-4">
                       {energySavingTips.map((tip, i) => (
-                          <li key={i} className="bg-surface dark:bg-dark-surface border border-border-color dark:border-dark-border-color p-4 rounded-lg">
+                          <li key={i}
+                              onClick={() => setModalContent({ title: tip.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{tip.description}</p> })}
+                              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalContent({ title: tip.name, content: <p className="text-lg leading-relaxed text-text-primary dark:text-dark-text-primary">{tip.description}</p> })}
+                              role="button"
+                              tabIndex={0}
+                              aria-label={`View details for ${tip.name}`}
+                              className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 border border-border-color dark:border-dark-border-color transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary">
                               <p className="font-semibold text-brand-primary">{tip.name}</p>
                               <p className="text-text-muted dark:text-dark-text-muted mt-1">{tip.description}</p>
                           </li>
@@ -380,11 +484,11 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       </div>
 
       <Modal
-        isOpen={!!selectedFault}
-        onClose={() => setSelectedFault(null)}
-        title={selectedFault?.fault || ''}
+        isOpen={!!modalContent}
+        onClose={() => setModalContent(null)}
+        title={modalContent?.title || ''}
       >
-        <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{selectedFault?.fix}</p>
+        {modalContent?.content}
       </Modal>
 
     </div>
