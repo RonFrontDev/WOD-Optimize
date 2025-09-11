@@ -50,7 +50,7 @@ const StrategySection = ({ title, content, defaultOpen = false }: { title: React
             >
                 <div className="overflow-hidden">
                     <div className="pt-2 pb-6">
-                        <div className="whitespace-pre-wrap font-sans text-base leading-relaxed text-text-primary dark:text-dark-text-primary">{content}</div>
+                        <div className="whitespace-pre-wrap font-sans text-base leading-relaxed text-slate-900 dark:text-slate-100">{content}</div>
                     </div>
                 </div>
             </div>
@@ -221,7 +221,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
             <Modal isOpen={!!strategy} onClose={handleReset} title="Your Workout Strategy">
                 {strategy && (
                     <div className="max-h-[80vh] overflow-y-auto pr-2">
-                         <p className="text-text-primary dark:text-dark-text-primary mb-6 px-1">Select your level to see a custom tactical guide.</p>
+                         <p className="text-slate-900 dark:text-slate-100 mb-6 px-1">Select your level to see a custom tactical guide.</p>
                         <div className="border-b border-border-color dark:border-dark-border-color flex overflow-x-auto mb-6 sticky top-0 bg-surface dark:bg-dark-surface py-2">
                             {levelKeys.map(level => (
                                 <button
@@ -247,14 +247,14 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                             <ClockIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
                                             <div>
                                                 <h3 className="text-md font-semibold text-text-muted dark:text-dark-text-muted">Target Time</h3>
-                                                <p className="text-xl font-bold text-text-primary dark:text-dark-text-primary">{currentStrategy.timeEstimate}</p>
+                                                <p className="text-xl font-bold text-slate-900 dark:text-slate-100">{currentStrategy.timeEstimate}</p>
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-4 md:border-l md:border-border-color md:dark:border-dark-border-color md:pl-6">
                                             <ClipboardListIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
                                             <div>
                                                 <h3 className="text-md font-semibold text-text-muted dark:text-dark-text-muted">Your Workout</h3>
-                                                <p className="text-sm text-text-primary dark:text-dark-text-primary whitespace-pre-wrap">{analyzedWorkout}</p>
+                                                <p className="text-sm text-slate-900 dark:text-slate-100 whitespace-pre-wrap">{analyzedWorkout}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -278,7 +278,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                                     {currentSimilarWorkouts.map((workout, index) => (
                                                         <div key={index} className="p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
                                                             <h4 className="font-bold text-brand-primary">{workout.name}</h4>
-                                                            <p className="whitespace-pre-wrap mt-2 text-text-primary dark:text-dark-text-primary">{workout.description}</p>
+                                                            <p className="whitespace-pre-wrap mt-2 text-slate-900 dark:text-slate-100">{workout.description}</p>
                                                             <div className="mt-3 pt-3 border-t border-border-color dark:border-dark-border-color/50">
                                                                 <h5 className="text-sm font-semibold text-text-muted dark:text-dark-text-muted">Goal:</h5>
                                                                 <p className="text-sm text-text-muted dark:text-dark-text-muted">{workout.goal}</p>
