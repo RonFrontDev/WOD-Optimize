@@ -5,7 +5,8 @@ import MovementDetail from './components/MovementDetail';
 import WorkoutBuilder from './components/WorkoutBuilder';
 import { MOVEMENTS } from './constants';
 import type { Movement } from './types';
-import { ClipboardListIcon, ChevronDownIcon, SearchIcon } from './components/Icons';
+import { ClipboardListIcon, ChevronDownIcon, SearchIcon, GripIcon } from './components/Icons';
+import HomePageGripGuide from './components/HomePageGripGuide';
 
 const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Monostructural'];
 
@@ -13,6 +14,7 @@ export default function App(): React.JSX.Element {
   const [selectedMovement, setSelectedMovement] = useState<Movement | null>(null);
   const [isBuildingWorkout, setIsBuildingWorkout] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isGripGuideOpen, setIsGripGuideOpen] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>(() =>
     orderedCategories.reduce((acc, category) => {
       acc[category] = true;
@@ -39,6 +41,10 @@ export default function App(): React.JSX.Element {
       ...prev,
       [categoryName]: !prev[categoryName],
     }));
+  };
+
+  const toggleGripGuide = () => {
+    setIsGripGuideOpen(prev => !prev);
   };
 
   const filteredMovements = MOVEMENTS.filter(movement =>
@@ -101,6 +107,40 @@ export default function App(): React.JSX.Element {
 
 
             <div className="space-y-8">
+              <section key="grip-guide" aria-labelledby="grip-guide-heading" className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color overflow-hidden transition-all duration-300 ease-in-out hover:shadow-brand-primary/20 hover:-translate-y-1">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={toggleGripGuide}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleGripGuide()}
+                  className="flex justify-between items-center cursor-pointer p-4"
+                  aria-expanded={isGripGuideOpen}
+                  aria-controls="grip-guide-content"
+                >
+                  <div className="flex items-center gap-4">
+                    <GripIcon className="w-8 h-8 text-brand-secondary flex-shrink-0" />
+                    <div>
+                      <h2 id="grip-guide-heading" className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">
+                        A Guide to CrossFit Grips
+                      </h2>
+                      <p className="text-sm text-text-muted dark:text-dark-text-muted mt-1">Protect your hands and improve performance. Click to learn more.</p>
+                    </div>
+                  </div>
+                  <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isGripGuideOpen ? 'rotate-180' : 'rotate-0'}`} />
+                </div>
+
+                <div
+                  id="grip-guide-content"
+                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isGripGuideOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                >
+                  <div className="overflow-hidden">
+                      <div className="p-6 pt-4 border-t border-border-color dark:border-dark-border-color">
+                          <HomePageGripGuide />
+                      </div>
+                  </div>
+                </div>
+              </section>
+
               {orderedCategories.map((category) => {
                 const movements = filteredMovementsByCategory[category];
                 if (!movements || movements.length === 0) {

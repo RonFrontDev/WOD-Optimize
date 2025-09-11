@@ -1,0 +1,52 @@
+import React from 'react';
+
+const Section: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => (
+    <div className="mb-6 last:mb-0">
+        <h4 className="text-xl font-bold text-brand-secondary mb-3 pb-2 border-b-2 border-border-color dark:border-dark-border-color">{title}</h4>
+        <div className="space-y-3 text-text-muted dark:text-dark-text-muted leading-relaxed">
+            {children}
+        </div>
+    </div>
+);
+
+export default function HomePageGripGuide() {
+    return (
+        <div className="text-text-primary dark:text-dark-text-primary">
+            <p className="mb-6 text-lg">
+                Hand grips are essential for protecting your hands, improving endurance on the rig, and helping you get those extra reps. Here's what you need to know to choose the right pair for you.
+            </p>
+
+            <Section title="Types of Grip Materials">
+                <p><strong>Leather:</strong> The classic choice. Durable and provides excellent protection. Requires a break-in period and works best with chalk. Great for athletes who prefer a more traditional feel.</p>
+                <p><strong>Carbon Fiber:</strong> The versatile workhorse. These grips are famous for sticking to any bar, with or without chalk. They are thin, require little to no break-in, and are a favorite for competitors.</p>
+                <p><strong>Synthetic Fabrics (Microfiber, Vegan "Leather"):</strong> Often softer and more comfortable from day one than traditional leather. Performance varies by brand, but many offer a great balance of comfort and grip.</p>
+                <p><strong>Rubber / "Sticky" Grips:</strong> These offer maximum grip, almost "gluing" you to the bar. They are fantastic for slick or powder-coated bars but are often not allowed in major competitions. They should not be used with chalk.</p>
+            </Section>
+
+            <Section title="Grip Styles: Finding Your Fit">
+                 <p><strong>Finger Holes (2-Hole vs. 3-Hole):</strong></p>
+                 <ul className="list-disc list-inside pl-4 space-y-2">
+                    <li><strong>2-Hole:</strong> Covers the areas most likely to tear (base of middle and ring fingers). Offers more of a "barehand" connection to the bar.</li>
+                    <li><strong>3-Hole:</strong> Provides more coverage across the palm for maximum protection. The standard for most athletes.</li>
+                 </ul>
+                 <p className="pt-2"><strong>Fingerless (No Holes):</strong></p>
+                 <p>These grips are designed for the fastest transitions. You can simply flip them back and forth without having to pull your fingers out. Great for workouts that mix barbell work and gymnastics.</p>
+                 <p className="pt-2"><strong>Dowel Effect:</strong></p>
+                 <p>Many modern grips create a "dowel effect" by folding over the bar. This creates a small ridge that can significantly reduce grip fatigue, allowing you to hang on longer. This technique works best with fingerless grips or by not using the finger holes on holed grips.</p>
+            </Section>
+
+            <Section title="Which Grip for Which Bar?">
+                 <ul className="list-disc list-inside pl-4 space-y-2">
+                    <li><strong>Slick / Powder-Coated Bars:</strong> Carbon Fiber or Rubber/Sticky grips are your best bet here. Leather can be too slick on these surfaces.</li>
+                    <li><strong>Standard Knurled / Competition Bars:</strong> All grip types work well. It comes down to personal preference. Carbon and leather are the most common choices.</li>
+                    <li><strong>Wooden Rings:</strong> Most athletes prefer to use no grips or just chalk on wooden rings, as the surface already provides excellent grip. If you do use grips, a thin leather or synthetic pair is best.</li>
+                 </ul>
+            </Section>
+
+            <Section title="Pro-Tip: Chalk Usage & Hand Care">
+                <p><strong>Chalk is for DRYING, not for GRIPPING.</strong> A light dusting is all you need to absorb sweat. Too much chalk can become cakey and actually make the surface more slippery.</p>
+                <p><strong>Manage Your Calluses!</strong> The biggest cause of hand rips is thick, unmanaged calluses getting caught on the bar. Use a pumice stone or callus shaver after a shower (when skin is soft) to keep them smooth and level with the rest of your palm.</p>
+            </Section>
+        </div>
+    );
+}
