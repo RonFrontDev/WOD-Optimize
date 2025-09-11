@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { generateWorkoutStrategy, generateSimilarWorkouts } from '../services/geminiService';
 import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon, ChevronDownIcon } from './Icons';
 import LoadingSpinner from './LoadingSpinner';
@@ -64,8 +64,14 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     const [analyzedWorkout, setAnalyzedWorkout] = useState<string>('');
     const [limiters, setLimiters] = useState<string[]>([]);
     const [strategy, setStrategy] = useState<WorkoutStrategy | null>(null);
-    const [similarWorkouts, setSimilarWorkouts] = useState<SuggestedWorkout[]>([]);
+    const [similarWorkouts, setSimilarWorkouts] = useState<Record<keyof WorkoutStrategy, SuggestedWorkout[] | null>>({
+        elite: null,
+        rx: null,
+        intermediate: null,
+        scaledBeginner: null,
+    });
     const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingSimilar, setIsLoadingSimilar] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [selectedLevel, setSelectedLevel] = useState<keyof WorkoutStrategy>('rx');
 
@@ -85,7 +91,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setIsLoading(true);
         setError(null);
         setStrategy(null);
-        setSimilarWorkouts([]);
+        setSimilarWorkouts({ elite: null, rx: null, intermediate: null, scaledBeginner: null });
 
         const upperCaseInput = workoutDescription.trim().toUpperCase();
         const benchmarkDescription = BENCHMARK_WORKOUTS[upperCaseInput as keyof typeof BENCHMARK_WORKOUTS];
@@ -96,8 +102,10 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
             const strategyResult = await generateWorkoutStrategy(descriptionForAnalysis, limiters);
             if (strategyResult) {
                 setStrategy(strategyResult);
-                const similarWorkoutsResult = await generateSimilarWorkouts(descriptionForAnalysis);
-                setSimilarWorkouts(similarWorkoutsResult);
+                setIsLoadingSimilar(true);
+                const similarWorkoutsResult = await generateSimilarWorkouts(descriptionForAnalysis, levelNames['rx']);
+                setSimilarWorkouts(prev => ({ ...prev, rx: similarWorkoutsResult }));
+                setIsLoadingSimilar(false);
             } else {
                 setError('An error occurred while generating the strategy.');
             }
@@ -108,6 +116,25 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         }
     }, [workoutDescription, limiters]);
 
+    useEffect(() => {
+        const fetchSimilarForLevel = async () => {
+            if (strategy && analyzedWorkout && !similarWorkouts[selectedLevel] && !isLoadingSimilar) {
+                setIsLoadingSimilar(true);
+                try {
+                    const result = await generateSimilarWorkouts(analyzedWorkout, levelNames[selectedLevel]);
+                    setSimilarWorkouts(prev => ({...prev, [selectedLevel]: result }));
+                } catch (e) {
+                    console.error(`Failed to fetch similar workouts for level: ${selectedLevel}`, e);
+                } finally {
+                    setIsLoadingSimilar(false);
+                }
+            }
+        };
+
+        fetchSimilarForLevel();
+    }, [selectedLevel, strategy, analyzedWorkout, similarWorkouts, isLoadingSimilar]);
+
+
     const handleReset = () => {
         setWorkoutDescription('');
         setStrategy(null);
@@ -115,7 +142,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setLimiters([]);
         setSelectedLevel('rx');
         setAnalyzedWorkout('');
-        setSimilarWorkouts([]);
+        setSimilarWorkouts({ elite: null, rx: null, intermediate: null, scaledBeginner: null });
     }
 
     if (isLoading) {
@@ -212,6 +239,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                         
                         {(() => {
                             const currentStrategy = strategy[selectedLevel];
+                            const currentSimilarWorkouts = similarWorkouts[selectedLevel];
                             return (
                                 <div className="px-1">
                                     <div className="grid md:grid-cols-2 gap-6 mb-8 p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
@@ -239,22 +267,30 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                     <StrategySection title={<span className="text-brand-secondary">Breathing Strategy</span>} content={currentStrategy.breathing} />
                                     <StrategySection title={<span className="text-brand-secondary">How to Improve Your Limiters</span>} content={currentStrategy.improvementFocus} />
                                     
-                                    {similarWorkouts.length > 0 && (
-                                        <StrategySection 
-                                            title={<span className="text-brand-secondary">Similar Stimulus Workouts</span>}
-                                            defaultOpen={true}
-                                            content={
+                                    <StrategySection 
+                                        title={<span className="text-brand-secondary">Similar Stimulus Workouts</span>}
+                                        defaultOpen={true}
+                                        content={
+                                            isLoadingSimilar ? (
+                                                <div className="flex justify-center py-4"><LoadingSpinner /></div>
+                                            ) : currentSimilarWorkouts && currentSimilarWorkouts.length > 0 ? (
                                                 <div className="space-y-4">
-                                                    {similarWorkouts.map((workout, index) => (
+                                                    {currentSimilarWorkouts.map((workout, index) => (
                                                         <div key={index} className="p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
                                                             <h4 className="font-bold text-brand-primary">{workout.name}</h4>
-                                                            <p className="whitespace-pre-wrap mt-2">{workout.description}</p>
+                                                            <p className="whitespace-pre-wrap mt-2 text-text-primary dark:text-dark-text-primary">{workout.description}</p>
+                                                            <div className="mt-3 pt-3 border-t border-border-color dark:border-dark-border-color/50">
+                                                                <h5 className="text-sm font-semibold text-text-muted dark:text-dark-text-muted">Goal:</h5>
+                                                                <p className="text-sm text-text-muted dark:text-dark-text-muted">{workout.goal}</p>
+                                                            </div>
                                                         </div>
                                                     ))}
                                                 </div>
-                                            } 
-                                        />
-                                    )}
+                                            ) : (
+                                                <p className="text-text-muted dark:text-dark-text-muted">Could not generate similar workouts for this level.</p>
+                                            )
+                                        } 
+                                    />
                                 </div>
                             );
                         })()}

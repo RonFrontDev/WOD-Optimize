@@ -55,4 +55,5 @@ export interface AnalysisSession {
 export interface SuggestedWorkout {
   name: string;
   description: string;
+  goal: string;
 }

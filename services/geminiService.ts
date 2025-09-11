@@ -258,9 +258,9 @@ export const generateWorkoutStrategy = async (workoutDescription: string, limite
 };
 
 
-export const generateSimilarWorkouts = async (workoutDescription: string): Promise<SuggestedWorkout[]> => {
+export const generateSimilarWorkouts = async (workoutDescription: string, level: string): Promise<SuggestedWorkout[]> => {
     try {
-        const prompt = `You are an expert CrossFit programmer. Given the workout "${workoutDescription}", generate exactly 3 other named workouts that have a similar training stimulus. For each workout, provide a unique, creative name and a clear description of the movements, reps, and format.`;
+        const prompt = `You are an expert CrossFit programmer. Given the workout "${workoutDescription}", generate exactly 3 other named workouts that have a similar training stimulus, specifically tailored for an athlete at the ${level} level. For each workout, provide: a unique, creative name; a clear description of the movements, reps, and format; and a brief explanation of the workout's goal or intended stimulus. The weights and complexity should be appropriate for a ${level} athlete. IMPORTANT: All weights must be specified in kilograms (kg) and all distances/heights in meters (m) or centimeters (cm).`;
 
         const response = await ai.models.generateContent({
             model: model,
@@ -276,9 +276,10 @@ export const generateSimilarWorkouts = async (workoutDescription: string): Promi
                                 type: Type.OBJECT,
                                 properties: {
                                     name: { type: Type.STRING },
-                                    description: { type: Type.STRING }
+                                    description: { type: Type.STRING },
+                                    goal: { type: Type.STRING, description: "A brief explanation of the workout's goal or intended stimulus." }
                                 },
-                                required: ["name", "description"]
+                                required: ["name", "description", "goal"]
                             }
                         }
                     },
