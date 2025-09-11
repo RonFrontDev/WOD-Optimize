@@ -57,3 +57,12 @@ export interface SuggestedWorkout {
   description: string;
   goal: string;
 }
+
+export interface SavedWorkoutStrategy {
+  id: number;
+  date: string;
+  workoutDescription: string;
+  analyzedWorkout: string;
+  limiters: string[];
+  strategy: WorkoutStrategy;
+}

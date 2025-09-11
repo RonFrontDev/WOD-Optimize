@@ -1,10 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { generateWorkoutStrategy, generateSimilarWorkouts } from '../services/geminiService';
-import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon, ChevronDownIcon } from './Icons';
+import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon, BookmarkIcon, BookmarkOutlineIcon } from './Icons';
 import LoadingSpinner from './LoadingSpinner';
-import type { WorkoutStrategy, SuggestedWorkout } from '../types';
+import type { WorkoutStrategy, SuggestedWorkout, SavedWorkoutStrategy } from '../types';
 import { BENCHMARK_WORKOUTS } from '../constants';
 import Modal from './Modal';
+import ThemeToggle from './ThemeToggle';
+import StrategySection from './StrategySection';
 
 interface WorkoutBuilderProps {
     onBack: () => void;
@@ -26,39 +28,6 @@ const predefinedLimiters = [
     'Mobility / Technique',
 ];
 
-const StrategySection = ({ title, content, defaultOpen = false }: { title: React.ReactNode, content: React.ReactNode, defaultOpen?: boolean }) => {
-    const [isOpen, setIsOpen] = useState(defaultOpen);
-    if (!content) return null;
-
-    // Create a simple, stable ID from the title if it's a string
-    const sectionId = typeof title === 'string' ? title.replace(/\s+/g, '-') : Math.random().toString(36).substring(2, 9);
-
-    return (
-        <div className="border-b border-border-color dark:border-dark-border-color last:border-b-0">
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex justify-between items-center py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
-                aria-expanded={isOpen}
-                aria-controls={`strategy-section-${sectionId}`}
-            >
-                <h4 className="text-lg font-semibold">{title}</h4>
-                <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`} />
-            </button>
-            <div
-              id={`strategy-section-${sectionId}`}
-              className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
-            >
-                <div className="overflow-hidden">
-                    <div className="pt-2 pb-6">
-                        <div className="whitespace-pre-wrap font-sans text-base leading-relaxed text-slate-900 dark:text-slate-100">{content}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-
 export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.JSX.Element {
     const [workoutDescription, setWorkoutDescription] = useState<string>('');
     const [analyzedWorkout, setAnalyzedWorkout] = useState<string>('');
@@ -74,6 +43,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     const [isLoadingSimilar, setIsLoadingSimilar] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [selectedLevel, setSelectedLevel] = useState<keyof WorkoutStrategy>('rx');
+    const [isSaved, setIsSaved] = useState(false);
 
     const handleLimiterChange = (limiter: string) => {
         setLimiters(prev =>
@@ -81,6 +51,29 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                 ? prev.filter(l => l !== limiter)
                 : [...prev, limiter]
         );
+    };
+
+     const handleSaveStrategy = () => {
+        if (!strategy || !analyzedWorkout) return;
+
+        const newSavedStrategy: SavedWorkoutStrategy = {
+            id: Date.now(),
+            date: new Date().toISOString(),
+            workoutDescription: workoutDescription,
+            analyzedWorkout: analyzedWorkout,
+            limiters,
+            strategy,
+        };
+
+        try {
+            const existingSaved = JSON.parse(localStorage.getItem('wodOptimizeSavedWorkouts') || '[]');
+            const updatedSaved = [newSavedStrategy, ...existingSaved];
+            localStorage.setItem('wodOptimizeSavedWorkouts', JSON.stringify(updatedSaved));
+            setIsSaved(true);
+        } catch (e) {
+            console.error("Failed to save workout strategy:", e);
+            setError("Could not save the strategy. Local storage might be full.");
+        }
     };
 
     const handleGenerateStrategy = useCallback(async () => {
@@ -91,6 +84,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setIsLoading(true);
         setError(null);
         setStrategy(null);
+        setIsSaved(false);
         setSimilarWorkouts({ elite: null, rx: null, intermediate: null, scaledBeginner: null });
 
         const upperCaseInput = workoutDescription.trim().toUpperCase();
@@ -142,6 +136,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setLimiters([]);
         setSelectedLevel('rx');
         setAnalyzedWorkout('');
+        setIsSaved(false);
         setSimilarWorkouts({ elite: null, rx: null, intermediate: null, scaledBeginner: null });
     }
 
@@ -218,7 +213,22 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                     </div>
                 </div>
             </div>
-            <Modal isOpen={!!strategy} onClose={handleReset} title="Your Workout Strategy">
+            <Modal 
+                isOpen={!!strategy} 
+                onClose={handleReset} 
+                title="Your Workout Strategy"
+                headerActions={<>
+                    <button
+                        onClick={handleSaveStrategy}
+                        disabled={isSaved}
+                        className="p-2 rounded-full text-text-muted hover:text-text-primary hover:bg-slate-200 dark:hover:bg-dark-surface transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label={isSaved ? "Strategy Saved" : "Save Strategy"}
+                    >
+                        {isSaved ? <BookmarkIcon className="w-6 h-6 text-brand-primary" /> : <BookmarkOutlineIcon className="w-6 h-6" />}
+                    </button>
+                    <ThemeToggle />
+                </>}
+            >
                 {strategy && (
                     <div className="max-h-[80vh] overflow-y-auto pr-2">
                          <p className="text-slate-900 dark:text-slate-100 mb-6 px-1">Select your level to see a custom tactical guide.</p>

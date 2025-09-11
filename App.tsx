@@ -5,14 +5,16 @@ import MovementDetail from './components/MovementDetail';
 import WorkoutBuilder from './components/WorkoutBuilder';
 import { MOVEMENTS } from './constants';
 import type { Movement } from './types';
-import { ClipboardListIcon, ChevronDownIcon, SearchIcon, GripIcon } from './components/Icons';
+import { ClipboardListIcon, ChevronDownIcon, SearchIcon, GripIcon, BookmarkSquareIcon } from './components/Icons';
 import HomePageGripGuide from './components/HomePageGripGuide';
+import SavedWorkouts from './components/SavedWorkouts';
 
 const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Monostructural'];
 
 export default function App(): React.JSX.Element {
   const [selectedMovement, setSelectedMovement] = useState<Movement | null>(null);
   const [isBuildingWorkout, setIsBuildingWorkout] = useState(false);
+  const [isViewingSavedWorkouts, setIsViewingSavedWorkouts] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [isGripGuideOpen, setIsGripGuideOpen] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>(() =>
@@ -29,11 +31,19 @@ export default function App(): React.JSX.Element {
   const handleBack = (): void => {
     setSelectedMovement(null);
     setIsBuildingWorkout(false);
+    setIsViewingSavedWorkouts(false);
   };
 
   const handleStartWorkoutBuilder = () => {
     setSelectedMovement(null);
+    setIsViewingSavedWorkouts(false);
     setIsBuildingWorkout(true);
+  };
+
+  const handleViewSavedWorkouts = () => {
+    setSelectedMovement(null);
+    setIsBuildingWorkout(false);
+    setIsViewingSavedWorkouts(true);
   };
 
   const toggleCategory = (categoryName: Movement['category']) => {
@@ -69,6 +79,8 @@ export default function App(): React.JSX.Element {
           <MovementDetail movement={selectedMovement} onBack={handleBack} />
         ) : isBuildingWorkout ? (
             <WorkoutBuilder onBack={handleBack} />
+        ) : isViewingSavedWorkouts ? (
+            <SavedWorkouts onBack={handleBack} />
         ) : (
           <div>
             <div className="text-center mb-12">
@@ -78,13 +90,20 @@ export default function App(): React.JSX.Element {
               <p className="text-lg md:text-xl text-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
                 Select a movement for analysis, or build a custom workout plan for a custom strategy.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex justify-center items-center flex-wrap gap-4">
                 <button
                   onClick={handleStartWorkoutBuilder}
                   className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
                 >
                   <ClipboardListIcon className="w-6 h-6" />
                   Analyze a Workout
+                </button>
+                <button
+                  onClick={handleViewSavedWorkouts}
+                  className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+                >
+                  <BookmarkSquareIcon className="w-6 h-6" />
+                  View Saved Strategies
                 </button>
               </div>
             </div>

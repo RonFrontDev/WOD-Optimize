@@ -6,9 +6,10 @@ interface ModalProps {
   onClose: () => void;
   title: string;
   children: React.ReactNode;
+  headerActions?: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, headerActions }) => {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -45,13 +46,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       >
         <div className="flex justify-between items-center p-4 border-b border-border-color dark:border-dark-border-color">
           <h2 id="modal-title" className="text-xl font-bold text-text-primary dark:text-dark-text-primary">{title}</h2>
-          <button
-            onClick={onClose}
-            className="text-text-muted dark:text-dark-text-muted hover:text-text-primary dark:hover:text-dark-text-primary transition-colors"
-            aria-label="Close modal"
-          >
-            <XCircleIcon className="w-8 h-8" />
-          </button>
+          <div className="flex items-center gap-4">
+            {headerActions}
+            <button
+              onClick={onClose}
+              className="text-text-muted dark:text-dark-text-muted hover:text-text-primary dark:hover:text-dark-text-primary transition-colors"
+              aria-label="Close modal"
+            >
+              <XCircleIcon className="w-8 h-8" />
+            </button>
+          </div>
         </div>
         <div className="p-6 text-text-primary dark:text-dark-text-primary">
           {children}
