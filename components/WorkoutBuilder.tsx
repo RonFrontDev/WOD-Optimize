@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { generateWorkoutStrategy, generateSimilarWorkouts } from '../services/geminiService';
 import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon, BookmarkIcon, BookmarkOutlineIcon } from './Icons';
 import LoadingSpinner from './LoadingSpinner';
-import type { WorkoutStrategy, SuggestedWorkout, SavedWorkoutStrategy } from '../types';
+import type { WorkoutStrategy, SuggestedWorkout, SavedWorkoutStrategy, MuscleActivation } from '../types';
 import { BENCHMARK_WORKOUTS } from '../constants';
 import Modal from './Modal';
 import ThemeToggle from './ThemeToggle';
@@ -32,7 +32,26 @@ const predefinedLimiters = [
     'Synchronization',
 ];
 
+const MUSCLE_MAP: Record<string, string> = {
+  deltoids: 'Deltoids',
+  chest: 'Chest',
+  biceps: 'Biceps',
+  abdominals: 'Abdominals',
+  obliques: 'Obliques',
+  quadriceps: 'Quadriceps',
+  traps: 'Trapezius',
+  triceps: 'Triceps',
+  lats: 'Lats',
+  lower_back: 'Lower Back',
+  glutes: 'Glutes',
+  hamstrings: 'Hamstrings',
+  calves: 'Calves',
+  forearms: 'Forearms',
+};
+
 type TeamSize = 'individual' | 2 | 4;
+
+interface FullWorkoutStrategy extends WorkoutStrategy, MuscleActivation {}
 
 export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.JSX.Element {
     const [workoutDescription, setWorkoutDescription] = useState<string>('');
@@ -40,6 +59,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     const [limiters, setLimiters] = useState<string[]>([]);
     const [teamSize, setTeamSize] = useState<TeamSize>('individual');
     const [strategy, setStrategy] = useState<WorkoutStrategy | null>(null);
+    const [muscleActivation, setMuscleActivation] = useState<MuscleActivation | null>(null);
     const [similarWorkouts, setSimilarWorkouts] = useState<Record<keyof WorkoutStrategy, SuggestedWorkout[] | null>>({
         elite: null,
         rx: null,
@@ -61,7 +81,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     };
 
      const handleSaveStrategy = () => {
-        if (!strategy || !analyzedWorkout) return;
+        if (!strategy || !analyzedWorkout || !muscleActivation) return;
 
         const newSavedStrategy: SavedWorkoutStrategy = {
             id: Date.now(),
@@ -70,6 +90,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
             analyzedWorkout: analyzedWorkout,
             limiters,
             strategy,
+            muscleActivation,
         };
 
         try {
@@ -91,6 +112,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setIsLoading(true);
         setError(null);
         setStrategy(null);
+        setMuscleActivation(null);
         setIsSaved(false);
         setSimilarWorkouts({ elite: null, rx: null, intermediate: null, scaledBeginner: null });
 
@@ -100,9 +122,11 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setAnalyzedWorkout(descriptionForAnalysis);
 
         try {
-            const strategyResult = await generateWorkoutStrategy(descriptionForAnalysis, limiters, teamSize);
-            if (strategyResult) {
+            const result: FullWorkoutStrategy | null = await generateWorkoutStrategy(descriptionForAnalysis, limiters, teamSize);
+            if (result) {
+                const { primaryMuscles, secondaryMuscles, ...strategyResult } = result;
                 setStrategy(strategyResult);
+                setMuscleActivation({ primaryMuscles, secondaryMuscles });
                 setIsLoadingSimilar(true);
                 const similarWorkoutsResult = await generateSimilarWorkouts(descriptionForAnalysis, levelNames['rx']);
                 setSimilarWorkouts(prev => ({ ...prev, rx: similarWorkoutsResult }));
@@ -139,6 +163,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     const handleReset = () => {
         setWorkoutDescription('');
         setStrategy(null);
+        setMuscleActivation(null);
         setError(null);
         setLimiters([]);
         setTeamSize('individual');
@@ -266,7 +291,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                     <ThemeToggle />
                 </>}
             >
-                {strategy && (
+                {strategy && muscleActivation && (
                     <div className="max-h-[80vh] overflow-y-auto pr-2">
                          <p className="text-slate-900 dark:text-slate-100 mb-6 px-1">Select your level to see a custom tactical guide.</p>
                         <div className="border-b border-border-color dark:border-dark-border-color flex overflow-x-auto mb-6 sticky top-0 bg-surface dark:bg-dark-surface py-2">
@@ -289,7 +314,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                             const currentSimilarWorkouts = similarWorkouts[selectedLevel];
                             return (
                                 <div className="px-1">
-                                    <div className="grid md:grid-cols-2 gap-6 mb-8 p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
+                                    <div className="grid md:grid-cols-2 gap-x-6 gap-y-8 mb-8 p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
                                         <div className="flex items-start gap-4">
                                             <ClockIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
                                             <div>
@@ -307,6 +332,31 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                     </div>
     
                                     <StrategySection title={<span className="text-brand-secondary">Overall Strategy & Goal</span>} content={currentStrategy.goal} defaultOpen={true} />
+                                    <StrategySection 
+                                        title={<span className="text-brand-secondary">Muscle Activation</span>}
+                                        content={
+                                            <div className={`grid grid-cols-1 ${muscleActivation.primaryMuscles.length > 0 && muscleActivation.secondaryMuscles.length > 0 ? 'md:grid-cols-2' : ''} gap-x-8 gap-y-4`}>
+                                                {muscleActivation.primaryMuscles.length > 0 && <div>
+                                                    <h4 className="font-semibold text-text-primary dark:text-dark-text-primary mb-2 flex items-center gap-2">
+                                                        <div className="w-3 h-3 rounded-full bg-brand-secondary flex-shrink-0"></div>
+                                                        Primary Muscles
+                                                    </h4>
+                                                    <ul className="list-disc list-inside pl-1 text-text-muted dark:text-dark-text-muted space-y-1">
+                                                        {muscleActivation.primaryMuscles.map(muscle => <li key={muscle}>{MUSCLE_MAP[muscle] || muscle.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</li>)}
+                                                    </ul>
+                                                </div>}
+                                                {muscleActivation.secondaryMuscles.length > 0 && <div>
+                                                    <h4 className="font-semibold text-text-primary dark:text-dark-text-primary mb-2 flex items-center gap-2">
+                                                        <div className="w-3 h-3 rounded-full bg-brand-primary flex-shrink-0"></div>
+                                                        Secondary Muscles
+                                                    </h4>
+                                                    <ul className="list-disc list-inside pl-1 text-text-muted dark:text-dark-text-muted space-y-1">
+                                                        {muscleActivation.secondaryMuscles.map(muscle => <li key={muscle}>{MUSCLE_MAP[muscle] || muscle.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</li>)}
+                                                    </ul>
+                                                </div>}
+                                            </div>
+                                        }
+                                    />
                                     <StrategySection title={<span className="text-brand-secondary">Pacing & Rep Scheme Breakdown</span>} content={currentStrategy.pacing} />
                                     <StrategySection title={<span className="text-brand-secondary">Movement Efficiency Under Fatigue</span>} content={currentStrategy.efficiency} />
                                     <StrategySection title={<span className="text-brand-secondary">Transition Plan</span>} content={currentStrategy.transitions} />

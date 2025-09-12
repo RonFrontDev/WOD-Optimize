@@ -17,6 +17,23 @@ const levelNames: Record<keyof WorkoutStrategy, string> = {
     scaledBeginner: 'Scaled / Beginner'
 };
 
+const MUSCLE_MAP: Record<string, string> = {
+  deltoids: 'Deltoids',
+  chest: 'Chest',
+  biceps: 'Biceps',
+  abdominals: 'Abdominals',
+  obliques: 'Obliques',
+  quadriceps: 'Quadriceps',
+  traps: 'Trapezius',
+  triceps: 'Triceps',
+  lats: 'Lats',
+  lower_back: 'Lower Back',
+  glutes: 'Glutes',
+  hamstrings: 'Hamstrings',
+  calves: 'Calves',
+  forearms: 'Forearms',
+};
+
 interface SavedWorkoutsProps {
     onBack: () => void;
 }
@@ -100,7 +117,7 @@ export default function SavedWorkouts({ onBack }: SavedWorkoutsProps) {
                 const currentSimilarWorkouts = similarWorkouts[selectedLevel];
                 return (
                     <div className="px-1">
-                         <div className="grid md:grid-cols-2 gap-6 mb-8 p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
+                         <div className="grid md:grid-cols-2 gap-x-6 gap-y-8 mb-8 p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
                             <div className="flex items-start gap-4">
                                 <ClockIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
                                 <div>
@@ -118,6 +135,33 @@ export default function SavedWorkouts({ onBack }: SavedWorkoutsProps) {
                         </div>
 
                         <StrategySection title={<span className="text-brand-secondary">Overall Strategy & Goal</span>} content={currentStrategyDetails.goal} defaultOpen={true} />
+                        {selectedStrategy.muscleActivation && (
+                            <StrategySection 
+                                title={<span className="text-brand-secondary">Muscle Activation</span>}
+                                content={
+                                    <div className={`grid grid-cols-1 ${selectedStrategy.muscleActivation.primaryMuscles.length > 0 && selectedStrategy.muscleActivation.secondaryMuscles.length > 0 ? 'md:grid-cols-2' : ''} gap-x-8 gap-y-4`}>
+                                        {selectedStrategy.muscleActivation.primaryMuscles.length > 0 && <div>
+                                            <h4 className="font-semibold text-text-primary dark:text-dark-text-primary mb-2 flex items-center gap-2">
+                                                <div className="w-3 h-3 rounded-full bg-brand-secondary flex-shrink-0"></div>
+                                                Primary Muscles
+                                            </h4>
+                                            <ul className="list-disc list-inside pl-1 text-text-muted dark:text-dark-text-muted space-y-1">
+                                                {selectedStrategy.muscleActivation.primaryMuscles.map(muscle => <li key={muscle}>{MUSCLE_MAP[muscle] || muscle.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</li>)}
+                                            </ul>
+                                        </div>}
+                                        {selectedStrategy.muscleActivation.secondaryMuscles.length > 0 && <div>
+                                            <h4 className="font-semibold text-text-primary dark:text-dark-text-primary mb-2 flex items-center gap-2">
+                                                <div className="w-3 h-3 rounded-full bg-brand-primary flex-shrink-0"></div>
+                                                Secondary Muscles
+                                            </h4>
+                                            <ul className="list-disc list-inside pl-1 text-text-muted dark:text-dark-text-muted space-y-1">
+                                                {selectedStrategy.muscleActivation.secondaryMuscles.map(muscle => <li key={muscle}>{MUSCLE_MAP[muscle] || muscle.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</li>)}
+                                            </ul>
+                                        </div>}
+                                    </div>
+                                }
+                            />
+                        )}
                         <StrategySection title={<span className="text-brand-secondary">Pacing & Rep Scheme Breakdown</span>} content={currentStrategyDetails.pacing} />
                         <StrategySection title={<span className="text-brand-secondary">Movement Efficiency Under Fatigue</span>} content={currentStrategyDetails.efficiency} />
                         <StrategySection title={<span className="text-brand-secondary">Transition Plan</span>} content={currentStrategyDetails.transitions} />

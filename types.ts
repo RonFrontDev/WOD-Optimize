@@ -71,6 +71,11 @@ export interface SuggestedWorkout {
   goal: string;
 }
 
+export interface MuscleActivation {
+  primaryMuscles: string[];
+  secondaryMuscles: string[];
+}
+
 export interface SavedWorkoutStrategy {
   id: number;
   date: string;
@@ -78,6 +83,7 @@ export interface SavedWorkoutStrategy {
   analyzedWorkout: string;
   limiters: string[];
   strategy: WorkoutStrategy;
+  muscleActivation: MuscleActivation;
 }
 
 export interface CollapsibleSectionProps {

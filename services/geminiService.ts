@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint } from '../types';
+import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint, MuscleActivation } from '../types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable is not set.");
@@ -248,8 +248,15 @@ const strategySchema = {
     required: ["goal", "timeEstimate", "pacing", "efficiency", "transitions", "pushVsConserve", "breathing", "improvementFocus"]
 };
 
-export const generateWorkoutStrategy = async (workoutDescription: string, limiters: string[], teamSize: 'individual' | 2 | 4): Promise<WorkoutStrategy | null> => {
+export interface FullWorkoutStrategy extends WorkoutStrategy, MuscleActivation {}
+
+export const generateWorkoutStrategy = async (workoutDescription: string, limiters: string[], teamSize: 'individual' | 2 | 4): Promise<FullWorkoutStrategy | null> => {
     try {
+        const validMuscles = [
+            'quadriceps', 'hamstrings', 'glutes', 'calves', 'abdominals', 'obliques', 
+            'lower_back', 'lats', 'traps', 'chest', 'deltoids', 'triceps', 'biceps', 'forearms'
+        ];
+
         let prompt = `You are an elite CrossFit and conditioning coach specializing in competition strategy. A user has provided their workout: "${workoutDescription}".`;
 
         if (teamSize === 'individual') {
@@ -264,9 +271,14 @@ export const generateWorkoutStrategy = async (workoutDescription: string, limite
 
         prompt += `
         
-        Provide a highly detailed, comprehensive JSON object with strategies for different skill levels. The root object must contain four keys: "elite", "rx", "intermediate", and "scaledBeginner".
-        
-        For EACH of these four skill levels, provide a JSON object with the following keys:
+        Provide a highly detailed, comprehensive JSON object. The root object must contain the following keys:
+        1.  "primaryMuscles": An array of strings listing the PRIMARY muscles targeted.
+        2.  "secondaryMuscles": An array of strings listing the SECONDARY/SUPPORTING muscles targeted.
+        3.  "elite", "rx", "intermediate", "scaledBeginner": Four keys, each containing a strategy object for that skill level.
+
+        For the muscle arrays, you MUST use only the following valid muscle names: ${validMuscles.join(', ')}.
+
+        For EACH of the four skill level objects ("elite", "rx", etc.), provide a JSON object with the following keys:
         - "goal": The overall strategy and intended stimulus of the workout, including realistic goals (time, reps, rounds).
         - "timeEstimate": An estimated time to complete the workout (e.g., "10-12 minutes") for an athlete at this level following this strategy.
         - "pacing": Specific pacing advice and how to break up reps for each movement to avoid burnout. For teams, this MUST include rep splitting strategies (e.g., 'you go, I go', waterfalls, short vs. long sets) and how to manage work-to-rest ratios.
@@ -286,12 +298,14 @@ export const generateWorkoutStrategy = async (workoutDescription: string, limite
                 responseSchema: {
                     type: Type.OBJECT,
                     properties: {
+                        primaryMuscles: { type: Type.ARRAY, items: { type: Type.STRING, enum: validMuscles } },
+                        secondaryMuscles: { type: Type.ARRAY, items: { type: Type.STRING, enum: validMuscles } },
                         elite: strategySchema,
                         rx: strategySchema,
                         intermediate: strategySchema,
                         scaledBeginner: strategySchema,
                     },
-                    required: ["elite", "rx", "intermediate", "scaledBeginner"]
+                    required: ["primaryMuscles", "secondaryMuscles", "elite", "rx", "intermediate", "scaledBeginner"]
                 }
             }
         });
