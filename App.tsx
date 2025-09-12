@@ -9,7 +9,6 @@ import HomePageGripGuide from './components/HomePageGripGuide';
 import TeamWorkoutGuide from './components/TeamWorkoutGuide';
 import SavedWorkouts from './components/SavedWorkouts';
 import MovementLibrary from './components/MovementLibrary';
-import AdaptiveWorkoutBuilder from './components/AdaptiveWorkoutBuilder';
 
 const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Machines', 'Monostructural'];
 
@@ -135,8 +134,6 @@ export default function App(): React.JSX.Element {
             <TeamWorkoutGuide />
           </div>
         );
-      case 'adaptiveWod':
-        return <AdaptiveWorkoutBuilder onBack={handleGoHome} />;
       case 'home':
       default:
         return (
