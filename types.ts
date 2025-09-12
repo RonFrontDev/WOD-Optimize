@@ -50,11 +50,19 @@ export interface WorkoutStrategy {
   scaledBeginner: StrategyDetails;
 }
 
+export interface HeatmapPoint {
+  x: number;
+  y: number;
+  label: string;
+  type: 'positive' | 'improvement';
+}
+
 export interface AnalysisSession {
   id: number;
   date: string;
   imageDataUrl: string;
   feedback: string;
+  heatmapPoints?: HeatmapPoint[];
 }
 
 export interface SuggestedWorkout {

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import type { Movement, Drill, MobilityExercise, TransitionTip, EnergySavingTip, AnalysisSession } from '../types';
+import type { Movement, Drill, MobilityExercise, TransitionTip, EnergySavingTip, AnalysisSession, HeatmapPoint } from '../types';
 import { analyzeMovementForm, generateDrills, generateMobilityRoutine, generateTransitionTips, generateEnergySavingTips } from '../services/geminiService';
 import FileUpload from './FileUpload';
 import LoadingSpinner from './LoadingSpinner';
@@ -13,6 +13,7 @@ import {
     GripWeakIcon, BalanceIcon, CoreIcon, CheckCircleIcon, ExclamationTriangleIcon
 } from './Icons';
 import GripGuide from './GripGuide';
+import AnalysisImageViewer from './AnalysisImageViewer';
 
 interface MovementDetailProps {
   movement: Movement;
@@ -62,7 +63,7 @@ const ParsedFeedback = ({ feedbackText }: { feedbackText: string }) => {
 
     // Fallback for unexpected formats
     if (!overall && points.length === 0 && improvements.length === 0) {
-        return <div className="whitespace-pre-wrap font-mono text-sm">{feedbackText}</div>;
+        return <div className="whitespace-pre-wrap font-sans text-sm">{feedbackText}</div>;
     }
 
     return (
@@ -121,6 +122,9 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
   const [isLoadingEnergy, setIsLoadingEnergy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const [heatmapPoints, setHeatmapPoints] = useState<HeatmapPoint[]>([]);
+  const [analyzedImageUrl, setAnalyzedImageUrl] = useState<string | null>(null);
+
   const showGripGuide = !noGripMovementIds.includes(movement.id);
 
   const saveAnalysisToHistory = useCallback((movementId: string, session: AnalysisSession) => {
@@ -141,17 +145,23 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
     setIsAnalyzing(true);
     setError(null);
     setFeedback('');
+    setHeatmapPoints([]);
+    setAnalyzedImageUrl(null);
     try {
-      const result = await analyzeMovementForm(imageFile, movement.name);
-      setFeedback(result);
+      const { feedbackText, heatmapPoints } = await analyzeMovementForm(imageFile, movement.name);
+      setFeedback(feedbackText);
+      setHeatmapPoints(heatmapPoints);
+
       const reader = new FileReader();
       reader.onloadend = () => {
           const imageDataUrl = reader.result as string;
+          setAnalyzedImageUrl(imageDataUrl);
           const newSession: AnalysisSession = {
               id: Date.now(),
               date: new Date().toISOString(),
               imageDataUrl,
-              feedback: result,
+              feedback: feedbackText,
+              heatmapPoints: heatmapPoints,
           };
           saveAnalysisToHistory(movement.id, newSession);
       };
@@ -162,6 +172,14 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
       setIsAnalyzing(false);
     }
   }, [imageFile, movement.name, movement.id, saveAnalysisToHistory]);
+
+  const handleFileSelect = (file: File | null) => {
+    setImageFile(file);
+    // Clear previous analysis results when a new file is selected
+    setFeedback('');
+    setHeatmapPoints([]);
+    setAnalyzedImageUrl(null);
+  };
 
   const fetchDrills = useCallback(async () => {
     setIsLoadingDrills(true);
@@ -277,8 +295,8 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
         return (
           <div>
             <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary mb-4">Form Analysis</h3>
-            <p className="text-text-muted dark:text-dark-text-muted mb-6">Upload a clear photo of yourself performing the movement. Our analysis tool will provide personalized feedback.</p>
-            <FileUpload onFileSelect={setImageFile} />
+            <p className="text-text-muted dark:text-dark-text-muted mb-6">Upload a clear photo of yourself performing the movement. Our AI coach will provide personalized feedback with a visual heatmap.</p>
+            <FileUpload onFileSelect={handleFileSelect} />
             <button
               onClick={handleAnalyze}
               disabled={!imageFile || isAnalyzing}
@@ -288,9 +306,12 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
               {isAnalyzing ? 'Analyzing...' : 'Analyze My Form'}
             </button>
             {isAnalyzing && <div className="mt-6 flex justify-center"><LoadingSpinner /></div>}
-            {feedback && (
-              <div className="mt-8 p-6 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                <ParsedFeedback feedbackText={feedback} />
+            {analyzedImageUrl && feedback && (
+              <div className="mt-8 grid md:grid-cols-2 gap-8 items-start animate-fade-in">
+                <AnalysisImageViewer imageUrl={analyzedImageUrl} heatmapPoints={heatmapPoints} />
+                <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg max-h-[500px] overflow-y-auto">
+                    <ParsedFeedback feedbackText={feedback} />
+                </div>
               </div>
             )}
           </div>
@@ -417,15 +438,13 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
               <ul className="space-y-6">
                 {history.map(session => (
                   <li key={session.id} className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md animate-fade-in border border-border-color dark:border-dark-border-color">
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <img src={session.imageDataUrl} alt="Analyzed form" className="w-full sm:w-32 h-32 object-cover rounded-md flex-shrink-0" />
-                      <div className="flex-grow">
-                        <p className="text-sm text-text-muted dark:text-dark-text-muted font-semibold">
-                          {new Date(session.date).toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                        </p>
-                        <div className="mt-2 text-text-muted dark:text-dark-text-muted whitespace-pre-wrap font-mono text-sm border-l-2 border-border-color dark:border-dark-border-color pl-3">
-                          {session.feedback}
-                        </div>
+                    <p className="text-sm text-text-muted dark:text-dark-text-muted font-semibold mb-3">
+                        {new Date(session.date).toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                    </p>
+                    <div className="grid md:grid-cols-2 gap-6 items-start">
+                      <AnalysisImageViewer imageUrl={session.imageDataUrl} heatmapPoints={session.heatmapPoints || []} />
+                      <div className="p-2 max-h-[400px] overflow-y-auto">
+                         <ParsedFeedback feedbackText={session.feedback} />
                       </div>
                     </div>
                   </li>

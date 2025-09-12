@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout } from '../types';
+import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint } from '../types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable is not set.");
@@ -23,27 +23,67 @@ const fileToGenerativePart = async (file: File) => {
   };
 };
 
-export const analyzeMovementForm = async (imageFile: File, movementName: string): Promise<string> => {
+export interface AnalysisResult {
+    feedbackText: string;
+    heatmapPoints: HeatmapPoint[];
+}
+
+
+export const analyzeMovementForm = async (imageFile: File, movementName: string): Promise<AnalysisResult> => {
     try {
         const imagePart = await fileToGenerativePart(imageFile);
         const prompt = `You are an expert CrossFit and strength & conditioning coach. Analyze the user's form for the ${movementName} in the provided image.
-        
-        Provide your feedback in the following format:
-        1.  **Overall Impression:** A brief, encouraging summary.
-        2.  **Points of Performance:** 2-3 key things the user is doing well.
-        3.  **Areas for Improvement:** 2-3 specific, actionable points of correction. Focus on the most critical faults first.
-        
-        Keep your language clear, concise, and motivational. Do not use markdown formatting.`;
+
+        Provide your response as a single JSON object with two keys: "feedbackText" and "heatmapPoints".
+
+        1.  "feedbackText": A string containing your analysis in the following format:
+            - **Overall Impression:** A brief, encouraging summary.
+            - **Points of Performance:** 2-3 key things the user is doing well.
+            - **Areas for Improvement:** 2-3 specific, actionable points of correction. Focus on the most critical faults first.
+            (Do not use markdown in the feedbackText string itself).
+
+        2.  "heatmapPoints": A JSON array of objects. Each object represents a key point on the user's body to highlight. For each point, provide:
+            - "x": The horizontal coordinate as a percentage (0-100) from the left edge of the image.
+            - "y": The vertical coordinate as a percentage (0-100) from the top edge of the image.
+            - "label": A short, descriptive label for the point (e.g., "Upright Torso", "Knee Position", "Bar Path").
+            - "type": A string that is either "positive" for good form or "improvement" for a fault.`;
 
         const response = await ai.models.generateContent({
             model: model,
             contents: { parts: [imagePart, { text: prompt }] },
+            config: {
+                responseMimeType: "application/json",
+                responseSchema: {
+                    type: Type.OBJECT,
+                    properties: {
+                        feedbackText: { type: Type.STRING },
+                        heatmapPoints: {
+                            type: Type.ARRAY,
+                            items: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    x: { type: Type.NUMBER },
+                                    y: { type: Type.NUMBER },
+                                    label: { type: Type.STRING },
+                                    type: { type: Type.STRING, enum: ['positive', 'improvement'] }
+                                },
+                                required: ["x", "y", "label", "type"]
+                            }
+                        }
+                    },
+                    required: ["feedbackText", "heatmapPoints"]
+                }
+            }
         });
-
-        return response.text;
+        
+        const jsonResponse = JSON.parse(response.text);
+        return jsonResponse;
     } catch (error) {
         console.error("Error analyzing movement form:", error);
-        return "Sorry, I couldn't analyze the image. Please try again with a clearer picture.";
+        return { 
+            feedbackText: "Sorry, I couldn't analyze the image. The model may be unable to identify key points or there was a network issue. Please try again with a clearer picture.",
+            heatmapPoints: []
+        };
     }
 };
 
