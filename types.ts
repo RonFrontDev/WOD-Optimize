@@ -1,9 +1,14 @@
+import type { ReactNode } from "react";
+
+export type Equipment = 'Barbell' | 'Dumbbell' | 'Kettlebell' | 'Bodyweight' | 'Machine' | 'Specialty';
+
 export interface Movement {
   id: string;
   name: string;
   description: string;
   imageUrl: string;
-  category: 'Weightlifting' | 'Gymnastics' | 'Monostructural' | 'Kettlebell' | 'Strongman';
+  category: 'Weightlifting' | 'Gymnastics' | 'Monostructural' | 'Kettlebell' | 'Strongman' | 'Machines';
+  equipment: Equipment;
   commonFaults: { fault: string; fix: string; iconId: string; }[];
 }
 
@@ -65,4 +70,24 @@ export interface SavedWorkoutStrategy {
   analyzedWorkout: string;
   limiters: string[];
   strategy: WorkoutStrategy;
+}
+
+export interface CollapsibleSectionProps {
+  title: string;
+  category: Movement['category'];
+  movements: Movement[];
+  onSelectMovement: (movement: Movement) => void;
+  isInitiallyOpen?: boolean;
+  searchQuery?: string;
+}
+
+// Fix: Constrain generic type T to be a valid key type for Record.
+export interface TabbedContentProps<T extends string | number | symbol> {
+  tabs: {
+    id: T;
+    label: string;
+    icon: ReactNode;
+  }[];
+  content: Record<T, ReactNode>;
+  defaultTab: T;
 }

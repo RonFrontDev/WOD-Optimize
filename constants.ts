@@ -20,6 +20,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A fundamental strength exercise where a barbell is held on the upper back, and the athlete squats down and stands back up.',
     imageUrl: 'https://picsum.photos/seed/squat/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Knees Caving In (Valgus)', fix: 'Actively cue "spread the floor" with your feet. A light resistance band around the knees provides tactile feedback to push against, strengthening hip abductors like the gluteus medius.', iconId: 'kneesCave' },
       { fault: 'Leaning Too Far Forward (Chest Drop)', fix: 'This often indicates weak quads or tight ankles. Keep your chest proud and eyes forward. Pause squats and tempo squats can help build control and an upright torso.', iconId: 'chestDrop' },
@@ -37,6 +38,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A weight training exercise in which a loaded barbell is lifted off the ground to the level of the hips, then lowered back to the ground.',
     imageUrl: 'https://picsum.photos/seed/deadlift/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Rounding the Lower Back', fix: 'This is the most critical fault. Keep a neutral spine by engaging your lats ("pulling slack out") and bracing your core. If you can\'t maintain a flat back, the weight is too heavy.', iconId: 'roundedBack' },
       { fault: 'Incorrect Grip Width', fix: 'Your hands should be placed just outside your shins, so your arms are vertical when looking from the front. A grip that is too wide puts you at a mechanical disadvantage and increases the range of motion.', iconId: 'grip' },
@@ -55,6 +57,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A squat variation where a barbell is held overhead with a wide grip throughout the movement, demanding exceptional mobility and stability.',
     imageUrl: 'https://picsum.photos/seed/ohs/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Losing Bar Position Overhead', fix: 'Actively push up into the bar through the entire movement. Think "show your armpits forward" to externally rotate and stabilize the shoulders. Improve shoulder and thoracic mobility.', iconId: 'unstableOverhead' },
       { fault: 'Shallow Squat Depth', fix: 'This movement exposes mobility limitations everywhere. Work consistently on ankles, hips, thoracic spine, and shoulder mobility. Use PVC pipe drills and pause OHS.', iconId: 'shallowDepth' },
@@ -72,6 +75,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A two-part Olympic lift. The "clean" moves the barbell from the floor to the shoulders, and the "jerk" moves it from shoulders to overhead.',
     imageUrl: 'https://picsum.photos/seed/clean/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Early Arm Pull in Clean', fix: 'Your arms are ropes, not engines. Be patient and let your powerful leg and hip extension elevate the bar. The arms only pull you *under* the bar.', iconId: 'earlyArmBend' },
       { fault: 'Incorrect Grip Width (Clean)', fix: 'Your clean grip should be just outside your shoulders, typically with your thumbs ending up just outside your thighs. This position allows for a powerful pull and a solid front rack receiving position.', iconId: 'grip' },
@@ -90,6 +94,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'An Olympic lift where the barbell is lifted from the floor to an overhead position in a single, continuous motion.',
     imageUrl: 'https://picsum.photos/seed/snatch/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
         { fault: 'Looping the Bar Away From Body', fix: 'Keep the bar extremely close to your body throughout the entire pull. Imagine you are trying to drag it up your shirt. Use your lats to "sweep" it in.', iconId: 'barPath' },
         { fault: 'Incorrect Grip Width', fix: 'Your grip should be wide enough that the bar rests in your hip crease when you stand up straight. A grip that is too narrow will limit power, while a grip that is too wide will be unstable and stressful on the shoulders.', iconId: 'grip' },
@@ -108,6 +113,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A ballistic exercise used to train the posterior chain. It involves swinging a kettlebell between the legs and up to eye level or overhead.',
     imageUrl: 'https://picsum.photos/seed/kettlebell/600/400',
     category: 'Kettlebell',
+    equipment: 'Kettlebell',
     commonFaults: [
         { fault: 'Using Arms to Lift (Front Raise)', fix: 'The power comes from an explosive hip thrust, not the arms. Your arms are just ropes; they guide the bell, they don\'t lift it.', iconId: 'earlyArmBend' },
         { fault: 'Squatting Instead of Hinging', fix: 'This is a hinge, not a squat. Keep your shins relatively vertical and push your hips straight back. The knees should only bend slightly.', iconId: 'hipsRise' },
@@ -125,6 +131,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'An upper-body strength exercise where the body is suspended by the hands and pulled up to the point where the chin clears the bar.',
     imageUrl: 'https://picsum.photos/seed/pullup/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Not Reaching Full Extension at Bottom', fix: 'Each rep must start from a dead hang with locked-out elbows. This ensures full range of motion and develops strength through the entire movement.', iconId: 'rom' },
       { fault: 'Grip Too Wide or Too Narrow', fix: 'A grip slightly wider than shoulder-width is ideal for engaging the lats. A very wide grip limits range of motion and can stress the shoulders, while a very narrow grip turns the movement into more of a chin-up, emphasizing the biceps.', iconId: 'grip' },
@@ -143,6 +150,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A classic calisthenics exercise performed in a prone position by raising and lowering the body using the arms.',
     imageUrl: 'https://picsum.photos/seed/pushup/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Sagging Hips or Piking', fix: 'Your body must be a rigid plank. Squeeze your core, glutes, and quads to maintain a straight line from your head to your heels throughout the entire rep.', iconId: 'core' },
       { fault: 'Flaring Elbows Too Wide', fix: 'Keep your elbows tucked at about a 45-degree angle from your body, not flared out to 90 degrees. This protects your shoulders and engages your chest and triceps more effectively.', iconId: 'pressOut' },
@@ -160,6 +168,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A gymnastic exercise where, while hanging from a bar, the athlete raises their feet to touch the bar.',
     imageUrl: 'https://picsum.photos/seed/t2b/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Swinging Uncontrollably', fix: 'Master the basic kipping swing first (hollow to arch). The toes-to-bar is a controlled application of that swing, not a wild flail.', iconId: 'balance' },
       { fault: 'Pulling with the Arms', fix: 'The initial elevation comes from your lats and core. Think about pushing *down* on the bar with straight arms as you close your shoulder angle, which lifts your body back.', iconId: 'earlyArmBend' },
@@ -177,6 +186,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A complex gymnastic movement that combines a pull-up and a dip to transition from below the rings to above them.',
     imageUrl: 'https://picsum.photos/seed/muscleup/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Chicken Winging (Uneven Arms)', fix: 'This happens when one arm internally rotates and gets stuck. Strengthen your false grip and practice keeping the rings close to your body with transition drills.', iconId: 'rhythm' },
       { fault: 'Pulling Too Low', fix: 'Don\'t rush the pull. Be patient in the kip and focus on pulling the rings to your sternum/lower chest, not just your chin, before initiating the transition.', iconId: 'shallowDepth' },
@@ -194,6 +204,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'An advanced push-up variation performed in a handstand position, targeting shoulders and triceps.',
     imageUrl: 'https://picsum.photos/seed/hspu/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Arching the Back Excessively', fix: 'Stay in a hollow body position by squeezing your core and glutes. Point your toes to the ceiling. This protects your spine and creates a more efficient line of force.', iconId: 'roundedBack' },
       { fault: 'Elbows Flaring Out Wide', fix: 'Keep your elbows tucked in at roughly a 45-degree angle. This creates a stable tripod with your head and hands and is much safer for your shoulder joints.', iconId: 'pressOut' },
@@ -211,6 +222,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A full-body exercise combining a squat, plank, push-up, and jump. A staple in high-intensity conditioning.',
     imageUrl: 'https://picsum.photos/seed/burpee/600/400',
     category: 'Monostructural',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Worming Up from the Push-up', fix: 'Maintain core tension to lift your chest and hips at the same time as a single unit. If you can\'t, scale the push-up to your knees or omit it (sprawl).', iconId: 'rhythm' },
       { fault: 'Not Opening Hips at the Top', fix: 'The rep finishes with a small vertical jump where the hips and knees reach full extension and the hands clap overhead. Don\'t shortchange the rep.', iconId: 'rom' },
@@ -228,6 +240,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A plyometric exercise where you jump from the floor onto an elevated surface, like a box, to develop explosive power.',
     imageUrl: 'https://picsum.photos/seed/boxjump/600/400',
     category: 'Monostructural',
+    equipment: 'Specialty',
     commonFaults: [
       { fault: 'Jumping with Stiff Legs', fix: 'A box jump is a dynamic movement. Load the jump by dipping your hips and swinging your arms back, then explode up by extending your hips, knees, and ankles.', iconId: 'rom' },
       { fault: 'Landing Too Low in a Deep Squat', fix: 'Land softly and quietly in a partial squat (quarter or half squat). A deep squat landing means you likely didn\'t jump high enough for that box height.', iconId: 'shallowDepth' },
@@ -245,6 +258,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A squat variation where the barbell is held in a front rack position, emphasizing quadriceps and core strength.',
     imageUrl: 'https://picsum.photos/seed/frontsquat/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Dropping Elbows', fix: 'Elbows must stay high. Actively drive your elbows up throughout the entire movement. If they drop, your torso will follow, and you\'ll likely lose the bar forward.', iconId: 'chestDrop' },
       { fault: 'Losing the Bar Forward', fix: 'This is caused by dropping elbows or a weak upper back. Maintain a proud chest and focus on keeping your upper back tight and extended.', iconId: 'unstableOverhead' },
@@ -262,6 +276,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A compound exercise combining a front squat with an overhead press, performed in one fluid motion.',
     imageUrl: 'https://picsum.photos/seed/thruster/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Pausing at the Top of the Squat', fix: 'The power of the thruster comes from seamless momentum transfer. Use the upward drive from the squat to propel the bar directly overhead without any pause.', iconId: 'rhythm' },
       { fault: 'Pressing Early with Arms', fix: 'This is a leg-driven movement. Wait for full hip and leg extension before initiating the press. The press should be an extension of the squat\'s power, not a separate movement.', iconId: 'earlyArmBend' },
@@ -279,6 +294,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A functional fitness exercise involving squatting while holding a medicine ball and then throwing it to a target on a wall.',
     imageUrl: 'https://picsum.photos/seed/wallball/600/400',
     category: 'Weightlifting',
+    equipment: 'Specialty',
     commonFaults: [
       { fault: 'Standing Too Close or Too Far', fix: 'Find your optimal distance (usually holding the ball at arm\'s length to the wall). Too close makes the throw awkward; too far makes you throw forward instead of up.', iconId: 'balance' },
       { fault: 'Not Using Hip Drive', fix: 'The power comes from exploding out of the bottom of the squat. Use your legs and hips to propel the ball upwards; your arms are just for guidance.', iconId: 'hipsRise' },
@@ -296,6 +312,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A jump rope skill where the rope passes under the feet twice for every single jump.',
     imageUrl: 'https://picsum.photos/seed/doubleunder/600/400',
     category: 'Monostructural',
+    equipment: 'Specialty',
     commonFaults: [
       { fault: 'Piking or Tucking Knees High', fix: 'Stay tall and relaxed. The jump should be a small, efficient bounce from the balls of your feet, just high enough to clear the rope. No need for a high tuck jump.', iconId: 'posture' },
       { fault: 'Arms Flying Out Wide', fix: 'Keep your elbows tucked in close to your sides. The rotation should come from your wrists, not from making big circles with your arms. Your hands should be slightly in front of your hips.', iconId: 'barPath' },
@@ -312,7 +329,8 @@ export const MOVEMENTS: Movement[] = [
     name: 'Rowing (Erg)',
     description: 'A full-body workout that simulates rowing on water, performed on a rowing machine (ergometer).',
     imageUrl: 'https://picsum.photos/seed/rowing/600/400',
-    category: 'Monostructural',
+    category: 'Machines',
+    equipment: 'Machine',
     commonFaults: [
       { fault: 'Opening Back Too Early', fix: 'The sequence is critical: 1. Legs, 2. Back, 3. Arms. On the return, it\'s the reverse: 1. Arms, 2. Back, 3. Legs. Don\'t blend the movements.', iconId: 'rhythm' },
       { fault: 'Shooting the Slide', fix: 'This is when your legs extend but your shoulders don\'t move back with them. Push with the legs first, keeping the back angle consistent, then swing the torso open.', iconId: 'hipsRise' },
@@ -330,6 +348,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A gymnastics dip performed on rings, requiring significant strength and stability due to the unstable nature of the rings.',
     imageUrl: 'https://picsum.photos/seed/ringdip/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Shoulders Rolling Forward', fix: 'Keep your shoulders pulled back and down, maintaining a proud chest. An active, externally rotated shoulder position is crucial for health and stability.', iconId: 'roundedBack' },
       { fault: 'Not Reaching Full Depth', fix: 'For a full rep, you must lower yourself until your shoulder is clearly below your elbow at the bottom of the dip. Work on partial range if needed to build strength.', iconId: 'shallowDepth' },
@@ -347,6 +366,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A dynamic gymnastic skill that transitions from a hanging position below a pull-up bar to a supported position above it.',
     imageUrl: 'https://picsum.photos/seed/barmuscleup/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Pulling Too Early', fix: 'Be patient in the kip. The pull comes *after* the hips rise. Wait for that moment of weightlessness before pulling the bar aggressively to your chest.', iconId: 'earlyArmBend' },
       { fault: 'Looping Over the Bar ("Rainbow")', fix: 'This is inefficient. Focus on keeping the bar close to your body and a fast, aggressive "sit-up" motion over the bar, not a slow arc around it.', iconId: 'barPath' },
@@ -364,6 +384,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'An advanced single-leg squat that requires exceptional strength, balance, and mobility to perform correctly.',
     imageUrl: 'https://picsum.photos/seed/pistol/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Heel Lifting Off the Ground', fix: 'This is almost always an ankle mobility issue (dorsiflexion). Stretch your calves and practice by holding onto a post for balance to keep the heel down.', iconId: 'heelsLift' },
       { fault: 'Falling Backwards', fix: 'Keep your chest up and extend your non-squatting leg and arms out in front as a counterbalance. Core strength is key here.', iconId: 'balance' },
@@ -381,6 +402,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'An overhead press variation that uses a "dip and drive" from the legs to help propel the barbell overhead.',
     imageUrl: 'https://picsum.photos/seed/pushpress/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Pressing Before Legs are Extended', fix: 'The sequence is "dip, DRIVE, press". You must reach full, violent hip and knee extension before your arms begin to press. The press finishes what the legs started.', iconId: 'rhythm' },
       { fault: 'Leaning Back Excessively (Arching)', fix: 'Keep your core tight and squeeze your glutes to maintain a neutral spine. A significant back arch is a sign you are trying to press weight that is too heavy.', iconId: 'roundedBack' },
@@ -398,6 +420,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A compound movement that combines a sumo-stance deadlift with an explosive upright row, training power and speed.',
     imageUrl: 'https://picsum.photos/seed/sdhp/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Pulling with the Arms Too Early', fix: 'The movement is initiated by a powerful leg and hip extension. The arms only begin to pull *after* the hips have fully opened and the bar is weightless.', iconId: 'earlyArmBend' },
       { fault: 'Elbows Lower Than Hands', fix: 'Lead with the elbows. Focus on pulling your elbows high and to the outside, keeping your hands close to your body. The bar should rise to about your collarbone.', iconId: 'pressOut' },
@@ -414,7 +437,8 @@ export const MOVEMENTS: Movement[] = [
     name: 'Assault Bike',
     description: 'A high-intensity conditioning tool that combines cycling with moving arms, providing a grueling full-body workout.',
     imageUrl: 'https://picsum.photos/seed/assaultbike/600/400',
-    category: 'Monostructural',
+    category: 'Machines',
+    equipment: 'Machine',
     commonFaults: [
       { fault: 'Improper Seat Height', fix: 'Set the seat height so your leg has a slight, athletic bend at the bottom of the pedal stroke. Too low or too high will be inefficient and stressful on your knees.', iconId: 'posture' },
       { fault: 'Focusing Only on Legs or Arms', fix: 'It\'s a full-body machine. Coordinate pushing with one leg while pulling with the opposite arm, and vice versa. Drive hard with both your upper and lower body.', iconId: 'rhythm' },
@@ -432,6 +456,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A punishing full-body movement involving a burpee with dumbbells, followed by swinging them from between the legs to a locked-out overhead position.',
     imageUrl: 'https://picsum.photos/seed/devilspress/600/400',
     category: 'Weightlifting',
+    equipment: 'Dumbbell',
     commonFaults: [
       { fault: 'Using arms to lift (muscling it up)', fix: 'Power comes from an explosive hip hinge, like a powerful kettlebell swing. The arms guide the dumbbells, they don\'t do the primary lifting.', iconId: 'earlyArmBend' },
       { fault: 'Rounded back on burpee or swing', fix: 'Maintain a flat, neutral spine throughout the entire movement. Brace your core, especially when handling the dumbbells.', iconId: 'roundedBack' },
@@ -449,6 +474,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A demanding compound exercise that pairs the full-body burpee with an upper-body pull-up, often used in hero WODs.',
     imageUrl: 'https://picsum.photos/seed/burpeepullup/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Inefficient positioning', fix: 'Perform the burpee directly under the pull-up bar to allow for a direct, vertical jump to the bar.', iconId: 'balance' },
       { fault: 'Wasted energy jumping to the bar', fix: 'Use the momentum from standing up out of the burpee to help initiate the jump. A small hop is all that should be needed.', iconId: 'rhythm' },
@@ -466,6 +492,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A high-intensity conditioning exercise that combines a burpee with a box jump, testing full-body power and endurance.',
     imageUrl: 'https://picsum.photos/seed/burpeeboxjump/600/400',
     category: 'Monostructural',
+    equipment: 'Specialty',
     commonFaults: [
       { fault: 'Slow transition from burpee to jump', fix: 'Land the burpee in a coiled, ready-to-jump position. Minimize any pause between standing and jumping.', iconId: 'rhythm' },
       { fault: 'Rebounding off the box', fix: 'Jumping down greatly increases injury risk to the Achilles tendon. Step down one foot at a time to stay safe and control your pace.', iconId: 'rhythm' },
@@ -483,6 +510,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A complex sequence involving a push-up on dumbbells, a renegade row with each arm, jumping the feet in, and finishing with a squat clean thruster.',
     imageUrl: 'https://picsum.photos/seed/manmaker/600/400',
     category: 'Weightlifting',
+    equipment: 'Dumbbell',
     commonFaults: [
       { fault: 'Rushing the sequence', fix: 'Be deliberate with each component: push-up, row, row, clean, thruster. Sloppy transitions lead to failed reps and injury.', iconId: 'rhythm' },
       { fault: 'Hips twisting during rows', fix: 'Engage your core and take a wider foot stance for stability. The goal is to isolate the back and arm, not twist your whole body.', iconId: 'core' },
@@ -500,6 +528,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A powerful compound lift that combines a full squat clean directly into a thruster in one fluid motion, without pausing.',
     imageUrl: 'https://picsum.photos/seed/cluster/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Pausing at the top of the squat', fix: 'The defining feature is the lack of a pause. Drive directly from the bottom of the squat clean into the overhead press. It must be one fluid motion.', iconId: 'rhythm' },
       { fault: 'Pressing with arms too early', fix: 'Let the powerful leg and hip drive do the work of elevating the bar. The arms only engage at the very end to lock out overhead.', iconId: 'earlyArmBend' },
@@ -517,6 +546,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'An explosive single-arm movement where a dumbbell is lifted from the ground to an overhead position in one motion. Typically performed alternating arms.',
     imageUrl: 'https://picsum.photos/seed/dbsnatch/600/400',
     category: 'Weightlifting',
+    equipment: 'Dumbbell',
     commonFaults: [
       { fault: 'Using the arm to lift (like a curl)', fix: 'Power comes from the legs and hips. The arm is just a rope. Explode with your hips and let that momentum carry the dumbbell up.', iconId: 'earlyArmBend' },
       { fault: 'Looping the dumbbell away from the body', fix: 'Keep the dumbbell as close to your centerline as possible. A straight path is an efficient path.', iconId: 'barPath' },
@@ -534,6 +564,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A more advanced pull-up standard requiring the athlete to pull high enough to make physical contact with the bar with their chest.',
     imageUrl: 'https://picsum.photos/seed/c2b/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Over-relying on the kip', fix: 'The kip helps, but you need the raw pulling strength to get your body high enough. Work on strict pull-ups and weighted pull-ups.', iconId: 'rhythm' },
       { fault: 'Arching back to touch ("humping")', fix: 'The chest should touch in a controlled, slightly hollow position. Hinging violently at the back is inefficient and dangerous.', iconId: 'roundedBack' },
@@ -551,6 +582,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A burpee variation where the athlete must be perpendicular to a barbell on the floor and finish by jumping over it with two feet.',
     imageUrl: 'https://picsum.photos/seed/barfacingburpee/600/400',
     category: 'Monostructural',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Not getting chest to the ground', fix: 'A valid burpee requires your chest and thighs to touch the ground at the bottom of the rep.', iconId: 'rom' },
       { fault: 'Taking extra steps', fix: 'For maximum speed, jump your feet from the burpee into a position where you can immediately jump over the bar. Minimize or eliminate extra steps.', iconId: 'rhythm' },
@@ -568,6 +600,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A fast-paced version of the box jump where the athlete jumps onto the box and then travels over to the other side without needing to open their hips at the top.',
     imageUrl: 'https://picsum.photos/seed/boxjumpover/600/400',
     category: 'Monostructural',
+    equipment: 'Specialty',
     commonFaults: [
       { fault: 'Rebounding off the box', fix: 'This is the most dangerous fault. It places extreme eccentric load on the Achilles tendon. Step or jump down off the box, but do not "bounce" off the top.', iconId: 'rhythm' },
       { fault: 'Not clearing the box safely', fix: 'Ensure you jump high enough to get both feet fully on the box before proceeding to the other side. Clipping a foot can lead to a serious fall.', iconId: 'unstableOverhead' },
@@ -584,7 +617,8 @@ export const MOVEMENTS: Movement[] = [
     name: 'Ski Erg',
     description: 'An ergometer that mimics the motion of cross-country skiing, providing a full-body, low-impact workout targeting the upper body, core, and legs.',
     imageUrl: 'https://picsum.photos/seed/skierg/600/400',
-    category: 'Monostructural',
+    category: 'Machines',
+    equipment: 'Machine',
     commonFaults: [
       { fault: 'Pulling only with arms', fix: 'This is a full-body movement. Initiate with a powerful hip hinge and core crunch, using your bodyweight to drive the handles down. Arms finish the pull.', iconId: 'earlyArmBend' },
       { fault: 'Bending arms too early', fix: 'Keep arms relatively straight at the top. The power comes from the core and hips, not an arm pull-down.', iconId: 'earlyArmBend' },
@@ -601,7 +635,8 @@ export const MOVEMENTS: Movement[] = [
     name: 'Bike Erg',
     description: 'A stationary air bike that uses a flywheel to provide resistance, focusing on lower body power and cardiovascular endurance.',
     imageUrl: 'https://picsum.photos/seed/bikeerg/600/400',
-    category: 'Monostructural',
+    category: 'Machines',
+    equipment: 'Machine',
     commonFaults: [
       { fault: 'Incorrect seat height', fix: 'Set the seat so your leg is almost fully extended at the bottom of the pedal stroke. A slight bend is optimal.', iconId: 'posture' },
       { fault: 'Bouncing in the saddle', fix: 'Focus on a smooth, circular pedal stroke rather than just stomping down. Pull up with the hamstrings as you push down with the quads.', iconId: 'balance' },
@@ -618,7 +653,8 @@ export const MOVEMENTS: Movement[] = [
     name: 'GHD Sit-up',
     description: 'A powerful core exercise performed on a Glute-Ham Developer, taking the spine through a large range of motion from hyperextension to flexion.',
     imageUrl: 'https://picsum.photos/seed/ghdsitup/600/400',
-    category: 'Gymnastics',
+    category: 'Machines',
+    equipment: 'Machine',
     commonFaults: [
       { fault: 'Overextending at the bottom', fix: 'Descend only to parallel or slightly below until you have the requisite strength and control. Do not drop into uncontrolled hyperextension.', iconId: 'rom' },
       { fault: 'Using only hip flexors', fix: 'Initiate the sit-up by leading with your chest and squeezing your abs. The legs and hips assist, but the core should be the prime mover.', iconId: 'core' },
@@ -636,6 +672,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A fundamental monostructural movement that builds cardiovascular endurance and stamina. It is a staple in fitness for its accessibility and effectiveness.',
     imageUrl: 'https://picsum.photos/seed/running/600/400',
     category: 'Monostructural',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Heel striking', fix: 'Try to land on your mid-foot, directly underneath your center of mass. This reduces braking forces and impact on your joints.', iconId: 'heelsLift' },
       { fault: 'Over-striding', fix: 'Increase your cadence (steps per minute) rather than the length of your stride. Think "quick, light feet."', iconId: 'rhythm' },
@@ -653,6 +690,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A classic test of upper body and grip strength, involving ascending a thick, suspended rope using various techniques.',
     imageUrl: 'https://picsum.photos/seed/ropeclimb/600/400',
     category: 'Gymnastics',
+    equipment: 'Specialty',
     commonFaults: [
       { fault: 'Relying solely on arm strength', fix: 'Use your feet. The J-hook or S-wrap technique locks the rope with your feet, allowing your powerful legs to stand up, saving your arms.', iconId: 'earlyArmBend' },
       { fault: 'Inefficient foot clamp', fix: 'Practice the J-hook or S-wrap on the ground or from a box until it is second nature. A weak clamp means you are just holding your bodyweight with your arms.', iconId: 'grip' },
@@ -670,6 +708,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A core-intensive gymnastic hold where the body forms an "L" shape, supported by the arms with legs held straight out.',
     imageUrl: 'https://picsum.photos/seed/lsit/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Bent knees', fix: 'This is often a flexibility issue (hamstrings) or a strength issue (quads/hip flexors). Work on hamstring stretches and practice single-leg extensions.', iconId: 'rom' },
       { fault: 'Shoulders shrugged up by ears', fix: 'Actively depress your scapula by pushing down into the floor or parallettes. Think about creating as much space between your ears and shoulders as possible.', iconId: 'posture' },
@@ -687,6 +726,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A high-skill gymnastic movement that involves walking on one\'s hands, requiring immense shoulder stability, balance, and core strength.',
     imageUrl: 'https://picsum.photos/seed/hswalk/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Arching the back ("banana back")', fix: 'Engage your core and glutes to maintain a hollow body position. Look between your hands, not far in front. This keeps your body stacked.', iconId: 'roundedBack' },
       { fault: 'Incorrect Hand and Finger Position', fix: 'Spread your fingers wide and grip the floor to create a stable base. Point your index fingers forward or slightly outward. This active grip helps with balance and control.', iconId: 'grip' },
@@ -705,6 +745,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A foundational exercise for building handstand strength and confidence by walking the feet up a wall into a handstand position and back down.',
     imageUrl: 'https://picsum.photos/seed/wallwalk/600/400',
     category: 'Gymnastics',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Hips sagging towards the floor', fix: 'Maintain a rigid plank or hollow body position throughout. Squeeze your core and glutes to keep a straight line from hands to feet.', iconId: 'core' },
       { fault: 'Not getting close enough to the wall', fix: 'The goal is to get your chest and nose as close to the wall as possible. Take small hand steps back towards the wall on the way up.', iconId: 'rom' },
@@ -722,6 +763,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A fundamental single-leg exercise where you step forward and lower your hips until both knees are bent at approximately a 90-degree angle.',
     imageUrl: 'https://picsum.photos/seed/lunge/600/400',
     category: 'Monostructural',
+    equipment: 'Bodyweight',
     commonFaults: [
       { fault: 'Front knee going past toes', fix: 'Take a larger step forward. The goal is to have your front shin be roughly vertical at the bottom of the lunge.', iconId: 'kneesCave' },
       { fault: 'Leaning torso too far forward', fix: 'Keep your chest up and your torso upright. This engages your core and puts the focus on your legs and glutes.', iconId: 'chestDrop' },
@@ -739,6 +781,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A movement standard where the objective is to move a weight (barbell, dumbbell, etc.) from the ground to a locked-out overhead position, by any means necessary.',
     imageUrl: 'https://picsum.photos/seed/gto/600/400',
     category: 'Weightlifting',
+    equipment: 'Barbell',
     commonFaults: [
       { fault: 'Inefficient movement choice', fix: 'For lighter loads, a snatch (power or squat) is fastest. For heavier loads, a clean and jerk (power or squat, split or push) is more effective. Choose the right tool for the job.', iconId: 'rhythm' },
       { fault: 'Poor starting position', fix: 'Regardless of the method, start with a flat back, engaged core, and chest up. A bad first pull from the ground ruins the entire lift.', iconId: 'posture' },
@@ -756,6 +799,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A two-part lift with dumbbells, moving them from the floor to the shoulders (clean) and then from the shoulders to locked out overhead (jerk).',
     imageUrl: 'https://picsum.photos/seed/dbcleanjerk/600/400',
     category: 'Weightlifting',
+    equipment: 'Dumbbell',
     commonFaults: [
       { fault: 'Curling the dumbbells in the clean', fix: 'The clean is powered by a hip-driven jump, not a bicep curl. Keep arms long and use your hips to elevate the dumbbells.', iconId: 'earlyArmBend' },
       { fault: 'Swinging dumbbells away from body', fix: 'Keep the dumbbells close to your body, with the heads tracking along your shins and thighs for an efficient path.', iconId: 'barPath' },
@@ -773,6 +817,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'An explosive, full-body exercise that involves swinging a kettlebell from between the legs to an overhead locked-out position in one fluid motion.',
     imageUrl: `https://picsum.photos/seed/kbsnatch/600/400`,
     category: 'Kettlebell',
+    equipment: 'Kettlebell',
     commonFaults: [
         { fault: 'Taming the arc (bell flipping over and hitting forearm)', fix: 'Focus on a high pull, keeping the bell close to your body. At the top, punch your hand through the bell rather than letting it flop over. Think of it as a zip-up motion.', iconId: 'barPath' },
         { fault: 'Using arm strength instead of hip power', fix: 'The power comes from a violent hip hinge, not a front raise. The arm simply guides the bell to its overhead destination.', iconId: 'earlyArmBend' },
@@ -786,6 +831,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A multi-step movement that involves lying on the floor with a weight held overhead and standing up, then returning to the start, all while keeping the weight stable.',
     imageUrl: `https://picsum.photos/seed/tgu/600/400`,
     category: 'Kettlebell',
+    equipment: 'Kettlebell',
     commonFaults: [
         { fault: 'Rushing the steps', fix: 'The TGU is a slow, deliberate movement. Own each position before moving to the next. It is a practice in stability, not speed.', iconId: 'rhythm' },
         { fault: 'Eyes not on the bell', fix: 'Keep your eyes on the weight for the majority of the movement. This helps maintain stability and awareness of your overhead position.', iconId: 'posture' },
@@ -799,6 +845,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A squat variation where a kettlebell is held in front of the chest, promoting an upright torso and excellent squat mechanics.',
     imageUrl: `https://picsum.photos/seed/gobletsquat/600/400`,
     category: 'Kettlebell',
+    equipment: 'Kettlebell',
     commonFaults: [
         { fault: 'Dropping the chest forward', fix: 'Keep your elbows tucked in and actively "pry" your knees apart with them at the bottom. This forces your chest to stay up.', iconId: 'chestDrop' },
         { fault: 'Heels lifting off the ground', fix: 'This points to ankle mobility issues. Focus on sitting back and keeping your weight on your mid-foot. Practice with your heels on small plates if needed.', iconId: 'heelsLift' },
@@ -812,6 +859,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A foundational strongman and functional exercise that involves walking for distance or time while holding a heavy weight in each hand.',
     imageUrl: `https://picsum.photos/seed/farmerscarry/600/400`,
     category: 'Strongman',
+    equipment: 'Specialty',
     commonFaults: [
         { fault: 'Rounded shoulders and back', fix: 'Stay tall. Keep your chest proud, shoulders pulled back and down, and core braced. Imagine a string pulling the top of your head to the ceiling.', iconId: 'roundedBack' },
         { fault: 'Taking short, choppy steps', fix: 'Take smooth, controlled steps. A choppy stride indicates a lack of stability. Slow down and focus on staying upright.', iconId: 'rhythm' },
@@ -825,6 +873,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A powerful, awkward lift that involves picking a sandbag from the floor and shouldering it or lapping it before standing up.',
     imageUrl: `https://picsum.photos/seed/sandbag/600/400`,
     category: 'Strongman',
+    equipment: 'Specialty',
     commonFaults: [
         { fault: 'Trying to curl the bag', fix: 'The power comes from a violent hip extension. Get your hips low, hug the bag tight to your body, and explode upwards, pulling the bag into your lap or up to your shoulder.', iconId: 'earlyArmBend' },
         { fault: 'Losing posture', fix: 'Maintain a strong, flat back, especially on the initial pick. It is easy to round with an awkward object; fight to keep your chest up.', iconId: 'roundedBack' },
@@ -838,6 +887,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A quintessential strongman event where the athlete supports a heavy yoke across their upper back and walks with it as quickly as possible.',
     imageUrl: `https://picsum.photos/seed/yokecarry/600/400`,
     category: 'Strongman',
+    equipment: 'Specialty',
     commonFaults: [
         { fault: 'Slow, hesitant start', fix: 'The pickup must be aggressive. Get under the yoke, brace your core, and stand up explosively. The first few steps are crucial for building momentum.', iconId: 'rhythm' },
         { fault: 'Taking steps that are too long', fix: 'Focus on short, choppy, fast steps. This keeps your center of gravity under you and prevents the yoke from swinging wildly.', iconId: 'balance' },
@@ -851,6 +901,7 @@ export const MOVEMENTS: Movement[] = [
     description: 'A full-body power exercise that involves lifting a large, heavy tire from the ground, pushing it up, and flipping it over.',
     imageUrl: `https://picsum.photos/seed/tireflip/600/400`,
     category: 'Strongman',
+    equipment: 'Specialty',
     commonFaults: [
         { fault: 'Bicep curling the tire', fix: 'This is a great way to tear a bicep. Drive with your legs and chest. Your arms should be straight and function as levers, not primary movers.', iconId: 'earlyArmBend' },
         { fault: 'Starting too far from the tire', fix: 'Get your chest and hips as close to the tire as possible. This improves your leverage for the initial lift.', iconId: 'balance' },

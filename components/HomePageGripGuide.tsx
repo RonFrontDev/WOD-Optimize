@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { ChevronDownIcon } from './Icons';
 
-const Section: React.FC<{ title: string, children: React.ReactNode }> = ({ title, children }) => (
-    <div className="mb-6 last:mb-0">
-        <h4 className="text-xl font-bold text-brand-secondary mb-3 pb-2 border-b-2 border-border-color dark:border-dark-border-color">{title}</h4>
-        <div className="space-y-3 text-text-muted dark:text-dark-text-muted leading-relaxed">
-            {children}
+const Section: React.FC<{ title: string, children: React.ReactNode, defaultOpen?: boolean }> = ({ title, children, defaultOpen = false }) => {
+    const [isOpen, setIsOpen] = useState(defaultOpen);
+    const sectionId = title.replace(/\s+/g, '-').toLowerCase();
+
+    return (
+        <div className="border-b border-border-color dark:border-dark-border-color last:border-b-0">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex justify-between items-center py-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded"
+                aria-expanded={isOpen}
+                aria-controls={`grip-section-${sectionId}`}
+            >
+                <h4 className="text-xl font-bold text-brand-secondary">{title}</h4>
+                <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+            </button>
+            <div
+                id={`grip-section-${sectionId}`}
+                className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+            >
+                <div className="overflow-hidden">
+                    <div className="pt-2 pb-6 space-y-3 text-text-muted dark:text-dark-text-muted leading-relaxed">
+                        {children}
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-);
+    );
+};
+
 
 export default function HomePageGripGuide() {
     return (
@@ -16,7 +38,7 @@ export default function HomePageGripGuide() {
                 Hand grips are essential for protecting your hands, improving endurance on the rig, and helping you get those extra reps. Here's what you need to know to choose the right pair for you.
             </p>
 
-            <Section title="Types of Grip Materials">
+            <Section title="Types of Grip Materials" defaultOpen={true}>
                 <p><strong>Leather:</strong> The classic choice. Durable and provides excellent protection. Requires a break-in period and works best with chalk. Great for athletes who prefer a more traditional feel.</p>
                 <p><strong>Carbon Fiber:</strong> The versatile workhorse. These grips are famous for sticking to any bar, with or without chalk. They are thin, require little to no break-in, and are a favorite for competitors.</p>
                 <p><strong>Synthetic Fabrics (Microfiber, Vegan "Leather"):</strong> Often softer and more comfortable from day one than traditional leather. Performance varies by brand, but many offer a great balance of comfort and grip.</p>

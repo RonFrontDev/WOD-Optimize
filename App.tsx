@@ -1,54 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Header from './components/Header';
-import MovementCard from './components/MovementCard';
 import MovementDetail from './components/MovementDetail';
 import WorkoutBuilder from './components/WorkoutBuilder';
 import { MOVEMENTS } from './constants';
 import type { Movement } from './types';
-import { ClipboardListIcon, ChevronDownIcon, SearchIcon, GripIcon, BookmarkSquareIcon, UsersIcon } from './components/Icons';
+import { ClipboardListIcon, BookmarkSquareIcon, SearchIcon } from './components/Icons';
 import HomePageGripGuide from './components/HomePageGripGuide';
 import TeamWorkoutGuide from './components/TeamWorkoutGuide';
 import SavedWorkouts from './components/SavedWorkouts';
 import MovementLibrary from './components/MovementLibrary';
 
-const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Monostructural'];
+export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide';
+
+const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Machines', 'Monostructural'];
 
 export default function App(): React.JSX.Element {
   const [selectedMovement, setSelectedMovement] = useState<Movement | null>(null);
   const [isBuildingWorkout, setIsBuildingWorkout] = useState(false);
   const [isViewingSavedWorkouts, setIsViewingSavedWorkouts] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [isGripGuideOpen, setIsGripGuideOpen] = useState(false);
-  const [isTeamGuideOpen, setIsTeamGuideOpen] = useState(false);
+  const [activeView, setActiveView] = useState<AppView>('home');
   
   const handleSelectMovement = (movement: Movement): void => {
     setSelectedMovement(movement);
   };
 
-  const handleBack = (): void => {
+  const handleGoHome = (): void => {
     setSelectedMovement(null);
     setIsBuildingWorkout(false);
     setIsViewingSavedWorkouts(false);
+    setActiveView('home');
+  };
+
+  const handleNavigate = (view: AppView) => {
+    setSelectedMovement(null);
+    setIsBuildingWorkout(false);
+    setIsViewingSavedWorkouts(false);
+    setActiveView(view);
   };
 
   const handleStartWorkoutBuilder = () => {
     setSelectedMovement(null);
     setIsViewingSavedWorkouts(false);
+    setActiveView('home');
     setIsBuildingWorkout(true);
   };
 
   const handleViewSavedWorkouts = () => {
     setSelectedMovement(null);
     setIsBuildingWorkout(false);
+    setActiveView('home');
     setIsViewingSavedWorkouts(true);
-  };
-
-  const toggleGripGuide = () => {
-    setIsGripGuideOpen(prev => !prev);
-  };
-
-  const toggleTeamGuide = () => {
-    setIsTeamGuideOpen(prev => !prev);
   };
 
   const filteredMovements = MOVEMENTS.filter(movement =>
@@ -64,19 +66,80 @@ export default function App(): React.JSX.Element {
     return acc;
   }, {} as Record<Movement['category'], Movement[]>);
 
+  const equipmentByCategory = useMemo(() => {
+    const result: Record<string, string[]> = {};
+    for (const category of orderedCategories) {
+        const equipmentSet = new Set<string>();
+        MOVEMENTS.filter(m => m.category === category).forEach(m => equipmentSet.add(m.equipment));
+        const options = Array.from(equipmentSet).sort();
+        if (options.length > 1) {
+          result[category] = ['All', ...options];
+        } else {
+          result[category] = [];
+        }
+    }
+    return result;
+  }, []);
 
-  return (
-    <div className="min-h-screen bg-base dark:bg-dark-base font-sans">
-      <Header onGoHome={handleBack} />
-      <main className="container mx-auto p-4 md:p-8">
-        {selectedMovement ? (
-          <MovementDetail movement={selectedMovement} onBack={handleBack} />
-        ) : isBuildingWorkout ? (
-            <WorkoutBuilder onBack={handleBack} />
-        ) : isViewingSavedWorkouts ? (
-            <SavedWorkouts onBack={handleBack} />
-        ) : (
-          <div>
+  const renderActiveView = () => {
+    switch(activeView) {
+      case 'movements':
+        return (
+          <div className="animate-fade-in">
+            <div className="mb-12 max-w-2xl mx-auto">
+              <div className="relative">
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  <SearchIcon className="w-5 h-5 text-text-muted dark:text-dark-text-muted" />
+                </span>
+                <input
+                  type="text"
+                  placeholder="Search for a movement..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-surface dark:bg-dark-surface text-text-primary dark:text-dark-text-primary placeholder-text-muted dark:placeholder-dark-text-muted pl-10 pr-4 py-3 rounded-lg border-2 border-border-color dark:border-dark-border-color focus:ring-2 focus:ring-brand-primary focus:border-brand-primary dark:focus:border-brand-primary transition duration-200"
+                  aria-label="Search movements"
+                />
+              </div>
+            </div>
+            <MovementLibrary
+              categories={orderedCategories}
+              movementsByCategory={filteredMovementsByCategory}
+              equipmentByCategory={equipmentByCategory}
+              onSelectMovement={handleSelectMovement}
+              searchQuery={searchQuery}
+            />
+            {filteredMovements.length === 0 && searchQuery && (
+              <div className="text-center py-12">
+                <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">No Movements Found</h3>
+                <p className="text-text-muted dark:text-dark-text-muted mt-2">Try adjusting your search query.</p>
+              </div>
+            )}
+          </div>
+        );
+      case 'gripGuide':
+        return (
+          <div className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color p-6 md:p-8 animate-fade-in">
+              <h2 id="grip-guide-heading" className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
+                A Guide to CrossFit Grips
+              </h2>
+              <p className="text-md text-text-muted dark:text-dark-text-muted mb-6">Protect your hands and improve performance.</p>
+            <HomePageGripGuide />
+          </div>
+        );
+      case 'teamGuide':
+        return (
+          <div className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color p-6 md:p-8 animate-fade-in">
+             <h2 id="team-guide-heading" className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
+                A Guide to Team Workouts
+              </h2>
+              <p className="text-md text-text-muted dark:text-dark-text-muted mb-6">Smarter strategy for partner & team WODs.</p>
+            <TeamWorkoutGuide />
+          </div>
+        );
+      case 'home':
+      default:
+        return (
+          <div className="animate-fade-in">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
                 Optimize Your Performance
@@ -101,108 +164,24 @@ export default function App(): React.JSX.Element {
                 </button>
               </div>
             </div>
-
-            <div className="mb-12 max-w-2xl mx-auto">
-              <div className="relative">
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <SearchIcon className="w-5 h-5 text-text-muted dark:text-dark-text-muted" />
-                </span>
-                <input
-                  type="text"
-                  placeholder="Search for a movement..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-surface dark:bg-dark-surface text-text-primary dark:text-dark-text-primary placeholder-text-muted dark:placeholder-dark-text-muted pl-10 pr-4 py-3 rounded-lg border-2 border-border-color dark:border-dark-border-color focus:ring-2 focus:ring-brand-primary focus:border-brand-primary dark:focus:border-brand-primary transition duration-200"
-                  aria-label="Search movements"
-                />
-              </div>
-            </div>
-
-
-            <div className="space-y-8">
-              <section key="grip-guide" aria-labelledby="grip-guide-heading" className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color overflow-hidden transition-all duration-300 ease-in-out hover:shadow-brand-primary/20 hover:-translate-y-1">
-                <div
-                  role="button"
-                  tabIndex={0}
-                  onClick={toggleGripGuide}
-                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleGripGuide()}
-                  className="flex justify-between items-center cursor-pointer p-4"
-                  aria-expanded={isGripGuideOpen}
-                  aria-controls="grip-guide-content"
-                >
-                  <div className="flex items-center gap-4">
-                    <GripIcon className="w-8 h-8 text-brand-secondary flex-shrink-0" />
-                    <div>
-                      <h2 id="grip-guide-heading" className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">
-                        A Guide to CrossFit Grips
-                      </h2>
-                      <p className="text-sm text-text-muted dark:text-dark-text-muted mt-1">Protect your hands and improve performance. Click to learn more.</p>
-                    </div>
-                  </div>
-                  <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isGripGuideOpen ? 'rotate-180' : 'rotate-0'}`} />
-                </div>
-
-                <div
-                  id="grip-guide-content"
-                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isGripGuideOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
-                >
-                  <div className="overflow-hidden">
-                      <div className="p-6 pt-4 border-t border-border-color dark:border-dark-border-color">
-                          <HomePageGripGuide />
-                      </div>
-                  </div>
-                </div>
-              </section>
-
-              <section key="team-guide" aria-labelledby="team-guide-heading" className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color overflow-hidden transition-all duration-300 ease-in-out hover:shadow-brand-secondary/20 hover:-translate-y-1">
-                <div
-                  role="button"
-                  tabIndex={0}
-                  onClick={toggleTeamGuide}
-                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleTeamGuide()}
-                  className="flex justify-between items-center cursor-pointer p-4"
-                  aria-expanded={isTeamGuideOpen}
-                  aria-controls="team-guide-content"
-                >
-                  <div className="flex items-center gap-4">
-                    <UsersIcon className="w-8 h-8 text-brand-primary flex-shrink-0" />
-                    <div>
-                      <h2 id="team-guide-heading" className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">
-                        A Guide to Team Workouts
-                      </h2>
-                      <p className="text-sm text-text-muted dark:text-dark-text-muted mt-1">Smarter strategy for partner & team WODs. Click to learn more.</p>
-                    </div>
-                  </div>
-                  <ChevronDownIcon className={`w-6 h-6 text-text-muted dark:text-dark-text-muted transition-transform duration-300 ${isTeamGuideOpen ? 'rotate-180' : 'rotate-0'}`} />
-                </div>
-
-                <div
-                  id="team-guide-content"
-                  className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${isTeamGuideOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
-                >
-                  <div className="overflow-hidden">
-                      <div className="p-6 pt-4 border-t border-border-color dark:border-dark-border-color">
-                          <TeamWorkoutGuide />
-                      </div>
-                  </div>
-                </div>
-              </section>
-
-              <MovementLibrary
-                categories={orderedCategories}
-                movementsByCategory={filteredMovementsByCategory}
-                onSelectMovement={handleSelectMovement}
-                searchQuery={searchQuery}
-              />
-             
-              {filteredMovements.length === 0 && searchQuery && (
-                <div className="text-center py-12">
-                  <h3 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">No Movements Found</h3>
-                  <p className="text-text-muted dark:text-dark-text-muted mt-2">Try adjusting your search query.</p>
-                </div>
-              )}
-            </div>
           </div>
+        );
+    }
+  }
+
+
+  return (
+    <div className="min-h-screen bg-base dark:bg-dark-base font-sans">
+      <Header onGoHome={handleGoHome} onNavigate={handleNavigate} activeView={activeView} />
+      <main className="container mx-auto p-4 md:p-8">
+        {selectedMovement ? (
+          <MovementDetail movement={selectedMovement} onBack={handleGoHome} />
+        ) : isBuildingWorkout ? (
+            <WorkoutBuilder onBack={handleGoHome} />
+        ) : isViewingSavedWorkouts ? (
+            <SavedWorkouts onBack={handleGoHome} />
+        ) : (
+          renderActiveView()
         )}
       </main>
     </div>

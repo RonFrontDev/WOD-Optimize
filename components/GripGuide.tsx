@@ -93,11 +93,26 @@ const StrongmanGuide: React.FC = () => (
 const MonostructuralGuide: React.FC = () => (
     <>
         <Section title="Relaxation is Key">
+            <p>For non-machine monostructural movements like running or double-unders, grip is less of a focus. However, the principle of avoiding unnecessary tension is still critical for efficiency.</p>
+            <ul className="list-disc list-inside space-y-2 pl-2">
+                 <li><strong className="text-text-primary dark:text-dark-text-primary">Double-Unders:</strong> Hold the handles with a relaxed grip, primarily with your thumb and index/middle fingers. A "death grip" creates tension up into your forearms and shoulders, ruining your rhythm.</li>
+                 <li><strong className="text-text-primary dark:text-dark-text-primary">Running:</strong> Keep your hands relaxed, not in clenched fists. This helps keep your entire upper body loose and your arm swing efficient.</li>
+            </ul>
+        </Section>
+    </>
+);
+
+const MachinesGuide: React.FC = () => (
+    <>
+        <Section title="Relaxation is Key">
             <p>On machines like the rower, ski erg, or bike, a "death grip" is your enemy. It creates unnecessary tension in your arms, shoulders, and neck, leading to rapid fatigue.</p>
             <ul className="list-disc list-inside space-y-2 pl-2">
                  <li><strong className="text-text-primary dark:text-dark-text-primary">Rower/Ski Erg:</strong> Use a light "hook" grip with your fingers. Your hands are just there to connect you to the handle; the power comes from your legs and hips.</li>
                  <li><strong className="text-text-primary dark:text-dark-text-primary">Assault Bike:</strong> Keep a firm but not overly tight grip on the handles. Your arms should be active in pushing and pulling, but your hands and forearms can stay relatively relaxed.</li>
             </ul>
+        </Section>
+         <Section title="GHD Sit-ups">
+            <p>No grip is required for the GHD sit-up. The focus is on core strength and control. Your feet should be securely anchored in the machine.</p>
         </Section>
     </>
 );
@@ -117,6 +132,8 @@ export default function GripGuide({ category }: GripGuideProps): React.JSX.Eleme
                 return <StrongmanGuide />;
             case 'Monostructural':
                 return <MonostructuralGuide />;
+            case 'Machines':
+                return <MachinesGuide />;
             default:
                 return <p>No specific grip information available for this category.</p>;
         }
