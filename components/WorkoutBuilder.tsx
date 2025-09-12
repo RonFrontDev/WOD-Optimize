@@ -316,7 +316,6 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                     
                                     <StrategySection 
                                         title={<span className="text-brand-secondary">Similar Stimulus Workouts</span>}
-                                        defaultOpen={true}
                                         content={
                                             isLoadingSimilar ? (
                                                 <div className="flex justify-center py-4"><LoadingSpinner /></div>
