@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint, MuscleActivation } from '../types';
+import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint, MuscleActivation, AdaptiveWorkoutStrategy, MovementModification } from '../types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable is not set.");
@@ -353,5 +353,63 @@ export const generateSimilarWorkouts = async (workoutDescription: string, level:
     } catch (error) {
         console.error("Error generating similar workouts:", error);
         return [];
+    }
+};
+
+export const generateAdaptiveStrategy = async (workoutDescription: string, injuryDescription: string): Promise<AdaptiveWorkoutStrategy | null> => {
+    try {
+        const prompt = `You are a dual-certified expert CrossFit L4 coach and Doctor of Physical Therapy. Your primary goal is safety and long-term athletic health. A user wants to perform a workout but has an injury.
+
+        Workout: "${workoutDescription}"
+        Injury/Limitation: "${injuryDescription}"
+
+        Your task is to provide an adaptive workout strategy as a JSON object. This strategy must prioritize safety, avoid aggravating the injury, and still provide a meaningful training stimulus.
+
+        The JSON object must contain the following keys:
+        - "safetyWarning": A mandatory disclaimer. It MUST start with: "IMPORTANT DISCLAIMER: This is AI-generated guidance and not a substitute for professional medical advice. Always consult with your doctor or physical therapist before starting any new exercise program, especially when injured."
+        - "movementModifications": An array of objects, where each object details a suggested change. For each modification, provide:
+            - "originalMovement": The movement from the workout that needs modification.
+            - "modifiedMovement": The suggested substitution or scaling option (e.g., "Box Jumps" -> "Box Step-ups").
+            - "reasoning": A clear explanation of why this modification is safer for the specified injury.
+        - "techniqueFocus": Specific cues and points of focus for performing the modified movements safely and effectively, emphasizing how to protect the injured area.
+        - "warmup": A brief, targeted warm-up routine designed to prepare the body for the modified workout, with special attention to the injured area and surrounding muscles.
+        - "cooldown": A brief, targeted cool-down routine with gentle stretching or mobility work to aid recovery.
+        - "revisedStrategy": An overall pacing and goal-setting plan for the *adapted* workout. Explain what the new stimulus is and what the user should focus on (e.g., "Focus on consistent movement quality rather than speed.").`;
+
+        const response = await ai.models.generateContent({
+            model: model,
+            contents: prompt,
+            config: {
+                responseMimeType: "application/json",
+                responseSchema: {
+                    type: Type.OBJECT,
+                    properties: {
+                        safetyWarning: { type: Type.STRING },
+                        movementModifications: {
+                            type: Type.ARRAY,
+                            items: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    originalMovement: { type: Type.STRING },
+                                    modifiedMovement: { type: Type.STRING },
+                                    reasoning: { type: Type.STRING }
+                                },
+                                required: ["originalMovement", "modifiedMovement", "reasoning"]
+                            }
+                        },
+                        techniqueFocus: { type: Type.STRING },
+                        warmup: { type: Type.STRING },
+                        cooldown: { type: Type.STRING },
+                        revisedStrategy: { type: Type.STRING }
+                    },
+                    required: ["safetyWarning", "movementModifications", "techniqueFocus", "warmup", "cooldown", "revisedStrategy"]
+                }
+            }
+        });
+
+        return JSON.parse(response.text);
+    } catch (error) {
+        console.error("Error generating adaptive workout strategy:", error);
+        return null;
     }
 };

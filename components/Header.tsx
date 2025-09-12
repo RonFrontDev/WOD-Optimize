@@ -1,7 +1,7 @@
 import React from 'react';
 import { LogoIcon } from './Icons';
 import ThemeToggle from './ThemeToggle';
-import type { AppView } from '../App';
+import type { AppView } from '../types';
 
 interface HeaderProps {
   onGoHome: () => void;
@@ -48,6 +48,7 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
             <NavLink view="movements" activeView={activeView} onNavigate={onNavigate}>Movements</NavLink>
             <NavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate}>Grip Guide</NavLink>
             <NavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate}>Team Guide</NavLink>
+            <NavLink view="adaptiveWod" activeView={activeView} onNavigate={onNavigate}>Adaptive WOD</NavLink>
           </nav>
           <div className="flex items-center">
             <ThemeToggle />
@@ -60,6 +61,7 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
               <NavLink view="movements" activeView={activeView} onNavigate={onNavigate}>Movements</NavLink>
               <NavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate}>Grip Guide</NavLink>
               <NavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate}>Team Guide</NavLink>
+              <NavLink view="adaptiveWod" activeView={activeView} onNavigate={onNavigate}>Adaptive WOD</NavLink>
             </nav>
         </div>
       </div>

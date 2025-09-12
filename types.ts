@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'adaptiveWod';
+
 export type Equipment = 'Barbell' | 'Dumbbell' | 'Kettlebell' | 'Bodyweight' | 'Machine' | 'Specialty';
 
 export interface Movement {
@@ -85,6 +87,22 @@ export interface SavedWorkoutStrategy {
   strategy: WorkoutStrategy;
   muscleActivation: MuscleActivation;
 }
+
+export interface MovementModification {
+  originalMovement: string;
+  modifiedMovement: string;
+  reasoning: string;
+}
+
+export interface AdaptiveWorkoutStrategy {
+  safetyWarning: string;
+  movementModifications: MovementModification[];
+  techniqueFocus: string;
+  warmup: string;
+  cooldown: string;
+  revisedStrategy: string;
+}
+
 
 export interface CollapsibleSectionProps {
   title: string;
