@@ -4,6 +4,8 @@ export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'adapti
 
 export type Equipment = 'Barbell' | 'Dumbbell' | 'Kettlebell' | 'Bodyweight' | 'Machine' | 'Specialty';
 
+export type InjurySeverity = 'sore' | 'painful' | 'unusable';
+
 export interface Movement {
   id: string;
   name: string;

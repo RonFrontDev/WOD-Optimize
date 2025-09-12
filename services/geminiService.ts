@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint, MuscleActivation, AdaptiveWorkoutStrategy, MovementModification } from '../types';
+import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint, MuscleActivation, AdaptiveWorkoutStrategy, MovementModification, InjurySeverity } from '../types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable is not set.");
@@ -356,21 +356,33 @@ export const generateSimilarWorkouts = async (workoutDescription: string, level:
     }
 };
 
-export const generateAdaptiveStrategy = async (workoutDescription: string, injuryDescription: string): Promise<AdaptiveWorkoutStrategy | null> => {
+const injurySeverityMap = {
+    sore: "Mild - The area is sore/stiff but can be used with some discomfort.",
+    painful: "Moderate - The area is painful to use, and specific movements are clearly limited.",
+    unusable: "Severe - The area is completely unusable and cannot be loaded at all."
+};
+
+export const generateAdaptiveStrategy = async (workoutDescription: string, injuryDescription: string, injurySeverity: InjurySeverity): Promise<AdaptiveWorkoutStrategy | null> => {
     try {
+        const severityText = injurySeverityMap[injurySeverity];
+
         const prompt = `You are a dual-certified expert CrossFit L4 coach and Doctor of Physical Therapy. Your primary goal is safety and long-term athletic health. A user wants to perform a workout but has an injury.
 
         Workout: "${workoutDescription}"
         Injury/Limitation: "${injuryDescription}"
+        Injury Severity: "${severityText}"
 
-        Your task is to provide an adaptive workout strategy as a JSON object. This strategy must prioritize safety, avoid aggravating the injury, and still provide a meaningful training stimulus.
+        Your task is to provide an adaptive workout strategy as a JSON object. This strategy must prioritize safety, avoid aggravating the injury, and still provide a meaningful training stimulus. Your recommendations MUST be appropriate for the specified injury severity.
+        - For "Mild" severity, suggest scaling options like reduced weight, tempo control, or limited range of motion.
+        - For "Moderate" severity, suggest direct movement substitutions that avoid the painful pattern.
+        - For "Severe" severity, suggest modifications that completely unload the injured area (e.g., substituting an upper body movement for a lower body one if a leg is unusable).
 
         The JSON object must contain the following keys:
-        - "safetyWarning": A mandatory disclaimer. It MUST start with: "IMPORTANT DISCLAIMER: This is AI-generated guidance and not a substitute for professional medical advice. Always consult with your doctor or physical therapist before starting any new exercise program, especially when injured."
+        - "safetyWarning": A mandatory disclaimer. It MUST be exactly this string: "IMPORTANT DISCLAIMER: This guidance is not a substitute for professional medical advice. Always consult with your doctor or physical therapist before starting any new exercise program, especially when injured."
         - "movementModifications": An array of objects, where each object details a suggested change. For each modification, provide:
             - "originalMovement": The movement from the workout that needs modification.
             - "modifiedMovement": The suggested substitution or scaling option (e.g., "Box Jumps" -> "Box Step-ups").
-            - "reasoning": A clear explanation of why this modification is safer for the specified injury.
+            - "reasoning": A clear explanation of why this modification is safer for the specified injury and its severity.
         - "techniqueFocus": Specific cues and points of focus for performing the modified movements safely and effectively, emphasizing how to protect the injured area.
         - "warmup": A brief, targeted warm-up routine designed to prepare the body for the modified workout, with special attention to the injured area and surrounding muscles.
         - "cooldown": A brief, targeted cool-down routine with gentle stretching or mobility work to aid recovery.
