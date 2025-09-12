@@ -181,6 +181,40 @@ export const ShieldCheckIcon = ({ className = 'w-6 h-6' }: IconProps) => (
     </svg>
 );
 
+export const SnatchLifterIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 200 200"
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <title>Weightlifter performing a snatch</title>
+    {/* Barbell */}
+    <g strokeWidth="6">
+      <rect x="5" y="10" width="30" height="50" rx="8" fill="currentColor" />
+      <rect x="165" y="10" width="30" height="50" rx="8" fill="currentColor" />
+      <line x1="35" y1="35" x2="165" y2="35" />
+    </g>
+
+    {/* Lifter */}
+    <path d="M60 45 L 85 95" /> 
+    <path d="M140 45 L 115 95" />
+    
+    <circle cx="100" cy="100" r="12" fill="currentColor" stroke="none" /> {/* Head */}
+    <path d="M100 112 v 30" /> {/* Torso */}
+    
+    <path d="M100 142 L 75 165 L 60 190" />
+    <path d="M100 142 L 125 165 L 140 190" />
+    
+    {/* Platform Line */}
+    <line x1="40" y1="190" x2="160" y2="190" />
+  </svg>
+);
+
 
 // FAULT ICONS
 export const RoundedBackIcon = ({ className = 'w-6 h-6' }: IconProps) => (

@@ -4,7 +4,7 @@ import MovementDetail from './components/MovementDetail';
 import WorkoutBuilder from './components/WorkoutBuilder';
 import { MOVEMENTS } from './constants';
 import type { Movement, AppView } from './types';
-import { ClipboardListIcon, BookmarkSquareIcon, SearchIcon } from './components/Icons';
+import { ClipboardListIcon, BookmarkSquareIcon, SearchIcon, SnatchLifterIcon } from './components/Icons';
 import HomePageGripGuide from './components/HomePageGripGuide';
 import TeamWorkoutGuide from './components/TeamWorkoutGuide';
 import SavedWorkouts from './components/SavedWorkouts';
@@ -141,29 +141,39 @@ export default function App(): React.JSX.Element {
       default:
         return (
           <div className="animate-fade-in">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
-                Optimize Your Performance
-              </h1>
-              <p className="text-lg md:text-xl text-text-muted dark:text-dark-text-muted max-w-2xl mx-auto">
-                Select a movement for analysis, or build a custom workout plan for a custom strategy.
-              </p>
-              <div className="mt-8 flex justify-center items-center flex-wrap gap-4">
-                <button
-                  onClick={handleStartWorkoutBuilder}
-                  className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
-                >
-                  <ClipboardListIcon className="w-6 h-6" />
-                  Analyze a Workout
-                </button>
-                <button
-                  onClick={handleViewSavedWorkouts}
-                  className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
-                >
-                  <BookmarkSquareIcon className="w-6 h-6" />
-                  View Saved Strategies
-                </button>
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 items-center my-8 max-w-6xl mx-auto">
+              
+              {/* Image: Appears first on mobile */}
+              <div className="flex justify-center items-center">
+                <SnatchLifterIcon className="w-64 h-64 lg:w-80 lg:h-80 text-brand-primary opacity-80" />
               </div>
+
+              {/* Text Content: Appears second on mobile, but first on desktop */}
+              <div className="text-center md:text-left md:order-first">
+                <h1 className="text-4xl md:text-5xl font-bold text-text-primary dark:text-dark-text-primary mb-4">
+                  Optimize Your Performance
+                </h1>
+                <p className="text-lg md:text-xl text-text-muted dark:text-dark-text-muted">
+                  Select a movement for analysis, or build a custom workout plan for a custom strategy.
+                </p>
+                <div className="mt-8 flex justify-center md:justify-start items-center flex-wrap gap-4">
+                  <button
+                    onClick={handleStartWorkoutBuilder}
+                    className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+                  >
+                    <ClipboardListIcon className="w-6 h-6" />
+                    Analyze a Workout
+                  </button>
+                  <button
+                    onClick={handleViewSavedWorkouts}
+                    className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+                  >
+                    <BookmarkSquareIcon className="w-6 h-6" />
+                    View Saved Strategies
+                  </button>
+                </div>
+              </div>
+
             </div>
           </div>
         );
