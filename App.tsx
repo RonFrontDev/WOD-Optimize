@@ -171,7 +171,7 @@ export default function App(): React.JSX.Element {
 
 
   return (
-    <div className="min-h-screen bg-base dark:bg-dark-base font-sans">
+    <div className="min-h-screen font-sans">
       <Header onGoHome={handleGoHome} onNavigate={handleNavigate} activeView={activeView} />
       <main className="container mx-auto p-4 md:p-8">
         {selectedMovement ? (
