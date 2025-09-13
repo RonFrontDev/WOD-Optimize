@@ -215,6 +215,134 @@ export const SnatchLifterIcon = ({ className = 'w-6 h-6' }: IconProps) => (
   </svg>
 );
 
+// RECOVERY ICONS
+export const BedIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+    </svg>
+);
+export const UtensilsIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-3.362A8.287 8.287 0 0015.362 5.214z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214C14.12 4.09 12.638 3.5 11.005 3.5c-1.634 0-3.116.59-4.354 1.714m8.708 0a8.261 8.261 0 01-4.354 4.354m4.354-4.354a8.286 8.286 0 00-4.354-4.354M12 21a8.25 8.25 0 005.962-13.952" />
+    </svg>
+);
+export const DropletIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 01-9-9c0-4.968 4.032-9 9-9s9 4.032 9 9a9 9 0 01-9 9z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21c-2.485 0-4.5-2.015-4.5-4.5S9.515 12 12 12s4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zM12 3c-2.485 0-4.5 2.015-4.5 4.5S9.515 12 12 12s4.5-2.015 4.5-4.5S14.485 3 12 3z" />
+    </svg>
+);
+export const BodyStretchIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5a3.75 3.75 0 00-7.5 0v.75H9v7.5h-1.5v6.75h6V12.75H9V5.25h3v.75a3.75 3.75 0 107.5 0V4.5z" />
+    </svg>
+);
+export const BrainCircuitIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3.75H12M8.25 3.75V12M8.25 3.75C6.31 3.75 4.5 5.56 4.5 7.5V12C4.5 13.94 6.31 15.75 8.25 15.75v0c1.94 0 3.5-1.56 3.5-3.5v-1.5c0-.966.784-1.75 1.75-1.75h1.5c.966 0 1.75.784 1.75 1.75v1.5c0 1.94 1.56 3.5 3.5 3.5v0c1.94 0 3.5-1.56 3.5-3.5V7.5c0-1.94-1.81-3.75-3.75-3.75M12 12V3.75" />
+    </svg>
+);
+export const TrophyIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9a2.25 2.25 0 01-2.25-2.25V9A2.25 2.25 0 017.5 6.75h9A2.25 2.25 0 0118.75 9v7.5a2.25 2.25 0 01-2.25 2.25z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75V21m-2.25-6.75H6.375c-.621 0-1.125-.504-1.125-1.125V9.375c0-.621.504-1.125 1.125-1.125h3.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125zm6 0h3.375c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125 1.125-1.125h-3.375c-.621 0-1.125.504-1.125 1.125v2.25c0 .621.504 1.125 1.125 1.125z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75V4.5m0 2.25a2.25 2.25 0 01-2.25-2.25V3a2.25 2.25 0 012.25-2.25h.008a2.25 2.25 0 012.25 2.25v1.5a2.25 2.25 0 01-2.25 2.25h-.008z" />
+    </svg>
+);
+
+// REHAB ICONS
+export const RehabIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2L12 8" />
+    <path d="M12 16L12 22" />
+    <path d="M17 5L17 19" />
+    <path d="M7 5L7 19" />
+    <path d="M2 12L8 12" />
+    <path d="M16 12L22 12" />
+  </svg>
+);
+
+export const AnatomyIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="5" r="1" />
+    <path d="M9 20l-3-6" />
+    <path d="M15 20l3-6" />
+    <path d="M9 14h6" />
+    <path d="M12 14V7.5" />
+    <path d="M12 7.5L10 6" />
+    <path d="M12 7.5L14 6" />
+  </svg>
+);
+
+export const SnowflakeIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="2" x2="12" y2="22" />
+    <line x1="2" y1="12" x2="22" y2="12" />
+    <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" />
+    <line x1="19.07" y1="19.07" x2="4.93" y2="4.93" />
+  </svg>
+);
+
+export const HeartPulseIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 12H6.25l2.5-5 3.75 10 2.5-5h2.5" />
+    </svg>
+);
+
+export const ShoulderIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="7" r="4" />
+    <path d="M5.5 12.5a6.5 6.5 0 0113 0" />
+    <path d="M5.5 12.5v7.5" />
+    <path d="M18.5 12.5v7.5" />
+  </svg>
+);
+
+export const KneeIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M8 10v4" />
+    <path d="M16 10v4" />
+    <path d="M8 10a4 4 0 014-4h0a4 4 0 014 4" />
+    <path d="M8 14a4 4 0 004 4h0a4 4 0 004-4" />
+    <path d="M12 6V2" />
+    <path d="M12 18v4" />
+  </svg>
+);
+
+export const BackIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="5" r="2" />
+    <path d="M12 7v14" />
+    <path d="M10 12c-2 0-3 1-3 3s1 3 3 3h4c2 0 3-1 3-3s-1-3-3-3" />
+  </svg>
+);
+
+export const ElbowIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 10l-6 6-6-6" />
+    <path d="M12 4v12" />
+  </svg>
+);
+
+export const WristIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+    </svg>
+);
+
+export const AnkleIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M8 18v-4" />
+    <path d="M16 18v-4" />
+    <path d="M8 14h8" />
+    <path d="M8 10a4 4 0 014-4h0a4 4 0 014 4" />
+    <path d="M12 10v4" />
+    <path d="M10 22h4" />
+  </svg>
+);
+
 
 // FAULT ICONS
 export const RoundedBackIcon = ({ className = 'w-6 h-6' }: IconProps) => (
@@ -358,5 +486,17 @@ export const CoreIcon = ({ className = 'w-6 h-6' }: IconProps) => (
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.34 17.66l-1.41 1.41" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M19.07 19.07l-1.41-1.41" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.34 6.34l-1.41-1.41" />
+    </svg>
+);
+
+export const MenuIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+);
+
+export const XIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
 );

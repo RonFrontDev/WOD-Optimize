@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LogoIcon, ChevronDownIcon } from './Icons';
+import { LogoIcon, ChevronDownIcon, MenuIcon, XIcon } from './Icons';
 import ThemeToggle from './ThemeToggle';
 import type { AppView } from '../types';
 
@@ -49,11 +49,36 @@ const DropdownNavLink: React.FC<{
     </a>
 );
 
+const MobileNavLink: React.FC<{
+  view: AppView;
+  activeView: AppView;
+  onNavigate: (view: AppView) => void;
+  closeMenu: () => void;
+  children: React.ReactNode;
+}> = ({ view, activeView, onNavigate, closeMenu, children }) => (
+  <button
+    onClick={() => {
+        onNavigate(view);
+        closeMenu();
+    }}
+    className={`block w-full text-left py-3 px-4 text-lg font-medium rounded-md transition-colors duration-200 ${
+      activeView === view
+        ? 'bg-brand-primary/10 text-brand-primary'
+        : 'text-text-primary dark:text-dark-text-primary hover:bg-slate-100 dark:hover:bg-slate-800'
+    }`}
+    aria-current={activeView === view ? 'page' : undefined}
+  >
+    {children}
+  </button>
+);
+
 
 export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps): React.JSX.Element {
   const [isGuidesOpen, setIsGuidesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // Effect for desktop dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -65,8 +90,20 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
         document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  // Effect for mobile menu scroll lock
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'unset';
+    }
+    return () => {
+        document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
   
-  const isGuideActive = activeView === 'gripGuide' || activeView === 'shoeGuide';
+  const isGuideActive = ['gripGuide', 'shoeGuide', 'teamGuide', 'rehab', 'recovery'].includes(activeView);
 
   return (
     <header className="bg-surface/80 dark:bg-dark-base/80 backdrop-blur-sm sticky top-0 z-50 border-b border-border-color dark:border-dark-border-color">
@@ -109,30 +146,67 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
                         aria-labelledby="guides-menu-button"
                     >
                         <div className="py-1" role="none">
+                            <DropdownNavLink view="rehab" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Rehab Guide</DropdownNavLink>
+                            <DropdownNavLink view="recovery" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Recovery Hub</DropdownNavLink>
+                            <DropdownNavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Team Guide</DropdownNavLink>
                             <DropdownNavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Grip Guide</DropdownNavLink>
                             <DropdownNavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Shoe Guide</DropdownNavLink>
                         </div>
                     </div>
                 )}
             </div>
-
-            <NavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate}>Team Guide</NavLink>
           </nav>
           <div className="flex items-center">
-            <ThemeToggle />
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+                <button
+                    onClick={() => setIsMobileMenuOpen(true)}
+                    className="p-2 rounded-md text-text-muted dark:text-dark-text-muted hover:text-text-primary dark:hover:text-dark-text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
+                    aria-label="Open main menu"
+                >
+                    <MenuIcon className="w-6 h-6" />
+                </button>
+            </div>
           </div>
         </div>
-        {/* Mobile Nav */}
-        <div className="md:hidden flex items-center justify-center border-t border-border-color dark:border-dark-border-color">
-           <nav className="flex space-x-2 overflow-x-auto">
-              <NavLink view="home" activeView={activeView} onNavigate={onNavigate}>Home</NavLink>
-              <NavLink view="movements" activeView={activeView} onNavigate={onNavigate}>Movements</NavLink>
-              <NavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate}>Grip Guide</NavLink>
-              <NavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate}>Shoe Guide</NavLink>
-              <NavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate}>Team Guide</NavLink>
-            </nav>
-        </div>
       </div>
+      
+      {/* Mobile Menu Panel */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[100] md:hidden" role="dialog" aria-modal="true">
+            {/* Overlay */}
+            <div className="fixed inset-0 bg-black bg-opacity-40 animate-fade-in" onClick={() => setIsMobileMenuOpen(false)}></div>
+
+            {/* Panel */}
+            <div className="fixed inset-y-0 right-0 w-full max-w-sm bg-surface dark:bg-dark-surface shadow-xl p-4 animate-slide-in-right flex flex-col h-full">
+                <div className="flex items-center justify-between pb-4 border-b border-border-color dark:border-dark-border-color">
+                    <span className="text-xl font-bold text-text-primary dark:text-dark-text-primary">Menu</span>
+                    <button
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="p-2 rounded-md text-text-muted dark:text-dark-text-muted hover:text-text-primary dark:hover:text-dark-text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-primary"
+                        aria-label="Close menu"
+                    >
+                        <XIcon className="w-6 h-6" />
+                    </button>
+                </div>
+                <nav className="mt-6 flex-1 space-y-2 bg-surface dark:bg-dark-surface ">
+                    <MobileNavLink view="home" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Home</MobileNavLink>
+                    <MobileNavLink view="movements" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Movements</MobileNavLink>
+                    <MobileNavLink view="rehab" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Rehab Guide</MobileNavLink>
+                    <MobileNavLink view="recovery" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Recovery Hub</MobileNavLink>
+                    <MobileNavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Team Guide</MobileNavLink>
+                    <MobileNavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Grip Guide</MobileNavLink>
+                    <MobileNavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Shoe Guide</MobileNavLink>
+                <div className="mt-auto flex justify-center pt-6">
+                    <ThemeToggle />
+                </div>
+                </nav>
+            </div>
+        </div>
+      )}
     </header>
   );
 }

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'shoeGuide';
+export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'shoeGuide' | 'rehab' | 'recovery';
 
 export type Equipment = 'Barbell' | 'Dumbbell' | 'Kettlebell' | 'Bodyweight' | 'Machine' | 'Specialty';
 
@@ -124,4 +124,43 @@ export interface TabbedContentProps<T extends string | number | symbol> {
   }[];
   content: Record<T, ReactNode>;
   defaultTab: T;
+}
+
+export type BodyPart = 'Shoulder' | 'Knee' | 'Lower Back' | 'Elbow' | 'Wrist' | 'Ankle';
+
+export interface RehabStep {
+  title: string;
+  icon: 'SnowflakeIcon' | 'HeartPulseIcon' | 'BarbellIcon' | 'ShieldCheckIcon';
+  summary: string;
+  details: string[];
+  externalResource?: {
+    label: string;
+    url: string;
+  };
+}
+
+export interface RehabPlan {
+  id: string;
+  name: string;
+  bodyPart: BodyPart;
+  description: string;
+  keywords: string[];
+  roadmap: RehabStep[];
+}
+
+// Recovery Guide Types
+export type RecoveryContext = 'training' | 'competition';
+export type TrainingFrequency = '1x' | '2x' | '3x';
+
+export interface RecoveryStep {
+  title: string;
+  icon: 'UtensilsIcon' | 'DropletIcon' | 'BodyStretchIcon' | 'BedIcon' | 'BrainCircuitIcon' | 'TrophyIcon' | 'ClockIcon';
+  description: string;
+  details: string[];
+}
+
+export interface RecoveryPlan {
+  title: string;
+  summary: string;
+  steps: RecoveryStep[];
 }
