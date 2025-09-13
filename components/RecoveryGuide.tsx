@@ -68,16 +68,26 @@ const RecoveryPlanComponent: React.FC<{ plan: RecoveryPlan }> = ({ plan }) => {
 export default function RecoveryGuide() {
     const [context, setContext] = useState<RecoveryContext>('training');
     const [frequency, setFrequency] = useState<TrainingFrequency>('1x');
+    const [competitionProtocol, setCompetitionProtocol] = useState<'between' | 'end'>('between');
 
     const trainingFrequencies: { id: TrainingFrequency, label: string }[] = [
         { id: '1x', label: 'Once a Day' },
         { id: '2x', label: 'Twice a Day' },
         { id: '3x', label: 'Three Times a Day' }
     ];
+    
+    const competitionProtocols: { id: 'between' | 'end', label: string }[] = [
+        { id: 'between', label: 'Between Events' },
+        { id: 'end', label: 'End of Day' }
+    ];
 
     const plansToDisplay = context === 'training'
         ? DAILY_RECOVERY_PLANS[frequency]
-        : COMPETITION_RECOVERY_PLAN;
+        : COMPETITION_RECOVERY_PLAN.filter((_plan, index) => {
+            if (competitionProtocol === 'between') return index === 0;
+            if (competitionProtocol === 'end') return index === 1;
+            return false;
+          });
 
     return (
         <div className="animate-fade-in max-w-4xl mx-auto">
@@ -95,17 +105,17 @@ export default function RecoveryGuide() {
                     {/* Context Selector */}
                     <div>
                         <label className="block text-center text-sm font-bold text-text-muted dark:text-dark-text-muted mb-2 uppercase tracking-wider">Select Context</label>
-                        <div className="flex bg-surface dark:bg-dark-surface rounded-lg border-2 border-border-color dark:border-dark-border-color p-1">
+                        <div className="flex items-center justify-center gap-3 mt-2">
                             {(['training', 'competition'] as RecoveryContext[]).map(ctx => {
                                 const isSelected = context === ctx;
                                 return (
                                     <button
                                         key={ctx}
                                         onClick={() => setContext(ctx)}
-                                        className={`w-1/2 p-2 rounded-md font-bold transition-colors duration-200 capitalize ${
+                                        className={`px-4 py-2 rounded-full font-semibold transition-colors duration-200 capitalize ${
                                             isSelected 
                                             ? 'bg-brand-primary text-white shadow' 
-                                            : 'text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
+                                            : 'bg-surface dark:bg-dark-surface text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700 border border-border-color dark:border-dark-border-color'
                                         }`}
                                     >
                                         {ctx === 'training' ? 'Daily Training' : 'Competition'}
@@ -115,22 +125,49 @@ export default function RecoveryGuide() {
                         </div>
                     </div>
 
-                    {/* Frequency Selector (conditional) */}
+                    {/* Competition Protocol Selector */}
+                    <div className={`transition-all duration-300 ease-in-out ${context === 'competition' ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 invisible'}`}>
+                        {context === 'competition' && (
+                             <div>
+                                <label className="block text-center text-sm font-bold text-text-muted dark:text-dark-text-muted mb-2 uppercase tracking-wider">Protocol</label>
+                                <div className="flex items-center justify-center gap-3 flex-wrap">
+                                    {competitionProtocols.map(({ id, label }) => {
+                                        const isSelected = competitionProtocol === id;
+                                        return (
+                                            <button
+                                                key={id}
+                                                onClick={() => setCompetitionProtocol(id)}
+                                                className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200 ${
+                                                    isSelected 
+                                                    ? 'bg-brand-secondary text-white shadow' 
+                                                    : 'bg-surface dark:bg-dark-surface text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700 border border-border-color dark:border-dark-border-color'
+                                                }`}
+                                            >
+                                                {label}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Frequency Selector */}
                     <div className={`transition-all duration-300 ease-in-out ${context === 'training' ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 invisible'}`}>
                         {context === 'training' && (
                              <div>
                                 <label className="block text-center text-sm font-bold text-text-muted dark:text-dark-text-muted mb-2 uppercase tracking-wider">Training Frequency</label>
-                                <div className="flex bg-surface dark:bg-dark-surface rounded-lg border-2 border-border-color dark:border-dark-border-color p-1">
+                                <div className="flex items-center justify-center gap-3 flex-wrap">
                                     {trainingFrequencies.map(({ id, label }) => {
                                         const isSelected = frequency === id;
                                         return (
                                             <button
                                                 key={id}
                                                 onClick={() => setFrequency(id)}
-                                                className={`w-1/3 p-2 rounded-md text-sm font-bold transition-colors duration-200 ${
+                                                className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200 ${
                                                     isSelected 
                                                     ? 'bg-brand-secondary text-white shadow' 
-                                                    : 'text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
+                                                    : 'bg-surface dark:bg-dark-surface text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700 border border-border-color dark:border-dark-border-color'
                                                 }`}
                                             >
                                                 {label}
@@ -146,7 +183,7 @@ export default function RecoveryGuide() {
 
             <div className="space-y-12">
                 {plansToDisplay.map((plan, index) => (
-                    <RecoveryPlanComponent key={`${context}-${frequency}-${index}`} plan={plan} />
+                    <RecoveryPlanComponent key={`${context}-${frequency}-${competitionProtocol}-${index}`} plan={plan} />
                 ))}
             </div>
         </div>

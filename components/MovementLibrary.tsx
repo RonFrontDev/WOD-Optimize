@@ -76,16 +76,16 @@ export default function MovementLibrary({ categories, movementsByCategory, equip
       </div>
 
       {visibleEquipmentOptions.length > 0 && (
-        <div className="py-4 border-b border-border-color dark:border-dark-border-color">
-            <div className="flex items-center gap-2 overflow-x-auto">
+        <div className="py-4 border-b border-border-color dark:border-dark-border-color -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="flex items-center gap-3 overflow-x-auto pb-2 custom-scrollbar">
                 {visibleEquipmentOptions.map(equip => (
                     <button
                         key={equip}
                         onClick={() => setActiveEquipment(equip)}
-                        className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors duration-200 whitespace-nowrap ${
+                        className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-colors duration-200 whitespace-nowrap ${
                             activeEquipment === equip
-                            ? 'bg-brand-primary text-white'
-                            : 'bg-surface dark:bg-dark-surface text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
+                            ? 'bg-brand-primary text-white shadow-md'
+                            : 'bg-surface dark:bg-dark-surface text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700 border border-border-color dark:border-dark-border-color'
                         }`}
                     >
                         {equip}

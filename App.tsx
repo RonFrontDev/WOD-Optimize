@@ -173,14 +173,14 @@ export default function App(): React.JSX.Element {
                 <div className="mt-8 flex justify-center md:justify-start items-center flex-wrap gap-4">
                   <button
                     onClick={handleStartWorkoutBuilder}
-                    className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+                    className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-3 w-64"
                   >
                     <ClipboardListIcon className="w-6 h-6" />
                     Analyze a Workout
                   </button>
                   <button
                     onClick={handleViewSavedWorkouts}
-                    className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+                    className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-3 w-64"
                   >
                     <BookmarkSquareIcon className="w-6 h-6" />
                     View Saved Strategies
