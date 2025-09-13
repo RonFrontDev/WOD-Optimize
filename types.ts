@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide';
+export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'shoeGuide';
 
 export type Equipment = 'Barbell' | 'Dumbbell' | 'Kettlebell' | 'Bodyweight' | 'Machine' | 'Specialty';
 

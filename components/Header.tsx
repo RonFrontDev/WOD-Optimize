@@ -1,5 +1,5 @@
-import React from 'react';
-import { LogoIcon } from './Icons';
+import React, { useState, useEffect, useRef } from 'react';
+import { LogoIcon, ChevronDownIcon } from './Icons';
 import ThemeToggle from './ThemeToggle';
 import type { AppView } from '../types';
 
@@ -28,7 +28,46 @@ const NavLink: React.FC<{
   </button>
 );
 
+const DropdownNavLink: React.FC<{
+  view: AppView;
+  activeView: AppView;
+  onNavigate: (view: AppView) => void;
+  closeDropdown: () => void;
+  children: React.ReactNode;
+}> = ({ view, activeView, onNavigate, closeDropdown, children }) => (
+    <a
+        href="#"
+        onClick={(e) => {
+            e.preventDefault();
+            onNavigate(view);
+            closeDropdown();
+        }}
+        className={`block w-full text-left px-4 py-2 text-sm ${activeView === view ? 'bg-slate-100 dark:bg-slate-800 text-text-primary dark:text-dark-text-primary' : 'text-text-muted dark:text-dark-text-muted'} hover:bg-slate-100 dark:hover:bg-slate-800`}
+        role="menuitem"
+    >
+        {children}
+    </a>
+);
+
+
 export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps): React.JSX.Element {
+  const [isGuidesOpen, setIsGuidesOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            setIsGuidesOpen(false);
+        }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+  
+  const isGuideActive = activeView === 'gripGuide' || activeView === 'shoeGuide';
+
   return (
     <header className="bg-surface/80 dark:bg-dark-base/80 backdrop-blur-sm sticky top-0 z-50 border-b border-border-color dark:border-dark-border-color">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +85,37 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
           <nav className="hidden md:flex items-center space-x-4">
             <NavLink view="home" activeView={activeView} onNavigate={onNavigate}>Home</NavLink>
             <NavLink view="movements" activeView={activeView} onNavigate={onNavigate}>Movements</NavLink>
-            <NavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate}>Grip Guide</NavLink>
+            
+            {/* Guides Dropdown */}
+            <div className="relative" ref={dropdownRef}>
+                <button
+                    onClick={() => setIsGuidesOpen(!isGuidesOpen)}
+                    className={`inline-flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
+                        isGuideActive
+                        ? 'text-brand-primary dark:text-brand-primary'
+                        : 'text-text-muted hover:text-text-primary dark:text-dark-text-muted dark:hover:text-dark-text-primary'
+                    }`}
+                    aria-haspopup="true"
+                    aria-expanded={isGuidesOpen}
+                >
+                    <span>Guides</span>
+                    <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${isGuidesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isGuidesOpen && (
+                    <div
+                        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-surface dark:bg-dark-surface ring-1 ring-black ring-opacity-5 focus:outline-none animate-fade-in"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="guides-menu-button"
+                    >
+                        <div className="py-1" role="none">
+                            <DropdownNavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Grip Guide</DropdownNavLink>
+                            <DropdownNavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Shoe Guide</DropdownNavLink>
+                        </div>
+                    </div>
+                )}
+            </div>
+
             <NavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate}>Team Guide</NavLink>
           </nav>
           <div className="flex items-center">
@@ -59,6 +128,7 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
               <NavLink view="home" activeView={activeView} onNavigate={onNavigate}>Home</NavLink>
               <NavLink view="movements" activeView={activeView} onNavigate={onNavigate}>Movements</NavLink>
               <NavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate}>Grip Guide</NavLink>
+              <NavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate}>Shoe Guide</NavLink>
               <NavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate}>Team Guide</NavLink>
             </nav>
         </div>

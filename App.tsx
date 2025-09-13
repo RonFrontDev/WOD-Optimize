@@ -9,6 +9,7 @@ import HomePageGripGuide from './components/HomePageGripGuide';
 import TeamWorkoutGuide from './components/TeamWorkoutGuide';
 import SavedWorkouts from './components/SavedWorkouts';
 import MovementLibrary from './components/MovementLibrary';
+import ShoeGuide from './components/ShoeGuide';
 
 const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Machines', 'Monostructural'];
 
@@ -122,6 +123,16 @@ export default function App(): React.JSX.Element {
               </h2>
               <p className="text-md text-text-muted dark:text-dark-text-muted mb-6">Protect your hands and improve performance.</p>
             <HomePageGripGuide />
+          </div>
+        );
+      case 'shoeGuide':
+        return (
+          <div className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color p-6 md:p-8 animate-fade-in">
+              <h2 id="shoe-guide-heading" className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
+                A Guide to CrossFit Footwear
+              </h2>
+              <p className="text-md text-text-muted dark:text-dark-text-muted mb-6">The right shoe for the right job.</p>
+            <ShoeGuide />
           </div>
         );
       case 'teamGuide':
