@@ -187,3 +187,42 @@ export const COMPETITION_RECOVERY_PLAN: RecoveryPlan[] = [
         ]
     }
 ];
+
+export const RECOVERY_FOOD_GUIDE: RecoveryPlan[] = [
+    {
+        title: 'Athlete\'s Fueling Guide',
+        summary: 'Nutrition is the cornerstone of recovery. What you eat, and when, dictates how quickly you repair muscle, replenish energy, and adapt to training.',
+        steps: [
+            {
+                title: 'The Foundation: Macronutrients for Repair',
+                icon: 'UtensilsIcon',
+                description: 'Your daily diet should be built on these pillars to support high performance and recovery.',
+                details: [
+                    '**Protein:** The building blocks for muscle repair. Aim for 1.6-2.2g per kg of bodyweight. Sources: Lean meats, fish, eggs, whey protein, Greek yogurt.',
+                    '**Carbohydrates:** Your primary energy source. They refill muscle glycogen depleted during workouts. Sources: Oats, sweet potatoes, rice, quinoa, fruits.',
+                    '**Fats:** Crucial for hormone function and reducing inflammation. Sources: Avocado, nuts, seeds, olive oil, fatty fish (salmon).'
+                ]
+            },
+            {
+                title: 'Fast Fuel: Between Events & Workouts',
+                icon: 'ClockIcon',
+                description: 'When time is short, you need energy that is easy to digest and works quickly.',
+                details: [
+                    '**Simple Carbohydrates:** Quickly absorbed for immediate energy. Aim for 25-50g. Examples: Bananas, a handful of gummies, rice cakes with honey, sports drinks.',
+                    '**Easily Digestible Protein:** A small amount to stop muscle breakdown without slowing digestion. Examples: A scoop of whey isolate in water, EAA/BCAA supplement.',
+                    '**What to Avoid:** High-fiber, high-fat, and heavy foods. These slow digestion and can cause gastrointestinal discomfort during your next workout.'
+                ]
+            },
+            {
+                title: 'Endurance Fuel: For the Long Haul',
+                icon: 'TrophyIcon',
+                description: 'For long training days, multi-event competitions, or endurance-focused WODs, you need sustained energy.',
+                details: [
+                    '**Complex Carbohydrates:** These digest slowly, providing a steady release of energy. Consume 1-2 hours before the event. Examples: Oatmeal with berries, sweet potato, whole wheat toast with banana.',
+                    '**Moderate Protein & Fat:** A small amount of protein and healthy fat helps with satiety and provides a secondary, slower-burning fuel source. Example: Chicken breast with quinoa and avocado.',
+                    '**Intra-Workout Fueling:** For events lasting over 90 minutes, sip on a carbohydrate drink to maintain energy levels and prevent crashing.'
+                ]
+            }
+        ]
+    }
+];

@@ -12,6 +12,8 @@ import MovementLibrary from './components/MovementLibrary';
 import ShoeGuide from './components/ShoeGuide';
 import RehabGuide from './components/RehabGuide';
 import RecoveryGuide from './components/RecoveryGuide';
+import FoodGuide from './components/FoodGuide';
+import WarmupGenerator from './components/WarmupGenerator';
 
 const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Machines', 'Monostructural'];
 
@@ -84,10 +86,14 @@ export default function App(): React.JSX.Element {
 
   const renderActiveView = () => {
     switch(activeView) {
+      case 'warmup':
+        return <WarmupGenerator />;
       case 'rehab':
         return <RehabGuide />;
       case 'recovery':
         return <RecoveryGuide />;
+      case 'foodGuide':
+        return <FoodGuide />;
       case 'movements':
         return (
           <div className="animate-fade-in">

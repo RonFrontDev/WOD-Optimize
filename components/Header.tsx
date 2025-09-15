@@ -103,7 +103,7 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
     };
   }, [isMobileMenuOpen]);
   
-  const isGuideActive = ['gripGuide', 'shoeGuide', 'teamGuide', 'rehab', 'recovery'].includes(activeView);
+  const isGuideActive = ['gripGuide', 'shoeGuide', 'teamGuide', 'rehab', 'recovery', 'foodGuide'].includes(activeView);
 
   return (
     <header className="bg-surface/80 dark:bg-dark-base/80 backdrop-blur-sm sticky top-0 z-50 border-b border-border-color dark:border-dark-border-color">
@@ -121,6 +121,7 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
           </div>
           <nav className="hidden md:flex items-center space-x-4">
             <NavLink view="home" activeView={activeView} onNavigate={onNavigate}>Home</NavLink>
+            <NavLink view="warmup" activeView={activeView} onNavigate={onNavigate}>Warm-up</NavLink>
             <NavLink view="movements" activeView={activeView} onNavigate={onNavigate}>Movements</NavLink>
             
             {/* Guides Dropdown */}
@@ -148,6 +149,7 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
                         <div className="py-1" role="none">
                             <DropdownNavLink view="rehab" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Rehab Guide</DropdownNavLink>
                             <DropdownNavLink view="recovery" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Recovery Hub</DropdownNavLink>
+                            <DropdownNavLink view="foodGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Food Guide</DropdownNavLink>
                             <DropdownNavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Team Guide</DropdownNavLink>
                             <DropdownNavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Grip Guide</DropdownNavLink>
                             <DropdownNavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Shoe Guide</DropdownNavLink>
@@ -194,9 +196,11 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
                 </div>
                 <nav className="mt-6 flex-1 space-y-2 bg-surface dark:bg-dark-surface ">
                     <MobileNavLink view="home" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Home</MobileNavLink>
+                    <MobileNavLink view="warmup" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Warm-up</MobileNavLink>
                     <MobileNavLink view="movements" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Movements</MobileNavLink>
                     <MobileNavLink view="rehab" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Rehab Guide</MobileNavLink>
                     <MobileNavLink view="recovery" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Recovery Hub</MobileNavLink>
+                    <MobileNavLink view="foodGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Food Guide</MobileNavLink>
                     <MobileNavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Team Guide</MobileNavLink>
                     <MobileNavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Grip Guide</MobileNavLink>
                     <MobileNavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Shoe Guide</MobileNavLink>

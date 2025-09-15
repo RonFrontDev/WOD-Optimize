@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'shoeGuide' | 'rehab' | 'recovery';
+export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'shoeGuide' | 'rehab' | 'recovery' | 'foodGuide' | 'warmup';
 
 export type Equipment = 'Barbell' | 'Dumbbell' | 'Kettlebell' | 'Bodyweight' | 'Machine' | 'Specialty';
 
@@ -163,4 +163,29 @@ export interface RecoveryPlan {
   title: string;
   summary: string;
   steps: RecoveryStep[];
+}
+
+// Warm-up Generator Types
+export interface GeneralWarmupStep {
+    activity: string;
+    duration: string;
+}
+export interface DynamicStretchingStep {
+    activity: string;
+    reps: string;
+}
+export interface MovementSpecificStep {
+    activity: string;
+    details: string;
+}
+export interface WorkoutPrepStep {
+    round: string;
+    details: string;
+}
+
+export interface WarmupPlan {
+    general: GeneralWarmupStep[];
+    dynamicStretching: DynamicStretchingStep[];
+    movementSpecific: MovementSpecificStep[];
+    workoutPrep: WorkoutPrepStep[];
 }

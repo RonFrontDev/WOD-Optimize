@@ -1,5 +1,5 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint, MuscleActivation, AdaptiveWorkoutStrategy, MovementModification, InjurySeverity } from '../types';
+import type { Drill, MobilityExercise, TransitionTip, EnergySavingTip, WorkoutStrategy, SuggestedWorkout, HeatmapPoint, MuscleActivation, AdaptiveWorkoutStrategy, MovementModification, InjurySeverity, WarmupPlan } from '../types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable is not set.");
@@ -232,6 +232,84 @@ export const generateEnergySavingTips = async (movementName: string): Promise<En
         return [];
     }
 };
+
+export const generateWarmup = async (workoutDescription: string): Promise<WarmupPlan | null> => {
+    try {
+        const prompt = `You are a world-class strength and conditioning coach. A user is about to perform the following workout: "${workoutDescription}".
+        
+        Create a comprehensive, 4-phase warm-up tailored to this workout. The warm-up should prepare the athlete's body for the specific demands of the movements, improve performance, and reduce the risk of injury. Provide the response as a single JSON object with the following keys: "general", "dynamicStretching", "movementSpecific", "workoutPrep".
+
+        1.  **general**: An array of 2-3 general cardio activities to raise the heart rate. Each item should have an "activity" and a "duration".
+        2.  **dynamicStretching**: An array of 4-6 full-body dynamic stretches or mobility drills. Each item should have an "activity" and suggested "reps".
+        3.  **movementSpecific**: An array of 2-4 drills that activate and prime the specific muscles and movement patterns for the workout. Each item should have an "activity" and "details" explaining the focus.
+        4.  **workoutPrep**: An array of 2-3 ramp-up rounds using the actual workout movements at a lighter intensity. Each item should have a "round" number and "details" of what to do.`;
+        
+        const response = await ai.models.generateContent({
+            model: model,
+            contents: prompt,
+            config: {
+                responseMimeType: "application/json",
+                responseSchema: {
+                    type: Type.OBJECT,
+                    properties: {
+                        general: {
+                            type: Type.ARRAY,
+                            items: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    activity: { type: Type.STRING },
+                                    duration: { type: Type.STRING }
+                                },
+                                required: ["activity", "duration"]
+                            }
+                        },
+                        dynamicStretching: {
+                            type: Type.ARRAY,
+                            items: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    activity: { type: Type.STRING },
+                                    reps: { type: Type.STRING }
+                                },
+                                required: ["activity", "reps"]
+                            }
+                        },
+                        movementSpecific: {
+                            type: Type.ARRAY,
+                            items: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    activity: { type: Type.STRING },
+                                    details: { type: Type.STRING }
+                                },
+                                required: ["activity", "details"]
+                            }
+                        },
+                        workoutPrep: {
+                            type: Type.ARRAY,
+                            items: {
+                                type: Type.OBJECT,
+                                properties: {
+                                    round: { type: Type.STRING },
+                                    details: { type: Type.STRING }
+                                },
+                                required: ["round", "details"]
+                            }
+                        },
+                    },
+                    required: ["general", "dynamicStretching", "movementSpecific", "workoutPrep"]
+                }
+            }
+        });
+
+        return JSON.parse(response.text);
+
+    } catch (error) {
+        console.error("Error generating warmup:", error);
+        return null;
+    }
+};
+
 
 const strategySchema = {
     type: Type.OBJECT,

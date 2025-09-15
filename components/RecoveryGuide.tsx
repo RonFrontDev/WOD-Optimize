@@ -42,7 +42,7 @@ const RecoveryStepComponent: React.FC<{ step: RecoveryStep }> = ({ step }) => {
                     {step.details.map((detail, i) => (
                         <li key={i} className="flex items-start gap-3 text-text-primary dark:text-dark-text-primary">
                             <CheckCircleIcon className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-1" />
-                            <span>{detail}</span>
+                            <span dangerouslySetInnerHTML={{ __html: detail.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                         </li>
                     ))}
                 </ul>
@@ -87,7 +87,7 @@ export default function RecoveryGuide() {
             if (competitionProtocol === 'between') return index === 0;
             if (competitionProtocol === 'end') return index === 1;
             return false;
-          });
+        });
 
     return (
         <div className="animate-fade-in max-w-4xl mx-auto">
@@ -108,6 +108,7 @@ export default function RecoveryGuide() {
                         <div className="flex items-center justify-center gap-3 mt-2">
                             {(['training', 'competition'] as RecoveryContext[]).map(ctx => {
                                 const isSelected = context === ctx;
+                                const label = ctx === 'training' ? 'Daily Training' : 'Competition';
                                 return (
                                     <button
                                         key={ctx}
@@ -118,7 +119,7 @@ export default function RecoveryGuide() {
                                             : 'bg-surface dark:bg-dark-surface text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700 border border-border-color dark:border-dark-border-color'
                                         }`}
                                     >
-                                        {ctx === 'training' ? 'Daily Training' : 'Competition'}
+                                        {label}
                                     </button>
                                 );
                             })}
