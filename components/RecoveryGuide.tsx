@@ -29,8 +29,8 @@ const getIcon = (iconName: RecoveryStep['icon']) => {
 
 const RecoveryStepComponent: React.FC<{ step: RecoveryStep }> = ({ step }) => {
     return (
-        <div className="flex items-start gap-6">
-            <div className="relative z-10 flex items-center justify-center mt-1">
+        <div className="flex items-start md:gap-6">
+            <div className="relative z-10 hidden md:flex items-center justify-center mt-1">
                 <div className="w-16 h-16 rounded-full bg-brand-primary flex items-center justify-center shadow-md flex-shrink-0">
                     {getIcon(step.icon)}
                 </div>

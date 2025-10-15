@@ -19,12 +19,20 @@ const renderStep = (step: GeneralWarmupStep | DynamicStretchingStep | MovementSp
                 </div>
             );
         }
+        
         // This is GeneralWarmupStep or DynamicStretchingStep
+        let detail = '';
+        if ('duration' in step) {
+            detail = step.duration;
+        } else if ('reps' in step) {
+            detail = step.reps;
+        }
+
         return (
             <div className="flex justify-between items-center">
                 <span>{step.activity}</span>
                 <span className="font-semibold text-text-primary dark:text-dark-text-primary">
-                    {'duration' in step ? step.duration : 'reps' in step ? step.reps : ''}
+                    {detail}
                 </span>
             </div>
         );
@@ -81,8 +89,8 @@ export default function WarmupGenerator() {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto">
             <div className="text-center mb-8">
-                 <h2 className="text-4xl font-bold text-text-primary dark:text-dark-text-primary mb-2 flex items-center justify-center gap-3">
-                    <FlameIcon className="w-10 h-10 text-brand-secondary" />
+                 <h2 className="text-4xl font-bold text-text-primary dark:text-dark-text-primary mb-2 flex items-center justify-center md:gap-3">
+                    <FlameIcon className="w-10 h-10 text-brand-secondary hidden md:inline-block" />
                     Dynamic Warm-up Planner
                 </h2>
                 <p className="text-lg text-text-muted dark:text-dark-text-muted">Enter your workout or a specific movement to get a tailored warm-up plan.</p>
@@ -105,9 +113,9 @@ export default function WarmupGenerator() {
                         <button
                             onClick={handleGenerate}
                             disabled={!workoutDescription.trim() || isLoading}
-                            className="w-full flex items-center justify-center gap-2 bg-brand-secondary hover:bg-orange-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition duration-300 transform hover:scale-105"
+                            className="w-full flex items-center justify-center md:gap-2 bg-brand-secondary hover:bg-orange-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition duration-300 transform hover:scale-105"
                         >
-                            {isLoading ? <LoadingSpinner /> : <><SparklesIcon className="w-5 h-5" /> Let's Warm Up</>}
+                            {isLoading ? <LoadingSpinner /> : <><SparklesIcon className="w-5 h-5 hidden md:inline-block" /> Let's Warm Up</>}
                         </button>
                         {error && <p className="text-red-600 dark:text-red-400 text-sm mt-2 text-center">{error}</p>}
                     </div>

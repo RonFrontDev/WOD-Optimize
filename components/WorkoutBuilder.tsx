@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { generateWorkoutStrategy, generateSimilarWorkouts, generateAdaptiveStrategy } from '../services/geminiService';
 import { ArrowLeftIcon, SparklesIcon, ClockIcon, CheckCircleIcon, ClipboardListIcon, BookmarkIcon, BookmarkOutlineIcon, ShieldCheckIcon, ExclamationTriangleIcon, ForwardIcon } from './Icons';
 import LoadingSpinner from './LoadingSpinner';
@@ -55,18 +55,17 @@ const MUSCLE_MAP: Record<string, string> = {
   forearms: 'Forearms',
 };
 
-type TeamSize = 'individual' | 2 | 4;
 type AnalysisMode = 'standard' | 'adaptive';
 interface FullWorkoutStrategy extends WorkoutStrategy, MuscleActivation {}
 
 const MovementModificationCard: React.FC<{ mod: MovementModification }> = ({ mod }) => (
     <div className="bg-base dark:bg-dark-base rounded-lg p-4 border border-border-color dark:border-dark-border-color">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] items-center gap-4 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr,auto,1fr] items-center md:gap-4 text-center">
             <div>
                 <p className="text-sm font-semibold text-text-muted dark:text-dark-text-muted">Original</p>
                 <p className="text-lg font-bold text-red-600 dark:text-red-400 line-through">{mod.originalMovement}</p>
             </div>
-            <ForwardIcon className="w-6 h-6 text-text-muted dark:text-dark-text-muted mx-auto transform rotate-90 md:rotate-0" />
+            <ForwardIcon className="w-6 h-6 text-text-muted dark:text-dark-text-muted mx-auto transform rotate-90 md:rotate-0 hidden md:block" />
             <div>
                 <p className="text-sm font-semibold text-text-muted dark:text-dark-text-muted">Modification</p>
                 <p className="text-lg font-bold text-emerald-600 dark:text-emerald-400">{mod.modifiedMovement}</p>
@@ -86,7 +85,8 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     const [workoutDescription, setWorkoutDescription] = useState<string>('');
     const [analyzedWorkout, setAnalyzedWorkout] = useState<string>('');
     const [limiters, setLimiters] = useState<string[]>([]);
-    const [teamSize, setTeamSize] = useState<TeamSize>('individual');
+    const [teamSizeSelection, setTeamSizeSelection] = useState<string>('1');
+    const [customTeamSize, setCustomTeamSize] = useState<string>('5');
     const [strategy, setStrategy] = useState<WorkoutStrategy | null>(null);
     const [muscleActivation, setMuscleActivation] = useState<MuscleActivation | null>(null);
     const [similarWorkouts, setSimilarWorkouts] = useState<Record<keyof WorkoutStrategy, SuggestedWorkout[] | null>>({
@@ -104,6 +104,22 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingSimilar, setIsLoadingSimilar] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    const teamSize = useMemo(() => {
+        if (teamSizeSelection === 'custom') {
+            const parsed = parseInt(customTeamSize, 10);
+            return !isNaN(parsed) && parsed > 1 ? parsed : 2;
+        }
+        const selection = parseInt(teamSizeSelection, 10);
+        return !isNaN(selection) ? selection : 1;
+    }, [teamSizeSelection, customTeamSize]);
+
+    useEffect(() => {
+        if (teamSize === 1) {
+            setLimiters(prev => prev.filter(l => l !== 'Communication' && l !== 'Synchronization'));
+        }
+    }, [teamSize]);
+
 
     const handleLimiterChange = (limiter: string) => {
         setLimiters(prev =>
@@ -226,7 +242,8 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
         setWorkoutDescription('');
         setAnalyzedWorkout('');
         setLimiters([]);
-        setTeamSize('individual');
+        setTeamSizeSelection('1');
+        setCustomTeamSize('5');
         setStrategy(null);
         setMuscleActivation(null);
         setSimilarWorkouts({ elite: null, rx: null, intermediate: null, scaledBeginner: null });
@@ -257,8 +274,8 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                     Back to Home
                 </button>
                 <div className="text-center mb-8">
-                     <h2 className="text-4xl font-bold text-text-primary dark:text-dark-text-primary mb-2 flex items-center justify-center gap-3">
-                        {analysisMode === 'adaptive' && <ShieldCheckIcon className="w-10 h-10 text-brand-primary" />}
+                     <h2 className="text-4xl font-bold text-text-primary dark:text-dark-text-primary mb-2 flex items-center justify-center md:gap-3">
+                        {analysisMode === 'adaptive' && <ShieldCheckIcon className="w-10 h-10 text-brand-primary hidden md:inline-block" />}
                         Workout Analyzer
                     </h2>
                     <p className="text-lg text-text-muted dark:text-dark-text-muted">Enter any workout to get a custom strategy, or an adaptive plan for an injury.</p>
@@ -276,13 +293,13 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                     <button
                                         key={mode}
                                         onClick={() => setAnalysisMode(mode)}
-                                        className={`w-1/2 p-2 rounded-md text-sm font-bold transition-colors duration-200 capitalize flex items-center justify-center gap-2 ${
+                                        className={`w-1/2 p-2 rounded-md text-sm font-bold transition-colors duration-200 capitalize flex items-center justify-center md:gap-2 ${
                                             isSelected 
                                             ? (mode === 'standard' ? 'bg-brand-secondary text-white shadow' : 'bg-brand-primary text-white shadow')
                                             : 'text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
                                         }`}
                                     >
-                                        {mode === 'adaptive' && <ShieldCheckIcon className="w-5 h-5"/>}
+                                        {mode === 'adaptive' && <ShieldCheckIcon className="w-5 h-5 hidden md:inline-block"/>}
                                         {mode === 'standard' ? 'Standard Strategy' : 'Adaptive Strategy'}
                                     </button>
                                 )
@@ -304,22 +321,21 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
 
                     {analysisMode === 'standard' ? (
                         <>
-                            <div className="mt-6">
+                           <div className="mt-6">
                                 <label className="block text-lg font-medium text-text-primary dark:text-dark-text-primary mb-3">
                                     2. Who is this workout for?
                                 </label>
-                                <div className="flex bg-base dark:bg-dark-base rounded-lg border-2 border-border-color dark:border-dark-border-color p-1">
-                                    {(['individual', 2, 4] as TeamSize[]).map((size) => {
-                                        const label = size === 'individual' ? 'Individual' : `Team of ${size}`;
-                                        const isSelected = teamSize === size;
+                                <div className="flex flex-wrap gap-2">
+                                    {([['1', 'Individual'], ['2', 'Team of 2'], ['3', 'Team of 3'], ['4', 'Team of 4'], ['custom', 'Custom...']] as const).map(([value, label]) => {
+                                        const isSelected = teamSizeSelection === value;
                                         return (
                                             <button
-                                                key={size}
-                                                onClick={() => setTeamSize(size)}
-                                                className={`w-1/3 p-2 rounded-md text-sm font-bold transition-colors duration-200 ${
+                                                key={value}
+                                                onClick={() => setTeamSizeSelection(value)}
+                                                className={`flex-1 min-w-[100px] p-2 rounded-md text-sm font-bold transition-colors duration-200 border-2 ${
                                                     isSelected 
-                                                    ? 'bg-brand-secondary text-white shadow' 
-                                                    : 'text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
+                                                    ? 'bg-brand-secondary text-white shadow border-brand-secondary' 
+                                                    : 'bg-surface dark:bg-dark-surface border-border-color dark:border-dark-border-color text-text-muted dark:text-dark-text-muted hover:bg-slate-100 dark:hover:bg-slate-800'
                                                 }`}
                                             >
                                                 {label}
@@ -327,6 +343,22 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                         )
                                     })}
                                 </div>
+                                {teamSizeSelection === 'custom' && (
+                                    <div className="mt-4 animate-fade-in">
+                                        <label htmlFor="custom-team-size" className="block text-sm font-medium text-text-primary dark:text-dark-text-primary mb-2">
+                                            Number of athletes in team:
+                                        </label>
+                                        <input
+                                            id="custom-team-size"
+                                            type="number"
+                                            min="2"
+                                            value={customTeamSize}
+                                            onChange={(e) => setCustomTeamSize(e.target.value)}
+                                            className="w-full max-w-xs bg-base dark:bg-dark-base text-text-primary dark:text-dark-text-primary p-3 rounded-md border border-border-color dark:border-dark-border-color focus:ring-2 focus:ring-brand-primary focus:border-brand-primary dark:focus:border-brand-primary transition duration-200"
+                                            aria-label="Custom team size"
+                                        />
+                                    </div>
+                                )}
                             </div>
                             <div className="mt-6">
                                 <label className="block text-lg font-medium text-text-primary dark:text-dark-text-primary mb-3">
@@ -334,18 +366,21 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                 </label>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                     {predefinedLimiters.map(limiter => {
+                                        if ((limiter === 'Communication' || limiter === 'Synchronization') && teamSize === 1) {
+                                            return null;
+                                        }
                                         const isSelected = limiters.includes(limiter);
                                         return (
                                             <button
                                                 key={limiter}
                                                 type="button"
                                                 onClick={() => handleLimiterChange(limiter)}
-                                                className={`p-3 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center gap-2 border-2 ${isSelected
+                                                className={`p-3 rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center md:gap-2 border-2 ${isSelected
                                                         ? 'bg-brand-secondary/10 border-brand-secondary text-brand-secondary'
                                                         : 'bg-base dark:bg-dark-base border-border-color dark:border-dark-border-color hover:border-slate-400 dark:hover:border-slate-500 text-text-muted dark:text-dark-text-muted'
                                                     }`}
                                             >
-                                                {isSelected && <CheckCircleIcon className="w-5 h-5 text-brand-secondary" />}
+                                                {isSelected && <CheckCircleIcon className="w-5 h-5 text-brand-secondary hidden md:inline-block" />}
                                                 {limiter}
                                             </button>
                                         );
@@ -387,7 +422,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                                             >
                                                 <div className="flex items-center justify-between">
                                                     <span className={`font-bold ${isSelected ? 'text-brand-primary' : 'text-text-primary dark:text-dark-text-primary'}`}>{label}</span>
-                                                    {isSelected && <CheckCircleIcon className="w-6 h-6 text-brand-primary" />}
+                                                    {isSelected && <CheckCircleIcon className="w-6 h-6 text-brand-primary hidden md:inline-block" />}
                                                 </div>
                                                 <p className="text-sm text-text-muted dark:text-dark-text-muted mt-1">{description}</p>
                                             </button>
@@ -402,9 +437,9 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                         <button
                             onClick={analysisMode === 'standard' ? handleGenerateStrategy : handleGenerateAdaptiveStrategy}
                             disabled={analysisMode === 'standard' ? !workoutDescription.trim() : !workoutDescription.trim() || !injuryDescription.trim()}
-                            className="w-full flex items-center justify-center gap-2 bg-brand-secondary hover:bg-orange-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition duration-300 transform hover:scale-105"
+                            className="w-full flex items-center justify-center md:gap-2 bg-brand-secondary hover:bg-orange-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-bold py-3 px-4 rounded-lg transition duration-300 transform hover:scale-105"
                         >
-                            <SparklesIcon className="w-5 h-5" />
+                            <SparklesIcon className="w-5 h-5 hidden md:inline-block" />
                             {analysisMode === 'standard' ? 'Analyze My Workout' : 'Generate Adaptive Strategy'}
                         </button>
                         {error && <p className="text-red-600 dark:text-red-400 text-sm mt-2 text-center">{error}</p>}
@@ -453,15 +488,15 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                             return (
                                 <div className="px-1">
                                     <div className="grid md:grid-cols-2 gap-x-6 gap-y-8 mb-8 p-4 bg-base dark:bg-dark-base rounded-lg border border-border-color dark:border-dark-border-color">
-                                        <div className="flex items-start gap-4">
-                                            <ClockIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
+                                        <div className="flex items-start md:gap-4">
+                                            <ClockIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1 hidden md:inline-block" />
                                             <div>
                                                 <h3 className="text-md font-semibold text-text-muted dark:text-dark-text-muted">Target Time</h3>
                                                 <p className="text-xl font-bold text-slate-900 dark:text-slate-100">{currentStrategy.timeEstimate}</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-start gap-4 md:border-l md:border-border-color md:dark:border-dark-border-color md:pl-6">
-                                            <ClipboardListIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1" />
+                                        <div className="flex items-start md:gap-4 md:border-l md:border-border-color md:dark:border-dark-border-color md:pl-6">
+                                            <ClipboardListIcon className="w-8 h-8 text-text-muted dark:text-dark-text-muted flex-shrink-0 mt-1 hidden md:inline-block" />
                                             <div>
                                                 <h3 className="text-md font-semibold text-text-muted dark:text-dark-text-muted">Your Workout</h3>
                                                 <p className="text-sm text-slate-900 dark:text-slate-100 whitespace-pre-wrap">{analyzedWorkout}</p>
@@ -543,7 +578,7 @@ export default function WorkoutBuilder({ onBack }: WorkoutBuilderProps): React.J
                     <div className="max-h-[80vh] overflow-y-auto pr-2">
                         <div className="bg-yellow-100 dark:bg-yellow-900/30 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-200 p-4 rounded-r-lg mb-6">
                             <div className="flex">
-                                <div className="py-1">
+                                <div className="py-1 hidden md:block">
                                     <ExclamationTriangleIcon className="w-6 h-6 text-yellow-500 mr-3" />
                                 </div>
                                 <div>

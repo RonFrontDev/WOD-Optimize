@@ -14,6 +14,8 @@ import RehabGuide from './components/RehabGuide';
 import RecoveryGuide from './components/RecoveryGuide';
 import FoodGuide from './components/FoodGuide';
 import WarmupGenerator from './components/WarmupGenerator';
+import MachineGuide from './components/MachineGuide';
+import BarbellCyclingGuide from './components/BarbellCyclingGuide';
 
 const orderedCategories: Movement['category'][] = ['Weightlifting', 'Gymnastics', 'Kettlebell', 'Strongman', 'Machines', 'Monostructural'];
 
@@ -147,6 +149,26 @@ export default function App(): React.JSX.Element {
             <ShoeGuide />
           </div>
         );
+      case 'machineGuide':
+        return (
+          <div className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color p-6 md:p-8 animate-fade-in">
+             <h2 id="machine-guide-heading" className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
+                A Guide to CrossFit Machines
+              </h2>
+              <p className="text-md text-text-muted dark:text-dark-text-muted mb-6">Pacing, strategy, and efficiency for the bike, rower, and ski erg.</p>
+            <MachineGuide />
+          </div>
+        );
+      case 'barbellCyclingGuide':
+        return (
+          <div className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color p-6 md:p-8 animate-fade-in">
+             <h2 id="barbell-cycling-guide-heading" className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-2">
+                A Guide to Barbell Cycling
+              </h2>
+              <p className="text-md text-text-muted dark:text-dark-text-muted mb-6">Improve your speed, efficiency, and workout times.</p>
+            <BarbellCyclingGuide />
+          </div>
+        );
       case 'teamGuide':
         return (
           <div className="bg-surface dark:bg-dark-surface rounded-lg shadow-lg border border-border-color dark:border-dark-border-color p-6 md:p-8 animate-fade-in">
@@ -179,16 +201,16 @@ export default function App(): React.JSX.Element {
                 <div className="mt-8 flex justify-center md:justify-start items-center flex-wrap gap-4">
                   <button
                     onClick={handleStartWorkoutBuilder}
-                    className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-3 w-64"
+                    className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center md:gap-3 w-64"
                   >
-                    <ClipboardListIcon className="w-6 h-6" />
+                    <ClipboardListIcon className="w-6 h-6 hidden md:inline-block" />
                     Analyze a Workout
                   </button>
                   <button
                     onClick={handleViewSavedWorkouts}
-                    className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-3 w-64"
+                    className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center md:gap-3 w-64"
                   >
-                    <BookmarkSquareIcon className="w-6 h-6" />
+                    <BookmarkSquareIcon className="w-6 h-6 hidden md:inline-block" />
                     View Saved Strategies
                   </button>
                 </div>

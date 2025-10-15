@@ -3,7 +3,7 @@ import { REHAB_DATA } from '../constants/rehabConstants';
 import type { RehabPlan, BodyPart, RehabStep } from '../types';
 import { 
     SearchIcon, ArrowLeftIcon, RehabIcon,
-    ShoulderIcon, KneeIcon, BackIcon, ElbowIcon, WristIcon, AnkleIcon,
+    ShoulderIcon, KneeIcon, BackIcon, ElbowIcon, WristIcon, AnkleIcon, HipIcon, ShinIcon,
     SnowflakeIcon, HeartPulseIcon, BarbellIcon, ShieldCheckIcon,
     CheckCircleIcon, AnatomyIcon
 } from './Icons';
@@ -11,10 +11,12 @@ import AnatomyLibrary from './AnatomyLibrary';
 
 const BODY_PARTS: { name: BodyPart; icon: React.FC<React.SVGProps<SVGSVGElement>> }[] = [
     { name: 'Shoulder', icon: ShoulderIcon },
-    { name: 'Knee', icon: KneeIcon },
-    { name: 'Lower Back', icon: BackIcon },
     { name: 'Elbow', icon: ElbowIcon },
     { name: 'Wrist', icon: WristIcon },
+    { name: 'Lower Back', icon: BackIcon },
+    { name: 'Hip', icon: HipIcon },
+    { name: 'Knee', icon: KneeIcon },
+    { name: 'Shin', icon: ShinIcon },
     { name: 'Ankle', icon: AnkleIcon },
 ];
 
@@ -23,7 +25,7 @@ const BodyPartCard: React.FC<{ name: BodyPart; icon: React.FC<any>; onClick: () 
         onClick={onClick}
         className="group bg-surface dark:bg-dark-surface rounded-lg p-6 flex flex-col items-center justify-center text-center border-2 border-border-color dark:border-dark-border-color hover:border-brand-primary dark:hover:border-brand-primary hover:bg-brand-primary/5 dark:hover:bg-brand-primary/10 transition-all duration-300 transform hover:-translate-y-1"
     >
-        <Icon className="w-16 h-16 text-brand-primary mb-4 transition-transform duration-300 group-hover:scale-110" />
+        <Icon className="w-16 h-16 text-brand-primary mb-4 transition-transform duration-300 group-hover:scale-110 hidden md:block" />
         <h3 className="text-xl font-bold text-text-primary dark:text-dark-text-primary">{name}</h3>
     </button>
 );
@@ -52,11 +54,11 @@ const RehabStepComponent: React.FC<{ step: RehabStep, index: number, totalSteps:
     return (
         <li className="relative flex-1 group">
             {/* Timeline Line */}
-            {index < totalSteps - 1 && <div className="absolute top-8 left-8 h-full w-0.5 bg-border-color dark:bg-dark-border-color group-last:hidden" />}
+            {index < totalSteps - 1 && <div className="absolute top-8 left-8 h-full w-0.5 bg-border-color dark:bg-dark-border-color group-last:hidden hidden md:block" />}
             
-            <div className="flex items-start gap-6">
+            <div className="flex items-start md:gap-6">
                 {/* Icon and Circle */}
-                <div className="relative z-10 flex items-center justify-center">
+                <div className="relative z-10 hidden md:flex items-center justify-center">
                     <div className="w-16 h-16 rounded-full bg-brand-primary flex items-center justify-center shadow-md">
                         {getIcon(step.icon)}
                     </div>
@@ -196,7 +198,7 @@ const InjuryRoadmap: React.FC = () => {
                             <p>No results found for "{searchQuery}".</p>
                         </div>
                     )}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-8">
                         {BODY_PARTS.map(part => (
                             <BodyPartCard
                                 key={part.name}
@@ -233,23 +235,23 @@ export default function RehabGuide() {
                 <div className="flex bg-base dark:bg-dark-base rounded-lg border-2 border-border-color dark:border-dark-border-color p-1">
                     <button
                         onClick={() => setActiveView('roadmap')}
-                        className={`w-1/2 p-2 rounded-md font-bold transition-colors duration-200 flex items-center justify-center gap-2 ${
+                        className={`w-1/2 p-2 rounded-md font-bold transition-colors duration-200 flex items-center justify-center md:gap-2 ${
                             activeView === 'roadmap' 
                             ? 'bg-brand-primary text-white shadow' 
                             : 'text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
                         }`}
                     >
-                        <RehabIcon className="w-5 h-5" /> Injury Roadmaps
+                        <RehabIcon className="w-5 h-5 hidden md:inline-block" /> Injury Roadmaps
                     </button>
                     <button
                         onClick={() => setActiveView('anatomy')}
-                        className={`w-1/2 p-2 rounded-md font-bold transition-colors duration-200 flex items-center justify-center gap-2 ${
+                        className={`w-1/2 p-2 rounded-md font-bold transition-colors duration-200 flex items-center justify-center md:gap-2 ${
                             activeView === 'anatomy' 
                             ? 'bg-brand-secondary text-white shadow' 
                             : 'text-text-muted dark:text-dark-text-muted hover:bg-slate-200 dark:hover:bg-slate-700'
                         }`}
                     >
-                        <AnatomyIcon className="w-5 h-5" /> Anatomy Library
+                        <AnatomyIcon className="w-5 h-5 hidden md:inline-block" /> Anatomy Library
                     </button>
                 </div>
             </div>

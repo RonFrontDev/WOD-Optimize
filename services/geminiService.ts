@@ -328,7 +328,7 @@ const strategySchema = {
 
 export interface FullWorkoutStrategy extends WorkoutStrategy, MuscleActivation {}
 
-export const generateWorkoutStrategy = async (workoutDescription: string, limiters: string[], teamSize: 'individual' | 2 | 4): Promise<FullWorkoutStrategy | null> => {
+export const generateWorkoutStrategy = async (workoutDescription: string, limiters: string[], teamSize: number): Promise<FullWorkoutStrategy | null> => {
     try {
         const validMuscles = [
             'quadriceps', 'hamstrings', 'glutes', 'calves', 'abdominals', 'obliques', 
@@ -337,7 +337,7 @@ export const generateWorkoutStrategy = async (workoutDescription: string, limite
 
         let prompt = `You are an elite CrossFit and conditioning coach specializing in competition strategy. A user has provided their workout: "${workoutDescription}".`;
 
-        if (teamSize === 'individual') {
+        if (teamSize === 1) {
             prompt += ` This is for an individual athlete.`;
         } else {
             prompt += ` This is for a TEAM OF ${teamSize} ATHLETES. Your advice MUST be team-focused.`;
@@ -398,7 +398,16 @@ export const generateWorkoutStrategy = async (workoutDescription: string, limite
 
 export const generateSimilarWorkouts = async (workoutDescription: string, level: string): Promise<SuggestedWorkout[]> => {
     try {
-        const prompt = `You are an expert CrossFit programmer. Given the workout "${workoutDescription}", generate exactly 3 other named workouts that have a similar training stimulus, specifically tailored for an athlete at the ${level} level. For each workout, provide: a unique, creative name; a clear description of the movements, reps, and format; and a brief explanation of the workout's goal or intended stimulus. The weights and complexity should be appropriate for a ${level} athlete. IMPORTANT: All weights must be specified in kilograms (kg) and all distances/heights in meters (m) or centimeters (cm).`;
+        const prompt = `You are a seasoned and creative CrossFit L4 programmer, known for designing challenging and effective workouts. Your task is to generate 3 unique, named workouts that share a similar training stimulus to "${workoutDescription}", but are not simple copies. These should be tailored for an athlete at the "${level}" level.
+
+For each of the 3 workouts, you must provide:
+1.  **name**: A creative and memorable name in the style of a benchmark WOD (e.g., "Gears Grinder", "Valkyrie's Test", "Short Circuit"). Avoid generic names like "Cardio Blast".
+2.  **description**: A precise description of the movements, rep schemes, weights, and format (AMRAP, For Time, Chipper, etc.). Be specific with weights and movements. **Crucially, format this description string using line breaks (\\n) for readability.** For example, the format (e.g., "5 rounds for time of:") should be on its own line, followed by each movement on a new line.
+3.  **goal**: A concise but insightful explanation of the workout's intended stimulus and *how* it mirrors or complements the original workout's demands (e.g., "Like the original, this workout tests grip endurance under high heart rate, but uses a chipper format to challenge pacing and transitions.").
+
+Your suggestions should be varied in structure. If the original is a couplet, suggest a triplet or an AMRAP with different time domains. The goal is to provide high-quality, non-generic alternatives.
+
+IMPORTANT: All weights must be specified in kilograms (kg) and all distances/heights in meters (m) or centimeters (cm).`;
 
         const response = await ai.models.generateContent({
             model: model,

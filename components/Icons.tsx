@@ -350,6 +350,24 @@ export const AnkleIcon = ({ className = 'w-6 h-6' }: IconProps) => (
   </svg>
 );
 
+export const HipIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 12m-2 0a2 2 0 104 0 2 2 0 10-4 0" />
+    <path d="M12 14v8" />
+    <path d="M12 12c-4-2-6-8-6-8s6 4 12 4" />
+    <path d="M12 12c4-2 6-8 6-8s-6 4-12 4" />
+  </svg>
+);
+
+export const ShinIcon = ({ className = 'w-6 h-6' }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M10 3h4" />
+    <path d="M9 21h6" />
+    <path d="M11 3v18" />
+    <path d="M14 4v16" />
+  </svg>
+);
+
 
 // FAULT ICONS
 export const RoundedBackIcon = ({ className = 'w-6 h-6' }: IconProps) => (

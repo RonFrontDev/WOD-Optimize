@@ -79,8 +79,8 @@ const ParsedFeedback = ({ feedbackText }: { feedbackText: string }) => {
                     <h4 className="font-bold text-lg mb-3 text-emerald-600 dark:text-emerald-400">Points of Performance</h4>
                     <ul className="space-y-3">
                         {points.map((point, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                                <CheckCircleIcon className="w-6 h-6 text-emerald-500 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
+                            <li key={i} className="flex items-start md:gap-3">
+                                <CheckCircleIcon className="w-6 h-6 text-emerald-500 dark:text-emerald-400 flex-shrink-0 mt-0.5 hidden md:inline-block" />
                                 <span>{point}</span>
                             </li>
                         ))}
@@ -92,8 +92,8 @@ const ParsedFeedback = ({ feedbackText }: { feedbackText: string }) => {
                     <h4 className="font-bold text-lg mb-3 text-red-600 dark:text-red-400">Areas for Improvement</h4>
                     <ul className="space-y-3">
                         {improvements.map((imp, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                                <ExclamationTriangleIcon className="w-6 h-6 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                            <li key={i} className="flex items-start md:gap-3">
+                                <ExclamationTriangleIcon className="w-6 h-6 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5 hidden md:inline-block" />
                                 <span>{imp}</span>
                             </li>
                         ))}
@@ -272,15 +272,15 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
               {movement.commonFaults.map((item, index) => (
                 <li
                   key={index}
-                  onClick={() => setModalContent({ title: item.fault, content: ( <div className="flex items-start gap-4"> <FaultIcon iconId={item.iconId} className="w-12 h-12 text-brand-secondary flex-shrink-0 mt-1" /> <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{item.fix}</p> </div> ) })}
-                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalContent({ title: item.fault, content: ( <div className="flex items-start gap-4"> <FaultIcon iconId={item.iconId} className="w-12 h-12 text-brand-secondary flex-shrink-0 mt-1" /> <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{item.fix}</p> </div> ) })}
+                  onClick={() => setModalContent({ title: item.fault, content: ( <div className="flex items-start md:gap-4"> <FaultIcon iconId={item.iconId} className="w-12 h-12 text-brand-secondary flex-shrink-0 mt-1 hidden md:inline-block" /> <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{item.fix}</p> </div> ) })}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setModalContent({ title: item.fault, content: ( <div className="flex items-start md:gap-4"> <FaultIcon iconId={item.iconId} className="w-12 h-12 text-brand-secondary flex-shrink-0 mt-1 hidden md:inline-block" /> <p className="text-text-primary dark:text-dark-text-primary mt-1 text-lg leading-relaxed">{item.fix}</p> </div> ) })}
                   role="button"
                   tabIndex={0}
                   aria-label={`View details for ${item.fault}`}
                   className="bg-surface dark:bg-dark-surface p-4 rounded-lg shadow-md hover:bg-slate-50 dark:hover:bg-slate-600 border border-border-color dark:border-dark-border-color transition-colors duration-200 cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brand-primary"
                 >
-                    <div className="flex items-start gap-4">
-                        <FaultIcon iconId={item.iconId} className="w-8 h-8 text-brand-secondary flex-shrink-0 mt-1" />
+                    <div className="flex items-start md:gap-4">
+                        <FaultIcon iconId={item.iconId} className="w-8 h-8 text-brand-secondary flex-shrink-0 mt-1 hidden md:inline-block" />
                         <div>
                             <p className="font-semibold text-text-primary dark:text-dark-text-primary">{item.fault}</p>
                             <p className="text-text-muted dark:text-dark-text-muted mt-1 text-sm">{item.fix}</p>
@@ -300,9 +300,9 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
             <button
               onClick={handleAnalyze}
               disabled={!imageFile || isAnalyzing}
-              className="mt-4 w-full flex items-center justify-center gap-2 bg-brand-primary hover:bg-cyan-600 disabled:bg-gray-400 dark:disabled:bg-slate-500 text-white font-bold py-3 px-4 rounded-lg transition duration-300"
+              className="mt-4 w-full flex items-center justify-center md:gap-2 bg-brand-primary hover:bg-cyan-600 disabled:bg-gray-400 dark:disabled:bg-slate-500 text-white font-bold py-3 px-4 rounded-lg transition duration-300"
             >
-              <SparklesIcon className="w-5 h-5"/>
+              <SparklesIcon className="w-5 h-5 hidden md:inline-block"/>
               {isAnalyzing ? 'Analyzing...' : 'Analyze My Form'}
             </button>
             {isAnalyzing && <div className="mt-6 flex justify-center"><LoadingSpinner /></div>}
@@ -461,13 +461,13 @@ export default function MovementDetail({ movement, onBack }: MovementDetailProps
   const TabButton = ({ mode, label, icon }: { mode: ViewMode; label: string, icon: React.ReactNode }) => (
     <button
       onClick={() => setView(mode)}
-      className={`flex-grow flex-shrink-0 flex items-center justify-center gap-2 px-3 py-3 text-sm font-medium transition-colors duration-200 focus:outline-none whitespace-nowrap ${
+      className={`flex-grow flex-shrink-0 flex items-center justify-center md:gap-2 px-3 py-3 text-sm font-medium transition-colors duration-200 focus:outline-none whitespace-nowrap ${
         view === mode
           ? 'text-brand-primary border-b-2 border-brand-primary'
           : 'text-text-muted dark:text-dark-text-muted hover:text-text-primary dark:hover:text-dark-text-primary'
       }`}
     >
-      {icon}
+      <span className="hidden md:inline-block">{icon}</span>
       {label}
     </button>
   );

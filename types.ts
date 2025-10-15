@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'shoeGuide' | 'rehab' | 'recovery' | 'foodGuide' | 'warmup';
+export type AppView = 'home' | 'movements' | 'gripGuide' | 'teamGuide' | 'shoeGuide' | 'rehab' | 'recovery' | 'foodGuide' | 'warmup' | 'machineGuide' | 'barbellCyclingGuide';
 
 export type Equipment = 'Barbell' | 'Dumbbell' | 'Kettlebell' | 'Bodyweight' | 'Machine' | 'Specialty';
 
@@ -126,7 +126,7 @@ export interface TabbedContentProps<T extends string | number | symbol> {
   defaultTab: T;
 }
 
-export type BodyPart = 'Shoulder' | 'Knee' | 'Lower Back' | 'Elbow' | 'Wrist' | 'Ankle';
+export type BodyPart = 'Shoulder' | 'Elbow' | 'Wrist' | 'Lower Back' | 'Hip' | 'Knee' | 'Shin' | 'Ankle';
 
 export interface RehabStep {
   title: string;

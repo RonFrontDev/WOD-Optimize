@@ -103,7 +103,7 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
     };
   }, [isMobileMenuOpen]);
   
-  const isGuideActive = ['gripGuide', 'shoeGuide', 'teamGuide', 'rehab', 'recovery', 'foodGuide'].includes(activeView);
+  const isGuideActive = ['gripGuide', 'shoeGuide', 'teamGuide', 'rehab', 'recovery', 'foodGuide', 'machineGuide', 'barbellCyclingGuide'].includes(activeView);
 
   return (
     <header className="bg-surface/80 dark:bg-dark-base/80 backdrop-blur-sm sticky top-0 z-50 border-b border-border-color dark:border-dark-border-color">
@@ -150,6 +150,8 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
                             <DropdownNavLink view="rehab" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Rehab Guide</DropdownNavLink>
                             <DropdownNavLink view="recovery" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Recovery Hub</DropdownNavLink>
                             <DropdownNavLink view="foodGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Food Guide</DropdownNavLink>
+                            <DropdownNavLink view="machineGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Machine Guide</DropdownNavLink>
+                            <DropdownNavLink view="barbellCyclingGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Barbell Cycling</DropdownNavLink>
                             <DropdownNavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Team Guide</DropdownNavLink>
                             <DropdownNavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Grip Guide</DropdownNavLink>
                             <DropdownNavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate} closeDropdown={() => setIsGuidesOpen(false)}>Shoe Guide</DropdownNavLink>
@@ -201,6 +203,8 @@ export default function Header({ onGoHome, onNavigate, activeView }: HeaderProps
                     <MobileNavLink view="rehab" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Rehab Guide</MobileNavLink>
                     <MobileNavLink view="recovery" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Recovery Hub</MobileNavLink>
                     <MobileNavLink view="foodGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Food Guide</MobileNavLink>
+                    <MobileNavLink view="machineGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Machine Guide</MobileNavLink>
+                    <MobileNavLink view="barbellCyclingGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Barbell Cycling</MobileNavLink>
                     <MobileNavLink view="teamGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Team Guide</MobileNavLink>
                     <MobileNavLink view="gripGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Grip Guide</MobileNavLink>
                     <MobileNavLink view="shoeGuide" activeView={activeView} onNavigate={onNavigate} closeMenu={() => setIsMobileMenuOpen(false)}>Shoe Guide</MobileNavLink>
