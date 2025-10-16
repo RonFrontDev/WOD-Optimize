@@ -169,7 +169,7 @@ export default function MachineGuide() {
                     </div>
                      <div>
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">Sustainable Pace (500m - 2000m)</h5>
-                        <p><strong>Technique:</strong> This is where the 1:2 Drive-to-Recovery ratio is king. Focus on a powerful 1-second drive, and a patient 2-second recovery (Arms → Hips → Knees). Breathe out on the drive, in on the recovery.</p>
+                        <p><strong>Technique:</strong> This is where the 1:2 Drive-to-Recovery ratio is king. Focus on a powerful 1-second drive, and a patient 2-second recovery (Arms  Hips  Knees). Breathe out on the drive, in on the recovery.</p>
                         <p><strong>Monitor Focus:</strong> Pace/500m. Pick your goal pace and do not deviate by more than 1-2 seconds. SPM should be steady at 26-30.</p>
                         <div>
                             <strong>How to Improve:</strong>
