@@ -100,34 +100,37 @@ export default function MachineGuide() {
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">All-Out Sprint (10-60 seconds)</h5>
                         <p><strong>Technique:</strong> It's a full-body explosion. Drive hard with your legs while aggressively pushing with one arm and pulling with the other. Keep your chest up to allow for maximum oxygen intake.</p>
                         <p><strong>Monitor Focus:</strong> Watts or Cal/Hr. Aim for the highest numbers you can possibly hit.</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>10s Max Watt Sprints:</strong> Rest 50s, repeat 8-10 times.</li>
                                 <li><strong>Tabata Intervals:</strong> 20s on, 10s off for 8 rounds. Try to hold the same high RPM across all rounds.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                      <div>
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">Sustainable Pace (2-10 Minutes)</h5>
                         <p><strong>Technique:</strong> Find a "comfortably uncomfortable" rhythm. Focus on smooth, full pedal strokes—think of scraping mud off the bottom of your shoe on the upstroke. Control your breathing from the start.</p>
                         <p><strong>Monitor Focus:</strong> RPM. Pick a number and lock it in. For men, 60-68 RPM is a common target. For women, 50-58 RPM. Stare at that number and do not deviate.</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>EMOMs:</strong> Every minute on the minute for 10-15 minutes, bike 12/9 calories. The goal is consistent time each round.</li>
                                 <li><strong>Longer Intervals:</strong> 4 rounds of 3 minutes on at your target RPM, 90 seconds easy recovery spin.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                      <div>
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">The Long Haul (10+ Minutes)</h5>
                         <p><strong>Technique:</strong> This is a mental game of efficiency. Relax your grip, jaw, and shoulders. Let your legs do most of the work, using your arms just enough to keep the rhythm. Focus on deep, diaphragmatic breathing.</p>
                         <p><strong>Monitor Focus:</strong> RPM. Choose a lower, more conservative number (e.g., Men: 52-58 RPM, Women: 45-52 RPM) that you know you can hold without your heart rate redlining.</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>Steady State:</strong> 20-30 minute ride at a pace where you could hold a conversation.</li>
                                 <li><strong>Negative Splits:</strong> Bike 5000m. Start at a very easy pace and increase your RPM by 1-2 every 1000m.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                 </SubSection>
                 <SubSection title="4. Common Faults & Fixes">
@@ -156,34 +159,37 @@ export default function MachineGuide() {
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">All-Out Sprint (up to 500m)</h5>
                         <p><strong>Technique:</strong> A compressed, violent, and powerful sequence of Legs-Back-Arms. The recovery is quick to get to the next stroke, but the drive is still initiated by a massive push from the legs.</p>
                         <p><strong>Monitor Focus:</strong> Pace/500m. Aim for the lowest split you can hold. SPM will be high (32-40+).</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>100m Sprints:</strong> 8-10 rounds of 100m all-out, with 45-60s rest.</li>
                                 <li><strong>30s Max Calorie Rows:</strong> A classic test of power endurance. Rest 90s, repeat 5 times.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                      <div>
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">Sustainable Pace (500m - 2000m)</h5>
                         <p><strong>Technique:</strong> This is where the 1:2 Drive-to-Recovery ratio is king. Focus on a powerful 1-second drive, and a patient 2-second recovery (Arms -> Hips -> Knees). Breathe out on the drive, in on the recovery.</p>
                         <p><strong>Monitor Focus:</strong> Pace/500m. Pick your goal pace and do not deviate by more than 1-2 seconds. SPM should be steady at 26-30.</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>500m Repeats:</strong> 6-8 sets of 500m at your target 2k pace, with a 1:1 work-to-rest ratio.</li>
                                 <li><strong>4x4 Minute Intervals:</strong> Row for 4 minutes at a hard, sustainable pace. Rest 2 minutes. Repeat 4 times.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                      <div>
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">The Long Haul (2000m+)</h5>
                         <p><strong>Technique:</strong> Lengthen your stroke and relax. The drive is still powerful, but the recovery is even more patient. Focus on getting a full, deep breath on every recovery. Maintain good posture to avoid lower back fatigue.</p>
                         <p><strong>Monitor Focus:</strong> Pace/500m and SPM. Settle into a lower SPM (22-26) and a conservative pace. Aim to "negative split" (make the second half faster than the first).</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>5k/10k Rows:</strong> The best way to build an aerobic base on the rower. Pick a pace you know you can hold and stick to it.</li>
                                 <li><strong>30-minute Rows:</strong> Row for 30 minutes, varying the SPM every 5 minutes (e.g., 22-24-26-24-22-26) while trying to keep your pace consistent.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                 </SubSection>
                 <SubSection title="4. Common Faults & Fixes">
@@ -211,34 +217,37 @@ export default function MachineGuide() {
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">All-Out Sprint (up to 45 seconds)</h5>
                         <p><strong>Technique:</strong> Think of a violent, repetitive kettlebell swing. Aggressively hinge at the hips, using your bodyweight to drive the handles down. Keep arms straight for as long as possible, only breaking at the elbows to finish the pull past your hips.</p>
                         <p><strong>Monitor Focus:</strong> Pace/500m or Watts. The goal is maximum power output. SPM will be very high (45-55+).</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>10-Calorie Sprints:</strong> Perform 10-15 rounds of 10-cal sprints, resting until you feel ready to go again (about 60-90s).</li>
                                 <li><strong>Max Watts in 5 Pulls:</strong> From a dead stop, see what your max wattage is in just 5 powerful strokes.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                      <div>
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">Sustainable Pace (2-10 Minutes)</h5>
                         <p><strong>Technique:</strong> Find a powerful rhythm. Focus on a full reach at the top to engage your lats, followed by a strong crunch and hip hinge. The recovery should be controlled, not rushed.</p>
                         <p><strong>Monitor Focus:</strong> Pace/500m. Lock into a split that feels challenging but repeatable. SPM will likely be in the 40-48 range.</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>30/30 Intervals:</strong> 10-15 rounds of 30s hard effort, 30s easy recovery pull.</li>
                                 <li><strong>2-Minute Intervals:</strong> 5 rounds of 2 minutes at your target pace, with 90 seconds rest.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                      <div>
                         <h5 className="font-semibold text-text-primary dark:text-dark-text-primary">The Long Haul (10+ Minutes)</h5>
                         <p><strong>Technique:</strong> Less aggressive hip hinge and more focus on a smooth, continuous motion. Maintain a strong, flat back to protect your spine. Use the recovery to get a full breath.</p>
                         <p><strong>Monitor Focus:</strong> Pace/500m and SPM. Lower your SPM to 35-42 to conserve energy. Pick a conservative pace you can hold and aim to negative split.</p>
-                        <p><strong>How to Improve:</strong>
+                        <div>
+                            <strong>How to Improve:</strong>
                             <ul className="list-disc list-inside pl-4 mt-1">
                                 <li><strong>2000m Repeats:</strong> Perform 3-4 sets of 2000m at a steady pace, resting 3-4 minutes between.</li>
                                 <li><strong>20 Mins for Meters:</strong> See how many meters you can accumulate in 20 minutes at a low, consistent stroke rate.</li>
                             </ul>
-                        </p>
+                        </div>
                     </div>
                 </SubSection>
                 <SubSection title="4. Common Faults & Fixes">
