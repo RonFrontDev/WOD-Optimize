@@ -4,7 +4,10 @@ import MovementDetail from './components/MovementDetail';
 import WorkoutBuilder from './components/WorkoutBuilder';
 import { MOVEMENTS } from './constants';
 import type { Movement, AppView } from './types';
-import { ClipboardListIcon, BookmarkSquareIcon, SearchIcon, SnatchLifterIcon } from './components/Icons';
+import { 
+  ClipboardListIcon, BookmarkSquareIcon, SearchIcon, BarbellIcon, KettlebellIcon, 
+  UsersIcon, HeartIcon, SparklesIcon, ChartBarIcon
+} from './components/Icons';
 import HomePageGripGuide from './components/HomePageGripGuide';
 import TeamWorkoutGuide from './components/TeamWorkoutGuide';
 import SavedWorkouts from './components/SavedWorkouts';
@@ -182,43 +185,112 @@ export default function App(): React.JSX.Element {
       case 'home':
       default:
         return (
-          <div className="animate-fade-in">
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 items-center my-8 max-w-6xl mx-auto">
-              
-              {/* Image: Appears first on mobile */}
-              <div className="flex justify-center items-center">
-                <SnatchLifterIcon className="w-64 h-64 lg:w-80 lg:h-80 text-brand-primary opacity-80" />
-              </div>
+          <div className="space-y-16 md:space-y-24 animate-fade-in">
 
-              {/* Text Content: Appears second on mobile, but first on desktop */}
-              <div className="text-center md:text-left md:order-first">
-                <h1 className="text-4xl md:text-5xl font-bold text-text-primary dark:text-dark-text-primary mb-4">
+            {/* Hero Section */}
+            <section className="text-center pt-8 md:pt-12">
+                <div className="flex justify-center items-center gap-4 mb-6 text-brand-primary/80 dark:text-brand-primary/70">
+                    <BarbellIcon className="w-10 h-10" />
+                    <KettlebellIcon className="w-10 h-10" />
+                    <UsersIcon className="w-10 h-10" />
+                    <HeartIcon className="w-10 h-10" />
+                </div>
+                <h1 className="text-4xl md:text-5xl font-extrabold text-text-primary dark:text-dark-text-primary mb-4 tracking-tight">
                   Optimize Your Performance
                 </h1>
-                <p className="text-lg md:text-xl text-text-muted dark:text-dark-text-muted">
-                  Select a movement for analysis, or build a custom workout plan for a custom strategy.
+                <p className="max-w-2xl mx-auto text-lg md:text-xl text-text-muted dark:text-dark-text-muted">
+                  Your AI-powered coach for smarter training, better movement, and faster results.
                 </p>
-                <div className="mt-8 flex justify-center md:justify-start items-center flex-wrap gap-4">
+                <div className="mt-10 flex justify-center items-center flex-wrap gap-4">
                   <button
                     onClick={handleStartWorkoutBuilder}
-                    className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center md:gap-3 w-64"
+                    className="bg-brand-secondary hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center md:gap-3 text-lg"
                   >
-                    <ClipboardListIcon className="w-6 h-6 hidden md:inline-block" />
+                    <SparklesIcon className="w-6 h-6" />
                     Analyze a Workout
                   </button>
                   <button
-                    onClick={handleViewSavedWorkouts}
-                    className="bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center md:gap-3 w-64"
+                    onClick={() => handleNavigate('movements')}
+                    className="bg-surface dark:bg-dark-surface border-2 border-border-color dark:border-dark-border-color hover:border-brand-primary dark:hover:border-brand-primary hover:text-brand-primary dark:hover:text-brand-primary text-text-primary dark:text-dark-text-primary font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center md:gap-3 text-lg"
                   >
-                    <BookmarkSquareIcon className="w-6 h-6 hidden md:inline-block" />
-                    View Saved Strategies
+                    <SearchIcon className="w-6 h-6" />
+                    Explore Movements
                   </button>
                 </div>
-              </div>
+            </section>
 
-            </div>
-          </div>
-        );
+            {/* How It Works Section */}
+            <section className="max-w-5xl mx-auto">
+                <h2 className="text-3xl font-bold text-center text-text-primary dark:text-dark-text-primary">How WOD Optimize Works</h2>
+                <div className="mt-10 grid md:grid-cols-3 gap-8">
+                  <div className="text-center p-6 bg-surface dark:bg-dark-surface rounded-lg border border-border-color dark:border-dark-border-color">
+                    <div className="flex justify-center items-center w-16 h-16 rounded-full bg-brand-primary/10 mx-auto">
+                      <SparklesIcon className="w-8 h-8 text-brand-primary" />
+                    </div>
+                    <h3 className="mt-5 text-xl font-bold text-text-primary dark:text-dark-text-primary">1. Analyze</h3>
+                    <p className="mt-2 text-text-muted dark:text-dark-text-muted">Describe any workout or upload a photo of your form to get instant, data-driven feedback.</p>
+                  </div>
+                  <div className="text-center p-6 bg-surface dark:bg-dark-surface rounded-lg border border-border-color dark:border-dark-border-color">
+                    <div className="flex justify-center items-center w-16 h-16 rounded-full bg-brand-primary/10 mx-auto">
+                      <ClipboardListIcon className="w-8 h-8 text-brand-primary" />
+                    </div>
+                    <h3 className="mt-5 text-xl font-bold text-text-primary dark:text-dark-text-primary">2. Strategize</h3>
+                    <p className="mt-2 text-text-muted dark:text-dark-text-muted">Receive elite-level pacing guides, efficiency tips, and personalized strategies for any skill level.</p>
+                  </div>
+                  <div className="text-center p-6 bg-surface dark:bg-dark-surface rounded-lg border border-border-color dark:border-dark-border-color">
+                    <div className="flex justify-center items-center w-16 h-16 rounded-full bg-brand-primary/10 mx-auto">
+                      <ChartBarIcon className="w-8 h-8 text-brand-primary" />
+                    </div>
+                    <h3 className="mt-5 text-xl font-bold text-text-primary dark:text-dark-text-primary">3. Optimize</h3>
+                    <p className="mt-2 text-text-muted dark:text-dark-text-muted">Access targeted drills, mobility routines, and guides to break plateaus and prevent injury.</p>
+                  </div>
+                </div>
+            </section>
+
+            {/* Featured Guides Section */}
+            <section className="max-w-6xl mx-auto">
+                <h2 className="text-3xl font-bold text-center text-text-primary dark:text-dark-text-primary">Featured Guides</h2>
+                <p className="text-center mt-2 max-w-2xl mx-auto text-text-muted dark:text-dark-text-muted">Dive deeper with our expert guides on strategy, recovery, and technique.</p>
+                <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* Guide Card 1 */}
+                  <button onClick={() => handleNavigate('barbellCyclingGuide')} className="group text-left bg-surface dark:bg-dark-surface p-6 rounded-lg shadow-lg hover:shadow-brand-primary/20 border border-border-color dark:border-dark-border-color transition-all duration-300 transform hover:-translate-y-1">
+                    <BarbellIcon className="w-10 h-10 text-brand-secondary mb-4" />
+                    <h3 className="text-xl font-bold text-text-primary dark:text-dark-text-primary">Barbell Cycling</h3>
+                    <p className="mt-1 text-text-muted dark:text-dark-text-muted">Master efficiency for light, moderate, and heavy loads to crush your WOD times.</p>
+                    <span className="block mt-4 font-semibold text-brand-primary group-hover:underline">Read Guide →</span>
+                  </button>
+                  {/* Guide Card 2 */}
+                  <button onClick={() => handleNavigate('teamGuide')} className="group text-left bg-surface dark:bg-dark-surface p-6 rounded-lg shadow-lg hover:shadow-brand-primary/20 border border-border-color dark:border-dark-border-color transition-all duration-300 transform hover:-translate-y-1">
+                    <UsersIcon className="w-10 h-10 text-brand-secondary mb-4" />
+                    <h3 className="text-xl font-bold text-text-primary dark:text-dark-text-primary">Team Strategy</h3>
+                    <p className="mt-1 text-text-muted dark:text-dark-text-muted">Learn the secrets of communication and rep schemes for partner and team events.</p>
+                     <span className="block mt-4 font-semibold text-brand-primary group-hover:underline">Read Guide →</span>
+                  </button>
+                  {/* Guide Card 3 */}
+                  <button onClick={() => handleNavigate('recovery')} className="group text-left bg-surface dark:bg-dark-surface p-6 rounded-lg shadow-lg hover:shadow-brand-primary/20 border border-border-color dark:border-dark-border-color transition-all duration-300 transform hover:-translate-y-1">
+                    <HeartIcon className="w-10 h-10 text-brand-secondary mb-4" />
+                    <h3 className="text-xl font-bold text-text-primary dark:text-dark-text-primary">Recovery Hub</h3>
+                    <p className="mt-1 text-text-muted dark:text-dark-text-muted">Unlock protocols for post-workout, competition, and daily recovery to stay in the game.</p>
+                     <span className="block mt-4 font-semibold text-brand-primary group-hover:underline">Read Guide →</span>
+                  </button>
+                </div>
+            </section>
+
+             {/* View Saved Strategies Section */}
+            <section className="text-center bg-slate-50 dark:bg-dark-surface/50 p-8 md:p-12 rounded-lg border border-border-color dark:border-dark-border-color">
+                <h2 className="text-2xl font-bold text-text-primary dark:text-dark-text-primary">Ready to Review?</h2>
+                <p className="mt-2 max-w-xl mx-auto text-text-muted dark:text-dark-text-muted">Access all of your previously analyzed workouts and custom strategies in one place.</p>
+                <button
+                    onClick={handleViewSavedWorkouts}
+                    className="mt-6 bg-brand-primary hover:bg-cyan-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105 inline-flex items-center justify-center md:gap-3"
+                  >
+                    <BookmarkSquareIcon className="w-6 h-6" />
+                    View Saved Strategies
+                  </button>
+            </section>
+
+        </div>
+    );
     }
   }
 
